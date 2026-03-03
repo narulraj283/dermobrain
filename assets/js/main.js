@@ -166,12 +166,19 @@
     const heroBtn = document.querySelector('.search-btn');
 
     if (heroInput) {
-        // Create results dropdown
+        // Create results dropdown - append to a wrapper outside overflow:hidden
         const resultsDiv = document.createElement('div');
         resultsDiv.className = 'search-results-dropdown';
         resultsDiv.style.display = 'none';
-        heroInput.parentNode.style.position = 'relative';
-        heroInput.parentNode.appendChild(resultsDiv);
+        // Create a relative wrapper around the search form for proper positioning
+        const searchForm = heroInput.parentNode;
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        wrapper.style.maxWidth = '560px';
+        wrapper.style.margin = '0 auto';
+        searchForm.parentNode.insertBefore(wrapper, searchForm);
+        wrapper.appendChild(searchForm);
+        wrapper.appendChild(resultsDiv);
 
         let debounceTimer;
         heroInput.addEventListener('input', () => {
