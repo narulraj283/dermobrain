@@ -9,6 +9,7 @@ import os
 import shutil
 import datetime
 from pathlib import Path
+from urllib.parse import quote
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom.minidom import parseString
 
@@ -114,6 +115,8 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
     schema_tag = f'<script type="application/ld+json">{schema_json}</script>' if schema_json else ""
     og_title = title
     og_desc = meta_description or f"{SITE_NAME} - {SITE_TAGLINE}"
+    og_url = f"{DOMAIN}{canonical}" if canonical else DOMAIN
+    og_image = f"{DOMAIN}/assets/images/og-default.png"
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -126,15 +129,20 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
     {canonical_tag}
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{og_title}">
+    <meta property="og:title" content="{og_title} | {SITE_NAME}">
     <meta property="og:description" content="{og_desc}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{og_url}">
     <meta property="og:site_name" content="{SITE_NAME}">
+    <meta property="og:image" content="{og_image}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{og_title}">
+    <meta name="twitter:title" content="{og_title} | {SITE_NAME}">
     <meta name="twitter:description" content="{og_desc}">
+    <meta name="twitter:image" content="{og_image}">
 
     {schema_tag}
 
@@ -227,7 +235,7 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
         </div>
     </footer>
 
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/main.js" defer></script>
 </body>
 </html>'''
 
@@ -618,14 +626,17 @@ def build_article_page(article, category_info):
         </div>
     </section>'''
 
-    # Social share buttons
+    # Social share buttons (URL-encoded)
     article_url = f"{DOMAIN}/{pillar_slug}/{category_slug}/{article_slug}.html"
+    encoded_url = quote(article_url, safe='')
+    encoded_title = quote(title, safe='')
     social_share = f'''
     <div class="social-share">
         <p>Share this article:</p>
-        <a href="https://twitter.com/intent/tweet?url={article_url}&text={title}" class="share-btn twitter" target="_blank" rel="noopener">Twitter</a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={article_url}" class="share-btn facebook" target="_blank" rel="noopener">Facebook</a>
-        <button class="share-btn copy-link" onclick="navigator.clipboard.writeText('{article_url}'); alert('Link copied!');">Copy Link</button>
+        <a href="https://twitter.com/intent/tweet?url={encoded_url}&text={encoded_title}" class="share-btn twitter" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={encoded_url}" class="share-btn facebook" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}" class="share-btn linkedin" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+        <button class="share-btn copy-link" data-url="{article_url}" aria-label="Copy link to clipboard">Copy Link</button>
     </div>'''
 
     # Schema.org - combined Article + MedicalWebPage + BreadcrumbList
@@ -759,15 +770,16 @@ def build_category_page(category, articles):
             subcategory_html += f'<button class="filter-tab" data-filter="{subcat_slug}">{subcat_name}</button>'
         subcategory_html += '</div>'
 
-    # Article cards grid
+    # Article cards grid - show ALL articles (not just 12)
     articles_html = '<div class="articles-grid">'
-    for article in category_articles[:12]:  # Limit display to 12 articles per page
+    for article in category_articles:
         article_slug = article.get('slug', '')
         article_title = article.get('title', '')
         article_desc = article.get('meta_description', '')[:120] + "..."
+        subcat = article.get('subcategory', '')
 
         articles_html += f'''
-        <a href="/{pillar_slug}/{category_slug}/{article_slug}.html" class="article-card">
+        <a href="/{pillar_slug}/{category_slug}/{article_slug}.html" class="article-card" data-subcategory="{subcat}">
             <div class="article-card-body">
                 <span class="article-category">{category_name}</span>
                 <h3>{article_title}</h3>
@@ -831,11 +843,11 @@ def build_pillar_page(pillar_slug, pillar_name, categories, all_articles):
         article_count = len(cat_articles)
 
         categories_html += f'''
-        <div class="category-item">
-            <h3><a href="/{pillar_slug}/{cat_slug}/">{cat_name}</a></h3>
+        <a href="/{pillar_slug}/{cat_slug}/" class="category-item">
+            <h3>{cat_name}</h3>
             <p>{cat_desc}</p>
             <span class="article-count">{article_count} articles</span>
-        </div>'''
+        </a>'''
     categories_html += '</div>'
 
     description = {
