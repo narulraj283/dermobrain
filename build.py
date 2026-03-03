@@ -146,7 +146,7 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
 
     {schema_tag}
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=2">
     {extra_head}
 
     <!-- GA4 -->
@@ -235,7 +235,7 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
         </div>
     </footer>
 
-    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/main.js?v=2" defer></script>
 </body>
 </html>'''
 
