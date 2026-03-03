@@ -340,8 +340,15 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     max-width: 560px;
     margin: 0 auto 2.5rem;
     border-radius: var(--radius-lg);
-    overflow: hidden;
     box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 100;
+}
+.hero-search .search-input {
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+.hero-search .search-btn {
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
 }
 .search-input {
     flex: 1;
@@ -1648,6 +1655,8 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     .hero { padding: 3rem 0 2.5rem; }
     .hero-stats { gap: 1.5rem; }
     .hero-search { flex-direction: column; border-radius: var(--radius); }
+    .hero-search .search-input { border-radius: var(--radius) var(--radius) 0 0; }
+    .hero-search .search-btn { border-radius: 0 0 var(--radius) var(--radius); }
     .search-input { border-right: 2px solid var(--border); border-radius: var(--radius) var(--radius) 0 0; }
     .search-btn { border-radius: 0 0 var(--radius) var(--radius); }
 
