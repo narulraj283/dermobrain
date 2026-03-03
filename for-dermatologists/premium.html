@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekwa Premium - Grow Your Dermatology Practice with DermoBrain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1A6B54;
+            --accent: #E8734A;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #666;
+            --border: #ddd;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d4d3a 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #d6622a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(232, 115, 74, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: var(--primary);
+            margin-left: 15px;
+        }
+
+        .cta-button.secondary:hover {
+            background: #f0f0f0;
+            box-shadow: 0 5px 20px rgba(26, 107, 84, 0.2);
+        }
+
+        /* Comparison Section */
+        .comparison {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 25px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .comparison-table td {
+            padding: 18px 25px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: var(--light-bg);
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            width: 35%;
+        }
+
+        .feature-free,
+        .feature-premium {
+            text-align: center;
+            width: 32.5%;
+        }
+
+        .check {
+            color: var(--success);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .x {
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: var(--light-bg);
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+
+        .pricing-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+
+        .pricing-card h2 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .price-tag {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .price-benefits {
+            text-align: left;
+            margin: 30px 0;
+            list-style: none;
+        }
+
+        .price-benefits li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dark);
+        }
+
+        .price-benefits li:last-child {
+            border-bottom: none;
+        }
+
+        .price-benefits li:before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .testimonial-title {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--light-bg);
+            padding: 80px 20px;
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .faq-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-item h3:hover {
+            color: var(--accent);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            display: none;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d4d3a 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Form */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .close:hover {
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(26, 107, 84, 0.1);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 107, 84, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 10px auto;
+            }
+
+            .cta-button.secondary {
+                margin-left: 0;
+            }
+
+            .comparison-table {
+                font-size: 14px;
+            }
+
+            .comparison-table td,
+            .comparison-table th {
+                padding: 12px;
+            }
+
+            .feature-name,
+            .feature-free,
+            .feature-premium {
+                width: 100%;
+                display: block;
+            }
+
+            .comparison-table thead {
+                display: none;
+            }
+
+            .comparison-table tbody tr {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 15px;
+                background: var(--light-bg);
+                border-radius: 6px;
+                overflow: hidden;
+            }
+
+            .comparison-table tbody tr td {
+                flex: 0 0 50%;
+                padding: 12px;
+                border: none;
+            }
+
+            .comparison-table tbody tr td:first-child {
+                flex: 0 0 100%;
+                background: white;
+                border-bottom: 1px solid var(--border);
+                font-weight: 600;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .final-cta h2 {
+                font-size: 24px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Benefits Badge */
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Dermo<span>Brain</span></div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Grow Your Dermatology Practice with DermoBrain</h1>
+            <p>Connect with patients actively searching for dermatological services. Stand out with our premium listing features and advanced visibility tools.</p>
+            <button class="cta-button" onclick="openModal()">Get Premium Listing</button>
+            <button class="cta-button secondary" onclick="document.getElementById('comparison').scrollIntoView({behavior: 'smooth'})">See Features</button>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
+        <h2 class="section-title">Free vs Premium Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th class="feature-name">Features</th>
+                    <th class="feature-free">Free Listing</th>
+                    <th class="feature-premium">Premium Listing <span class="badge">RECOMMENDED</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="feature-name">Basic Listing</td>
+                    <td class="feature-free"><span class="check">✓</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Name, Address & Phone</td>
+                    <td class="feature-free"><span class="check">✓</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Gold Badge Verification</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Priority Search Placement</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Enhanced Profile</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Professional Website Link</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Online Appointment Booking</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Monthly Analytics Report</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Featured in Articles</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Patient Reviews Section</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Specialty Highlighting</td>
+                    <td class="feature-free"><span class="x">✗</span></td>
+                    <td class="feature-premium"><span class="check">✓</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Pricing & Features</h2>
+            <div class="pricing-card">
+                <h2>Ekwa Premium Listing</h2>
+                <p class="price-tag">Contact us for custom pricing based on your market and specialties</p>
+                <ul class="price-benefits">
+                    <li>Gold Badge Verification</li>
+                    <li>Top Search Placement in Your Specialties</li>
+                    <li>Enhanced Profile with Photo Gallery</li>
+                    <li>Direct Website Integration</li>
+                    <li>Online Appointment Scheduling</li>
+                    <li>Patient Review Management</li>
+                    <li>Monthly Analytics Dashboard</li>
+                    <li>Featured in Relevant Articles</li>
+                    <li>Priority Support</li>
+                </ul>
+                <button class="cta-button" onclick="openModal()">Get Premium Listing</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">What Our Premium Members Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"DermoBrain's premium listing has been a game-changer for our practice. We've seen a 40% increase in patient inquiries within the first month."</p>
+                <div class="testimonial-author">Dr. Sarah Mitchell, MD</div>
+                <div class="testimonial-title">Dermatologist, New York</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The analytics dashboard is invaluable. We can track where our patients are coming from and adjust our marketing accordingly."</p>
+                <div class="testimonial-author">Dr. James Chen</div>
+                <div class="testimonial-title">Cosmetic Dermatologist, California</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The online appointment booking feature has reduced our administrative load significantly while improving patient satisfaction."</p>
+                <div class="testimonial-author">Dr. Jessica Rodriguez</div>
+                <div class="testimonial-title">Board-Certified Dermatologist, Florida</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq-content">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3>
+                    How long does it take to get approved for premium listing?
+                    <span class="faq-toggle">▼</span>
+                </h3>
+                <div class="faq-answer">
+                    <p>Our verification process typically takes 3-5 business days. We'll review your credentials and practice information to ensure accuracy. Once approved, your premium listing goes live immediately with the gold badge and enhanced features.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3>
+                    Can I manage my appointments through DermoBrain?
+                    <span class="faq-toggle">▼</span>
+                </h3>
+                <div class="faq-answer">
+                    <p>Yes! Premium listings include our integrated appointment booking system. Patients can view your availability and book appointments directly through your listing. The system integrates with most major practice management software, and appointments sync automatically.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3>
+                    What kind of analytics will I receive?
+                    <span class="faq-toggle">▼</span>
+                </h3>
+                <div class="faq-answer">
+                    <p>Premium members receive a comprehensive monthly analytics report including: profile views, appointment booking inquiries, search keywords that bring patients to you, geographic patient distribution, and comparison metrics with similar practices in your area.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3>
+                    Is there a setup fee or long-term contract?
+                    <span class="faq-toggle">▼</span>
+                </h3>
+                <div class="faq-answer">
+                    <p>No setup fees and no long-term contracts required! We offer flexible month-to-month billing so you can upgrade or downgrade anytime. Most practices see positive ROI within the first month of their premium listing.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3>
+                    How do premium listings improve my visibility?
+                    <span class="faq-toggle">▼</span>
+                </h3>
+                <div class="faq-answer">
+                    <p>Premium listings appear at the top of search results for your specialties and location. They also get featured in DermoBrain articles, receive the gold badge verification mark for increased trust, and are included in specialty-specific directories that free listings don't appear in.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <h2>Ready to Grow Your Practice?</h2>
+        <p>Join hundreds of dermatologists who are attracting more patients with DermoBrain Premium.</p>
+        <button class="cta-button" onclick="openModal()">Get Premium Listing Today</button>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--primary); margin-bottom: 20px;">Get Premium Listing</h2>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="practiceName">Practice Name *</label>
+                    <input type="text" id="practiceName" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctorName">Doctor/Practitioner Name *</label>
+                    <input type="text" id="doctorName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="specialties">Specialties/Interests</label>
+                    <input type="text" id="specialties" placeholder="e.g., Cosmetic, Medical, Pediatric">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location (City, State) *</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Questions or Information</label>
+                    <textarea id="message" placeholder="Tell us a bit about your practice..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Submit Request</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; color: #999; font-size: 13px;">
+                We'll contact you within 24 business hours to discuss pricing and next steps.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 DermoBrain. All rights reserved.</p>
+        <p>
+            <a href="/">Home</a> |
+            <a href="/privacy">Privacy Policy</a> |
+            <a href="/terms">Terms of Service</a> |
+            <a href="mailto:contact@dermobrain.com">Contact Us</a>
+        </p>
+    </footer>
+
+    <script>
+        function openModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const formData = {
+                practiceName: document.getElementById('practiceName').value,
+                doctorName: document.getElementById('doctorName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                specialties: document.getElementById('specialties').value,
+                location: document.getElementById('location').value,
+                message: document.getElementById('message').value,
+                submittedAt: new Date().toISOString()
+            };
+
+            console.log('Premium Listing Request:', formData);
+
+            alert('Thank you for your interest in DermoBrain Premium!\n\nWe will contact you at ' + formData.email + ' within 24 business hours to discuss pricing and next steps.');
+
+            document.querySelector('form').reset();
+            closeModal();
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize first FAQ item as open
+        document.querySelector('.faq-item').classList.add('active');
+    </script>
+</body>
+</html>

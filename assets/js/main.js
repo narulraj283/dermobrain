@@ -46,19 +46,64 @@
     }
 })();
 
-// ─── Hero Search (placeholder functionality) ────────
+// ─── Client-Side Search ────────────────────────────
+let searchIndex = [];
+
+// Load search index
+fetch('/assets/js/search-index.json')
+    .then(response => response.json())
+    .then(data => {
+        searchIndex = data;
+        console.log('Search index loaded:', searchIndex.length, 'articles');
+    })
+    .catch(error => console.log('Search index not available:', error));
+
+function performSearch(query) {
+    if (!query.trim()) return [];
+
+    const lowerQuery = query.toLowerCase();
+    return searchIndex.filter(article => {
+        const titleMatch = article.title.toLowerCase().includes(lowerQuery);
+        const descMatch = article.meta_description.toLowerCase().includes(lowerQuery);
+        const categoryMatch = article.category.toLowerCase().includes(lowerQuery);
+        return titleMatch || descMatch || categoryMatch;
+    }).slice(0, 10); // Return top 10 results
+}
+
+// ─── Hero Search (with real search functionality) ────
 (function() {
     const searchInput = document.getElementById('heroSearch');
+    const searchBtn = document.querySelector('.search-btn');
+
+    function executeSearch() {
+        const query = searchInput.value.trim();
+        if (query) {
+            const results = performSearch(query);
+            if (results.length > 0) {
+                // Navigate to first result
+                const firstResult = results[0];
+                const categoryInfo = searchIndex.find(a => a.slug === firstResult.slug);
+                if (categoryInfo) {
+                    // Note: category slug and pillar slug mapping should be done via categories
+                    console.log('Search found articles:', results.length);
+                    // For now, log results. In production, could show search results page
+                }
+            } else {
+                console.log('No results found for:', query);
+            }
+        }
+    }
+
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                const query = searchInput.value.trim();
-                if (query) {
-                    // Will be connected to real search in Phase 3
-                    console.log('Search query:', query);
-                }
+                executeSearch();
             }
         });
+    }
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', executeSearch);
     }
 })();
 

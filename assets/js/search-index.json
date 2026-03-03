@@ -1,0 +1,2888 @@
+[
+  {
+    "title": "Allergic Contact Dermatitis: Clinical Diagnosis and Management",
+    "slug": "allergic-contact-dermatitis",
+    "category": "allergies",
+    "meta_description": "Allergic contact dermatitis is a T cell-mediated reaction from skin exposure to allergens. Learn diagnosis via patch testing and management strategies."
+  },
+  {
+    "title": "Patch Testing: Methodology, Interpretation, and Clinical Application",
+    "slug": "patch-testing-methodology",
+    "category": "allergies",
+    "meta_description": "Patch testing is the diagnostic gold standard for allergic contact dermatitis. Understand methodology, interpretation criteria, and clinical relevance assessment."
+  },
+  {
+    "title": "Nickel Allergy: Epidemiology, Avoidance, and Management",
+    "slug": "nickel-allergy",
+    "category": "allergies",
+    "meta_description": "Nickel allergy is the most common contact allergen. Learn sources of exposure, clinical presentation, diagnostic methods, and effective avoidance strategies."
+  },
+  {
+    "title": "Fragrance Sensitivity and Fragrance-Related Dermatitis",
+    "slug": "fragrance-sensitivity",
+    "category": "allergies",
+    "meta_description": "Fragrance sensitivity affects 1-3% of the population. Understand fragrance components, clinical patterns, patch testing, and strategies for managing fragrance-free living."
+  },
+  {
+    "title": "Latex Allergy: Type I and Type IV Hypersensitivity Reactions",
+    "slug": "latex-allergy",
+    "category": "allergies",
+    "meta_description": "Latex allergy involves Type I IgE-mediated and Type IV cell-mediated reactions. Learn clinical manifestations, risk factors, diagnostic methods, and avoidance strategies."
+  },
+  {
+    "title": "Photoallergy vs Phototoxicity: Distinguishing Photosensitive Reactions",
+    "slug": "photoallergy-vs-phototoxicity",
+    "category": "allergies",
+    "meta_description": "Distinguish phototoxic reactions from photoallergic reactions. Understand mechanisms, clinical presentations, diagnostic testing, and management of photosensitivity."
+  },
+  {
+    "title": "Stevens-Johnson Syndrome: Severe Cutaneous Drug Reaction",
+    "slug": "stevens-johnson-syndrome",
+    "category": "allergies",
+    "meta_description": "Stevens-Johnson Syndrome is a life-threatening cutaneous drug reaction with high mortality. Learn etiology, pathophysiology, clinical presentation, and emergency management."
+  },
+  {
+    "title": "DRESS Syndrome: Drug Reaction with Eosinophilia and Systemic Symptoms",
+    "slug": "dress-syndrome",
+    "category": "allergies",
+    "meta_description": "DRESS syndrome is a life-threatening drug hypersensitivity reaction with fever, rash, and systemic involvement. Learn diagnostic criteria and immunosuppressive management."
+  },
+  {
+    "title": "Fixed Drug Eruption: Localized Recurrent Reaction Pattern",
+    "slug": "fixed-drug-eruption",
+    "category": "allergies",
+    "meta_description": "Fixed drug eruption presents as recurrent lesions at identical sites with drug exposure. Learn recognition, mechanism, diagnostic confirmation, and management."
+  },
+  {
+    "title": "Exanthematous Drug Eruption: Morbilliform Reactions to Medications",
+    "slug": "exanthematous-drug-eruption",
+    "category": "allergies",
+    "meta_description": "Exanthematous drug eruption is the most common drug-induced rash. Learn clinical features, natural history, and management decisions for morbilliform reactions."
+  },
+  {
+    "title": "Acute Urticaria: Pathophysiology, Diagnosis, and Treatment",
+    "slug": "acute-urticaria",
+    "category": "allergies",
+    "meta_description": "Acute urticaria is self-limited whealing lasting less than 6 weeks. Understand mast cell pathophysiology, common triggers, and antihistamine-based treatment approaches."
+  },
+  {
+    "title": "Chronic Urticaria: Pathophysiology and Long-term Management",
+    "slug": "chronic-urticaria",
+    "category": "allergies",
+    "meta_description": "Chronic urticaria persists beyond 6 weeks with significant quality of life impact. Learn autoimmune pathophysiology and stepwise treatment escalation strategies."
+  },
+  {
+    "title": "Angioedema: Deep Tissue Swelling and Clinical Management",
+    "slug": "angioedema",
+    "category": "allergies",
+    "meta_description": "Angioedema is deep tissue swelling classified as histamine or bradykinin-mediated. Learn mechanisms, hereditary forms, ACE inhibitor association, and specific treatments."
+  },
+  {
+    "title": "Autoimmune Urticaria: Recognition and Immunological Testing",
+    "slug": "autoimmune-urticaria",
+    "category": "allergies",
+    "meta_description": "Autoimmune urticaria involves IgE/IgG autoantibodies causing mast cell activation. Learn autologous serum skin testing, histamine release testing, and biologic therapy implications."
+  },
+  {
+    "title": "Cold Urticaria: Cold-Induced Urticaria and Systemic Risk",
+    "slug": "cold-urticaria",
+    "category": "allergies",
+    "meta_description": "Cold urticaria is triggered by cold exposure with risk of anaphylaxis during water immersion. Learn diagnosis, systemic disease screening, and management strategies."
+  },
+  {
+    "title": "Cholinergic Urticaria: Exercise-Induced and Heat-Induced Reactions",
+    "slug": "cholinergic-urticaria",
+    "category": "allergies",
+    "meta_description": "Cholinergic urticaria is exercise and heat-triggered urticaria with characteristic small papules. Learn triggers, diagnosis, and management of stress-related reactions."
+  },
+  {
+    "title": "Dermatitis Herpetiformis: Gluten-Sensitive Autoimmune Blistering",
+    "slug": "dermatitis-herpetiformis",
+    "category": "allergies",
+    "meta_description": "Dermatitis herpetiformis is a gluten-sensitive autoimmune blistering disorder with granular IgA deposits. Learn diagnosis and management with gluten avoidance and dapsone."
+  },
+  {
+    "title": "Atopic Dermatitis Immunology: Th2 Inflammation and Barrier Dysfunction",
+    "slug": "atopic-dermatitis-immunology",
+    "category": "allergies",
+    "meta_description": "Atopic dermatitis involves Th2 immune dysregulation, barrier dysfunction, and altered Treg function. Understand immunological basis of targeted biologic therapies."
+  },
+  {
+    "title": "Dupilumab: Anti-IL-4R Monoclonal Antibody for Atopic Dermatitis",
+    "slug": "dupilumab-atopic-dermatitis",
+    "category": "allergies",
+    "meta_description": "Dupilumab is an IL-4R antagonist monoclonal antibody achieving 70-75% EASI-75 response in moderate-to-severe atopic dermatitis with good safety profile."
+  },
+  {
+    "title": "JAK Inhibitors: Molecular Mechanisms in Skin Disease Treatment",
+    "slug": "jak-inhibitors-skin",
+    "category": "allergies",
+    "meta_description": "JAK inhibitors block multiple cytokine pathways critical for immune skin diseases. Understand mechanisms, approved agents, and safety profile for atopic dermatitis."
+  },
+  {
+    "title": "Secukinumab and IL-17 Pathway Inhibition in Skin Disease",
+    "slug": "secukinumab-IL17",
+    "category": "allergies",
+    "meta_description": "Secukinumab is an IL-17A inhibitor with proven efficacy in psoriasis and emerging benefits in IL-17-driven neutrophilic dermatoses and severe atopic dermatitis."
+  },
+  {
+    "title": "Ustekinumab and IL-23 Pathway: Mechanism and Clinical Applications",
+    "slug": "ustekinumab-IL23",
+    "category": "allergies",
+    "meta_description": "Ustekinumab blocks IL-12/IL-23 p40 subunit, showing efficacy in psoriasis and emerging benefits in atopic dermatitis inadequately controlled with anti-IL-4R therapy."
+  },
+  {
+    "title": "TNF-Alpha Inhibitors in Dermatology: Etanercept and Adalimumab",
+    "slug": "TNF-alpha-inhibitors",
+    "category": "allergies",
+    "meta_description": "TNF-alpha inhibitors etanercept and adalimumab show proven efficacy in psoriasis, hidradenitis suppurativa, and other immune skin diseases with well-characterized safety profiles."
+  },
+  {
+    "title": "Systemic Immunosuppressants in Dermatology: Indications and Monitoring",
+    "slug": "systemic-immunosuppressants",
+    "category": "allergies",
+    "meta_description": "Traditional immunosuppressants including cyclosporine and mycophenolate mofetil provide steroid-sparing options for severe immune skin disease with established monitoring protocols."
+  },
+  {
+    "title": "Phototherapy for Immune Skin Conditions: Mechanisms and Clinical Applications",
+    "slug": "phototherapy-immune-skin",
+    "category": "allergies",
+    "meta_description": "Phototherapy modulates immune responses through UV-induced T cell apoptosis and cytokine shifts. NB-UVB shows 70-80% efficacy in atopic dermatitis with durable benefit."
+  },
+  {
+    "title": "Anaphylaxis: Cutaneous Signs and Systemic Manifestations",
+    "slug": "anaphylaxis-skin-signs",
+    "category": "allergies",
+    "meta_description": "Anaphylaxis is life-threatening systemic IgE-mediated reaction with cutaneous urticaria and angioedema as early manifestations. Understand triggers, diagnosis, and emergency epinephrine therapy."
+  },
+  {
+    "title": "CoolSculpting (Cryolipolysis): Complete Guide to Non-Invasive Fat Reduction",
+    "slug": "coolsculpting-cryolipolysis-guide",
+    "category": "body-contouring",
+    "meta_description": "Learn about CoolSculpting (cryolipolysis), how it works, results, and safety profile for non-invasive fat reduction."
+  },
+  {
+    "title": "EMSculpt: Revolutionary Muscle Building and Fat Reduction Technology",
+    "slug": "emsculpt-muscle-building-fat-reduction",
+    "category": "body-contouring",
+    "meta_description": "EMSculpt uses HIFEM technology for non-invasive muscle building and fat reduction with visible results in weeks."
+  },
+  {
+    "title": "EMSculpt NEO: Advanced Muscle and Fat Treatment with Radiofrequency",
+    "slug": "emsculpt-neo-radiofrequency-treatment",
+    "category": "body-contouring",
+    "meta_description": "EMSculpt NEO combines HIFEM and radiofrequency for enhanced muscle building, fat reduction, and skin tightening results."
+  },
+  {
+    "title": "SculpSure: Laser Lipolysis for Targeted Fat Reduction",
+    "slug": "sculpsure-laser-lipolysis-guide",
+    "category": "body-contouring",
+    "meta_description": "SculpSure laser lipolysis uses 1060 nm laser energy to permanently reduce fat deposits with minimal downtime."
+  },
+  {
+    "title": "Injection Lipolysis (Kybella) for Body Fat Reduction",
+    "slug": "injection-lipolysis-kybella-body",
+    "category": "body-contouring",
+    "meta_description": "Kybella (deoxycholic acid) injections permanently destroy localized fat deposits with multiple treatment sessions."
+  },
+  {
+    "title": "Body Skin Tightening Options: Comprehensive Treatment Guide",
+    "slug": "body-skin-tightening-options",
+    "category": "body-contouring",
+    "meta_description": "Explore non-invasive and surgical body skin tightening options including radiofrequency, ultrasound, and laser treatments."
+  },
+  {
+    "title": "QWO Cellulite Treatment: New Collagenase Injection Therapy",
+    "slug": "qwo-cellulite-injection-treatment",
+    "category": "body-contouring",
+    "meta_description": "QWO collagenase injections break down cellulite septae for significant improvement in appearance and texture."
+  },
+  {
+    "title": "Cellfina Cellulite Treatment: Subcision for Long-Term Results",
+    "slug": "cellfina-subcision-cellulite",
+    "category": "body-contouring",
+    "meta_description": "Cellfina subcision with radiofrequency provides long-lasting cellulite improvement with 85% sustained results at 3 years."
+  },
+  {
+    "title": "Aveli Cellulite Treatment: Innovative Subcision and Radiofrequency System",
+    "slug": "aveli-cellulite-treatment",
+    "category": "body-contouring",
+    "meta_description": "Aveli minimally invasive subcision with radiofrequency effectively treats moderate to severe cellulite with durable results."
+  },
+  {
+    "title": "Cellulite Treatments Comparison: Comprehensive Overview of Options",
+    "slug": "cellulite-treatments-comparison",
+    "category": "body-contouring",
+    "meta_description": "Compare cellulite treatment options including non-invasive therapies, QWO injections, and subcision procedures."
+  },
+  {
+    "title": "Stretch Mark Treatments: Comprehensive Overview and Options",
+    "slug": "stretch-mark-treatments-overview",
+    "category": "body-contouring",
+    "meta_description": "Comprehensive guide to stretch mark treatment options including lasers, radiofrequency, and retinoid therapies."
+  },
+  {
+    "title": "Laser Treatment for Stretch Marks: Efficacy and Procedure Guide",
+    "slug": "laser-stretch-marks-treatment",
+    "category": "body-contouring",
+    "meta_description": "Laser treatments for stretch marks including PDL, fractional CO2, and Nd:YAG with efficacy data and protocols."
+  },
+  {
+    "title": "Scar Treatment Overview: Acne Scars, Surgical, and Burn Scars",
+    "slug": "scar-treatment-overview",
+    "category": "body-contouring",
+    "meta_description": "Comprehensive guide to scar treatment options for acne, surgical, and burn scars using lasers, microneedling, and injectables."
+  },
+  {
+    "title": "Tattoo Removal: Multi-Session Planning and Realistic Expectations",
+    "slug": "tattoo-removal-multi-session-planning",
+    "category": "body-contouring",
+    "meta_description": "Guide to tattoo removal including laser technology, multi-session planning, timeline, and realistic removal expectations."
+  },
+  {
+    "title": "Tattoo Removal: Color Challenges and Treatment Strategies",
+    "slug": "tattoo-removal-color-challenges",
+    "category": "body-contouring",
+    "meta_description": "Analyze color-specific challenges in tattoo removal including laser selections for difficult colors like green and yellow."
+  },
+  {
+    "title": "Spider Vein Treatment: Sclerotherapy Comprehensive Guide",
+    "slug": "spider-vein-sclerotherapy",
+    "category": "body-contouring",
+    "meta_description": "Comprehensive guide to sclerotherapy for spider vein treatment including agents, technique, and long-term outcomes."
+  },
+  {
+    "title": "Spider Vein Laser Treatment: Efficacy and Comparison with Sclerotherapy",
+    "slug": "spider-vein-laser-treatment",
+    "category": "body-contouring",
+    "meta_description": "Compare laser treatment and sclerotherapy for spider veins including efficacy, vessel suitability, and combination approaches."
+  },
+  {
+    "title": "Varicose Veins: Overview, Pathophysiology, and Treatment Options",
+    "slug": "varicose-veins-overview",
+    "category": "body-contouring",
+    "meta_description": "Comprehensive overview of varicose veins including pathophysiology, symptoms, diagnostic evaluation, and treatment options."
+  },
+  {
+    "title": "Botox for Hyperhidrosis: Detailed Guide to Excessive Sweating Treatment",
+    "slug": "botox-hyperhidrosis-detailed",
+    "category": "body-contouring",
+    "meta_description": "Comprehensive guide to Botox for hyperhidrosis treatment including mechanism, dosing, efficacy, and areas of application."
+  },
+  {
+    "title": "miraDry for Hyperhidrosis: Microwave-Powered Sweat Reduction",
+    "slug": "miradry-hyperhidrosis-treatment",
+    "category": "body-contouring",
+    "meta_description": "miraDry uses microwave energy to permanently destroy sweat glands, providing long-lasting hyperhidrosis treatment."
+  },
+  {
+    "title": "Androgenetic Alopecia: Male Pattern Baldness",
+    "slug": "androgenetic-alopecia-male-pattern-baldness",
+    "category": "hair-scalp",
+    "meta_description": "Male pattern baldness overview, causes, Norwood scale classification, and FDA-approved treatments including minoxidil and finasteride."
+  },
+  {
+    "title": "Female Pattern Hair Loss (Androgenetic Alopecia in Women)",
+    "slug": "female-pattern-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Female pattern hair loss causes, Ludwig scale classification, minoxidil and spironolactone treatments, and management strategies."
+  },
+  {
+    "title": "Alopecia Areata: Autoimmune Hair Loss",
+    "slug": "alopecia-areata",
+    "category": "hair-scalp",
+    "meta_description": "Alopecia areata pathophysiology, exclamation mark hairs, immunotherapy and corticosteroid treatments, prognosis and remission rates."
+  },
+  {
+    "title": "Alopecia Totalis and Alopecia Universalis",
+    "slug": "alopecia-totalis-universalis",
+    "category": "hair-scalp",
+    "meta_description": "Alopecia totalis and universalis pathology, psychological impact, JAK inhibitors and corticosteroid therapy, supportive care options."
+  },
+  {
+    "title": "Telogen Effluvium: Diffuse Hair Shedding",
+    "slug": "telogen-effluvium",
+    "category": "hair-scalp",
+    "meta_description": "Telogen effluvium causes, acute vs. chronic forms, hair pull test findings, and management of diffuse hair shedding."
+  },
+  {
+    "title": "Traction Alopecia: Hair Loss from Physical Tension",
+    "slug": "traction-alopecia",
+    "category": "hair-scalp",
+    "meta_description": "Traction alopecia pathophysiology, braids and hairstyle risks, clinical presentation, prevention strategies, and scarring progression."
+  },
+  {
+    "title": "Frontal Fibrosing Alopecia",
+    "slug": "frontal-fibrosing-alopecia",
+    "category": "hair-scalp",
+    "meta_description": "Frontal fibrosing alopecia in postmenopausal women, marginal row loss, corticosteroid and antiandrogen therapy, prognosis."
+  },
+  {
+    "title": "Lichen Planopilaris: Inflammatory Scarring Alopecia",
+    "slug": "lichen-planopilaris",
+    "category": "hair-scalp",
+    "meta_description": "Lichen planopilaris scarring alopecia, autoimmune pathophysiology, scalp biopsy findings, corticosteroid and antimalarial treatment."
+  },
+  {
+    "title": "Central Centrifugal Cicatricial Alopecia",
+    "slug": "central-centrifugal-cicatricial-alopecia",
+    "category": "hair-scalp",
+    "meta_description": "Central centrifugal cicatricial alopecia in African-American women, vertex hair loss, scalp biopsy, corticosteroid therapy."
+  },
+  {
+    "title": "Folliculitis Decalvans: Purulent Scarring Alopecia",
+    "slug": "folliculitis-decalvans",
+    "category": "hair-scalp",
+    "meta_description": "Folliculitis decalvans purulent scarring alopecia, Staphylococcal colonization, scalp biopsy, antibiotics and corticosteroid therapy."
+  },
+  {
+    "title": "Scalp Psoriasis: Diagnosis and Management",
+    "slug": "scalp-psoriasis",
+    "category": "hair-scalp",
+    "meta_description": "Scalp psoriasis treatment with topical steroids, vitamin D analogs, systemic biologics, and combination therapy approaches."
+  },
+  {
+    "title": "Seborrheic Dermatitis of the Scalp",
+    "slug": "seborrheic-dermatitis-scalp",
+    "category": "hair-scalp",
+    "meta_description": "Seborrheic dermatitis scalp causes, Malassezia colonization, zinc pyrithione shampoos, ketoconazole, topical steroids."
+  },
+  {
+    "title": "Scalp Folliculitis: Bacterial and Fungal Infection",
+    "slug": "scalp-folliculitis",
+    "category": "hair-scalp",
+    "meta_description": "Scalp folliculitis bacterial and fungal causes, Staphylococcus aureus, topical and oral antibiotics, antifungal treatment."
+  },
+  {
+    "title": "Dissecting Cellulitis of the Scalp",
+    "slug": "dissecting-cellulitis-scalp",
+    "category": "hair-scalp",
+    "meta_description": "Dissecting cellulitis scalp suppurative infection, sinus tracts, Staphylococcal colonization, antibiotics and surgical management."
+  },
+  {
+    "title": "Trichotillomania: Hair Pulling Disorder",
+    "slug": "trichotillomania",
+    "category": "hair-scalp",
+    "meta_description": "Trichotillomania hair-pulling disorder, body-focused repetitive behavior, habit reversal training, SSRIs, CBT therapy."
+  },
+  {
+    "title": "Minoxidil for Hair Loss: Efficacy and Application",
+    "slug": "minoxidil-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Minoxidil topical treatment for hair loss, 2% vs 5% formulations, application twice daily, 3-6 months for results."
+  },
+  {
+    "title": "Finasteride for Hair Loss: 5-Alpha Reductase Inhibition",
+    "slug": "finasteride-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Finasteride 1 mg oral tablet for male pattern baldness, 5-alpha reductase inhibitor, DHT reduction, sexual side effects."
+  },
+  {
+    "title": "Spironolactone for Hair Loss: Antiandrogen Therapy",
+    "slug": "spironolactone-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Spironolactone antiandrogen therapy for female hair loss, 100-200 mg daily, potassium monitoring, contraindicated in pregnancy."
+  },
+  {
+    "title": "Platelet-Rich Plasma (PRP) for Hair Restoration",
+    "slug": "PRP-hair-restoration",
+    "category": "hair-scalp",
+    "meta_description": "Platelet-rich plasma hair restoration, growth factors, monthly injections, emerging evidence for androgenetic alopecia."
+  },
+  {
+    "title": "Hair Transplantation: FUE vs FUT Techniques",
+    "slug": "hair-transplantation-FUE-FUT",
+    "category": "hair-scalp",
+    "meta_description": "Hair transplantation FUE vs FUT techniques, graft survival, donor sites, hairline design, 12-18 month results."
+  },
+  {
+    "title": "Low-Level Laser Therapy for Hair Growth",
+    "slug": "low-level-laser-therapy-hair",
+    "category": "hair-scalp",
+    "meta_description": "Low-level laser therapy photobiomodulation for hair growth, red light 650 nm wavelength, modest efficacy in androgenetic alopecia."
+  },
+  {
+    "title": "Scalp Biopsy: Technique and Diagnostic Applications",
+    "slug": "scalp-biopsy-technique",
+    "category": "hair-scalp",
+    "meta_description": "Scalp biopsy 4 mm punch technique, histopathology scarring alopecias, lichen planopilaris, diagnostic indications."
+  },
+  {
+    "title": "Hair Shaft Disorders: Trichorrhexis Nodosa",
+    "slug": "trichorrhexis-nodosa",
+    "category": "hair-scalp",
+    "meta_description": "Trichorrhexis nodosa hair shaft splitting, nodal defects, acquired vs congenital forms, chemical and thermal damage."
+  },
+  {
+    "title": "Alopecia in Children: Diagnosis and Management",
+    "slug": "alopecia-children",
+    "category": "hair-scalp",
+    "meta_description": "Childhood alopecia areata, tinea capitis, telogen effluvium, traction alopecia, diagnostic approach in children."
+  },
+  {
+    "title": "Postpartum Hair Loss: Telogen Effluvium After Pregnancy",
+    "slug": "postpartum-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Postpartum telogen effluvium 2-4 months after delivery, estrogen-related shedding, iron supplementation, reassurance."
+  },
+  {
+    "title": "Thyroid Disease and Hair Loss",
+    "slug": "thyroid-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Thyroid disease telogen effluvium, hypothyroidism and hyperthyroidism hair loss, TSH normalization for recovery."
+  },
+  {
+    "title": "Iron Deficiency and Hair Loss",
+    "slug": "iron-deficiency-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Iron deficiency telogen effluvium, ferritin levels, oral iron supplementation, hair recovery in 3-6 months."
+  },
+  {
+    "title": "Stress-Related Hair Loss: Psychosomatic Alopecia",
+    "slug": "stress-related-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Stress-induced telogen effluvium, cortisol elevation, trichotillomania, stress management, psychological therapy."
+  },
+  {
+    "title": "Dandruff: Scalp Flaking and Scaling",
+    "slug": "dandruff",
+    "category": "hair-scalp",
+    "meta_description": "Dandruff scalp flaking, Malassezia species, zinc pyrithione shampoo, ketoconazole, selenium sulfide treatment."
+  },
+  {
+    "title": "Combination Therapy Approach to Hair Loss Management",
+    "slug": "combination-therapy-hair-loss",
+    "category": "hair-scalp",
+    "meta_description": "Combination therapy hair loss minoxidil finasteride, topical oral agents, synergistic effects, superior efficacy."
+  },
+  {
+    "title": "Botox: Complete Overview of Botulinum Toxin Treatment",
+    "slug": "botox-overview",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to Botox treatment: how it works, expected results, side effects, and clinical applications for facial rejuvenation."
+  },
+  {
+    "title": "Botox for Forehead Lines: Treatment of Horizontal Rhytides",
+    "slug": "botox-forehead-lines",
+    "category": "injectables",
+    "meta_description": "Expert guide to Botox forehead line treatment: injection technique, results timeline, complications, and optimal outcomes."
+  },
+  {
+    "title": "Botox for Crow's Feet: Treatment of Lateral Canthal Lines",
+    "slug": "botox-crow-feet",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to Botox crow's feet treatment: anatomical approach, injection technique, results timeline, and natural outcomes."
+  },
+  {
+    "title": "Botox for Frown Lines: Glabellar Lines Treatment",
+    "slug": "botox-frown-lines",
+    "category": "injectables",
+    "meta_description": "Expert guide to Botox glabellar frown line treatment: anatomical approach, injection technique, results, and safety considerations."
+  },
+  {
+    "title": "Botox for Bunny Lines: Nasal Bridge Wrinkles Treatment",
+    "slug": "botox-bunny-lines",
+    "category": "injectables",
+    "meta_description": "Guide to Botox bunny line treatment: nasal wrinkles, injection technique, conservative dosing, and natural results."
+  },
+  {
+    "title": "Botox Lip Flip: Non-Surgical Lip Enhancement Technique",
+    "slug": "botox-lip-flip",
+    "category": "injectables",
+    "meta_description": "Complete guide to Botox lip flip procedure: technique, results, and natural lip enhancement without filler."
+  },
+  {
+    "title": "Botox for Masseter Hypertrophy: Jawline Slimming and Contouring",
+    "slug": "botox-masseter-jawline",
+    "category": "injectables",
+    "meta_description": "Expert guide to Botox masseter treatment: jawline slimming, contouring technique, results timeline, and safety considerations."
+  },
+  {
+    "title": "Botox for Hyperhidrosis: Treatment of Excessive Sweating",
+    "slug": "botox-hyperhidrosis",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to Botox hyperhidrosis treatment: mechanism, efficacy, injection technique, and management of excessive sweating."
+  },
+  {
+    "title": "Dysport vs Botox: Comparison of Botulinum Toxin Type A Products",
+    "slug": "dysport-vs-botox",
+    "category": "injectables",
+    "meta_description": "Detailed comparison of Dysport vs Botox: formulation, potency, diffusion, onset, and clinical applications for informed treatment selection."
+  },
+  {
+    "title": "Xeomin: Botulinum Toxin Type A Formulation and Clinical Use",
+    "slug": "xeomin-overview",
+    "category": "injectables",
+    "meta_description": "Complete guide to Xeomin: unique formulation without complex proteins, dosing, efficacy, and clinical advantages."
+  },
+  {
+    "title": "Jeuveau: Newest Botulinum Toxin Type A Formulation",
+    "slug": "jeuveau-overview",
+    "category": "injectables",
+    "meta_description": "Overview of Jeuveau (prabotulinumtoxinA): FDA-approved neurotoxin with comparable efficacy and unique manufacturing process."
+  },
+  {
+    "title": "Dermal Fillers: Types, Uses, and Comprehensive Overview",
+    "slug": "dermal-fillers-overview",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to dermal fillers: types (HA, CaHA, PLLA), uses, injection technique, safety, and expected results."
+  },
+  {
+    "title": "Hyaluronic Acid Fillers: Juvederm, Restylane, and RHA Comparison",
+    "slug": "hyaluronic-acid-fillers",
+    "category": "injectables",
+    "meta_description": "Complete comparison of hyaluronic acid fillers: Juvederm, Restylane, and RHA technology, applications, and results."
+  },
+  {
+    "title": "Lip Augmentation with Dermal Fillers: Technique and Aesthetic Goals",
+    "slug": "lip-augmentation-fillers",
+    "category": "injectables",
+    "meta_description": "Expert guide to lip augmentation with dermal fillers: anatomy, technique, volume distribution, and achieving natural results."
+  },
+  {
+    "title": "Cheek Enhancement with Dermal Fillers: Volume Restoration and Contouring",
+    "slug": "cheek-enhancement-fillers",
+    "category": "injectables",
+    "meta_description": "Complete guide to cheek enhancement with fillers: anatomy, injection technique, strategic placement, and facial rejuvenation."
+  },
+  {
+    "title": "Under-Eye Filler: Tear Trough Treatment and Periorbital Rejuvenation",
+    "slug": "under-eye-filler",
+    "category": "injectables",
+    "meta_description": "Expert guide to under-eye filler treatment: tear trough anatomy, injection technique, results, and periorbital rejuvenation."
+  },
+  {
+    "title": "Jawline Contouring with Dermal Fillers: Definition and Enhancement",
+    "slug": "jawline-contouring-fillers",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to jawline contouring with fillers: anatomy, injection technique, creating definition, and natural results."
+  },
+  {
+    "title": "Nasolabial Fold Fillers: Treatment of Smile Lines",
+    "slug": "nasolabial-fold-fillers",
+    "category": "injectables",
+    "meta_description": "Expert guide to nasolabial fold filler treatment: anatomy, injection technique, combination therapy, and achieving natural results."
+  },
+  {
+    "title": "Marionette Line Fillers: Treatment of Lower Facial Descent",
+    "slug": "marionette-line-fillers",
+    "category": "injectables",
+    "meta_description": "Complete guide to marionette line filler treatment: anatomy, injection technique, combination therapy, and facial rejuvenation."
+  },
+  {
+    "title": "Non-Surgical Nose Job: Liquid Rhinoplasty with Fillers",
+    "slug": "liquid-rhinoplasty",
+    "category": "injectables",
+    "meta_description": "Expert guide to liquid rhinoplasty: non-surgical nose enhancement with fillers, technique, results, and limitations."
+  },
+  {
+    "title": "Hand Rejuvenation with Dermal Fillers: Volume Restoration and Anti-Aging",
+    "slug": "hand-rejuvenation-fillers",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to hand rejuvenation with fillers: anatomy, technique, volume restoration, and natural-looking results."
+  },
+  {
+    "title": "Sculptra: Poly-L-Lactic Acid Biostimulator for Facial Rejuvenation",
+    "slug": "sculptra-plla",
+    "category": "injectables",
+    "meta_description": "Expert guide to Sculptra (PLLA) biostimulator: mechanism, collagen stimulation, treatment protocol, and long-lasting results."
+  },
+  {
+    "title": "Radiesse: Calcium Hydroxylapatite Filler for Volume and Lift",
+    "slug": "radiesse-caha",
+    "category": "injectables",
+    "meta_description": "Complete guide to Radiesse (CaHA) filler: composition, collagen stimulation, longevity, and clinical applications."
+  },
+  {
+    "title": "Bellafill: Permanent Filler for Long-Term Aesthetic Results",
+    "slug": "bellafill-permanent-filler",
+    "category": "injectables",
+    "meta_description": "Expert guide to Bellafill permanent filler: PMMA composition, permanence, technique, and long-term results."
+  },
+  {
+    "title": "PRP and PRF Injections: Platelet-Rich Plasma and Platelet-Rich Fibrin",
+    "slug": "prp-prfinjections",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to PRP and PRF injections: autologous growth factor delivery, collagen stimulation, and clinical applications."
+  },
+  {
+    "title": "Mesotherapy: Intradermal Microinjections for Skin Rejuvenation",
+    "slug": "mesotherapy",
+    "category": "injectables",
+    "meta_description": "Guide to mesotherapy: intradermal microinjections, technique, applications, and evidence for skin rejuvenation."
+  },
+  {
+    "title": "Filler Dissolving with Hyaluronidase: Correcting HA Filler Complications",
+    "slug": "filler-dissolving-hyaluronidase",
+    "category": "injectables",
+    "meta_description": "Complete guide to hyaluronidase filler dissolving: mechanism, emergency vascular occlusion treatment, and elective filler reversal."
+  },
+  {
+    "title": "Vascular Occlusion from Fillers: Prevention, Recognition, and Management",
+    "slug": "vascular-occlusion-fillers",
+    "category": "injectables",
+    "meta_description": "Expert guide to vascular occlusion from fillers: prevention, recognition, immediate management, and emergency protocols."
+  },
+  {
+    "title": "How to Choose a Qualified Injectable Injector: Safety and Expertise",
+    "slug": "choosing-qualified-injector",
+    "category": "injectables",
+    "meta_description": "Comprehensive guide to choosing a qualified injectable injector: credentials, experience, safety, and recognizing red flags."
+  },
+  {
+    "title": "Botox vs Fillers: Comparison and Combined Treatment Approach",
+    "slug": "botox-vs-fillers",
+    "category": "injectables",
+    "meta_description": "Expert comparison of Botox vs fillers: mechanisms, appropriate uses, combination therapy benefits, and treatment optimization."
+  },
+  {
+    "title": "CO2 Laser Resurfacing: Ablative Treatment for Skin Rejuvenation",
+    "slug": "co2-laser-resurfacing-ablative",
+    "category": "lasers",
+    "meta_description": "Learn about CO2 laser resurfacing, the gold standard ablative laser treatment for deep facial rejuvenation and skin tightening."
+  },
+  {
+    "title": "Erbium Laser: Ablative Treatment for Precise Skin Resurfacing",
+    "slug": "erbium-laser-ablative",
+    "category": "lasers",
+    "meta_description": "Erbium laser resurfacing offers precise ablative treatment with faster recovery and less thermal damage than CO2 lasers."
+  },
+  {
+    "title": "Fraxel Laser: Non-Ablative Fractional Technology",
+    "slug": "fraxel-laser-non-ablative",
+    "category": "lasers",
+    "meta_description": "Fraxel non-ablative fractional laser technology offers safe, effective skin rejuvenation with minimal downtime across all skin types."
+  },
+  {
+    "title": "Clear+Brilliant Laser: Gentle Fractional Rejuvenation",
+    "slug": "clear-brilliant-laser",
+    "category": "lasers",
+    "meta_description": "Clear+Brilliant fractional laser offers gentle skin rejuvenation with virtually no downtime for early photoaging and prevention."
+  },
+  {
+    "title": "IPL Photofacial: Intense Pulsed Light for Skin Rejuvenation",
+    "slug": "ipl-photofacial-treatment",
+    "category": "lasers",
+    "meta_description": "IPL photofacial uses intense pulsed light to address photoaging, pigmentation, and vascular lesions with minimal downtime."
+  },
+  {
+    "title": "BBL BroadBand Light: Advanced Light-Based Skin Treatment",
+    "slug": "bbl-broadband-light",
+    "category": "lasers",
+    "meta_description": "BBL BroadBand Light technology provides advanced light-based treatment for photoaging, pigmentation, and vascular lesions."
+  },
+  {
+    "title": "Vbeam Pulsed Dye Laser: Treatment for Rosacea and Redness",
+    "slug": "vbeam-pulsed-dye-laser",
+    "category": "lasers",
+    "meta_description": "Vbeam pulsed dye laser is the gold standard for treating rosacea, telangiectasia, and vascular lesions with excellent safety."
+  },
+  {
+    "title": "Nd:YAG Laser in Dermatology: Versatile Treatment for Multiple Conditions",
+    "slug": "nd-yag-laser-dermatology",
+    "category": "lasers",
+    "meta_description": "Nd:YAG laser at 1,064 nanometers is versatile for vascular lesions, hair removal, and tattoo removal across all skin types."
+  },
+  {
+    "title": "Alexandrite Laser: Efficient Hair Removal and Pigmented Lesion Treatment",
+    "slug": "alexandrite-laser",
+    "category": "lasers",
+    "meta_description": "Alexandrite laser at 755nm provides efficient hair removal and pigmented lesion treatment across multiple skin types."
+  },
+  {
+    "title": "Q-Switched Lasers: Pigment Removal and Tattoo Treatment",
+    "slug": "q-switched-lasers-pigment-removal",
+    "category": "lasers",
+    "meta_description": "Q-switched lasers use nanosecond pulses for selective pigment removal, tattoo treatment, and pigmented lesion removal."
+  },
+  {
+    "title": "PicoSure Picosecond Laser: Next-Generation Pigment Removal",
+    "slug": "picosure-picosecond-laser",
+    "category": "lasers",
+    "meta_description": "PicoSure picosecond laser uses photoacoustic technology for superior tattoo removal and pigment clearance with fewer treatments."
+  },
+  {
+    "title": "PicoWay Laser: Versatile Picosecond Platform for Multiple Indications",
+    "slug": "picoway-laser",
+    "category": "lasers",
+    "meta_description": "PicoWay multi-wavelength picosecond laser for tattoo removal, pigmentation, vascular lesions, and fractional rejuvenation."
+  },
+  {
+    "title": "Radiofrequency Microneedling: Combining Microneedling with RF Energy",
+    "slug": "radiofrequency-microneedling-overview",
+    "category": "lasers",
+    "meta_description": "Radiofrequency microneedling combines mechanical needling with RF energy for superior collagen remodeling and skin rejuvenation."
+  },
+  {
+    "title": "Morpheus8 RF Microneedling: Advanced Fractional Radiofrequency",
+    "slug": "morpheus8-rf-microneedling",
+    "category": "lasers",
+    "meta_description": "Morpheus8 fractional RF microneedling provides advanced skin tightening and rejuvenation with customizable treatment depth."
+  },
+  {
+    "title": "Vivace RF Microneedling: Minimally Invasive Radiofrequency Treatment",
+    "slug": "vivace-rf-microneedling",
+    "category": "lasers",
+    "meta_description": "Vivace temperature-controlled RF microneedling delivers dramatic skin tightening and rejuvenation with minimal downtime."
+  },
+  {
+    "title": "Secret RF Microneedling: Insulated Needle Technology for Precise Treatment",
+    "slug": "secret-rf-microneedling",
+    "category": "lasers",
+    "meta_description": "Secret RF uses insulated needle technology for precise radiofrequency delivery and minimal downtime skin rejuvenation."
+  },
+  {
+    "title": "Thermage RF Skin Tightening: Non-Invasive Radiofrequency Rejuvenation",
+    "slug": "thermage-rf-skin-tightening",
+    "category": "lasers",
+    "meta_description": "Thermage non-invasive radiofrequency tightening provides immediate skin tightening and progressive collagen remodeling without downtime."
+  },
+  {
+    "title": "Forma RF Treatment: Comfortable Radiofrequency for Skin Tightening",
+    "slug": "forma-rf-treatment",
+    "category": "lasers",
+    "meta_description": "Forma comfortable RF treatment provides skin tightening with minimal discomfort and progressive collagen remodeling results."
+  },
+  {
+    "title": "Ultherapy: Focused Ultrasound for Deep Skin Tightening",
+    "slug": "ultherapy-focused-ultrasound",
+    "category": "lasers",
+    "meta_description": "Ultherapy focused ultrasound provides dramatic non-invasive skin lifting and tightening at precise depths without downtime."
+  },
+  {
+    "title": "LED Light Therapy: Non-Laser Light-Based Skin Treatment",
+    "slug": "led-light-therapy-skin",
+    "category": "lasers",
+    "meta_description": "LED light therapy uses specific wavelengths to stimulate collagen and skin healing with no downtime and cumulative benefits."
+  },
+  {
+    "title": "Laser Hair Removal: Permanent Hair Reduction Across All Skin Types",
+    "slug": "laser-hair-removal-all-skin-types",
+    "category": "lasers",
+    "meta_description": "Laser hair removal uses selective photothermolysis for permanent hair reduction across all skin types with multiple treatment options."
+  },
+  {
+    "title": "Laser Hair Removal for Dark Skin: Safe and Effective Options",
+    "slug": "laser-hair-removal-dark-skin",
+    "category": "lasers",
+    "meta_description": "Laser hair removal in dark skin requires Nd:YAG wavelength, careful parameter selection, and proper cooling for safe results."
+  },
+  {
+    "title": "Laser Tattoo Removal: Complete Guide to Ink Elimination",
+    "slug": "laser-tattoo-removal-guide",
+    "category": "lasers",
+    "meta_description": "Laser tattoo removal uses wavelength-specific photothermolysis to fragment and eliminate ink pigments through multiple treatments."
+  },
+  {
+    "title": "Laser for Stretch Marks: Treatment of Striae Distensae",
+    "slug": "laser-stretch-marks-treatment",
+    "category": "lasers",
+    "meta_description": "Laser treatment for stretch marks addresses erythematous and mature white striae through vascular and collagen-remodeling effects."
+  },
+  {
+    "title": "Laser for Acne Scars: Resurfacing and Collagen Induction",
+    "slug": "laser-acne-scars-treatment",
+    "category": "lasers",
+    "meta_description": "Laser treatment for acne scars includes ablative, fractional, and RF microneedling approaches for collagen remodeling and scar improvement."
+  },
+  {
+    "title": "CoolSculpting and Cryolipolysis: Non-Invasive Fat Reduction",
+    "slug": "coolsculpting-cryolipolysis",
+    "category": "lasers",
+    "meta_description": "CoolSculpting uses cryolipolysis to non-invasively reduce fat in targeted areas with natural results and no downtime."
+  },
+  {
+    "title": "Kybella: Injectable Deoxycholic Acid for Submental Fat Reduction",
+    "slug": "kybella-deoxycholic-acid",
+    "category": "lasers",
+    "meta_description": "Kybella injectable deoxycholic acid permanently reduces submental fat through adipocyte cell membrane disruption."
+  },
+  {
+    "title": "Comparing Laser Treatments: Choosing the Right Modality",
+    "slug": "comparing-laser-treatments",
+    "category": "lasers",
+    "meta_description": "Comparison of laser and energy-based treatments includes ablative vs non-ablative, downtime, results, safety, and cost considerations."
+  },
+  {
+    "title": "Laser Safety and Side Effects: Understanding Risks and Complications",
+    "slug": "laser-safety-side-effects",
+    "category": "lasers",
+    "meta_description": "Laser safety covers common complications, prevention strategies, contraindications, and post-treatment care to minimize adverse effects."
+  },
+  {
+    "title": "What to Expect During Laser Treatment: Patient Guide",
+    "slug": "what-to-expect-laser-treatment",
+    "category": "lasers",
+    "meta_description": "Guide to laser treatment expectations covers pre-treatment preparation, during-treatment experience, recovery timeline, and result timeline."
+  },
+  {
+    "title": "How Diet Affects Your Skin: A Complete Overview",
+    "slug": "diet-affects-skin-overview",
+    "category": "lifestyle",
+    "meta_description": "Learn how nutrition impacts skin health. Discover which foods promote healthy skin and which to avoid for clearer, more radiant complexion."
+  },
+  {
+    "title": "The Gut-Skin Axis: How Digestive Health Affects Your Complexion",
+    "slug": "gut-skin-axis-connection",
+    "category": "lifestyle",
+    "meta_description": "Discover how your gut microbiome influences skin health through the gut-skin axis. Learn which foods and probiotics support clear skin from the inside."
+  },
+  {
+    "title": "Anti-Inflammatory Diet for Clearer Skin",
+    "slug": "anti-inflammatory-diet-skin",
+    "category": "lifestyle",
+    "meta_description": "Learn anti-inflammatory foods that reduce acne and skin inflammation. Discover the Mediterranean diet approach for clearer, healthier skin naturally."
+  },
+  {
+    "title": "The Dairy-Acne Connection: What the Science Shows",
+    "slug": "dairy-acne-link",
+    "category": "lifestyle",
+    "meta_description": "Explore the science behind dairy and acne. Learn which dairy products are most problematic and how to manage dairy consumption for clearer skin."
+  },
+  {
+    "title": "Sugar and Skin Aging: The Glycation Process Explained",
+    "slug": "sugar-skin-aging-glycation",
+    "category": "lifestyle",
+    "meta_description": "Learn how sugar ages your skin through glycation. Discover which foods and cooking methods minimize AGE formation for younger-looking skin."
+  },
+  {
+    "title": "Stress and Skin: Understanding the Cortisol Connection",
+    "slug": "stress-skin-cortisol-effects",
+    "category": "lifestyle",
+    "meta_description": "Understand how stress hormones like cortisol trigger acne and skin problems. Learn stress-reduction techniques to improve skin health naturally."
+  },
+  {
+    "title": "Stress-Induced Skin Flare-Ups: Why Breakouts Happen Under Pressure",
+    "slug": "stress-induced-skin-flareups",
+    "category": "lifestyle",
+    "meta_description": "Discover why stress triggers skin flare-ups and breakouts. Learn neurogenic inflammation and strategies to prevent stress-induced skin problems."
+  },
+  {
+    "title": "Sleep and Skin Repair: Why Quality Rest Is Essential for Clear Skin",
+    "slug": "sleep-skin-repair",
+    "category": "lifestyle",
+    "meta_description": "Learn how sleep impacts skin repair and collagen production. Discover sleep optimization strategies for clearer, younger-looking skin."
+  },
+  {
+    "title": "Exercise and Skin Health: How Physical Activity Improves Your Complexion",
+    "slug": "exercise-skin-health",
+    "category": "lifestyle",
+    "meta_description": "Discover how regular exercise improves skin through better circulation, stress reduction, and hormone balance. Learn the best activities for skin health."
+  },
+  {
+    "title": "Pollution and Skin Damage: How Urban Air Affects Your Complexion",
+    "slug": "pollution-skin-damage",
+    "category": "lifestyle",
+    "meta_description": "Understand how air pollution accelerates skin aging and causes acne. Learn protection strategies and skincare ingredients to combat pollution damage."
+  },
+  {
+    "title": "Smoking and Skin Aging: The Accelerated Aging Effect",
+    "slug": "smoking-skin-aging",
+    "category": "lifestyle",
+    "meta_description": "Learn how smoking rapidly ages skin and damages collagen. Discover what happens to skin after quitting and recovery strategies."
+  },
+  {
+    "title": "Alcohol Effects on Skin: Dehydration and Long-Term Aging",
+    "slug": "alcohol-effects-skin",
+    "category": "lifestyle",
+    "meta_description": "Discover how alcohol dehydrates skin and accelerates aging. Learn moderation strategies and recovery protocols for alcohol consumption."
+  },
+  {
+    "title": "Blue Light and Screen Damage: Protecting Skin from Digital Radiation",
+    "slug": "blue-light-screen-damage",
+    "category": "lifestyle",
+    "meta_description": "Learn how blue light from screens causes skin aging and hyperpigmentation. Discover protective strategies and skincare for digital damage."
+  },
+  {
+    "title": "Travel Skincare Tips: Maintaining Skin Health While Away",
+    "slug": "travel-skincare-tips",
+    "category": "lifestyle",
+    "meta_description": "Master travel skincare to prevent breakouts and maintain clear skin while away. Learn hydration, sun protection, and jet lag recovery strategies."
+  },
+  {
+    "title": "Winter Skincare: Combating Dryness and Cold Weather Effects",
+    "slug": "winter-skincare",
+    "category": "lifestyle",
+    "meta_description": "Combat winter dryness with strategic skincare. Learn barrier repair, hydration techniques, and ingredient recommendations for cold weather."
+  },
+  {
+    "title": "Summer Skincare: Sun Protection and Heat-Related Skin Issues",
+    "slug": "summer-skincare",
+    "category": "lifestyle",
+    "meta_description": "Master summer skincare with complete sun protection, sweat management, and water exposure strategies for healthy skin all season."
+  },
+  {
+    "title": "Humidity and Skin: How Environmental Moisture Affects Your Complexion",
+    "slug": "humidity-skin",
+    "category": "lifestyle",
+    "meta_description": "Learn how humidity levels affect acne, barrier function, and skin health. Discover adaptations for both humid and dry climates."
+  },
+  {
+    "title": "Hard Water and Skin: How Mineral Content Affects Your Complexion",
+    "slug": "hard-water-skin",
+    "category": "lifestyle",
+    "meta_description": "Learn how hard water minerals damage skin and trigger acne. Discover testing methods and practical solutions like shower filters."
+  },
+  {
+    "title": "Workplace Skin Hazards: Protecting Your Skin on the Job",
+    "slug": "workplace-skin-hazards",
+    "category": "lifestyle",
+    "meta_description": "Protect your skin from workplace hazards. Learn strategies for office dryness, chemical exposure, healthcare work, and outdoor sun damage."
+  },
+  {
+    "title": "Hydration and Skin Health: Why Drinking Water Matters for Clear Skin",
+    "slug": "hydration-skin-health",
+    "category": "lifestyle",
+    "meta_description": "Learn how proper hydration supports skin barrier function, elasticity, and overall skin health. Discover optimal water intake and timing."
+  },
+  {
+    "title": "Understanding Razor Bumps (Pseudofolliculitis Barbae)",
+    "slug": "razor-bumps-pseudofolliculitis-barbae",
+    "category": "mens-derm",
+    "meta_description": "Learn about pseudofolliculitis barbae (razor bumps), causes, prevention tips, and effective treatments for men."
+  },
+  {
+    "title": "Male Pattern Baldness: Treatment Options and Solutions",
+    "slug": "male-pattern-baldness-treatments",
+    "category": "mens-derm",
+    "meta_description": "Comprehensive guide to male pattern baldness treatments including minoxidil, finasteride, and hair transplants."
+  },
+  {
+    "title": "Men's Skincare Routine Basics: A Beginner's Guide",
+    "slug": "mens-skincare-routine-basics",
+    "category": "mens-derm",
+    "meta_description": "Essential three-step men's skincare routine: cleansing, moisturizing, and sun protection for healthy skin."
+  },
+  {
+    "title": "Advanced Men's Skincare: Taking Your Routine to the Next Level",
+    "slug": "mens-skincare-advanced-routine",
+    "category": "mens-derm",
+    "meta_description": "Advanced men's skincare including serums, exfoliation, and targeted treatments for specific skin concerns."
+  },
+  {
+    "title": "Gynecomastia and Skin: Understanding Skin Changes in Male Chest",
+    "slug": "gynecomastia-skin",
+    "category": "mens-derm",
+    "meta_description": "Understanding gynecomastia skin changes, including stretch marks and texture changes, plus treatment options."
+  },
+  {
+    "title": "Brotox: What Men Need to Know About Male Botox",
+    "slug": "male-botox-brotox",
+    "category": "mens-derm",
+    "meta_description": "Complete guide to male Botox (Brotox): how it works, male-specific considerations, and what to expect."
+  },
+  {
+    "title": "Sports Dermatology: Skin Issues Specific to Male Athletes",
+    "slug": "sports-dermatology-male-athletes",
+    "category": "mens-derm",
+    "meta_description": "Sports dermatology guide for male athletes covering athlete's foot, acne mechanica, and other common skin issues."
+  },
+  {
+    "title": "Male Skin Cancer Risk: Prevention and Early Detection",
+    "slug": "male-skin-cancer-risks",
+    "category": "mens-derm",
+    "meta_description": "Male skin cancer risks, prevention strategies, and early detection methods using the ABCDE rule."
+  },
+  {
+    "title": "Shaving Dermatitis: Causes, Prevention, and Relief",
+    "slug": "shaving-dermatitis",
+    "category": "mens-derm",
+    "meta_description": "Complete guide to shaving dermatitis: causes, prevention techniques, and effective treatment strategies."
+  },
+  {
+    "title": "Body Grooming and Skin Health: Male Grooming Dermatology",
+    "slug": "body-grooming-skin-issues",
+    "category": "mens-derm",
+    "meta_description": "Male body grooming dermatology: hair removal methods, ingrown hair prevention, and post-grooming skincare."
+  },
+  {
+    "title": "Men's Anti-Aging Skincare: Targeting Signs of Aging",
+    "slug": "mens-anti-aging-skincare",
+    "category": "mens-derm",
+    "meta_description": "Men's anti-aging guide: retinol, peptides, vitamin C, and professional treatments for reducing visible signs of aging."
+  },
+  {
+    "title": "Men's Acne: Causes, Treatments, and Prevention",
+    "slug": "mens-acne-treatment",
+    "category": "mens-derm",
+    "meta_description": "Comprehensive men's acne guide covering causes, topical and oral treatments, and lifestyle modifications."
+  },
+  {
+    "title": "Men's Sunscreen: Essential Protection for Male Skin",
+    "slug": "mens-sunscreen-guide",
+    "category": "mens-derm",
+    "meta_description": "Complete men's sunscreen guide: SPF levels, formulations, application tips, and daily protection routine."
+  },
+  {
+    "title": "Beard Dermatitis: Causes and Solutions for Healthy Beards",
+    "slug": "beard-dermatitis",
+    "category": "mens-derm",
+    "meta_description": "Guide to beard dermatitis: causes, cleansing routine, moisturizing tips, and when to see a dermatologist."
+  },
+  {
+    "title": "Folliculitis Barbae: Deep Beard Follicle Infections",
+    "slug": "folliculitis-barbae",
+    "category": "mens-derm",
+    "meta_description": "Complete guide to folliculitis barbae: infection mechanisms, prevention, home treatment, and when to seek medical care."
+  },
+  {
+    "title": "Ingrown Hair Prevention: Techniques for Smooth Skin",
+    "slug": "ingrown-hair-prevention",
+    "category": "mens-derm",
+    "meta_description": "Comprehensive ingrown hair prevention guide: proper shaving technique, exfoliation, and post-shave care."
+  },
+  {
+    "title": "Men's Dark Circles: Causes and Treatment Options",
+    "slug": "mens-dark-circles",
+    "category": "mens-derm",
+    "meta_description": "Men's dark circles guide: causes, topical treatments, concealers, and professional treatment options."
+  },
+  {
+    "title": "Men's Hand Care: Anti-Aging for Overlooked Hands",
+    "slug": "mens-hand-care",
+    "category": "mens-derm",
+    "meta_description": "Men's hand care guide: sun protection, age spot reduction, wrinkle treatment, and professional hand rejuvenation."
+  },
+  {
+    "title": "Testosterone and Skin Health: Understanding Hormonal Effects",
+    "slug": "testosterone-skin-health",
+    "category": "mens-derm",
+    "meta_description": "Understanding testosterone's effects on male skin: sebum production, acne, hair growth, and hormonal skin conditions."
+  },
+  {
+    "title": "Men's Scalp Health: Beyond Hair Care",
+    "slug": "mens-scalp-health",
+    "category": "mens-derm",
+    "meta_description": "Men's scalp health guide: dandruff treatment, seborrheic dermatitis, antifungal shampoos, and scalp care routines."
+  },
+  {
+    "title": "Mohs Micrographic Surgery: What Is It and How Does It Work?",
+    "slug": "mohs-micrographic-surgery-overview",
+    "category": "mohs-surgery",
+    "meta_description": "Learn about Mohs micrographic surgery, the gold standard skin cancer treatment with 99% cure rates and superior tissue preservation."
+  },
+  {
+    "title": "Mohs Surgery Technique: Step-by-Step Procedure",
+    "slug": "mohs-surgery-technique-step-by-step",
+    "category": "mohs-surgery",
+    "meta_description": "Detailed explanation of Mohs surgery steps from anesthesia through tissue examination to reconstruction techniques."
+  },
+  {
+    "title": "Mohs Surgery for Basal Cell Carcinoma (BCC)",
+    "slug": "mohs-surgery-basal-cell-carcinoma",
+    "category": "mohs-surgery",
+    "meta_description": "Mohs micrographic surgery for basal cell carcinoma with 99% cure rates and superior cosmetic outcomes."
+  },
+  {
+    "title": "Mohs Surgery for Squamous Cell Carcinoma (SCC)",
+    "slug": "mohs-surgery-squamous-cell-carcinoma",
+    "category": "mohs-surgery",
+    "meta_description": "Mohs micrographic surgery for squamous cell carcinoma treatment with highest cure rates for high-risk lesions."
+  },
+  {
+    "title": "Mohs Surgery for Melanoma: When and Why",
+    "slug": "mohs-surgery-melanoma",
+    "category": "mohs-surgery",
+    "meta_description": "Mohs surgery for melanoma: appropriate uses for lentigo maligna, special staining techniques, and limitations."
+  },
+  {
+    "title": "What to Expect on Your Mohs Surgery Day",
+    "slug": "mohs-surgery-day-what-to-expect",
+    "category": "mohs-surgery",
+    "meta_description": "Complete guide to what happens during your Mohs surgery day from arrival through discharge."
+  },
+  {
+    "title": "Mohs Surgery Recovery Timeline and Aftercare",
+    "slug": "mohs-surgery-recovery-timeline",
+    "category": "mohs-surgery",
+    "meta_description": "Mohs surgery recovery timeline from immediate post-op care through scar maturation over 12 months."
+  },
+  {
+    "title": "Excisional Surgery for Skin Lesions: Techniques and Indications",
+    "slug": "excisional-surgery-skin-lesions",
+    "category": "mohs-surgery",
+    "meta_description": "Excisional surgery techniques for skin lesions with details on margins, closure methods, and outcome comparison."
+  },
+  {
+    "title": "Shave Removal Technique for Skin Lesions",
+    "slug": "shave-removal-technique",
+    "category": "mohs-surgery",
+    "meta_description": "Shave removal technique for superficial skin lesions with advantages, appropriate applications, and hemostasis methods."
+  },
+  {
+    "title": "Punch Biopsy: Technique and Clinical Applications",
+    "slug": "punch-biopsy-technique",
+    "category": "mohs-surgery",
+    "meta_description": "Punch biopsy technique for diagnostic skin specimens with applications in inflammatory, infectious, and neoplastic conditions."
+  },
+  {
+    "title": "Incisional Biopsy: When and How to Perform",
+    "slug": "incisional-biopsy",
+    "category": "mohs-surgery",
+    "meta_description": "Incisional biopsy for large skin lesions with technical considerations and appropriate clinical indications."
+  },
+  {
+    "title": "Curettage and Electrodesiccation (C&E) for Skin Lesions",
+    "slug": "curettage-electrodesiccation",
+    "category": "mohs-surgery",
+    "meta_description": "Curettage and electrodesiccation technique for benign and selected malignant skin lesions with cure rates and limitations."
+  },
+  {
+    "title": "Cryosurgery for Skin Lesions: Freezing Technique",
+    "slug": "cryosurgery-skin-lesions",
+    "category": "mohs-surgery",
+    "meta_description": "Cryosurgery using liquid nitrogen for benign and premalignant skin lesions with technique, indications, and efficacy rates."
+  },
+  {
+    "title": "Sentinel Lymph Node Biopsy in Dermatologic Surgery",
+    "slug": "sentinel-lymph-node-biopsy-dermatology",
+    "category": "mohs-surgery",
+    "meta_description": "Sentinel lymph node biopsy for melanoma staging with indications, technique, and prognostic significance."
+  },
+  {
+    "title": "Advancement Flaps: Technique and Clinical Applications",
+    "slug": "advancement-flaps-reconstruction",
+    "category": "mohs-surgery",
+    "meta_description": "Advancement flap reconstruction technique with types, principles, and applications in facial and body defects."
+  },
+  {
+    "title": "Rotation Flaps for Surgical Defect Reconstruction",
+    "slug": "rotation-flaps-reconstruction",
+    "category": "mohs-surgery",
+    "meta_description": "Rotation flap reconstruction with technique, design principles, and applications for angular facial defects."
+  },
+  {
+    "title": "Transposition Flaps: Applications and Technique",
+    "slug": "transposition-flaps",
+    "category": "mohs-surgery",
+    "meta_description": "Transposition flap techniques including rhombic and bilobed flaps with applications for facial reconstruction."
+  },
+  {
+    "title": "Full-Thickness Skin Grafts: Indications and Technique",
+    "slug": "full-thickness-skin-grafts",
+    "category": "mohs-surgery",
+    "meta_description": "Full-thickness skin grafts for large defects with superior cosmetic outcomes and minimal contracture."
+  },
+  {
+    "title": "Split-Thickness Skin Grafts: When and Why",
+    "slug": "split-thickness-skin-grafts",
+    "category": "mohs-surgery",
+    "meta_description": "Split-thickness skin grafts for large wounds with easier application but more contracture and inferior long-term outcomes."
+  },
+  {
+    "title": "Wound Care After Skin Surgery: Best Practices",
+    "slug": "wound-care-after-skin-surgery",
+    "category": "mohs-surgery",
+    "meta_description": "Best practices for post-surgical wound care including cleansing, dressing, and tension reduction for optimal healing."
+  },
+  {
+    "title": "Scar Management After Mohs Surgery: Optimization Strategies",
+    "slug": "scar-management-mohs-surgery",
+    "category": "mohs-surgery",
+    "meta_description": "Comprehensive scar management strategies after Mohs surgery including timing, products, and professional treatments."
+  },
+  {
+    "title": "Understanding Surgical Margins in Skin Cancer Treatment",
+    "slug": "surgical-margins-skin-cancer",
+    "category": "mohs-surgery",
+    "meta_description": "Surgical margin standards for skin cancers including BCC, SCC, and melanoma with Mohs vs conventional approaches."
+  },
+  {
+    "title": "Skin Cancer Recurrence Rates by Surgical Procedure",
+    "slug": "skin-cancer-recurrence-rates-procedures",
+    "category": "mohs-surgery",
+    "meta_description": "Comparison of skin cancer recurrence rates by surgical procedure: Mohs, excision, C&E, and cryosurgery."
+  },
+  {
+    "title": "Choosing a Mohs Surgeon: What to Look For",
+    "slug": "choosing-mohs-surgeon",
+    "category": "mohs-surgery",
+    "meta_description": "Guide to selecting a qualified Mohs surgeon including credentials, experience, facility requirements, and outcome expectations."
+  },
+  {
+    "title": "Mohs Surgery vs Standard Excision: Comparison and When to Choose",
+    "slug": "mohs-surgery-vs-standard-excision",
+    "category": "mohs-surgery",
+    "meta_description": "Comparison of Mohs surgery and standard excision with indications, cure rates, costs, and when to choose each technique."
+  },
+  {
+    "title": "Sunscreen Myth: SPF 100 is Twice as Protective as SPF 50",
+    "slug": "spf-100-myth",
+    "category": "myths",
+    "meta_description": "SPF 100 isn't twice better than SPF 50. Learn the real truth about sunscreen protection levels and how SPF ratings actually work."
+  },
+  {
+    "title": "Dark Skin Myth: People with Darker Skin Don't Need Sunscreen",
+    "slug": "dark-skin-sunscreen-myth",
+    "category": "myths",
+    "meta_description": "False: dark skin doesn't need sunscreen. Learn why melanin alone isn't enough protection and why everyone needs daily sun protection."
+  },
+  {
+    "title": "Sunscreen Myth: Sunscreen Causes Cancer",
+    "slug": "sunscreen-causes-cancer-myth",
+    "category": "myths",
+    "meta_description": "Debunked: Sunscreen does NOT cause cancer. FDA-approved sunscreen prevents melanoma and skin cancer. Learn the real science behind sunscreen safety."
+  },
+  {
+    "title": "Tanning Myth: A Base Tan Protects Your Skin",
+    "slug": "base-tan-myth",
+    "category": "myths",
+    "meta_description": "False: A base tan doesn't protect your skin. Learn why tanning damages skin and what to do instead of seeking a tan."
+  },
+  {
+    "title": "Tanning Myth: Tanning Beds Are Safer Than the Sun",
+    "slug": "tanning-beds-safer-myth",
+    "category": "myths",
+    "meta_description": "False: Tanning beds aren't safer than sun. FDA classifies them as carcinogenic. Learn why and safer tanning alternatives."
+  },
+  {
+    "title": "Acne Myth: Chocolate Causes Acne",
+    "slug": "chocolate-causes-acne-myth",
+    "category": "myths",
+    "meta_description": "Myth: Chocolate causes acne. False! Research shows no link. Learn what actually causes acne and real dietary factors."
+  },
+  {
+    "title": "Acne Myth: Dirty Skin Causes Acne",
+    "slug": "dirty-skin-acne-myth",
+    "category": "myths",
+    "meta_description": "Myth debunked: Dirty skin doesn't cause acne. Learn real acne causes and why over-washing makes it worse."
+  },
+  {
+    "title": "Acne Myth: Toothpaste Cures Pimples",
+    "slug": "toothpaste-pimple-myth",
+    "category": "myths",
+    "meta_description": "Myth debunked: Toothpaste doesn't cure pimples and can irritate skin. Learn proven acne treatments that actually work."
+  },
+  {
+    "title": "Acne Myth: Sun Exposure Clears Acne",
+    "slug": "sun-clears-acne-myth",
+    "category": "myths",
+    "meta_description": "Myth: Sun clears acne. False! UV exposure causes long-term damage. Learn safe acne management with proper sun protection."
+  },
+  {
+    "title": "Botox Myth: Botox is Toxic and Dangerous",
+    "slug": "botox-toxic-myth",
+    "category": "myths",
+    "meta_description": "Myth: Botox is dangerous. False! Botox is FDA-approved and safe. Learn the real science behind this popular cosmetic treatment."
+  },
+  {
+    "title": "Botox Myth: Botox Freezes Your Entire Face",
+    "slug": "botox-frozen-face-myth",
+    "category": "myths",
+    "meta_description": "Myth: Botox freezes your face. False! Proper Botox looks natural. Learn what good Botox actually looks like."
+  },
+  {
+    "title": "Botox Myth: Botox is Addictive",
+    "slug": "botox-addictive-myth",
+    "category": "myths",
+    "meta_description": "Myth debunked: Botox isn't addictive. Learn why people choose to continue treatment and what real addiction looks like."
+  },
+  {
+    "title": "Natural Remedies Myth: Natural is Always Better",
+    "slug": "natural-always-better-myth",
+    "category": "myths",
+    "meta_description": "Myth: Natural products are always better. False! Learn why effectiveness matters more than whether ingredients are natural."
+  },
+  {
+    "title": "Natural Remedies Myth: Coconut Oil is Good for All Skin",
+    "slug": "coconut-oil-all-skin-myth",
+    "category": "myths",
+    "meta_description": "Myth: Coconut oil is good for all skin. False! It clogs pores. Learn better moisturizers for acne-prone and sensitive skin."
+  },
+  {
+    "title": "Natural Remedies Myth: Lemon Juice Fades Dark Spots",
+    "slug": "lemon-juice-dark-spots-myth",
+    "category": "myths",
+    "meta_description": "Myth: Lemon juice fades dark spots. False! It causes burns. Learn safe, proven dark spot treatments that actually work."
+  },
+  {
+    "title": "Laser Myth: Lasers Thin the Skin",
+    "slug": "laser-thins-skin-myth",
+    "category": "myths",
+    "meta_description": "Myth debunked: Lasers don't thin skin. They stimulate collagen and thicken skin. Learn how laser treatments actually improve skin."
+  },
+  {
+    "title": "Laser Myth: One Laser Session Fixes Everything",
+    "slug": "one-laser-session-myth",
+    "category": "myths",
+    "meta_description": "Myth: One laser session fixes everything. False! Most skin concerns need 3-6+ sessions. Learn realistic laser treatment timelines."
+  },
+  {
+    "title": "Skincare Myth: Expensive Products Work Better",
+    "slug": "expensive-skincare-myth",
+    "category": "myths",
+    "meta_description": "Myth: Expensive skincare works better. False! Price doesn't determine efficacy. Learn what actually matters in skincare products."
+  },
+  {
+    "title": "Skincare Myth: You Need a 10-Step Routine",
+    "slug": "ten-step-routine-myth",
+    "category": "myths",
+    "meta_description": "Myth: You need 10 steps for good skin. False! A simple 3-5 step routine is often more effective. Learn the skincare basics."
+  },
+  {
+    "title": "Anti-Aging Myth: Wrinkles Only Start in Your 40s",
+    "slug": "wrinkles-40s-myth",
+    "category": "myths",
+    "meta_description": "Myth: Wrinkles only start in your 40s. False! Skin aging begins in 20s. Learn why prevention now saves money and prevents damage."
+  },
+  {
+    "title": "Onychomycosis: Fungal Nail Infection",
+    "slug": "onychomycosis-fungal-nails",
+    "category": "nails",
+    "meta_description": "Comprehensive guide to onychomycosis: causes, clinical features, diagnosis, and treatment options for fungal nail infections."
+  },
+  {
+    "title": "Ingrown Toenails: Clinical Management",
+    "slug": "ingrown-toenails-management",
+    "category": "nails",
+    "meta_description": "Management of ingrown toenails: conservative treatments, surgical options, and prevention strategies for optimal patient outcomes."
+  },
+  {
+    "title": "Nail Psoriasis: Recognition and Management",
+    "slug": "nail-psoriasis",
+    "category": "nails",
+    "meta_description": "Overview of nail psoriasis: clinical features, pathophysiology, diagnosis, and evidence-based treatment options."
+  },
+  {
+    "title": "Nail Lichen Planus: Clinical Presentation and Therapy",
+    "slug": "nail-lichen-planus",
+    "category": "nails",
+    "meta_description": "Analysis of nail lichen planus: pathophysiology, clinical manifestations, diagnosis, and treatment approaches."
+  },
+  {
+    "title": "Subungual Melanoma: Early Detection and Management",
+    "slug": "subungual-melanoma-nail",
+    "category": "nails",
+    "meta_description": "Critical overview of subungual melanoma: clinical recognition, diagnostic criteria, Hutchinson's sign, and evidence-based surgical management."
+  },
+  {
+    "title": "Brittle Nails (Onychorrhexis): Etiology and Treatment",
+    "slug": "brittle-nails-onychorrhexis",
+    "category": "nails",
+    "meta_description": "Comprehensive guide to brittle nails and onychorrhexis: causes, management strategies, and preventive measures for improving nail strength."
+  },
+  {
+    "title": "Beau's Lines: Recognition and Clinical Significance",
+    "slug": "beaus-lines-nail",
+    "category": "nails",
+    "meta_description": "Clinical guide to Beau's lines: pathophysiology, associated conditions, diagnostic approach, and significance as markers of systemic illness."
+  },
+  {
+    "title": "Nail Pitting: Causes and Clinical Management",
+    "slug": "nail-pitting",
+    "category": "nails",
+    "meta_description": "Comprehensive overview of nail pitting: causes, clinical significance, diagnostic evaluation, and association with systemic conditions."
+  },
+  {
+    "title": "Paronychia: Acute and Chronic Management",
+    "slug": "paronychia-acute-chronic",
+    "category": "nails",
+    "meta_description": "Detailed review of paronychia: acute versus chronic forms, pathophysiology, evidence-based management strategies, and prevention of recurrence."
+  },
+  {
+    "title": "Onycholysis: Causes and Treatment Approach",
+    "slug": "onycholysis",
+    "category": "nails",
+    "meta_description": "Guide to onycholysis: pathophysiology, etiologies, diagnostic evaluation, and evidence-based treatment strategies."
+  },
+  {
+    "title": "Nail Trauma: Assessment and Management",
+    "slug": "nail-trauma",
+    "category": "nails",
+    "meta_description": "Assessment and management of nail trauma: classification, evaluation, hematoma treatment, and repair techniques."
+  },
+  {
+    "title": "Green Nail Syndrome: Pseudomonas Infection",
+    "slug": "green-nail-syndrome-pseudomonas",
+    "category": "nails",
+    "meta_description": "Review of green nail syndrome: Pseudomonas infection, clinical presentation, diagnosis, and treatment strategies."
+  },
+  {
+    "title": "Half-and-Half Nails (Lindsay's Nails)",
+    "slug": "half-and-half-nails",
+    "category": "nails",
+    "meta_description": "Clinical overview of half-and-half nails: pathophysiology, association with chronic kidney disease, differential diagnosis, and clinical significance."
+  },
+  {
+    "title": "Terry's Nails: Clinical Significance and Associations",
+    "slug": "terrys-nails",
+    "category": "nails",
+    "meta_description": "Detailed guide to Terry's nails: pathophysiology, association with systemic disease, diagnostic implications, and clinical significance."
+  },
+  {
+    "title": "Nail Clubbing: Etiology and Diagnostic Significance",
+    "slug": "nail-clubbing",
+    "category": "nails",
+    "meta_description": "Comprehensive review of nail clubbing: pathophysiology, diagnostic assessment, associated systemic conditions, and clinical management strategies."
+  },
+  {
+    "title": "Nail Biopsy: Techniques and Indications",
+    "slug": "nail-biopsy",
+    "category": "nails",
+    "meta_description": "Comprehensive guide to nail biopsy: indications, techniques, specimen handling, diagnostic yield, and management of complications."
+  },
+  {
+    "title": "Yellow Nail Syndrome: Features and Management",
+    "slug": "yellow-nail-syndrome",
+    "category": "nails",
+    "meta_description": "Clinical overview of yellow nail syndrome: pathophysiology, systemic associations, diagnostic criteria, and management of this rare nail disorder."
+  },
+  {
+    "title": "Spoon Nails (Koilonychia): Causes and Management",
+    "slug": "spoon-nails-koilonychia",
+    "category": "nails",
+    "meta_description": "Comprehensive guide to spoon nails: pathophysiology, associated conditions, diagnostic evaluation, and evidence-based management strategies."
+  },
+  {
+    "title": "Nail Ridges: Longitudinal and Transverse Patterns",
+    "slug": "nail-ridges-longitudinal-transverse",
+    "category": "nails",
+    "meta_description": "Detailed review of nail ridges: longitudinal versus transverse patterns, pathophysiology, associated conditions, and management approaches."
+  },
+  {
+    "title": "Habit-Tic Deformity: Behavioral Nail Damage",
+    "slug": "habit-tic-deformity",
+    "category": "nails",
+    "meta_description": "Comprehensive guide to habit-tic deformity: pathophysiology, clinical features, behavioral assessment, and evidence-based management strategies."
+  },
+  {
+    "title": "Atopic Dermatitis (Eczema) in Children",
+    "slug": "atopic-dermatitis-children",
+    "category": "pediatric",
+    "meta_description": "Atopic dermatitis in children: pathophysiology, clinical features, diagnosis, and evidence-based management strategies."
+  },
+  {
+    "title": "Cradle Cap: Infantile Seborrheic Dermatitis",
+    "slug": "cradle-cap-seborrheic-dermatitis",
+    "category": "pediatric",
+    "meta_description": "Cradle cap (infantile seborrheic dermatitis): benign scalp condition with gentle management and excellent prognosis."
+  },
+  {
+    "title": "Diaper Dermatitis: Irritant vs. Candidal",
+    "slug": "diaper-dermatitis-irritant-candidal",
+    "category": "pediatric",
+    "meta_description": "Diaper dermatitis overview: irritant vs. candidal infection with distinctive features and targeted treatment strategies."
+  },
+  {
+    "title": "Infantile Hemangiomas: Benign Vascular Tumors",
+    "slug": "infantile-hemangiomas-vascular",
+    "category": "pediatric",
+    "meta_description": "Infantile hemangiomas: benign vascular tumors with natural involution and treatment options for threatening lesions."
+  },
+  {
+    "title": "Port-Wine Stains (Nevus Flammeus)",
+    "slug": "port-wine-stains-nevus-flammeus",
+    "category": "pediatric",
+    "meta_description": "Port-wine stains: congenital vascular malformations with associated syndromes and pulsed dye laser treatment effectiveness."
+  },
+  {
+    "title": "Congenital Melanocytic Nevi",
+    "slug": "congenital-melanocytic-nevi",
+    "category": "pediatric",
+    "meta_description": "Congenital melanocytic nevi: pigmented lesions at birth with melanoma risk stratified by size and surveillance strategies."
+  },
+  {
+    "title": "Mongolian Spots: Benign Congenital Lesions",
+    "slug": "mongolian-spots-congenital",
+    "category": "pediatric",
+    "meta_description": "Mongolian spots: benign congenital blue-gray lesions on sacrum that spontaneously regress by adolescence."
+  },
+  {
+    "title": "Fifth Disease (Erythema Infectiosum)",
+    "slug": "fifth-disease-parvovirus-b19",
+    "category": "pediatric",
+    "meta_description": "Fifth disease (erythema infectiosum): parvovirus B19 with distinctive slapped cheek rash and lacy trunk exanthem."
+  },
+  {
+    "title": "Roseola Infantum (Exanthem Subitum)",
+    "slug": "roseola-infantum-exanthem",
+    "category": "pediatric",
+    "meta_description": "Roseola infantum: HHV-6 infection with high fever followed by rose-pink rash as fever resolves."
+  },
+  {
+    "title": "Hand, Foot, and Mouth Disease",
+    "slug": "hand-foot-mouth-disease-hfmd",
+    "category": "pediatric",
+    "meta_description": "Hand, foot, and mouth disease: enteroviral exanthem with oral ulcers and vesicular rash on hands and feet."
+  },
+  {
+    "title": "Scarlet Fever Rash",
+    "slug": "scarlet-fever-rash",
+    "category": "pediatric",
+    "meta_description": "Scarlet fever: Group A Streptococcal infection with sandpaper-like rash and strawberry tongue, prevented by prompt antibiotics."
+  },
+  {
+    "title": "Measles Rash (Rubeola)",
+    "slug": "measles-rash-rubeola",
+    "category": "pediatric",
+    "meta_description": "Measles (rubeola): highly contagious viral infection with Koplik spots, characteristic rash, and serious complications."
+  },
+  {
+    "title": "Chickenpox (Varicella)",
+    "slug": "chickenpox-varicella",
+    "category": "pediatric",
+    "meta_description": "Chickenpox (varicella): highly contagious VZV with vesicles in various stages, prevented by routine vaccination."
+  },
+  {
+    "title": "Molluscum Contagiosum in Children",
+    "slug": "molluscum-contagiosum-children",
+    "category": "pediatric",
+    "meta_description": "Molluscum contagiosum: benign poxvirus with umbilicated papules, self-limited course, and multiple treatment options available."
+  },
+  {
+    "title": "Warts in Children",
+    "slug": "warts-children-common-verruca",
+    "category": "pediatric",
+    "meta_description": "Warts in children: common benign HPV lesions with excellent spontaneous resolution and multiple treatment options."
+  },
+  {
+    "title": "Juvenile Psoriasis",
+    "slug": "juvenile-psoriasis",
+    "category": "pediatric",
+    "meta_description": "Juvenile psoriasis: chronic inflammatory disease in children with distinct clinical variants, triggers, and age-appropriate management."
+  },
+  {
+    "title": "Childhood Vitiligo",
+    "slug": "childhood-vitiligo",
+    "category": "pediatric",
+    "meta_description": "Childhood vitiligo: depigmentation disorder with psychosocial impact and multiple treatment options for cosmetic and functional improvement."
+  },
+  {
+    "title": "Neonatal Acne",
+    "slug": "neonatal-acne",
+    "category": "pediatric",
+    "meta_description": "Neonatal acne: benign self-limited acneiform lesions in newborns from maternal androgen exposure, resolving by 3-6 months."
+  },
+  {
+    "title": "Milia in Newborns",
+    "slug": "milia-newborns",
+    "category": "pediatric",
+    "meta_description": "Milia: common benign epidermal inclusion cysts in newborns presenting as tiny pearly papules that spontaneously resolve."
+  },
+  {
+    "title": "Ichthyosis in Children: Overview and Types",
+    "slug": "ichthyosis-children-overview",
+    "category": "pediatric",
+    "meta_description": "Ichthyosis in children: hereditary keratinization disorders with management strategies for scaling and barrier dysfunction."
+  },
+  {
+    "title": "Ringworm in Children (Tinea Corporis)",
+    "slug": "ringworm-children-tinea",
+    "category": "pediatric",
+    "meta_description": "Ringworm (tinea corporis): common fungal infection in children with characteristic annular scaly lesions treated with topical antifungals."
+  },
+  {
+    "title": "Head Lice (Pediculosis Capitis) in Children",
+    "slug": "head-lice-pediculosis-capitis",
+    "category": "pediatric",
+    "meta_description": "Head lice (pediculosis capitis): common parasitic infestation in children transmitted by direct contact, treatable with pediculicides and nit removal."
+  },
+  {
+    "title": "Scabies in Children",
+    "slug": "scabies-children",
+    "category": "pediatric",
+    "meta_description": "Scabies in children: mite infestation with intense pruritus and burrows, treated with topical permethrin and management of contacts."
+  },
+  {
+    "title": "Preparing for Dermatologic Surgery: A Comprehensive Pre-Operative Guide",
+    "slug": "preparing-dermatologic-surgery-pre-operative-guide",
+    "category": "pre-post-op",
+    "meta_description": "Complete guide to preparing for dermatologic surgery, including medication adjustments, medical assessment, and pre-operative instructions."
+  },
+  {
+    "title": "Medications to Stop Before Skin Surgery: Blood Thinners and Supplements",
+    "slug": "medications-stop-before-skin-surgery-blood-thinners-supplements",
+    "category": "pre-post-op",
+    "meta_description": "Guide to discontinuing blood thinners, NSAIDs, and supplements before dermatologic surgery to reduce bleeding and improve outcomes."
+  },
+  {
+    "title": "Anesthesia Options in Dermatologic Surgery: Local, Regional, and Nerve Blocks",
+    "slug": "anesthesia-options-dermatologic-surgery-local-nerve-blocks",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive overview of anesthesia options used in dermatologic surgery, including local anesthesia, nerve blocks, and conscious sedation."
+  },
+  {
+    "title": "Wound Healing Stages Explained: From Inflammation to Remodeling",
+    "slug": "wound-healing-stages-inflammation-remodeling",
+    "category": "pre-post-op",
+    "meta_description": "Detailed explanation of the four phases of wound healing, from hemostasis through remodeling, with normal progression timeline."
+  },
+  {
+    "title": "Surgical Wound Care Instructions: Daily Care and Dressing Changes",
+    "slug": "surgical-wound-care-instructions-dressing-changes",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive instructions for post-operative wound care, including cleansing, dressing changes, ointment application, and activity restrictions."
+  },
+  {
+    "title": "Suture Types and Removal Timeline: Absorbable vs. Non-Absorbable",
+    "slug": "suture-types-removal-timeline-absorbable-non-absorbable",
+    "category": "pre-post-op",
+    "meta_description": "Detailed guide to surgical suture types, absorption timelines, and removal schedules for optimal wound healing after dermatologic surgery."
+  },
+  {
+    "title": "Infection Prevention After Skin Surgery: Antibiotic Guidelines and Signs",
+    "slug": "infection-prevention-after-skin-surgery-antibiotic-guidelines",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive guide to infection prevention after dermatologic surgery, including antibiotic use, wound care, and recognition of infection signs."
+  },
+  {
+    "title": "Managing Surgical Scars: Silicone, Pressure Therapy, and Steroid Injections",
+    "slug": "managing-surgical-scars-silicone-pressure-therapy-steroid-injections",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive guide to scar management after dermatologic surgery, including silicone treatments, pressure therapy, and steroid injections."
+  },
+  {
+    "title": "When to Call Your Surgeon After Skin Surgery: Red Flags and Concerns",
+    "slug": "when-call-surgeon-after-skin-surgery-red-flags",
+    "category": "pre-post-op",
+    "meta_description": "Guide to recognizing normal post-operative symptoms versus warning signs requiring immediate surgeon contact after dermatologic surgery."
+  },
+  {
+    "title": "Hematoma After Skin Surgery: Causes, Prevention, and Treatment",
+    "slug": "hematoma-after-skin-surgery-causes-treatment",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive guide to hematoma formation after dermatologic surgery, including risk factors, management, and prevention strategies."
+  },
+  {
+    "title": "Surgical Site Infection Signs: Recognition and When to Seek Treatment",
+    "slug": "surgical-site-infection-signs-recognition-treatment",
+    "category": "pre-post-op",
+    "meta_description": "Detailed guide to recognizing surgical site infection signs, including superficial infections, cellulitis, and abscess formation with treatment options."
+  },
+  {
+    "title": "Wound Dehiscence After Surgery: Causes, Prevention, and Management",
+    "slug": "wound-dehiscence-after-surgery-causes-management",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive guide to wound dehiscence after dermatologic surgery, including risk factors, prevention, and appropriate management strategies."
+  },
+  {
+    "title": "Nerve Damage After Skin Surgery: Prevention, Recognition, and Recovery",
+    "slug": "nerve-damage-after-skin-surgery-prevention-recovery",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive guide to peripheral nerve injuries in dermatologic surgery, including anatomy, prevention, recognition, and management options."
+  },
+  {
+    "title": "Sun Protection After Dermatologic Surgery: UV Exposure and Scar Management",
+    "slug": "sun-protection-after-dermatologic-surgery-scar-management",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive guide to post-operative sun protection after dermatologic surgery, including strategies to prevent scar darkening and improve healing."
+  },
+  {
+    "title": "Diet and Nutrition for Wound Healing: Protein, Vitamins, and Micronutrients",
+    "slug": "diet-nutrition-wound-healing-protein-vitamins",
+    "category": "pre-post-op",
+    "meta_description": "Comprehensive nutritional guide for post-operative wound healing, including protein requirements, vitamins, minerals, and dietary strategies."
+  },
+  {
+    "title": "Acne Extraction",
+    "slug": "acne-extraction",
+    "category": "procedures-az",
+    "meta_description": "Learn about professional acne extraction: process, recovery, costs, and risks for treating comedonal acne."
+  },
+  {
+    "title": "Biologic Injection Therapy",
+    "slug": "biologic-injection-therapy",
+    "category": "procedures-az",
+    "meta_description": "Comprehensive guide to biologic injection therapy for autoimmune skin conditions and severe inflammatory dermatitis."
+  },
+  {
+    "title": "Botox Treatment",
+    "slug": "botox-treatment",
+    "category": "procedures-az",
+    "meta_description": "Complete guide to Botox injections: uses, procedure, expected results, recovery time, costs, and safety."
+  },
+  {
+    "title": "Chemical Peel",
+    "slug": "chemical-peel",
+    "category": "procedures-az",
+    "meta_description": "Guide to chemical peels: types, procedure, recovery, results for skin rejuvenation and treating skin conditions."
+  },
+  {
+    "title": "CoolSculpting",
+    "slug": "coolsculpting",
+    "category": "procedures-az",
+    "meta_description": "Learn about CoolSculpting (cryolipolysis): how it works, results, recovery, cost, and safety for fat reduction."
+  },
+  {
+    "title": "Cryotherapy",
+    "slug": "cryotherapy",
+    "category": "procedures-az",
+    "meta_description": "Guide to cryotherapy in dermatology: freezing lesions, recovery time, costs, and treatment of warts and growths."
+  },
+  {
+    "title": "Dermabrasion",
+    "slug": "dermabrasion",
+    "category": "procedures-az",
+    "meta_description": "Complete guide to dermabrasion: mechanical skin resurfacing for scars, wrinkles, and tattoo removal."
+  },
+  {
+    "title": "Dermal Filler Injection",
+    "slug": "dermal-filler-injection",
+    "category": "procedures-az",
+    "meta_description": "Guide to dermal fillers: types, procedure, results, recovery, costs for volume restoration and wrinkle treatment."
+  },
+  {
+    "title": "Electrolysis",
+    "slug": "electrolysis",
+    "category": "procedures-az",
+    "meta_description": "Learn about electrolysis: permanent hair removal method, procedure, recovery time, costs, and effectiveness."
+  },
+  {
+    "title": "Excisional Biopsy",
+    "slug": "excisional-biopsy",
+    "category": "procedures-az",
+    "meta_description": "Guide to excisional biopsy: surgical skin lesion removal for diagnosis and complete removal of suspicious moles."
+  },
+  {
+    "title": "HydraFacial",
+    "slug": "hydrafacial",
+    "category": "procedures-az",
+    "meta_description": "Complete guide to HydraFacial: vortex fusion treatment, benefits, results, recovery, and costs for skin renewal."
+  },
+  {
+    "title": "IPL Photofacial",
+    "slug": "ipl-photofacial",
+    "category": "procedures-az",
+    "meta_description": "Guide to IPL photofacial: intense pulsed light treatment for sun damage, rosacea, and skin rejuvenation."
+  },
+  {
+    "title": "Kybella Injection",
+    "slug": "kybella-injection",
+    "category": "procedures-az",
+    "meta_description": "Learn about Kybella injections: non-surgical chin fat reduction, procedure, results, recovery time, and costs."
+  },
+  {
+    "title": "Laser Hair Removal",
+    "slug": "laser-hair-removal",
+    "category": "procedures-az",
+    "meta_description": "Complete guide to laser hair removal: how it works, procedure, results, recovery time, costs, and effectiveness."
+  },
+  {
+    "title": "Laser Skin Resurfacing",
+    "slug": "laser-skin-resurfacing",
+    "category": "procedures-az",
+    "meta_description": "Guide to laser skin resurfacing: ablative and non-ablative treatments for wrinkles, scars, and age spots."
+  },
+  {
+    "title": "Microdermabrasion",
+    "slug": "microdermabrasion",
+    "category": "procedures-az",
+    "meta_description": "Complete guide to microdermabrasion: mechanical exfoliation, results, recovery time, costs, and skin benefits."
+  },
+  {
+    "title": "Microneedling",
+    "slug": "microneedling",
+    "category": "procedures-az",
+    "meta_description": "Guide to microneedling: collagen induction therapy for scars, wrinkles, and skin texture improvement."
+  },
+  {
+    "title": "Mohs Surgery",
+    "slug": "mohs-surgery",
+    "category": "procedures-az",
+    "meta_description": "Complete guide to Mohs surgery: gold standard for skin cancer removal with tissue preservation and high cure rates."
+  },
+  {
+    "title": "Photodynamic Therapy",
+    "slug": "photodynamic-therapy",
+    "category": "procedures-az",
+    "meta_description": "Guide to photodynamic therapy: light-activated treatment for actinic keratosis, acne, and skin cancer precursors."
+  },
+  {
+    "title": "Platelet-Rich Plasma Therapy",
+    "slug": "platelet-rich-plasma-therapy",
+    "category": "procedures-az",
+    "meta_description": "Learn about PRP therapy: natural growth factors for skin rejuvenation, scars, and hair loss treatment."
+  },
+  {
+    "title": "Punch Biopsy",
+    "slug": "punch-biopsy",
+    "category": "procedures-az",
+    "meta_description": "Guide to punch biopsy: minimally invasive skin sampling for diagnosis of dermatological conditions."
+  },
+  {
+    "title": "Radiofrequency Skin Tightening",
+    "slug": "radiofrequency-skin-tightening",
+    "category": "procedures-az",
+    "meta_description": "Complete guide to radiofrequency skin tightening: non-invasive collagen stimulation for facial and body rejuvenation."
+  },
+  {
+    "title": "Sclerotherapy",
+    "slug": "sclerotherapy",
+    "category": "procedures-az",
+    "meta_description": "Guide to sclerotherapy: injectable treatment for varicose veins and spider veins with excellent cosmetic results."
+  },
+  {
+    "title": "Shave Biopsy",
+    "slug": "shave-biopsy",
+    "category": "procedures-az",
+    "meta_description": "Guide to shave biopsy: quick diagnostic procedure for suspicious skin lesions and dermatological conditions."
+  },
+  {
+    "title": "Thread Lift",
+    "slug": "thread-lift",
+    "category": "procedures-az",
+    "meta_description": "Learn about thread lift: non-surgical facial lifting with absorbable threads for natural rejuvenation."
+  },
+  {
+    "title": "Mole Removal: When and How to Proceed",
+    "slug": "mole-removal-when-how",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to mole removal indications and techniques including excision, shave removal, and cryotherapy options."
+  },
+  {
+    "title": "Epidermoid Cyst Excision: Technique and Management",
+    "slug": "epidermoid-cyst-excision",
+    "category": "procedures",
+    "meta_description": "Detailed surgical technique for epidermoid cyst removal including standard excision, minimal-incision approach, and management."
+  },
+  {
+    "title": "Pilar Cyst Removal: Surgical Approach",
+    "slug": "pilar-cyst-removal",
+    "category": "procedures",
+    "meta_description": "Surgical management of pilar cysts including scalp considerations, technique, and post-operative care instructions."
+  },
+  {
+    "title": "Lipoma Removal: Surgical Extraction Techniques",
+    "slug": "lipoma-removal-surgical",
+    "category": "procedures",
+    "meta_description": "Complete guide to lipoma surgical removal including open excision, minimal-incision techniques, and post-operative management."
+  },
+  {
+    "title": "Skin Tag Removal Methods and Techniques",
+    "slug": "skin-tag-removal-methods",
+    "category": "procedures",
+    "meta_description": "Comprehensive review of skin tag removal methods including cryotherapy, electrosurgery, excision, and ligation techniques."
+  },
+  {
+    "title": "Wart Surgery: When Topical Treatment Fails",
+    "slug": "wart-surgery-topical-failure",
+    "category": "procedures",
+    "meta_description": "Surgical approaches to resistant warts including electrosurgery, excision, laser, and special considerations for location."
+  },
+  {
+    "title": "Partial Nail Avulsion: Technique and Indications",
+    "slug": "partial-nail-avulsion",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to partial nail avulsion including indications, surgical technique, matrix management, and post-operative care."
+  },
+  {
+    "title": "Total Nail Avulsion: Procedure and Outcomes",
+    "slug": "total-nail-avulsion",
+    "category": "procedures",
+    "meta_description": "Complete guide to total nail avulsion including indications, surgical technique, matrix ablation methods, and post-operative management."
+  },
+  {
+    "title": "Matricectomy: Chemical and Thermal Matrix Ablation",
+    "slug": "matricectomy-matrix-ablation",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to matricectomy including phenol, electrocautery, and laser ablation techniques with success rates and outcomes."
+  },
+  {
+    "title": "Dermabrasion: Technique and Clinical Applications",
+    "slug": "dermabrasion-technique",
+    "category": "procedures",
+    "meta_description": "Complete guide to dermabrasion including technique, patient selection, depth control, post-operative care, and expected outcomes."
+  },
+  {
+    "title": "Scar Revision Surgery: Techniques and Outcomes",
+    "slug": "scar-revision-surgery",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to scar revision including excision, Z-plasty, laser, fillers, and microneedling techniques with outcomes."
+  },
+  {
+    "title": "Keloid Excision with Adjuvant Therapy",
+    "slug": "keloid-excision-adjuvant",
+    "category": "procedures",
+    "meta_description": "Complete guide to keloid excision including surgical technique and adjuvant therapies: steroids, pressure, radiation, and laser."
+  },
+  {
+    "title": "Ear Reconstruction After Mohs Micrographic Surgery",
+    "slug": "ear-reconstruction-mohs",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to ear reconstruction after Mohs surgery including defect assessment, skin grafts, cartilage grafts, and flap techniques."
+  },
+  {
+    "title": "Nose Reconstruction After Mohs Micrographic Surgery",
+    "slug": "nose-reconstruction-mohs",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to nasal reconstruction after Mohs surgery including defect assessment, skin grafts, flaps, and cartilage grafts."
+  },
+  {
+    "title": "Earlobe Repair: Techniques and Restoration",
+    "slug": "earlobe-repair",
+    "category": "procedures",
+    "meta_description": "Complete guide to earlobe repair including stretched earlobes, traumatic lacerations, and techniques for restoration."
+  },
+  {
+    "title": "Hidradenitis Suppurativa Surgery: Overview and Approach",
+    "slug": "hidradenitis-suppurativa-surgery",
+    "category": "procedures",
+    "meta_description": "Overview of hidradenitis suppurativa surgical management including disease classification, indications, and surgical options."
+  },
+  {
+    "title": "HS Incision and Drainage: Acute Abscess Management",
+    "slug": "hs-incision-drainage",
+    "category": "procedures",
+    "meta_description": "Management of acute HS abscess including incision and drainage technique, post-operative care, and prevention of recurrence."
+  },
+  {
+    "title": "HS Deroofing Procedure: Sinus Tract Management",
+    "slug": "hs-deroofing-procedure",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to HS deroofing procedure including technique, patient selection, wound management, and recurrence rates."
+  },
+  {
+    "title": "HS Wide Excision: Definitive Surgical Treatment",
+    "slug": "hs-wide-excision",
+    "category": "procedures",
+    "meta_description": "Complete guide to wide excision for HS including assessment, excision technique, reconstruction options, and long-term outcomes."
+  },
+  {
+    "title": "Pilonidal Cyst Surgery: Excision and Healing Options",
+    "slug": "pilonidal-cyst-surgery",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to pilonidal cyst surgery including excision techniques, primary closure, secondary healing, and recurrence prevention."
+  },
+  {
+    "title": "Laser-Assisted Surgery in Dermatology: Applications and Technology",
+    "slug": "laser-assisted-surgery-dermatology",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to laser-assisted dermatologic surgery including CO2, Erbium, dye, and YAG lasers with applications and safety."
+  },
+  {
+    "title": "Electrosurgery in Dermatology: Techniques and Applications",
+    "slug": "electrosurgery-dermatology",
+    "category": "procedures",
+    "meta_description": "Complete guide to electrosurgery in dermatology including monopolar, bipolar, cutting, coagulation modes and clinical applications."
+  },
+  {
+    "title": "Suture Techniques in Dermatologic Surgery: Principles and Practice",
+    "slug": "suture-techniques-dermatology",
+    "category": "procedures",
+    "meta_description": "Complete guide to suture techniques in dermatologic surgery including materials, closure methods, edge eversion, and timing."
+  },
+  {
+    "title": "Local Anesthesia in Skin Surgery: Agents and Techniques",
+    "slug": "local-anesthesia-skin-surgery",
+    "category": "procedures",
+    "meta_description": "Comprehensive guide to local anesthesia in skin surgery including agents, infiltration, nerve blocks, and safety considerations."
+  },
+  {
+    "title": "Tumescent Anesthesia: Infiltration Technique and Advantages",
+    "slug": "tumescent-anesthesia",
+    "category": "procedures",
+    "meta_description": "Complete guide to tumescent anesthesia including solution composition, infiltration technique, applications in dermatologic surgery."
+  },
+  {
+    "title": "Chemical Peels: Overview and Classification",
+    "slug": "chemical-peels-overview",
+    "category": "rejuvenation",
+    "meta_description": "Comprehensive guide to chemical peels: types, depths, benefits, and safety considerations for skin rejuvenation."
+  },
+  {
+    "title": "Glycolic Acid Peels: The Gold Standard of AHAs",
+    "slug": "glycolic-acid-peels",
+    "category": "rejuvenation",
+    "meta_description": "Glycolic acid peel benefits, mechanisms, concentrations, and optimal treatment protocols for effective skin rejuvenation."
+  },
+  {
+    "title": "Lactic Acid Peels: Gentler Exfoliation for Sensitive Skin",
+    "slug": "lactic-acid-peels",
+    "category": "rejuvenation",
+    "meta_description": "Lactic acid peel overview: benefits for sensitive skin, hydrating properties, and safe application for anti-aging."
+  },
+  {
+    "title": "Salicylic Acid Peels: Targeted Treatment for Acne and Oily Skin",
+    "slug": "salicylic-acid-peels",
+    "category": "rejuvenation",
+    "meta_description": "Salicylic acid peel benefits for acne, oil control, and anti-aging. Mechanism, protocols, and safety for BHA treatments."
+  },
+  {
+    "title": "TCA Peels: Medium-Depth Chemical Peeling for Dramatic Results",
+    "slug": "tca-peel-medium-depth",
+    "category": "rejuvenation",
+    "meta_description": "TCA peel overview: medium-depth chemical peeling results, safety, recovery time, and ideal candidates for skin rejuvenation."
+  },
+  {
+    "title": "Phenol Peels: Deep Chemical Peeling for Maximum Anti-Aging",
+    "slug": "phenol-peel-deep",
+    "category": "rejuvenation",
+    "meta_description": "Phenol peel deep chemical peeling: strongest results for severe aging, risks, recovery, and candidate selection."
+  },
+  {
+    "title": "Microneedling Overview: Collagen Induction Therapy",
+    "slug": "microneedling-overview",
+    "category": "rejuvenation",
+    "meta_description": "Microneedling comprehensive guide: mechanism, devices (Dermapen, SkinPen), benefits, and safety for skin rejuvenation."
+  },
+  {
+    "title": "Dermapen: Automated Microneedling Technology",
+    "slug": "dermapen-microneedling",
+    "category": "rejuvenation",
+    "meta_description": "Dermapen automated microneedling: technology, needle depths, treatment protocols, and benefits for controlled skin rejuvenation."
+  },
+  {
+    "title": "SkinPen: FDA-Approved Microneedling System",
+    "slug": "skinpen-microneedling",
+    "category": "rejuvenation",
+    "meta_description": "SkinPen FDA-approved microneedling: clinical efficacy, safety profile, needle specifications, and treatment protocols."
+  },
+  {
+    "title": "Microneedling with PRP: The Vampire Facial",
+    "slug": "microneedling-prp-vampire-facial",
+    "category": "rejuvenation",
+    "meta_description": "Vampire facial with PRP and microneedling: combined benefits, mechanism, efficacy, and enhanced collagen stimulation."
+  },
+  {
+    "title": "Microdermabrasion: Mechanical Exfoliation for Skin Refinement",
+    "slug": "microdermabrasion",
+    "category": "rejuvenation",
+    "meta_description": "Microdermabrasion mechanical exfoliation: benefits, techniques, depth control, and results for skin texture improvement."
+  },
+  {
+    "title": "HydraFacial: Hydradermabrasion and Vortex Fusion",
+    "slug": "hydrafacial",
+    "category": "rejuvenation",
+    "meta_description": "HydraFacial technology: hydradermabrasion, vortex extraction, hyaluronic acid serums for radiant skin rejuvenation."
+  },
+  {
+    "title": "Oxygen Facials: Pressurized Oxygen and Topical Serums",
+    "slug": "oxygen-facials",
+    "category": "rejuvenation",
+    "meta_description": "Oxygen facial benefits: pressurized oxygen delivery, serums, collagen stimulation, and facial rejuvenation results."
+  },
+  {
+    "title": "PRP for Skin Rejuvenation: Growth Factor-Driven Collagen Stimulation",
+    "slug": "prp-skin-rejuvenation",
+    "category": "rejuvenation",
+    "meta_description": "PRP for skin rejuvenation: mechanism, growth factors, treatment protocols, and results for anti-aging and collagen stimulation."
+  },
+  {
+    "title": "Thread Lifts Overview: Minimally Invasive Facelift Alternative",
+    "slug": "thread-lifts-overview",
+    "category": "rejuvenation",
+    "meta_description": "Thread lift overview: mechanism, advantages over surgery, types of threads, ideal candidates, and lifting results."
+  },
+  {
+    "title": "PDO Thread Lifts: Absorbable Support for Tissue Suspension",
+    "slug": "pdo-thread-lifts",
+    "category": "rejuvenation",
+    "meta_description": "PDO thread lifts: polydioxanone threads, absorption timeline, collagen stimulation, and non-surgical facelift benefits."
+  },
+  {
+    "title": "PLLA Thread Lifts: Long-Lasting Collagen Stimulation",
+    "slug": "plla-thread-lifts",
+    "category": "rejuvenation",
+    "meta_description": "PLLA thread lifts: poly-L-lactic acid threads, extended absorption, collagen regeneration, and sustained anti-aging results."
+  },
+  {
+    "title": "Skin Tightening Options Comparison: Which Treatment is Right for You",
+    "slug": "skin-tightening-comparison",
+    "category": "rejuvenation",
+    "meta_description": "Skin tightening comparison: radiofrequency, ultrasound, laser, thread lifts. Efficacy, downtime, cost analysis."
+  },
+  {
+    "title": "Collagen Stimulation Therapies: Comprehensive Review",
+    "slug": "collagen-stimulation-therapies",
+    "category": "rejuvenation",
+    "meta_description": "Collagen stimulation therapies: mechanisms, technologies (microneedling, RF, ultrasound, PRP), and optimization strategies."
+  },
+  {
+    "title": "Combination Anti-Aging Treatments: Strategic Approaches",
+    "slug": "combination-anti-aging-treatments",
+    "category": "rejuvenation",
+    "meta_description": "Combination anti-aging treatments: strategic protocol design, synergistic effects, and comprehensive facial rejuvenation."
+  },
+  {
+    "title": "Anti-Aging in Your 20s: Prevention-Focused Approach",
+    "slug": "anti-aging-20s",
+    "category": "rejuvenation",
+    "meta_description": "Anti-aging in your 20s: prevention strategies, skincare, sun protection, and early intervention for lifelong skin health."
+  },
+  {
+    "title": "Anti-Aging in Your 30s: Maintenance and Early Intervention",
+    "slug": "anti-aging-30s",
+    "category": "rejuvenation",
+    "meta_description": "Anti-Aging in your 30s: fine lines prevention, collagen support, professional treatments, and maintenance strategies."
+  },
+  {
+    "title": "Anti-Aging in Your 40s: Comprehensive Rejuvenation Strategy",
+    "slug": "anti-aging-40s",
+    "category": "rejuvenation",
+    "meta_description": "Anti-aging in your 40s: comprehensive rejuvenation, collagen restoration, advanced treatments, and addressing visible aging."
+  },
+  {
+    "title": "Anti-Aging in Your 50s and Beyond: Maintaining and Restoring Youthfulness",
+    "slug": "anti-aging-50s-beyond",
+    "category": "rejuvenation",
+    "meta_description": "Anti-aging 50s and beyond: addressing severe aging signs, skin laxity, volume loss, and comprehensive facial rejuvenation."
+  },
+  {
+    "title": "Non-Surgical Facelift Options: Comprehensive Alternatives to Surgery",
+    "slug": "non-surgical-facelift-options",
+    "category": "rejuvenation",
+    "meta_description": "Non-surgical facelift alternatives: comprehensive review of thread lifts, injectables, and combination treatments achieving surgical results."
+  },
+  {
+    "title": "Neck Rejuvenation Treatments: Addressing Overlooked Aging Signs",
+    "slug": "neck-rejuvenation-treatments",
+    "category": "rejuvenation",
+    "meta_description": "Neck rejuvenation: skin tightening, texture improvement, and treatment options for aging neck and d\u00e9colletage."
+  },
+  {
+    "title": "Hand Rejuvenation: Restoring Youthful Appearance to Aging Hands",
+    "slug": "hand-rejuvenation",
+    "category": "rejuvenation",
+    "meta_description": "Hand rejuvenation treatments: addressing age spots, texture, crepey skin, and volume loss for youthful hands."
+  },
+  {
+    "title": "Melanoma: Comprehensive Overview",
+    "slug": "melanoma-overview",
+    "category": "skin-cancer",
+    "meta_description": "Melanoma causes, types, ABCDE signs, diagnosis, staging, and treatment options explained."
+  },
+  {
+    "title": "Superficial Spreading Melanoma",
+    "slug": "superficial-spreading-melanoma",
+    "category": "skin-cancer",
+    "meta_description": "Superficial spreading melanoma characteristics, growth patterns, diagnosis, and prognosis."
+  },
+  {
+    "title": "Nodular Melanoma",
+    "slug": "nodular-melanoma",
+    "category": "skin-cancer",
+    "meta_description": "Nodular melanoma characteristics, rapid growth, diagnosis, and treatment approach."
+  },
+  {
+    "title": "Lentigo Maligna Melanoma",
+    "slug": "lentigo-maligna-melanoma",
+    "category": "skin-cancer",
+    "meta_description": "Lentigo maligna melanoma precancer progression, facial location, and favorable prognosis."
+  },
+  {
+    "title": "Acral Lentiginous Melanoma",
+    "slug": "acral-lentiginous-melanoma",
+    "category": "skin-cancer",
+    "meta_description": "Acral lentiginous melanoma on palms, soles, nails; diagnostic challenges and poor prognosis."
+  },
+  {
+    "title": "ABCDE Rule for Melanoma Detection",
+    "slug": "abcde-rule-melanoma",
+    "category": "skin-cancer",
+    "meta_description": "ABCDE rule for identifying melanoma: asymmetry, borders, color, diameter, evolution."
+  },
+  {
+    "title": "Melanoma Staging and Prognosis",
+    "slug": "melanoma-staging-prognosis",
+    "category": "skin-cancer",
+    "meta_description": "Melanoma TNM staging, Breslow thickness, prognosis, and follow-up recommendations."
+  },
+  {
+    "title": "Basal Cell Carcinoma: Types and Overview",
+    "slug": "basal-cell-carcinoma-overview",
+    "category": "skin-cancer",
+    "meta_description": "Basal cell carcinoma types: nodular, superficial, morpheaform, pigmented forms."
+  },
+  {
+    "title": "Squamous Cell Carcinoma of the Skin",
+    "slug": "squamous-cell-carcinoma-skin",
+    "category": "skin-cancer",
+    "meta_description": "Squamous cell carcinoma causes, types, high-risk features, and treatment."
+  },
+  {
+    "title": "Bowen's Disease: Squamous Cell Carcinoma In Situ",
+    "slug": "bowens-disease",
+    "category": "skin-cancer",
+    "meta_description": "Bowen's disease in situ squamous cell carcinoma causes, progression risk, and treatment."
+  },
+  {
+    "title": "Merkel Cell Carcinoma",
+    "slug": "merkel-cell-carcinoma",
+    "category": "skin-cancer",
+    "meta_description": "Merkel cell carcinoma rare aggressive neuroendocrine skin cancer causes and prognosis."
+  },
+  {
+    "title": "Mycosis Fungoides and Cutaneous Lymphoma",
+    "slug": "mycosis-fungoides-lymphoma",
+    "category": "skin-cancer",
+    "meta_description": "Mycosis fungoides cutaneous T-cell lymphoma stages, diagnosis, and treatment options."
+  },
+  {
+    "title": "S\u00e9zary Syndrome: Leukemic Variant of Mycosis Fungoides",
+    "slug": "sezary-syndrome",
+    "category": "skin-cancer",
+    "meta_description": "S\u00e9zary syndrome leukemic mycosis fungoides erythroderma and circulating malignant cells."
+  },
+  {
+    "title": "Actinic Keratosis: Precancerous Lesions",
+    "slug": "actinic-keratosis-precancer",
+    "category": "skin-cancer",
+    "meta_description": "Actinic keratosis precancerous sun damage lesions treatment and progression risk."
+  },
+  {
+    "title": "Dysplastic Nevi: Atypical Moles",
+    "slug": "dysplastic-nevi-atypical-moles",
+    "category": "skin-cancer",
+    "meta_description": "Dysplastic nevi atypical moles melanoma precursors and surveillance recommendations."
+  },
+  {
+    "title": "Skin Self-Examination Guide",
+    "slug": "skin-self-examination-guide",
+    "category": "skin-cancer",
+    "meta_description": "Monthly skin self-examination steps using ABCDE rule to detect early skin cancer."
+  },
+  {
+    "title": "Dermoscopy Overview and Technique",
+    "slug": "dermoscopy-overview",
+    "category": "skin-cancer",
+    "meta_description": "Dermoscopy non-invasive imaging technique for melanoma detection and diagnosis."
+  },
+  {
+    "title": "Skin Biopsy: Types and Techniques",
+    "slug": "skin-biopsy-types-techniques",
+    "category": "skin-cancer",
+    "meta_description": "Skin biopsy techniques: shave, punch, excisional, and sentinel lymph node biopsy."
+  },
+  {
+    "title": "Sentinel Lymph Node Biopsy in Melanoma",
+    "slug": "sentinel-lymph-node-biopsy-melanoma",
+    "category": "skin-cancer",
+    "meta_description": "Sentinel lymph node biopsy indications, technique, and prognostic significance in melanoma."
+  },
+  {
+    "title": "Immunotherapy for Advanced Skin Cancer",
+    "slug": "immunotherapy-skin-cancer",
+    "category": "skin-cancer",
+    "meta_description": "Checkpoint inhibitor immunotherapy for melanoma: PD-1, CTLA-4, responses, and side effects."
+  },
+  {
+    "title": "Targeted Therapy for Melanoma: BRAF and Beyond",
+    "slug": "targeted-therapy-melanoma",
+    "category": "skin-cancer",
+    "meta_description": "BRAF and MEK inhibitor targeted therapy for BRAF-mutant melanoma treatment."
+  },
+  {
+    "title": "Radiation Therapy for Skin Cancer",
+    "slug": "radiation-therapy-skin-cancer",
+    "category": "skin-cancer",
+    "meta_description": "Radiation therapy external beam treatment skin cancer melanoma indication."
+  },
+  {
+    "title": "UV Damage and Skin Cancer Risk",
+    "slug": "uv-damage-skin-cancer-risk",
+    "category": "skin-cancer",
+    "meta_description": "Ultraviolet radiation UV damage DNA mutations and skin cancer risk factors."
+  },
+  {
+    "title": "Skin Cancer Prevention Strategies",
+    "slug": "skin-cancer-prevention",
+    "category": "skin-cancer",
+    "meta_description": "Skin cancer prevention strategies sun avoidance protective clothing sunscreen."
+  },
+  {
+    "title": "Skin Cancer Survival Rates and Prognosis",
+    "slug": "skin-cancer-survival-rates",
+    "category": "skin-cancer",
+    "meta_description": "Skin cancer survival rates prognosis melanoma BCC SCC staging factors."
+  },
+  {
+    "title": "Acne Vulgaris: Causes, Types, and Treatment",
+    "slug": "acne-vulgaris",
+    "category": "skin-conditions",
+    "meta_description": "Acne vulgaris is the most common skin disorder, affecting approximately 85% of people aged 12-24. It occurs when hair follicles become clogged with..."
+  },
+  {
+    "title": "Cystic Acne: Severe Form and Management Strategies",
+    "slug": "cystic-acne",
+    "category": "skin-conditions",
+    "meta_description": "Cystic acne is the most severe form of acne vulgaris, characterized by large, painful, fluid-filled lesions that form deep within the skin."
+  },
+  {
+    "title": "Hormonal Acne: Causes and Targeted Treatments",
+    "slug": "hormonal-acne",
+    "category": "skin-conditions",
+    "meta_description": "Hormonal acne is acne that is predominantly triggered or worsened by hormonal fluctuations, most commonly in women."
+  },
+  {
+    "title": "Eczema (Atopic Dermatitis): Complete Management Guide",
+    "slug": "atopic-dermatitis-eczema",
+    "category": "skin-conditions",
+    "meta_description": "Atopic dermatitis (eczema) is a chronic inflammatory skin condition characterized by intense itching, inflammation, and impaired skin barrier..."
+  },
+  {
+    "title": "Contact Dermatitis: Allergens, Irritants, and Treatment",
+    "slug": "contact-dermatitis",
+    "category": "skin-conditions",
+    "meta_description": "Contact dermatitis is an inflammatory skin reaction caused by direct contact with irritants or allergens."
+  },
+  {
+    "title": "Seborrheic Dermatitis: Scalp and Face Management",
+    "slug": "seborrheic-dermatitis",
+    "category": "skin-conditions",
+    "meta_description": "Seborrheic dermatitis is a chronic, inflammatory skin condition that commonly affects the scalp, face, and other areas with high sebaceous gland..."
+  },
+  {
+    "title": "Plaque Psoriasis: Most Common Type and Comprehensive Treatment",
+    "slug": "plaque-psoriasis",
+    "category": "skin-conditions",
+    "meta_description": "Plaque psoriasis is the most common form of psoriasis, accounting for 80-90% of cases, characterized by raised, inflamed patches with silvery scales."
+  },
+  {
+    "title": "Guttate Psoriasis: Acute Presentation and Management",
+    "slug": "guttate-psoriasis",
+    "category": "skin-conditions",
+    "meta_description": "Guttate psoriasis is characterized by numerous small (usually <1cm), drop-shaped lesions that often appear suddenly, frequently following..."
+  },
+  {
+    "title": "Inverse Psoriasis: Intertriginous Area Management",
+    "slug": "inverse-psoriasis",
+    "category": "skin-conditions",
+    "meta_description": "Inverse (flexural) psoriasis involves smooth plaques occurring in skin folds without the characteristic scaling of plaque psoriasis."
+  },
+  {
+    "title": "Rosacea Type 1: Erythematous-Telangiectatic Subtype",
+    "slug": "rosacea-type-1",
+    "category": "skin-conditions",
+    "meta_description": "Type 1 rosacea (erythematous-telangiectatic) is characterized by persistent flushing, erythema, and visible blood vessels."
+  },
+  {
+    "title": "Rosacea Type 2: Papulopustular Subtype",
+    "slug": "rosacea-type-2",
+    "category": "skin-conditions",
+    "meta_description": "Type 2 rosacea features persistent flushing with papules and pustules resembling acne but without comedones."
+  },
+  {
+    "title": "Rosacea Type 3: Phymatous (Rhinophyma)",
+    "slug": "rosacea-type-3",
+    "category": "skin-conditions",
+    "meta_description": "Type 3 (phymatous) rosacea involves thickening of facial skin, particularly the nose, with enlarged pores and irregular surface nodularity."
+  },
+  {
+    "title": "Rosacea Type 4: Ocular Rosacea",
+    "slug": "rosacea-type-4-ocular",
+    "category": "skin-conditions",
+    "meta_description": "Ocular rosacea involves inflammation of the eyelids, conjunctiva, and related ocular structures, often occurring with facial rosacea."
+  },
+  {
+    "title": "Urticaria (Hives): Acute and Chronic Management",
+    "slug": "urticaria-hives",
+    "category": "skin-conditions",
+    "meta_description": "Urticaria is characterized by transient erythematous wheals caused by mast cell degranulation and increased vascular permeability."
+  },
+  {
+    "title": "Vitiligo: Depigmentation and Treatment Options",
+    "slug": "vitiligo",
+    "category": "skin-conditions",
+    "meta_description": "Vitiligo is a chronic depigmentary disorder characterized by loss of skin pigmentation due to melanocyte destruction or dysfunction."
+  },
+  {
+    "title": "Lichen Planus: Autoimmune Cutaneous and Mucosal Inflammation",
+    "slug": "lichen-planus",
+    "category": "skin-conditions",
+    "meta_description": "Lichen planus is a chronic inflammatory condition affecting skin and mucous membranes, characterized by purple polygonal papules."
+  },
+  {
+    "title": "Pityriasis Rosea: Self-Limited Papulosquamous Eruption",
+    "slug": "pityriasis-rosea",
+    "category": "skin-conditions",
+    "meta_description": "Pityriasis rosea is an acute, self-limited inflammatory exanthem characterized by a herald patch followed by a disseminated rash."
+  },
+  {
+    "title": "Ringworm (Tinea Corporis): Dermatophyte Infection Management",
+    "slug": "ringworm-tinea-corporis",
+    "category": "skin-conditions",
+    "meta_description": "Tinea corporis (ringworm) is a superficial fungal infection of glabrous skin caused by dermatophytes."
+  },
+  {
+    "title": "Cellulitis: Acute Bacterial Skin Infection",
+    "slug": "cellulitis",
+    "category": "skin-conditions",
+    "meta_description": "Cellulitis is an acute, spreading, non-purulent bacterial infection of the dermis and subcutaneous tissue."
+  },
+  {
+    "title": "Impetigo: Superficial Contagious Pyoderma",
+    "slug": "impetigo",
+    "category": "skin-conditions",
+    "meta_description": "Impetigo is a highly contagious superficial bacterial skin infection most common in children, caused by streptococci and/or staphylococci."
+  },
+  {
+    "title": "Herpes Simplex Virus (HSV): Primary Infection and Recurrent Disease",
+    "slug": "herpes-simplex-virus",
+    "category": "skin-conditions",
+    "meta_description": "Herpes simplex virus causes recurrent blistering infections; two species HSV-1 (usually oral) and HSV-2 (usually genital) can affect either site."
+  },
+  {
+    "title": "Herpes Zoster (Shingles): Reactivation Varicella and Treatment",
+    "slug": "herpes-zoster-shingles",
+    "category": "skin-conditions",
+    "meta_description": "Herpes zoster is reactivation of latent varicella-zoster virus resulting in dermatomal vesicular eruption, often with severe pain."
+  },
+  {
+    "title": "Warts (Verruca Vulgaris): Viral Infection and Removal Methods",
+    "slug": "warts-verruca-vulgaris",
+    "category": "skin-conditions",
+    "meta_description": "Warts are benign skin growths caused by human papillomavirus (HPV) infection, characterized by hyperkeratotic papules."
+  },
+  {
+    "title": "Molluscum Contagiosum: Viral Infection with Pearl-Like Lesions",
+    "slug": "molluscum-contagiosum",
+    "category": "skin-conditions",
+    "meta_description": "Molluscum contagiosum is a benign viral infection caused by a poxvirus, presenting as pink-white umbilicated papules."
+  },
+  {
+    "title": "Scabies: Parasitic Mite Infestation and Treatment",
+    "slug": "scabies",
+    "category": "skin-conditions",
+    "meta_description": "Scabies is a contagious skin infestation caused by the human itch mite Sarcoptes scabiei, characterized by intense pruritis."
+  },
+  {
+    "title": "Lupus Skin Manifestations: Cutaneous Involvement in Systemic Disease",
+    "slug": "lupus-skin-manifestations",
+    "category": "skin-conditions",
+    "meta_description": "Cutaneous lupus erythematosus encompasses skin manifestations ranging from localized to systemic forms of lupus."
+  },
+  {
+    "title": "Dermatomyositis: Cutaneous Manifestations and Systemic Implications",
+    "slug": "dermatomyositis",
+    "category": "skin-conditions",
+    "meta_description": "Dermatomyositis is an idiopathic inflammatory myopathy presenting with characteristic cutaneous findings and muscle weakness."
+  },
+  {
+    "title": "Pemphigus Vulgaris: Autoimmune Bullous Disease",
+    "slug": "pemphigus-vulgaris",
+    "category": "skin-conditions",
+    "meta_description": "Pemphigus vulgaris is an autoimmune bullous disease characterized by intraepidermal acantholysis caused by IgG antibodies against desmogleins."
+  },
+  {
+    "title": "Granuloma Annulare: Benign Self-Limited Inflammatory Papules",
+    "slug": "granuloma-annulare",
+    "category": "skin-conditions",
+    "meta_description": "Granuloma annulare is a benign, usually self-limited inflammatory condition presenting as papules arranged in annular configuration."
+  },
+  {
+    "title": "Seborrheic Keratosis: Common Benign Keratotic Lesion",
+    "slug": "seborrheic-keratosis",
+    "category": "skin-conditions",
+    "meta_description": "Seborrheic keratosis is the most common benign skin lesion in older adults, presenting as well-demarcated, warty papules or plaques."
+  },
+  {
+    "title": "Post-Inflammatory Hyperpigmentation: Understanding PIH in Skin of Color",
+    "slug": "post-inflammatory-hyperpigmentation-pih",
+    "category": "skin-of-color",
+    "meta_description": "Learn about post-inflammatory hyperpigmentation (PIH) in dark skin types, causes, clinical features, and evidence-based treatment options."
+  },
+  {
+    "title": "Post-Inflammatory Hypopigmentation in Darker Skin Tones",
+    "slug": "post-inflammatory-hypopigmentation",
+    "category": "skin-of-color",
+    "meta_description": "Understand post-inflammatory hypopigmentation in skin of color, its causes, and evidence-based treatment strategies."
+  },
+  {
+    "title": "Keloid Management in Skin of Color: Comprehensive Clinical Guidelines",
+    "slug": "keloid-management-skin-of-color",
+    "category": "skin-of-color",
+    "meta_description": "Evidence-based comprehensive guide to keloid diagnosis, pathophysiology, and multimodal treatment strategies in darker skin types."
+  },
+  {
+    "title": "Hypertrophic Scars in Dark Skin: Pathophysiology and Management",
+    "slug": "hypertrophic-scars-dark-skin",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive review of hypertrophic scar pathophysiology, risk factors, and evidence-based multimodal management in darker skin."
+  },
+  {
+    "title": "Acne in Skin of Color: Epidemiology, Presentation, and Therapeutic Considerations",
+    "slug": "acne-skin-of-color",
+    "category": "skin-of-color",
+    "meta_description": "Detailed overview of acne pathophysiology, clinical features, and culturally-informed treatment strategies specific to skin of color."
+  },
+  {
+    "title": "Melasma in Darker Skin Tones: Etiology, Diagnosis, and Management",
+    "slug": "melasma-darker-skin-tones",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive analysis of melasma epidemiology, pathophysiology, clinical features, and evidence-based treatment strategies in skin of color."
+  },
+  {
+    "title": "Pseudofolliculitis Barbae (Razor Bumps): Pathogenesis and Management",
+    "slug": "pseudofolliculitis-barbae-razor-bumps",
+    "category": "skin-of-color",
+    "meta_description": "Detailed review of pseudofolliculitis barbae pathophysiology, clinical features, prevention strategies, and evidence-based treatment options."
+  },
+  {
+    "title": "Dermatosis Papulosa Nigra: Clinical Features and Management Options",
+    "slug": "dermatosis-papulosa-nigra",
+    "category": "skin-of-color",
+    "meta_description": "Clinical review of dermatosis papulosa nigra epidemiology, diagnosis, and treatment options for darker skin populations."
+  },
+  {
+    "title": "Acne Keloidalis Nuchae: Pathophysiology and Therapeutic Approaches",
+    "slug": "acne-keloidalis-nuchae",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive overview of acne keloidalis nuchae pathophysiology, clinical presentation, and evidence-based management strategies."
+  },
+  {
+    "title": "Traction Alopecia in Textured Hair: Prevention and Management",
+    "slug": "traction-alopecia-textured-hair",
+    "category": "skin-of-color",
+    "meta_description": "Evidence-based review of traction alopecia epidemiology, pathophysiology, prevention strategies, and management approaches in textured hair."
+  },
+  {
+    "title": "Central Centrifugal Cicatricial Alopecia: Diagnosis and Management",
+    "slug": "central-centrifugal-cicatricial-alopecia",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive clinical guide to central centrifugal cicatricial alopecia pathophysiology, diagnosis, and evidence-based management."
+  },
+  {
+    "title": "Culturally Competent Skincare Routines for Skin of Color",
+    "slug": "culturally-competent-skincare-routines",
+    "category": "skin-of-color",
+    "meta_description": "Evidence-based guide to developing culturally-informed skincare routines tailored to the unique needs of skin of color."
+  },
+  {
+    "title": "Chemical Peels for Skin of Color: Safety and Efficacy Considerations",
+    "slug": "chemical-peels-skin-of-color",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive guide to safe and effective chemical peel use in skin of color, including agent selection, technique, and complication management."
+  },
+  {
+    "title": "Laser Safety and Efficacy in Dark Skin: Technical Considerations",
+    "slug": "laser-safety-dark-skin",
+    "category": "skin-of-color",
+    "meta_description": "Technical guide to laser selection, parameter optimization, and safety considerations for laser therapy in dark skin."
+  },
+  {
+    "title": "Skin Cancer Detection in Dark Skin: Challenges and Clinical Guidance",
+    "slug": "skin-cancer-detection-dark-skin",
+    "category": "skin-of-color",
+    "meta_description": "Clinical guide to skin cancer epidemiology, presentation, detection, and management strategies in dark skin populations."
+  },
+  {
+    "title": "Addressing Disparities in Dermatology: Healthcare Access and Outcomes",
+    "slug": "disparities-dermatology",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive analysis of dermatologic disparities affecting skin of color populations, with strategies for systemic and provider-level change."
+  },
+  {
+    "title": "Vitiligo in Dark Skin: Management Challenges and Treatment Strategies",
+    "slug": "vitiligo-dark-skin",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive review of vitiligo epidemiology, pathophysiology, and evidence-based management strategies specific to dark skin populations."
+  },
+  {
+    "title": "Eczema and Atopic Dermatitis in Skin of Color: Phenotypes and Management",
+    "slug": "eczema-skin-of-color",
+    "category": "skin-of-color",
+    "meta_description": "Clinical review of atopic dermatitis epidemiology, phenotypes, and management strategies specific to skin of color populations."
+  },
+  {
+    "title": "Sunscreen Selection and Use for Melanin-Rich Skin: Comprehensive Guide",
+    "slug": "sunscreen-melanin-rich-skin",
+    "category": "skin-of-color",
+    "meta_description": "Comprehensive guide to sunscreen selection, proper use, and strategies to optimize photoprotection in melanin-rich skin."
+  },
+  {
+    "title": "Hair Care Practices and Dermatologic Health in Textured Hair",
+    "slug": "hair-care-practices-dermatologic-health",
+    "category": "skin-of-color",
+    "meta_description": "Evidence-based guide to hair care practices that support scalp and dermatologic health in textured hair populations."
+  },
+  {
+    "title": "Sunscreen Chemical vs Mineral: Which is Right for You?",
+    "slug": "sunscreen-chemical-vs-mineral",
+    "category": "skincare-science",
+    "meta_description": "Learn the differences between chemical and mineral sunscreens to find the right sun protection for your skin type."
+  },
+  {
+    "title": "SPF Explained: What the Numbers Really Mean",
+    "slug": "spf-explained",
+    "category": "skincare-science",
+    "meta_description": "Understand what SPF numbers mean and how to choose the right sun protection factor for your needs."
+  },
+  {
+    "title": "The Complete Sunscreen Application Guide",
+    "slug": "sunscreen-application-guide",
+    "category": "skincare-science",
+    "meta_description": "Master proper sunscreen application techniques to ensure you receive the full SPF protection."
+  },
+  {
+    "title": "Reef-Safe Sunscreen: Protecting Your Skin and the Ocean",
+    "slug": "reef-safe-sunscreen",
+    "category": "skincare-science",
+    "meta_description": "Discover reef-safe sunscreen options that protect your skin without harming coral reefs and ocean ecosystems."
+  },
+  {
+    "title": "Moisturizers for Every Skin Type: A Comprehensive Guide",
+    "slug": "moisturizers-by-skin-type",
+    "category": "skincare-science",
+    "meta_description": "Find the perfect moisturizer for your skin type with our comprehensive guide to hydration."
+  },
+  {
+    "title": "Retinoids Overview: Everything You Need to Know",
+    "slug": "retinoids-overview",
+    "category": "skincare-science",
+    "meta_description": "Learn about retinoids, their benefits, and how to use them safely for anti-aging and acne."
+  },
+  {
+    "title": "Tretinoin Guide: The Gold Standard Retinoid",
+    "slug": "tretinoin-guide",
+    "category": "skincare-science",
+    "meta_description": "Master tretinoin use with our complete guide covering dosage, application, and managing side effects."
+  },
+  {
+    "title": "Retinol for Beginners: Your Starting Guide",
+    "slug": "retinol-beginners-guide",
+    "category": "skincare-science",
+    "meta_description": "Start your retinol journey with our beginner-friendly guide to safe and effective use."
+  },
+  {
+    "title": "Adapalene: A Gentler Prescription Retinoid",
+    "slug": "adapalene",
+    "category": "skincare-science",
+    "meta_description": "Explore adapalene, a gentler prescription retinoid that effectively treats acne and reduces signs of aging."
+  },
+  {
+    "title": "Glycolic Acid: The Alpha Hydroxy Acid Powerhouse",
+    "slug": "glycolic-acid",
+    "category": "skincare-science",
+    "meta_description": "Master glycolic acid to exfoliate gently and transform your skin texture and tone."
+  },
+  {
+    "title": "Lactic Acid: The Gentle AHA Alternative",
+    "slug": "lactic-acid",
+    "category": "skincare-science",
+    "meta_description": "Discover lactic acid for gentle, effective exfoliation that's ideal for sensitive skin."
+  },
+  {
+    "title": "Salicylic Acid: The Beta Hydroxy Acid for Acne",
+    "slug": "salicylic-acid",
+    "category": "skincare-science",
+    "meta_description": "Learn how salicylic acid works to clear acne and congestion from within pores."
+  },
+  {
+    "title": "Niacinamide: The Multi-Tasking Skincare Ingredient",
+    "slug": "niacinamide",
+    "category": "skincare-science",
+    "meta_description": "Discover why niacinamide is an essential ingredient for balanced, healthy, resilient skin."
+  },
+  {
+    "title": "Vitamin C Serums: Brightening and Antioxidant Benefits",
+    "slug": "vitamin-c-serums",
+    "category": "skincare-science",
+    "meta_description": "Master vitamin C serums for brightening, protection, and reduced hyperpigmentation."
+  },
+  {
+    "title": "Hyaluronic Acid: The Hydration Hero",
+    "slug": "hyaluronic-acid",
+    "category": "skincare-science",
+    "meta_description": "Learn how hyaluronic acid provides deep hydration and plumps fine lines."
+  },
+  {
+    "title": "Ceramides: Rebuilding Your Skin Barrier",
+    "slug": "ceramides",
+    "category": "skincare-science",
+    "meta_description": "Restore your skin barrier with ceramides, the essential lipids that protect and hydrate."
+  },
+  {
+    "title": "Peptides: Building Blocks for Firmer, Younger Skin",
+    "slug": "peptides",
+    "category": "skincare-science",
+    "meta_description": "Harness the power of peptides to signal collagen production and firm skin naturally."
+  },
+  {
+    "title": "Antioxidants in Skincare: Protecting Against Environmental Damage",
+    "slug": "antioxidants-in-skincare",
+    "category": "skincare-science",
+    "meta_description": "Protect your skin from environmental damage with antioxidants that fight free radicals."
+  },
+  {
+    "title": "Double Cleansing: The Complete Makeup and Impurity Removal",
+    "slug": "double-cleansing",
+    "category": "skincare-science",
+    "meta_description": "Master double cleansing to remove all makeup, sunscreen, and impurities thoroughly."
+  },
+  {
+    "title": "Oil Cleansing: Why Oil Works on Oily Skin",
+    "slug": "oil-cleansing",
+    "category": "skincare-science",
+    "meta_description": "Understand why oil cleansing works on all skin types, especially oily and acne-prone skin."
+  },
+  {
+    "title": "Micellar Water: Convenient Cleansing and Makeup Removal",
+    "slug": "micellar-water",
+    "category": "skincare-science",
+    "meta_description": "Discover micellar water for gentle, convenient makeup removal and cleansing."
+  },
+  {
+    "title": "The Perfect Oily Skin Routine: Balancing Shine and Health",
+    "slug": "oily-skin-routine",
+    "category": "skincare-science",
+    "meta_description": "Create a balanced routine for oily skin that controls shine while maintaining hydration."
+  },
+  {
+    "title": "The Perfect Dry Skin Routine: Nourishing and Protecting",
+    "slug": "dry-skin-routine",
+    "category": "skincare-science",
+    "meta_description": "Develop a nourishing dry skin routine with deep hydration and barrier support."
+  },
+  {
+    "title": "The Perfect Combination Skin Routine: Balancing Mixed Needs",
+    "slug": "combination-skin-routine",
+    "category": "skincare-science",
+    "meta_description": "Master combination skin care with a routine that balances oily and dry zones."
+  },
+  {
+    "title": "The Perfect Sensitive Skin Routine: Gentle and Effective",
+    "slug": "sensitive-skin-routine",
+    "category": "skincare-science",
+    "meta_description": "Create a gentle sensitive skin routine that minimizes irritation while supporting barrier health."
+  },
+  {
+    "title": "Ingredient Interactions: When to Combine and When to Separate",
+    "slug": "ingredient-interactions",
+    "category": "skincare-science",
+    "meta_description": "Learn which skincare ingredients work together and which should be used separately."
+  },
+  {
+    "title": "Skin Barrier Repair: Restoring Your Protective Shield",
+    "slug": "skin-barrier-repair",
+    "category": "skincare-science",
+    "meta_description": "Restore your skin barrier with targeted repair strategies and barrier-supporting products."
+  },
+  {
+    "title": "Understanding Your Skin Microbiome: Bacteria That Benefit Your Skin",
+    "slug": "skin-microbiome",
+    "category": "skincare-science",
+    "meta_description": "Learn about your skin microbiome and how to support beneficial bacteria for healthier skin."
+  },
+  {
+    "title": "AHA vs BHA: Choosing the Right Chemical Exfoliant",
+    "slug": "aha-vs-bha",
+    "category": "skincare-science",
+    "meta_description": "Understand AHA vs BHA exfoliants to choose the best chemical exfoliant for your skin."
+  },
+  {
+    "title": "Building Your Basic Skincare Routine: A Beginner's Guide",
+    "slug": "building-basic-skincare-routine",
+    "category": "skincare-science",
+    "meta_description": "Learn the fundamentals of skincare with a simple, effective beginner routine."
+  },
+  {
+    "title": "Hormonal Acne in Women: Causes, Patterns, and Treatment Options",
+    "slug": "hormonal-acne-women",
+    "category": "womens-derm",
+    "meta_description": "Comprehensive guide to hormonal acne in women, including causes, menstrual cycle patterns, and effective treatment strategies for jawline and chin acne."
+  },
+  {
+    "title": "PCOS and Skin: Understanding Androgenic Effects on Dermatology",
+    "slug": "pcos-and-skin",
+    "category": "womens-derm",
+    "meta_description": "PCOS-related skin conditions including acne, hirsutism, and alopecia. Evidence-based dermatological treatments and management strategies for hormonal skin manifestations."
+  },
+  {
+    "title": "Menstrual Cycle and Skin: Hormonal Fluctuations and Dermatological Changes",
+    "slug": "menstrual-cycle-and-skin",
+    "category": "womens-derm",
+    "meta_description": "How menstrual cycle hormonal changes affect skin health, breakouts, and barrier function. Cycle-specific skincare strategies for optimal dermatological outcomes."
+  },
+  {
+    "title": "Melasma: Comprehensive Guide to Hyperpigmentation in Women",
+    "slug": "melasma-comprehensive-guide",
+    "category": "womens-derm",
+    "meta_description": "Melasma causes, pathophysiology, and comprehensive treatment strategies including hydroquinone, lasers, and chemical peels for women with hyperpigmentation."
+  },
+  {
+    "title": "PUPPP: Polymorphous Eruption of Pregnancy",
+    "slug": "puppp-pregnancy-rash",
+    "category": "womens-derm",
+    "meta_description": "PUPPP rash during pregnancy: symptoms, safe treatments, and reassurance. Benign third-trimester eruption distinguishable from other pregnancy dermatoses."
+  },
+  {
+    "title": "Linea Nigra: Pregnancy Pigmentation Changes",
+    "slug": "linea-nigra",
+    "category": "womens-derm",
+    "meta_description": "Linea nigra during pregnancy: dark line on abdomen from hormonal pigmentation. Benign condition that fades postpartum with reassurance and sun protection."
+  },
+  {
+    "title": "Pregnancy Stretch Marks: Prevention and Treatment Strategies",
+    "slug": "pregnancy-stretch-marks",
+    "category": "womens-derm",
+    "meta_description": "Pregnancy stretch marks: prevention strategies, early treatment with topical agents, and postpartum laser options for improving dermal appearance."
+  },
+  {
+    "title": "Safe Skincare During Pregnancy: Evidence-Based Product Recommendations",
+    "slug": "safe-skincare-during-pregnancy",
+    "category": "womens-derm",
+    "meta_description": "Safe skincare ingredients during pregnancy including azelaic acid, niacinamide, and mineral sunscreens. Agents to avoid and pregnancy-safe acne treatments."
+  },
+  {
+    "title": "Safe Skincare While Breastfeeding: Evidence and Recommendations",
+    "slug": "safe-skincare-breastfeeding",
+    "category": "womens-derm",
+    "meta_description": "Safe skincare during breastfeeding including tretinoin, azelaic acid, and oral antibiotics. Evidence-based recommendations for maternal dermatological care."
+  },
+  {
+    "title": "Menopause and Skin Dryness: Causes and Barrier Repair Strategies",
+    "slug": "menopause-skin-dryness",
+    "category": "womens-derm",
+    "meta_description": "Menopausal skin dryness from estrogen decline: barrier repair with ceramides, hyaluronic acid, and niacinamide. HRT effects on skin hydration."
+  },
+  {
+    "title": "Menopause Skin Thinning: Dermal Changes and Anti-Aging Strategies",
+    "slug": "menopause-skin-thinning",
+    "category": "womens-derm",
+    "meta_description": "Menopause skin thinning from collagen loss: tretinoin, peptides, and collagen-stimulating procedures. Anti-aging strategies for dermal atrophy."
+  },
+  {
+    "title": "Hormonal Aging: Estrogen Deficiency and Accelerated Skin Aging",
+    "slug": "hormonal-aging",
+    "category": "womens-derm",
+    "meta_description": "Hormonal aging during menopause: estrogen deficiency accelerating wrinkles and collagen loss. Anti-aging treatments and hormone replacement therapy effects."
+  },
+  {
+    "title": "Birth Control and Skin Effects: Benefits and Risks of Oral Contraceptives",
+    "slug": "birth-control-and-skin-effects",
+    "category": "womens-derm",
+    "meta_description": "Oral contraceptive effects on acne, melasma, and hormonal skin. Low-androgenic progestins and ethinyl estradiol dose for optimal dermatological outcomes."
+  },
+  {
+    "title": "Oral Contraceptives for Acne: Evidence-Based Formulation Selection",
+    "slug": "oral-contraceptives-for-acne",
+    "category": "womens-derm",
+    "meta_description": "FDA-approved oral contraceptives for acne: norgestimate, drospirenone, and norethindrone acetate. Evidence-based formulation selection and combination therapy approaches."
+  },
+  {
+    "title": "Spironolactone for Women: Androgen Blockade for Hormonal Acne and Alopecia",
+    "slug": "spironolactone-for-women",
+    "category": "womens-derm",
+    "meta_description": "Spironolactone for hormonal acne and female hair loss: anti-androgenic mechanism, dosing, monitoring, and side effects in women."
+  },
+  {
+    "title": "Female Pattern Hair Loss: Androgenetic Alopecia in Women",
+    "slug": "female-pattern-hair-loss",
+    "category": "womens-derm",
+    "meta_description": "Female pattern hair loss causes, DHT sensitivity, and treatments: minoxidil, finasteride, spironolactone, and emerging therapies for androgenetic alopecia."
+  },
+  {
+    "title": "Perioral Dermatitis: Recognizing and Treating Perioral Inflammatory Dermatosis",
+    "slug": "perioral-dermatitis",
+    "category": "womens-derm",
+    "meta_description": "Perioral dermatitis: inflammatory papules and pustules around the mouth. Topical corticosteroid cessation and oral antibiotics for treatment and prevention."
+  },
+  {
+    "title": "Pregnancy-Safe Treatments for Acne: Topical and Systemic Options",
+    "slug": "pregnancy-safe-treatments-for-acne",
+    "category": "womens-derm",
+    "meta_description": "Pregnancy-safe acne treatments including azelaic acid, benzoyl peroxide, and erythromycin. Retinoid and isotretinoin teratogenicity and contraindication in pregnancy."
+  },
+  {
+    "title": "Postpartum Skin Changes: Returning to Pre-Pregnancy Dermatology",
+    "slug": "postpartum-skin-changes",
+    "category": "womens-derm",
+    "meta_description": "Postpartum skin changes including acne recurrence, telogen effluvium, melasma fading, and striae evolution. Timeline and management of hormonal normalization."
+  },
+  {
+    "title": "Women's Anti-Aging Guide: Evidence-Based Strategies for Aging Skin",
+    "slug": "womens-anti-aging-guide",
+    "category": "womens-derm",
+    "meta_description": "Women's anti-aging comprehensive guide: tretinoin, sunscreen, peptides, and procedures for photoaging, wrinkles, and hormone-related aging."
+  }
+]

@@ -1,0 +1,309 @@
+{
+  "categories": [
+    {
+      "slug": "skin-conditions",
+      "name": "Skin Conditions & Diseases",
+      "pillar": "medical",
+      "pillar_slug": "medical-dermatology",
+      "description": "Comprehensive coverage of acne, eczema, psoriasis, rosacea, dermatitis, fungal infections, viral infections, and hundreds more skin conditions.",
+      "target_count": 250,
+      "subcategories": [
+        {"slug": "acne", "name": "Acne & Related Conditions"},
+        {"slug": "eczema-dermatitis", "name": "Eczema & Dermatitis"},
+        {"slug": "psoriasis", "name": "Psoriasis"},
+        {"slug": "rosacea", "name": "Rosacea"},
+        {"slug": "fungal-infections", "name": "Fungal Infections"},
+        {"slug": "bacterial-infections", "name": "Bacterial Infections"},
+        {"slug": "viral-infections", "name": "Viral Infections"},
+        {"slug": "autoimmune", "name": "Autoimmune Skin Conditions"},
+        {"slug": "pigmentation", "name": "Pigmentation Disorders"},
+        {"slug": "other-conditions", "name": "Other Skin Conditions"}
+      ]
+    },
+    {
+      "slug": "skin-cancer",
+      "name": "Skin Cancer & Oncology",
+      "pillar": "medical",
+      "pillar_slug": "medical-dermatology",
+      "description": "Expert information on melanoma, basal cell carcinoma, squamous cell carcinoma, precancerous conditions, detection, staging, and treatment options.",
+      "target_count": 120,
+      "subcategories": [
+        {"slug": "melanoma", "name": "Melanoma"},
+        {"slug": "basal-cell", "name": "Basal Cell Carcinoma"},
+        {"slug": "squamous-cell", "name": "Squamous Cell Carcinoma"},
+        {"slug": "rare-cancers", "name": "Rare Skin Cancers"},
+        {"slug": "precancer", "name": "Precancerous Conditions"},
+        {"slug": "detection-screening", "name": "Detection & Screening"},
+        {"slug": "cancer-treatment", "name": "Cancer Treatment"},
+        {"slug": "prevention", "name": "Prevention & UV Protection"}
+      ]
+    },
+    {
+      "slug": "allergies",
+      "name": "Allergies & Immune Skin Disorders",
+      "pillar": "medical",
+      "pillar_slug": "medical-dermatology",
+      "description": "Allergic contact dermatitis, drug eruptions, autoimmune skin diseases, urticaria, biologics, patch testing, and immune-related skin conditions.",
+      "target_count": 100,
+      "subcategories": [
+        {"slug": "contact-dermatitis", "name": "Contact Dermatitis"},
+        {"slug": "drug-reactions", "name": "Drug Reactions"},
+        {"slug": "urticaria", "name": "Urticaria & Angioedema"},
+        {"slug": "autoimmune-allergy", "name": "Autoimmune Disorders"},
+        {"slug": "biologics", "name": "Biologics & Immunotherapy"},
+        {"slug": "allergy-testing", "name": "Allergy Testing"}
+      ]
+    },
+    {
+      "slug": "pediatric",
+      "name": "Pediatric Dermatology",
+      "pillar": "medical",
+      "pillar_slug": "medical-dermatology",
+      "description": "Baby eczema, cradle cap, diaper rash, birthmarks, childhood rashes, genetic skin conditions, and skin care for infants and children.",
+      "target_count": 100,
+      "subcategories": [
+        {"slug": "infant-skin", "name": "Infant Skin Conditions"},
+        {"slug": "childhood-rashes", "name": "Childhood Rashes"},
+        {"slug": "birthmarks", "name": "Birthmarks & Vascular Lesions"},
+        {"slug": "genetic-conditions", "name": "Genetic Skin Conditions"},
+        {"slug": "pediatric-treatments", "name": "Pediatric Treatments"}
+      ]
+    },
+    {
+      "slug": "hair-scalp",
+      "name": "Hair & Scalp Disorders",
+      "pillar": "medical",
+      "pillar_slug": "medical-dermatology",
+      "description": "Androgenetic alopecia, alopecia areata, telogen effluvium, scalp psoriasis, hair loss treatments, PRP therapy, and hair transplant information.",
+      "target_count": 150,
+      "subcategories": [
+        {"slug": "hair-loss", "name": "Hair Loss & Alopecia"},
+        {"slug": "scarring-alopecia", "name": "Scarring Alopecias"},
+        {"slug": "scalp-conditions", "name": "Scalp Conditions"},
+        {"slug": "hair-treatments", "name": "Hair Loss Treatments"},
+        {"slug": "hair-shaft", "name": "Hair Shaft Disorders"}
+      ]
+    },
+    {
+      "slug": "nails",
+      "name": "Nail Conditions",
+      "pillar": "medical",
+      "pillar_slug": "medical-dermatology",
+      "description": "Fungal nails, ingrown toenails, nail psoriasis, nail melanoma, brittle nails, and comprehensive nail disorder information.",
+      "target_count": 80,
+      "subcategories": [
+        {"slug": "nail-infections", "name": "Nail Infections"},
+        {"slug": "nail-disorders", "name": "Nail Disorders"},
+        {"slug": "nail-cosmetic", "name": "Nail Appearance Issues"},
+        {"slug": "nail-surgery", "name": "Nail Surgery & Treatment"}
+      ]
+    },
+    {
+      "slug": "skin-of-color",
+      "name": "Ethnic & Skin of Color Dermatology",
+      "pillar": "medical",
+      "pillar_slug": "medical-dermatology",
+      "description": "Post-inflammatory hyperpigmentation, keloids, acne in skin of color, culturally competent care, and dermatology disparities.",
+      "target_count": 80,
+      "subcategories": [
+        {"slug": "hyperpigmentation", "name": "Hyperpigmentation"},
+        {"slug": "keloids-scarring", "name": "Keloids & Scarring"},
+        {"slug": "textured-hair", "name": "Textured Hair Care"},
+        {"slug": "disparities", "name": "Health Disparities"},
+        {"slug": "culturally-competent", "name": "Culturally Competent Care"}
+      ]
+    },
+    {
+      "slug": "mohs-surgery",
+      "name": "Mohs & Skin Cancer Surgery",
+      "pillar": "surgical",
+      "pillar_slug": "surgical-dermatology",
+      "description": "Mohs micrographic surgery, excisional surgery, skin flaps and grafts, wound care, scar management, and skin cancer surgical techniques.",
+      "target_count": 100,
+      "subcategories": [
+        {"slug": "mohs-technique", "name": "Mohs Surgery Technique"},
+        {"slug": "excision", "name": "Excisional Surgery"},
+        {"slug": "flaps-grafts", "name": "Flaps & Grafts"},
+        {"slug": "wound-care-surgical", "name": "Wound Care"},
+        {"slug": "reconstruction", "name": "Reconstruction"}
+      ]
+    },
+    {
+      "slug": "procedures",
+      "name": "Surgical Procedures & Techniques",
+      "pillar": "surgical",
+      "pillar_slug": "surgical-dermatology",
+      "description": "Mole removal, cyst excision, lipoma removal, scar revision, dermabrasion, hidradenitis surgery, and all dermatologic surgical procedures.",
+      "target_count": 100,
+      "subcategories": [
+        {"slug": "lesion-removal", "name": "Lesion Removal"},
+        {"slug": "cyst-lipoma", "name": "Cyst & Lipoma Surgery"},
+        {"slug": "scar-revision", "name": "Scar Revision"},
+        {"slug": "specialized-surgery", "name": "Specialized Surgery"},
+        {"slug": "nail-surgery-proc", "name": "Nail Surgery"}
+      ]
+    },
+    {
+      "slug": "pre-post-op",
+      "name": "Pre- & Post-Surgical Care",
+      "pillar": "surgical",
+      "pillar_slug": "surgical-dermatology",
+      "description": "Preparing for dermatologic surgery, wound healing, suture care, infection prevention, managing surgical scars, and complication management.",
+      "target_count": 60,
+      "subcategories": [
+        {"slug": "pre-op", "name": "Pre-Operative Care"},
+        {"slug": "post-op", "name": "Post-Operative Care"},
+        {"slug": "wound-healing", "name": "Wound Healing"},
+        {"slug": "complications", "name": "Complications & Management"}
+      ]
+    },
+    {
+      "slug": "injectables",
+      "name": "Injectables & Neurotoxins",
+      "pillar": "cosmetic",
+      "pillar_slug": "cosmetic-dermatology",
+      "description": "Botox, Dysport, dermal fillers, lip augmentation, cheek enhancement, PRP injections, and all injectable cosmetic treatments.",
+      "target_count": 120,
+      "subcategories": [
+        {"slug": "neurotoxins", "name": "Neurotoxins (Botox, Dysport)"},
+        {"slug": "dermal-fillers", "name": "Dermal Fillers"},
+        {"slug": "lip-treatments", "name": "Lip Treatments"},
+        {"slug": "facial-contouring", "name": "Facial Contouring"},
+        {"slug": "biostimulators", "name": "Biostimulators"},
+        {"slug": "injectable-safety", "name": "Safety & Complications"}
+      ]
+    },
+    {
+      "slug": "lasers",
+      "name": "Laser & Energy-Based Treatments",
+      "pillar": "cosmetic",
+      "pillar_slug": "cosmetic-dermatology",
+      "description": "CO2 lasers, IPL, radiofrequency microneedling, Morpheus8, Ultherapy, laser hair removal, tattoo removal, and all energy-based treatments.",
+      "target_count": 120,
+      "subcategories": [
+        {"slug": "ablative-lasers", "name": "Ablative Lasers"},
+        {"slug": "non-ablative", "name": "Non-Ablative Lasers"},
+        {"slug": "ipl-bbl", "name": "IPL & BBL"},
+        {"slug": "radiofrequency", "name": "Radiofrequency Treatments"},
+        {"slug": "hair-removal", "name": "Laser Hair Removal"},
+        {"slug": "tattoo-removal", "name": "Tattoo Removal"}
+      ]
+    },
+    {
+      "slug": "rejuvenation",
+      "name": "Skin Rejuvenation & Anti-Aging",
+      "pillar": "cosmetic",
+      "pillar_slug": "cosmetic-dermatology",
+      "description": "Chemical peels, microneedling, HydraFacial, thread lifts, PRP vampire facial, anti-aging treatments by age, and non-surgical facelift options.",
+      "target_count": 120,
+      "subcategories": [
+        {"slug": "chemical-peels", "name": "Chemical Peels"},
+        {"slug": "microneedling", "name": "Microneedling"},
+        {"slug": "facials", "name": "Medical Facials"},
+        {"slug": "thread-lifts", "name": "Thread Lifts"},
+        {"slug": "anti-aging-plans", "name": "Anti-Aging By Age"},
+        {"slug": "combination-treatments", "name": "Combination Treatments"}
+      ]
+    },
+    {
+      "slug": "body-contouring",
+      "name": "Body Contouring & Specialized Cosmetic",
+      "pillar": "cosmetic",
+      "pillar_slug": "cosmetic-dermatology",
+      "description": "CoolSculpting, Emsculpt, cellulite treatments, stretch marks, spider vein treatment, excessive sweating solutions, and body sculpting procedures.",
+      "target_count": 80,
+      "subcategories": [
+        {"slug": "fat-reduction", "name": "Non-Invasive Fat Reduction"},
+        {"slug": "cellulite", "name": "Cellulite Treatments"},
+        {"slug": "body-skin", "name": "Body Skin Treatments"},
+        {"slug": "vein-treatment", "name": "Vein Treatments"},
+        {"slug": "hyperhidrosis", "name": "Excessive Sweating"}
+      ]
+    },
+    {
+      "slug": "skincare-science",
+      "name": "Skincare Science & Prevention",
+      "pillar": "general",
+      "pillar_slug": "skincare",
+      "description": "Sunscreen, retinoids, AHAs/BHAs, skincare routines, ingredient science, barrier repair, skin microbiome, and evidence-based skincare.",
+      "target_count": 150,
+      "subcategories": [
+        {"slug": "sun-protection", "name": "Sun Protection"},
+        {"slug": "active-ingredients", "name": "Active Ingredients"},
+        {"slug": "skincare-routines", "name": "Skincare Routines"},
+        {"slug": "cleansing", "name": "Cleansing & Moisturizing"},
+        {"slug": "barrier-microbiome", "name": "Barrier & Microbiome"}
+      ]
+    },
+    {
+      "slug": "mens-derm",
+      "name": "Men's Dermatology",
+      "pillar": "general",
+      "pillar_slug": "skincare",
+      "description": "Razor bumps, male pattern baldness, men's skincare routines, male Botox, sports dermatology, and men's skin health topics.",
+      "target_count": 80,
+      "subcategories": [
+        {"slug": "mens-skin", "name": "Men's Skin Issues"},
+        {"slug": "mens-hair", "name": "Men's Hair Loss"},
+        {"slug": "mens-routines", "name": "Men's Skincare Routines"},
+        {"slug": "mens-cosmetic", "name": "Men's Cosmetic Treatments"}
+      ]
+    },
+    {
+      "slug": "womens-derm",
+      "name": "Women's Dermatology",
+      "pillar": "general",
+      "pillar_slug": "skincare",
+      "description": "Hormonal acne, melasma, pregnancy skin changes, menopause and skin, female pattern hair loss, and women's dermatology topics.",
+      "target_count": 80,
+      "subcategories": [
+        {"slug": "hormonal-skin", "name": "Hormonal Skin Issues"},
+        {"slug": "pregnancy-skin", "name": "Pregnancy & Skin"},
+        {"slug": "menopause-skin", "name": "Menopause & Skin"},
+        {"slug": "womens-hair", "name": "Women's Hair Loss"}
+      ]
+    },
+    {
+      "slug": "lifestyle",
+      "name": "Lifestyle & Skin Health",
+      "pillar": "general",
+      "pillar_slug": "skincare",
+      "description": "Diet and skin, stress effects, sleep and skin repair, exercise, pollution damage, smoking, blue light, travel skincare, and seasonal adjustments.",
+      "target_count": 80,
+      "subcategories": [
+        {"slug": "diet-skin", "name": "Diet & Skin"},
+        {"slug": "stress-sleep", "name": "Stress & Sleep"},
+        {"slug": "environment", "name": "Environmental Factors"},
+        {"slug": "seasonal", "name": "Seasonal Skincare"}
+      ]
+    },
+    {
+      "slug": "myths",
+      "name": "Dermatology Myths vs Facts",
+      "pillar": "general",
+      "pillar_slug": "skincare",
+      "description": "Myth-busting articles covering common misconceptions about sunscreen, natural remedies, laser safety, Botox, acne, tanning, and more.",
+      "target_count": 80,
+      "subcategories": [
+        {"slug": "sunscreen-myths", "name": "Sunscreen Myths"},
+        {"slug": "treatment-myths", "name": "Treatment Myths"},
+        {"slug": "skincare-myths", "name": "Skincare Myths"},
+        {"slug": "cosmetic-myths", "name": "Cosmetic Procedure Myths"}
+      ]
+    },
+    {
+      "slug": "procedures-az",
+      "name": "Procedures A-Z Reference",
+      "pillar": "general",
+      "pillar_slug": "skincare",
+      "description": "Alphabetical encyclopedia of every major medical, surgical, and cosmetic dermatology procedure with details on what to expect, recovery, costs, and risks.",
+      "target_count": 50,
+      "subcategories": [
+        {"slug": "procedures-a-f", "name": "Procedures A-F"},
+        {"slug": "procedures-g-m", "name": "Procedures G-M"},
+        {"slug": "procedures-n-s", "name": "Procedures N-S"},
+        {"slug": "procedures-t-z", "name": "Procedures T-Z"}
+      ]
+    }
+  ]
+}

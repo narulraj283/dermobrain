@@ -1,0 +1,183 @@
+[
+  {
+    "id": 1,
+    "title": "Complete Guide to Acne: Types, Causes, and Treatment",
+    "slug": "complete-guide-acne",
+    "category": "Acne & Breakouts",
+    "tags": [
+      "acne",
+      "breakouts",
+      "treatment",
+      "skincare"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Understanding Psoriasis: A Comprehensive Guide",
+    "slug": "understanding-psoriasis",
+    "category": "Chronic Skin Conditions",
+    "tags": [
+      "psoriasis",
+      "autoimmune",
+      "chronic",
+      "treatment"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Skin Cancer Prevention: The Complete Guide",
+    "slug": "skin-cancer-prevention-guide",
+    "category": "Skin Cancer & Prevention",
+    "tags": [
+      "skin cancer",
+      "prevention",
+      "UV protection",
+      "melanoma"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "The Ultimate Anti-Aging Guide",
+    "slug": "ultimate-anti-aging-guide",
+    "category": "Anti-Aging & Rejuvenation",
+    "tags": [
+      "anti-aging",
+      "wrinkles",
+      "fine lines",
+      "rejuvenation"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Eczema Management: From Diagnosis to Treatment",
+    "slug": "eczema-management-guide",
+    "category": "Chronic Skin Conditions",
+    "tags": [
+      "eczema",
+      "atopic dermatitis",
+      "inflammation",
+      "barrier repair"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Complete Guide to Botox and Fillers",
+    "slug": "botox-fillers-guide",
+    "category": "Injectables & Procedures",
+    "tags": [
+      "botox",
+      "fillers",
+      "injectables",
+      "cosmetic"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Hair Loss: Understanding, Prevention, and Treatment",
+    "slug": "hair-loss-guide",
+    "category": "Hair & Scalp Health",
+    "tags": [
+      "hair loss",
+      "alopecia",
+      "minoxidil",
+      "treatment"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Laser Treatment Guide: Everything You Need to Know",
+    "slug": "laser-treatment-guide",
+    "category": "Laser & Light Therapies",
+    "tags": [
+      "laser",
+      "light therapy",
+      "resurfacing",
+      "hair removal"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Melanoma: Early Detection and Treatment Guide",
+    "slug": "melanoma-guide",
+    "category": "Skin Cancer & Prevention",
+    "tags": [
+      "melanoma",
+      "skin cancer",
+      "detection",
+      "treatment"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Rosacea: Complete Management Guide",
+    "slug": "rosacea-management-guide",
+    "category": "Chronic Skin Conditions",
+    "tags": [
+      "rosacea",
+      "flushing",
+      "acne-like",
+      "chronic"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Skincare Routine Guide: Building Your Perfect Regimen",
+    "slug": "skincare-routine-guide",
+    "category": "Skincare Basics",
+    "tags": [
+      "skincare",
+      "routine",
+      "products",
+      "beauty"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Understanding Chemical Peels: Types and Benefits",
+    "slug": "chemical-peels-guide",
+    "category": "Chemical & Peel Treatments",
+    "tags": [
+      "chemical peels",
+      "acids",
+      "AHA",
+      "BHA",
+      "glycolic"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Mohs Surgery: The Complete Patient Guide",
+    "slug": "mohs-surgery-guide",
+    "category": "Surgical Treatment",
+    "tags": [
+      "mohs surgery",
+      "skin cancer",
+      "surgical removal",
+      "reconstruction"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Sun Protection: The Definitive Guide",
+    "slug": "sun-protection-guide",
+    "category": "Skin Cancer & Prevention",
+    "tags": [
+      "sun protection",
+      "sunscreen",
+      "UV",
+      "photoprotection"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Skin of Color: A Dermatology Guide",
+    "slug": "skin-of-color-guide",
+    "category": "Skin of Color Health",
+    "tags": [
+      "skin of color",
+      "pigmentation",
+      "keloids",
+      "dark skin"
+    ]
+  }
+]

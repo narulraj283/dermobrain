@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Health Quiz - DermoBrain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f1 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(26, 107, 84, 0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1A6B54;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1A6B54, #E8734A);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+        }
+
+        .quiz-section {
+            display: none;
+        }
+
+        .quiz-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1A6B54;
+            margin-bottom: 25px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .option:hover {
+            border-color: #1A6B54;
+            background: #f9fffe;
+        }
+
+        .option.selected {
+            border-color: #1A6B54;
+            background: #f0f8f5;
+            color: #1A6B54;
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-next {
+            background: #1A6B54;
+            color: white;
+        }
+
+        .btn-next:hover:not(:disabled) {
+            background: #135140;
+            box-shadow: 0 4px 12px rgba(26, 107, 84, 0.3);
+        }
+
+        .btn-next:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-prev {
+            background: #e8e8e8;
+            color: #333;
+        }
+
+        .btn-prev:hover {
+            background: #d0d0d0;
+        }
+
+        .results-section {
+            text-align: center;
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1A6B54, #E8734A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 8px 20px rgba(26, 107, 84, 0.2);
+        }
+
+        .score-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .score-label {
+            font-size: 14px;
+            color: white;
+            margin-top: 5px;
+        }
+
+        .score-interpretation {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1A6B54;
+            margin-bottom: 20px;
+        }
+
+        .recommendations {
+            background: #f9fffe;
+            border-left: 4px solid #1A6B54;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .recommendations h3 {
+            color: #1A6B54;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .recommendations ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .recommendations li {
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .recommendations li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #E8734A;
+            font-weight: bold;
+        }
+
+        .email-section {
+            background: #f9fffe;
+            border: 2px solid #1A6B54;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .email-section h3 {
+            color: #1A6B54;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .form-group:last-of-type {
+            margin-bottom: 0;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #1A6B54;
+            box-shadow: 0 0 0 3px rgba(26, 107, 84, 0.1);
+        }
+
+        .btn-submit {
+            background: #E8734A;
+            color: white;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .btn-submit:hover {
+            background: #d55e35;
+            box-shadow: 0 4px 12px rgba(232, 115, 74, 0.3);
+        }
+
+        .btn-retake {
+            background: #1A6B54;
+            color: white;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn-retake:hover {
+            background: #135140;
+        }
+
+        .success-message {
+            color: #27AE60;
+            font-size: 14px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+
+            .question {
+                font-size: 16px;
+            }
+
+            .option {
+                padding: 14px;
+                font-size: 13px;
+            }
+
+            .score-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .score-number {
+                font-size: 40px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Quiz Section -->
+        <div id="quizContainer">
+            <div class="header">
+                <div class="logo">DermoBrain</div>
+                <div class="subtitle">Skin Health Assessment</div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Question 1 of 12</div>
+
+            <div class="quiz-section active" id="quiz-0">
+                <div class="question">How often do you wear sunscreen daily?</div>
+                <div class="options">
+                    <div class="option" data-value="0">Never or rarely</div>
+                    <div class="option" data-value="3">Sometimes (a few times a week)</div>
+                    <div class="option" data-value="5">Most days</div>
+                    <div class="option" data-value="10">Every day, year-round</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-1">
+                <div class="question">How much time do you spend in the sun weekly?</div>
+                <div class="options">
+                    <div class="option" data-value="10">Less than 1 hour</div>
+                    <div class="option" data-value="5">1-5 hours</div>
+                    <div class="option" data-value="3">5-10 hours</div>
+                    <div class="option" data-value="0">More than 10 hours</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-2">
+                <div class="question">Do you have a regular skincare routine?</div>
+                <div class="options">
+                    <div class="option" data-value="0">No routine at all</div>
+                    <div class="option" data-value="5">Basic routine (wash & moisturize)</div>
+                    <div class="option" data-value="8">Comprehensive routine (cleanse, treat, moisturize, SPF)</div>
+                    <div class="option" data-value="10">Advanced routine with professional treatments</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-3">
+                <div class="question">How often do you cleanse your face?</div>
+                <div class="options">
+                    <div class="option" data-value="0">Less than once daily</div>
+                    <div class="option" data-value="5">Once daily</div>
+                    <div class="option" data-value="8">Twice daily</div>
+                    <div class="option" data-value="10">Twice daily with proper technique</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-4">
+                <div class="question">How would you describe your skin type?</div>
+                <div class="options">
+                    <div class="option" data-value="5">Oily</div>
+                    <div class="option" data-value="7">Combination</div>
+                    <div class="option" data-value="7">Normal</div>
+                    <div class="option" data-value="6">Dry or Sensitive</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-5">
+                <div class="question">Do you have a family history of skin cancer or melanoma?</div>
+                <div class="options">
+                    <div class="option" data-value="0">Yes, multiple family members</div>
+                    <div class="option" data-value="2">Yes, one family member</div>
+                    <div class="option" data-value="5">No known family history</div>
+                    <div class="option" data-value="8">Unknown</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-6">
+                <div class="question">How many moles do you have on your body?</div>
+                <div class="options">
+                    <div class="option" data-value="0">More than 50</div>
+                    <div class="option" data-value="3">20-50</div>
+                    <div class="option" data-value="5">10-20</div>
+                    <div class="option" data-value="8">Less than 10</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-7">
+                <div class="question">Do you use any active skincare ingredients (retinol, vitamin C, acids)?</div>
+                <div class="options">
+                    <div class="option" data-value="0">Never</div>
+                    <div class="option" data-value="5">Occasionally</div>
+                    <div class="option" data-value="8">Regularly (2-3 times weekly)</div>
+                    <div class="option" data-value="10">Consistently as part of routine</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-8">
+                <div class="question">Have you had a professional skin check in the last year?</div>
+                <div class="options">
+                    <div class="option" data-value="0">Never had one</div>
+                    <div class="option" data-value="3">More than 2 years ago</div>
+                    <div class="option" data-value="7">1-2 years ago</div>
+                    <div class="option" data-value="10">Within the last year</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-9">
+                <div class="question">What skin concerns do you currently have? (Select the most pressing)</div>
+                <div class="options">
+                    <div class="option" data-value="2">Acne or breakouts</div>
+                    <div class="option" data-value="4">Dark spots or hyperpigmentation</div>
+                    <div class="option" data-value="4">Fine lines or wrinkles</div>
+                    <div class="option" data-value="5">No major concerns</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-10">
+                <div class="question">How often do you exfoliate your skin?</div>
+                <div class="options">
+                    <div class="option" data-value="0">Never</div>
+                    <div class="option" data-value="4">Occasionally (less than monthly)</div>
+                    <div class="option" data-value="6">Weekly</div>
+                    <div class="option" data-value="8">2-3 times weekly</div>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quiz-11">
+                <div class="question">How much water do you typically drink daily?</div>
+                <div class="options">
+                    <div class="option" data-value="2">Less than 4 glasses</div>
+                    <div class="option" data-value="5">4-6 glasses</div>
+                    <div class="option" data-value="8">7-8 glasses</div>
+                    <div class="option" data-value="10">More than 8 glasses</div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-prev" id="prevBtn" style="display: none;" onclick="previousQuestion()">Previous</button>
+                <button class="btn-next" id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsContainer" class="results-section">
+            <div class="score-circle">
+                <div>
+                    <div class="score-number" id="scoreValue">0</div>
+                    <div class="score-label">Score</div>
+                </div>
+            </div>
+
+            <div class="score-interpretation" id="scoreInterpretation"></div>
+
+            <div class="recommendations">
+                <h3>Your Personalized Recommendations:</h3>
+                <ul id="recommendationsList"></ul>
+            </div>
+
+            <div class="email-section">
+                <h3>Get Your Personalized Skin Report</h3>
+                <form id="emailForm" onsubmit="handleEmailSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" id="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Send My Report</button>
+                    <div class="success-message" id="successMessage">Report sent! Check your email.</div>
+                </form>
+            </div>
+
+            <button class="btn-retake" onclick="retakeQuiz()">Retake Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const totalQuestions = 12;
+        const answers = [];
+
+        const recommendations = {
+            excellent: [
+                "Continue your excellent skincare habits - you're on the right track!",
+                "Schedule regular professional skin check-ups annually",
+                "Consider advanced treatments to maintain your skin health",
+                "Stay consistent with sun protection and skincare routine"
+            ],
+            good: [
+                "Enhance your skincare routine with targeted active ingredients",
+                "Schedule a professional skin check if you haven't in over a year",
+                "Increase sun protection habits - aim for daily SPF application",
+                "Consider adding antioxidants and vitamin C to your routine"
+            ],
+            fair: [
+                "Establish a consistent daily skincare routine (cleanse, treat, moisturize, SPF)",
+                "Schedule a professional skin assessment soon",
+                "Start using sunscreen daily - this is critical for skin health",
+                "Add one active ingredient to your routine (retinol or vitamin C)"
+            ],
+            poor: [
+                "Consult with a dermatologist to address current skin concerns",
+                "Start with a basic skincare routine: cleanser, moisturizer, and sunscreen",
+                "Make sun protection your #1 priority - use SPF daily",
+                "Schedule professional skin screening to establish baseline health"
+            ]
+        };
+
+        function getInterpretation(score) {
+            if (score >= 80) return { level: "Excellent", category: "excellent" };
+            if (score >= 60) return { level: "Good", category: "good" };
+            if (score >= 40) return { level: "Fair", category: "fair" };
+            return { level: "Poor", category: "poor" };
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion) / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Question ${currentQuestion + 1} of ${totalQuestions}`;
+        }
+
+        function showQuestion(index) {
+            document.querySelectorAll('.quiz-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(`quiz-${index}`).classList.add('active');
+
+            const options = document.querySelectorAll(`#quiz-${index} .option`);
+            options.forEach(option => {
+                option.classList.remove('selected');
+                option.onclick = function() {
+                    options.forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    answers[index] = parseInt(this.dataset.value);
+                    document.getElementById('nextBtn').disabled = false;
+                };
+
+                if (answers[index] !== undefined) {
+                    const value = parseInt(option.dataset.value);
+                    if (value === answers[index]) {
+                        option.classList.add('selected');
+                    }
+                }
+            });
+
+            document.getElementById('prevBtn').style.display = currentQuestion === 0 ? 'none' : 'block';
+            document.getElementById('nextBtn').textContent = currentQuestion === totalQuestions - 1 ? 'See Results' : 'Next';
+
+            if (answers[index] === undefined) {
+                document.getElementById('nextBtn').disabled = true;
+            }
+
+            updateProgress();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function showResults() {
+            const score = answers.reduce((a, b) => a + b, 0);
+            const interpretation = getInterpretation(score);
+
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('resultsContainer').classList.add('active');
+
+            document.getElementById('scoreValue').textContent = score;
+            document.getElementById('scoreInterpretation').textContent = `Your Skin Health Score: ${interpretation.level}`;
+
+            const recList = document.getElementById('recommendationsList');
+            recList.innerHTML = '';
+            recommendations[interpretation.category].forEach(rec => {
+                const li = document.createElement('li');
+                li.textContent = rec;
+                recList.appendChild(li);
+            });
+        }
+
+        function retakeQuiz() {
+            currentQuestion = 0;
+            answers.length = 0;
+            document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('quizContainer').style.display = 'block';
+            document.getElementById('emailForm').reset();
+            document.getElementById('successMessage').style.display = 'none';
+            showQuestion(0);
+        }
+
+        function handleEmailSubmit(e) {
+            e.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const email = document.getElementById('email').value;
+            const score = document.getElementById('scoreValue').textContent;
+
+            console.log('Form submitted:', { firstName, email, score });
+
+            document.getElementById('emailForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+
+            setTimeout(() => {
+                document.getElementById('emailForm').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('emailForm').reset();
+            }, 3000);
+        }
+
+        // Initialize
+        showQuestion(0);
+    </script>
+</body>
+</html>

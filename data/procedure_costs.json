@@ -1,0 +1,302 @@
+[
+  {
+    "name": "Skin Cancer Screening",
+    "slug": "skin-cancer-screening",
+    "category": "medical",
+    "cost_low": 100,
+    "cost_high": 300,
+    "cost_unit": "per visit",
+    "description": "Full-body skin examination by dermatologist to detect signs of skin cancer and precancerous lesions.",
+    "factors": ["provider expertise", "geographic location", "clinic type"]
+  },
+  {
+    "name": "Mole Removal (Non-Surgical)",
+    "slug": "mole-removal",
+    "category": "medical",
+    "cost_low": 150,
+    "cost_high": 500,
+    "cost_unit": "per mole",
+    "description": "Professional removal of benign moles through laser or radiofrequency techniques.",
+    "factors": ["mole size", "depth", "location", "number of moles"]
+  },
+  {
+    "name": "Skin Biopsy",
+    "slug": "skin-biopsy",
+    "category": "medical",
+    "cost_low": 200,
+    "cost_high": 600,
+    "cost_unit": "per sample",
+    "description": "Tissue sample extraction for laboratory analysis to diagnose skin conditions and cancer.",
+    "factors": ["biopsy type", "pathology analysis", "sample location"]
+  },
+  {
+    "name": "Patch Testing",
+    "slug": "patch-testing",
+    "category": "medical",
+    "cost_low": 250,
+    "cost_high": 800,
+    "cost_unit": "per test",
+    "description": "Allergy testing to identify contact dermatitis triggers and allergens affecting skin.",
+    "factors": ["number of allergens tested", "follow-up visits"]
+  },
+  {
+    "name": "Acne Treatment (Chemical Peel)",
+    "slug": "acne-chemical-peel",
+    "category": "medical",
+    "cost_low": 100,
+    "cost_high": 400,
+    "cost_unit": "per session",
+    "description": "Chemical solution application to treat acne, reduce scars, and improve skin texture.",
+    "factors": ["peel strength", "area size", "number of sessions"]
+  },
+  {
+    "name": "Wart Removal",
+    "slug": "wart-removal",
+    "category": "medical",
+    "cost_low": 100,
+    "cost_high": 400,
+    "cost_unit": "per wart",
+    "description": "Removal of common, plantar, or genital warts using laser, cryotherapy, or topical treatments.",
+    "factors": ["wart type", "removal method", "size and number"]
+  },
+  {
+    "name": "Cyst Removal",
+    "slug": "cyst-removal",
+    "category": "surgical",
+    "cost_low": 300,
+    "cost_high": 1000,
+    "cost_unit": "per cyst",
+    "description": "Surgical excision of epidermal, sebaceous, or other benign skin cysts.",
+    "factors": ["cyst size", "location", "complexity", "pathology"]
+  },
+  {
+    "name": "Mohs Micrographic Surgery",
+    "slug": "mohs-surgery",
+    "category": "surgical",
+    "cost_low": 1000,
+    "cost_high": 4000,
+    "cost_unit": "per procedure",
+    "description": "Precision surgical technique for removing skin cancer with minimal damage to healthy tissue. High cure rates.",
+    "factors": ["tumor size", "location", "complexity", "reconstruction needed"]
+  },
+  {
+    "name": "Skin Excision",
+    "slug": "skin-excision",
+    "category": "surgical",
+    "cost_low": 400,
+    "cost_high": 1500,
+    "cost_unit": "per lesion",
+    "description": "Surgical removal of suspicious or unwanted skin lesions with closure and possible reconstruction.",
+    "factors": ["lesion size", "depth", "location", "reconstruction complexity"]
+  },
+  {
+    "name": "Scar Revision Surgery",
+    "slug": "scar-revision",
+    "category": "surgical",
+    "cost_low": 800,
+    "cost_high": 3000,
+    "cost_unit": "per procedure",
+    "description": "Surgical techniques to minimize appearance of scars through excision, grafting, or tissue rearrangement.",
+    "factors": ["scar size", "location", "age of scar", "revision technique"]
+  },
+  {
+    "name": "Botox Treatment",
+    "slug": "botox",
+    "category": "cosmetic",
+    "cost_low": 200,
+    "cost_high": 600,
+    "cost_unit": "per area",
+    "description": "Botulinum toxin injections to reduce dynamic wrinkles and fine lines on forehead, eyes, and between brows.",
+    "factors": ["number of units", "provider expertise", "geographic location"]
+  },
+  {
+    "name": "Dermal Fillers",
+    "slug": "dermal-fillers",
+    "category": "cosmetic",
+    "cost_low": 300,
+    "cost_high": 800,
+    "cost_unit": "per syringe",
+    "description": "Injectable gels (hyaluronic acid, calcium hydroxylapatite) to add volume, fill wrinkles, and enhance facial contours.",
+    "factors": ["filler type", "syringe quantity", "brand reputation"]
+  },
+  {
+    "name": "Laser Resurfacing",
+    "slug": "laser-resurfacing",
+    "category": "cosmetic",
+    "cost_low": 500,
+    "cost_high": 3500,
+    "cost_unit": "per session",
+    "description": "Fractional or ablative laser treatment to improve skin texture, reduce wrinkles, scars, and sun damage.",
+    "factors": ["laser type", "intensity level", "area treated", "number of sessions"]
+  },
+  {
+    "name": "Chemical Peel (Cosmetic)",
+    "slug": "chemical-peel-cosmetic",
+    "category": "cosmetic",
+    "cost_low": 150,
+    "cost_high": 600,
+    "cost_unit": "per session",
+    "description": "Application of chemical solution to exfoliate and rejuvenate skin, reducing hyperpigmentation and fine lines.",
+    "factors": ["peel depth", "area size", "peel type"]
+  },
+  {
+    "name": "Microneedling",
+    "slug": "microneedling",
+    "category": "cosmetic",
+    "cost_low": 200,
+    "cost_high": 700,
+    "cost_unit": "per session",
+    "description": "Collagen-induction therapy using fine needles to reduce scars, wrinkles, and improve skin texture.",
+    "factors": ["needle depth", "session duration", "additional serums"]
+  },
+  {
+    "name": "Microdermabrasion",
+    "slug": "microdermabrasion",
+    "category": "cosmetic",
+    "cost_low": 100,
+    "cost_high": 400,
+    "cost_unit": "per session",
+    "description": "Mechanical exfoliation using abrasive crystals to polish skin and reduce fine lines, acne scars, and sun damage.",
+    "factors": ["machine type", "intensity", "area treated"]
+  },
+  {
+    "name": "Laser Hair Removal",
+    "slug": "laser-hair-removal",
+    "category": "cosmetic",
+    "cost_low": 200,
+    "cost_high": 1000,
+    "cost_unit": "per session",
+    "description": "Laser treatment to permanently reduce unwanted hair growth on face and body through multiple sessions.",
+    "factors": ["area size", "hair color and density", "skin type", "number of sessions"]
+  },
+  {
+    "name": "IPL Photofacial",
+    "slug": "ipl-photofacial",
+    "category": "cosmetic",
+    "cost_low": 300,
+    "cost_high": 1000,
+    "cost_unit": "per session",
+    "description": "Intense pulsed light treatment to reduce age spots, redness, broken capillaries, and improve overall skin tone.",
+    "factors": ["machine type", "coverage area", "number of sessions"]
+  },
+  {
+    "name": "CoolSculpting",
+    "slug": "coolsculpting",
+    "category": "cosmetic",
+    "cost_low": 1500,
+    "cost_high": 4000,
+    "cost_unit": "per treatment area",
+    "description": "Non-invasive cryolipolysis treatment to eliminate stubborn fat deposits under the skin on face and body.",
+    "factors": ["area size", "number of applicators", "number of cycles"]
+  },
+  {
+    "name": "Hydrafacial",
+    "slug": "hydrafacial",
+    "category": "cosmetic",
+    "cost_low": 150,
+    "cost_high": 400,
+    "cost_unit": "per session",
+    "description": "Vortex-fusion technology combining cleansing, exfoliation, extraction, and hydration in one treatment.",
+    "factors": ["add-on boosters", "booster type", "number of sessions"]
+  },
+  {
+    "name": "Vampire Facial (PRP)",
+    "slug": "vampire-facial",
+    "category": "cosmetic",
+    "cost_low": 500,
+    "cost_high": 1500,
+    "cost_unit": "per session",
+    "description": "Platelet-rich plasma combined with microneedling to stimulate collagen and improve skin texture naturally.",
+    "factors": ["PRP extraction method", "additional treatments", "provider expertise"]
+  },
+  {
+    "name": "Lip Filler",
+    "slug": "lip-filler",
+    "category": "cosmetic",
+    "cost_low": 400,
+    "cost_high": 1000,
+    "cost_unit": "per syringe",
+    "description": "Dermal filler injection to enhance lip volume, definition, and shape for fuller appearance.",
+    "factors": ["filler type", "syringe quantity", "provider expertise"]
+  },
+  {
+    "name": "Under-Eye Treatment",
+    "slug": "under-eye-treatment",
+    "category": "cosmetic",
+    "cost_low": 300,
+    "cost_high": 800,
+    "cost_unit": "per session",
+    "description": "Targeted treatment for dark circles, puffiness, and fine lines under the eyes using fillers or lasers.",
+    "factors": ["treatment type", "filler type if used", "provider skill"]
+  },
+  {
+    "name": "Skin Tightening (Radiofrequency)",
+    "slug": "rf-skin-tightening",
+    "category": "cosmetic",
+    "cost_low": 300,
+    "cost_high": 1200,
+    "cost_unit": "per session",
+    "description": "Non-invasive radiofrequency energy to tighten loose skin and stimulate collagen production on face and body.",
+    "factors": ["machine type", "area size", "number of sessions"]
+  },
+  {
+    "name": "Tattoo Removal",
+    "slug": "tattoo-removal",
+    "category": "cosmetic",
+    "cost_low": 300,
+    "cost_high": 1000,
+    "cost_unit": "per session",
+    "description": "Laser removal of unwanted tattoos through multiple sessions to break down ink particles for fading.",
+    "factors": ["tattoo size", "color", "age", "number of sessions needed"]
+  },
+  {
+    "name": "Acne Scar Treatment (Subcision)",
+    "slug": "acne-scar-subcision",
+    "category": "cosmetic",
+    "cost_low": 400,
+    "cost_high": 1200,
+    "cost_unit": "per session",
+    "description": "Subcutaneous incision technique to release fibrotic tethered scars and stimulate collagen remodeling.",
+    "factors": ["scar severity", "scar size", "number of scars"]
+  },
+  {
+    "name": "Stretch Mark Removal",
+    "slug": "stretch-mark-removal",
+    "category": "cosmetic",
+    "cost_low": 200,
+    "cost_high": 600,
+    "cost_unit": "per session",
+    "description": "Laser or radiofrequency treatment to reduce visibility of stretch marks and improve skin appearance.",
+    "factors": ["stretch mark age", "color", "area size", "treatment type"]
+  },
+  {
+    "name": "Cellulite Treatment",
+    "slug": "cellulite-treatment",
+    "category": "cosmetic",
+    "cost_low": 400,
+    "cost_high": 1500,
+    "cost_unit": "per session",
+    "description": "Non-invasive treatment using acoustic wave therapy or radiofrequency to reduce cellulite appearance.",
+    "factors": ["cellulite severity", "area size", "number of sessions"]
+  },
+  {
+    "name": "Age Spot Removal",
+    "slug": "age-spot-removal",
+    "category": "cosmetic",
+    "cost_low": 100,
+    "cost_high": 400,
+    "cost_unit": "per spot",
+    "description": "Laser or intense pulsed light treatment to remove brown spots and sun-induced pigmentation.",
+    "factors": ["spot size", "depth of pigmentation", "number of spots"]
+  },
+  {
+    "name": "Rosacea Treatment",
+    "slug": "rosacea-treatment",
+    "category": "cosmetic",
+    "cost_low": 300,
+    "cost_high": 1000,
+    "cost_unit": "per session",
+    "description": "Laser or IPL treatment to reduce facial redness, flushing, and visible blood vessels associated with rosacea.",
+    "factors": ["severity of condition", "area treated", "number of sessions"]
+  }
+]
