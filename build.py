@@ -332,14 +332,13 @@ def build_homepage():
             category_name = category_info.get('name', '')
 
             featured_html += f'''
-                <div class="article-card">
-                    <div class="article-card-image placeholder-img"></div>
+                <a href="/{pillar_slug}/{category_slug}/{article_slug}.html" class="article-card">
                     <div class="article-card-body">
                         <span class="article-category">{category_name}</span>
-                        <h3><a href="/{pillar_slug}/{category_slug}/{article_slug}.html">{article_title}</a></h3>
+                        <h3>{article_title}</h3>
                         <p>{article_desc}</p>
                     </div>
-                </div>'''
+                </a>'''
 
     featured_html += '</div>'
 
@@ -722,14 +721,13 @@ def build_category_page(category, articles):
         article_desc = article.get('meta_description', '')[:120] + "..."
 
         articles_html += f'''
-        <div class="article-card">
-            <div class="article-card-image placeholder-img"></div>
+        <a href="/{pillar_slug}/{category_slug}/{article_slug}.html" class="article-card">
             <div class="article-card-body">
                 <span class="article-category">{category_name}</span>
-                <h3><a href="/{pillar_slug}/{category_slug}/{article_slug}.html">{article_title}</a></h3>
+                <h3>{article_title}</h3>
                 <p>{article_desc}</p>
             </div>
-        </div>'''
+        </a>'''
     articles_html += '</div>'
 
     schema = json.dumps({
@@ -827,9 +825,7 @@ def build_pillar_page(pillar_slug, pillar_name, categories, all_articles):
                 <p>{description}</p>
             </header>
 
-            <div class="categories-grid">
-                {categories_html}
-            </div>
+            {categories_html}
         </div>
     </section>'''
 

@@ -436,22 +436,19 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     gap: 1.5rem;
 }
 .article-card {
+    display: block;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
     transition: all var(--transition);
+    text-decoration: none;
+    color: inherit;
 }
 .article-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
-}
-.article-card-image {
-    height: 180px;
-    background: var(--gray-100);
-}
-.placeholder-img {
-    background: linear-gradient(135deg, var(--primary-50), var(--gray-100));
+    border-color: var(--primary);
 }
 .article-card-body {
     padding: 1.25rem;
