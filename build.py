@@ -1469,6 +1469,10 @@ def build_city_pages():
                 specialties = derm.get('specialties', [])
                 is_premium = derm.get('is_premium', False)
 
+                # Generate practice page link
+                practice_slug = slugify(practice_name)
+                practice_url = f"/find-a-dermatologist/{state_lower}/{city_slug}/{practice_slug}.html"
+
                 # Premium badge
                 premium_badge = '<span class="badge badge-gold">Premium</span>' if is_premium else ''
 
@@ -1497,6 +1501,7 @@ def build_city_pages():
                     <p class="address">{address}<br>{city}, {state} {derm.get("zip", "")}</p>
                     <p class="phone">{phone_link}</p>
                     {specialty_badges}
+                    <a href="{practice_url}" class="view-profile-link">View Profile →</a>
                 </div>
             </div>
 '''
@@ -1538,6 +1543,250 @@ def build_city_pages():
     return page_count
 
 
+def build_practice_pages():
+    """Build individual practice pages for each dermatologist."""
+    try:
+        with open(DATA_DIR / "dermatologists.json", 'r', encoding='utf-8') as f:
+            dermatologists = json.load(f)
+    except:
+        return 0
+
+    page_count = 0
+    for derm in dermatologists:
+        first_name = derm.get('first_name', '')
+        last_name = derm.get('last_name', '')
+        credential = derm.get('credential', '')
+        practice_name = derm.get('practice_name', '')
+        address = derm.get('address', '')
+        city = derm.get('city', '')
+        state = derm.get('state', '')
+        zip_code = derm.get('zip', '')
+        phone = derm.get('phone', '')
+        specialties = derm.get('specialties', [])
+        npi = derm.get('npi', '')
+        is_premium = derm.get('is_premium', False)
+
+        if not (practice_name and city and state):
+            continue
+
+        state_lower = state.lower()
+        city_slug = slugify(city)
+        practice_slug = slugify(practice_name)
+
+        # Format phone for links
+        phone_clean = phone.replace(" ", "").replace("-", "").replace("(", "").replace(")", "")
+
+        # Create maps link
+        maps_query = f"{address} {city} {state}".replace(" ", "+")
+        maps_link = f"https://www.google.com/maps/search/{maps_query}"
+
+        # Premium badge HTML
+        premium_badge = '<span class="badge badge-gold">Premium</span>' if is_premium else ''
+
+        # Specialty badges
+        specialty_badges_html = "\n".join([
+            f'            <span class="service-tag">{spec}</span>'
+            for spec in specialties
+        ])
+
+        # Generate SEO content for About section
+        about_paragraphs = [
+            f"Welcome to {practice_name} in {city}, {state}. Our dedicated team of dermatologists provides comprehensive skincare solutions tailored to meet the unique needs of patients throughout the {city} area. With a commitment to excellence and patient-centered care, we specialize in {', '.join(specialties[:2]) if specialties else 'dermatology'} and advanced skin health treatments.",
+            f"At {practice_name}, we believe that everyone deserves access to high-quality dermatological care. Our board-certified dermatologists utilize the latest diagnostic and therapeutic techniques to address a wide range of skin conditions. Whether you're seeking treatment for acne, eczema, psoriasis, skin cancer prevention, or cosmetic improvements, our team is here to help you achieve your skin health goals.",
+            f"Located in {city}, our practice serves patients from surrounding communities in {state}. We pride ourselves on creating a welcoming, comfortable environment where patients feel heard and cared for. From the moment you step into our office, you'll experience the difference that personalized dermatological care can make in your life."
+        ]
+        about_html = "\n".join([f"            <p>{para}</p>" for para in about_paragraphs])
+
+        # Build breadcrumb
+        breadcrumb_schema = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
+                {"@type": "ListItem", "position": 2, "name": "Find a Dermatologist", "item": f"{DOMAIN}/find-a-dermatologist/"},
+                {"@type": "ListItem", "position": 3, "name": state, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
+                {"@type": "ListItem", "position": 4, "name": city, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"},
+                {"@type": "ListItem", "position": 5, "name": practice_name, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}/{practice_slug}.html"}
+            ]
+        })
+
+        # Build Physician schema
+        physician_schema = {
+            "@context": "https://schema.org",
+            "@type": "Physician",
+            "name": f"{first_name} {last_name}",
+            "givenName": first_name,
+            "familyName": last_name,
+            "credential": credential,
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": address,
+                "addressLocality": city,
+                "addressRegion": state,
+                "postalCode": zip_code,
+                "addressCountry": "US"
+            },
+            "telephone": phone,
+            "knowsAbout": specialties,
+            "practitionerType": "Dermatologist"
+        }
+
+        if npi:
+            physician_schema["identifier"] = {
+                "@type": "PropertyValue",
+                "propertyID": "NPI",
+                "value": npi
+            }
+
+        physician_schema_json = json.dumps(physician_schema)
+
+        # Build the main content
+        body_content = f'''
+    <div class="practice-page">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/find-a-dermatologist/">Find a Dermatologist</a></li>
+                <li><a href="/find-a-dermatologist/{state_lower}/">{state}</a></li>
+                <li><a href="/find-a-dermatologist/{state_lower}/{city_slug}.html">{city}</a></li>
+                <li class="active">{practice_name}</li>
+            </ol>
+        </nav>
+
+        <div class="container py-5">
+            <!-- Practice Header -->
+            <div class="practice-header">
+                <div class="header-top">
+                    <div class="left-section">
+                        <h1 class="practice-name">{practice_name}</h1>
+                        <p class="doctor-name">{first_name} {last_name}, {credential}</p>
+                        {premium_badge}
+                    </div>
+                </div>
+
+                <!-- Address & Contact Info -->
+                <div class="practice-info-row">
+                    <div class="practice-address">
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <div>
+                            <p>{address}</p>
+                            <p>{city}, {state} {zip_code}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="practice-actions">
+                    <a href="tel:{phone_clean}" class="action-btn btn-phone">
+                        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Call
+                    </a>
+                    <a href="{maps_link}" target="_blank" rel="noopener noreferrer" class="action-btn btn-directions">
+                        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Get Directions
+                    </a>
+                    <button class="action-btn btn-appointment" onclick="document.getElementById('appointment-form').scrollIntoView({{behavior: 'smooth'}});">
+                        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <path d="M16 2v4M8 2v4M3 10h18"/>
+                        </svg>
+                        Request Appointment
+                    </button>
+                </div>
+
+                <!-- Specialties -->
+                <div class="practice-specialties">
+                    <strong>Specialties:</strong>
+                    <div class="specialties-list">
+                        {specialty_badges_html}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="practice-content">
+                <div class="practice-main">
+                    <!-- About Section -->
+                    <section class="practice-about">
+                        <h2>About {practice_name}</h2>
+                        {about_html}
+                    </section>
+
+                    <!-- Services Section -->
+                    <section class="practice-services">
+                        <h2>Dermatology Services in {city}, {state}</h2>
+                        <p>We offer a comprehensive range of dermatological services to address all your skin care needs:</p>
+                        <div class="services-grid">
+                            {specialty_badges_html}
+                        </div>
+                    </section>
+
+                    <!-- Serving Community Section -->
+                    <section class="practice-community">
+                        <h2>Serving the {city} Community</h2>
+                        <p>{practice_name} is proud to serve patients throughout {city} and the surrounding areas of {state}. Our convenient location and flexible scheduling make it easy to access the dermatological care you deserve. Whether you're a long-time patient or seeking a new dermatologist, we're here to provide you with compassionate, expert care focused on achieving your best skin health.</p>
+                    </section>
+                </div>
+
+                <!-- Sidebar: Location & Contact -->
+                <aside class="practice-sidebar">
+                    <div class="practice-location">
+                        <div class="location-box">
+                            <h3>Location</h3>
+                            <p class="addr">{address}</p>
+                            <p class="addr">{city}, {state} {zip_code}</p>
+                        </div>
+                        <div class="contact-box">
+                            <h3>Contact</h3>
+                            <p class="contact-phone">
+                                <a href="tel:{phone_clean}">{phone}</a>
+                            </p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Back Link -->
+            <div class="practice-footer">
+                <a href="/find-a-dermatologist/{state_lower}/{city_slug}.html" class="back-link">
+                    <span>←</span> Back to all dermatologists in {city}, {state}
+                </a>
+            </div>
+        </div>
+    </div>
+        '''
+
+        html = page_template(
+            title=f"{first_name} {last_name}, {credential} - {practice_name} in {city}, {state}",
+            body_content=body_content,
+            meta_description=f"{first_name} {last_name} is a board-certified dermatologist at {practice_name} in {city}, {state}. Specializing in {', '.join(specialties[:2]) if specialties else 'dermatology'}. Schedule your appointment today.",
+            schema_json=physician_schema_json,
+            canonical=f"/find-a-dermatologist/{state_lower}/{city_slug}/{practice_slug}.html"
+        )
+
+        # Create directory structure if needed
+        state_dir = OUTPUT_DIR / "find-a-dermatologist" / state_lower
+        state_dir.mkdir(parents=True, exist_ok=True)
+
+        city_dir = state_dir / city_slug
+        city_dir.mkdir(parents=True, exist_ok=True)
+
+        # Write the practice page
+        write_file(city_dir / f"{practice_slug}.html", html)
+        page_count += 1
+
+    return page_count
+
+
 def build_directory():
     """Main function to build the entire Find a Dermatologist directory."""
     print("\nBuilding directory pages...")
@@ -1551,7 +1800,10 @@ def build_directory():
     city_count = build_city_pages()
     print(f"  Generated {city_count} city pages")
 
-    total = main_count + state_count + city_count
+    practice_count = build_practice_pages()
+    print(f"  Generated {practice_count} practice pages")
+
+    total = main_count + state_count + city_count + practice_count
     return total
 
 

@@ -1220,10 +1220,363 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     color: var(--primary);
 }
 
+/* ─── Practice Pages ──────────────────────────────── */
+.practice-page {
+    background: var(--bg);
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    background: var(--bg-secondary);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.breadcrumb-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.breadcrumb-list li {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+    content: "›";
+    margin-left: 0.5rem;
+    color: var(--text-muted);
+}
+
+.breadcrumb-list a {
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.breadcrumb-list a:hover {
+    color: var(--primary-light);
+}
+
+.breadcrumb-list li.active {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Practice Header */
+.practice-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.left-section {
+    flex: 1;
+}
+
+.practice-name {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.doctor-name {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.badge-gold {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #FFB84D 0%, #FFA500 100%);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Practice Info Row */
+.practice-info-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.practice-address {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.practice-address .icon {
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.practice-address p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Specialties */
+.practice-specialties {
+    margin-top: 1.5rem;
+}
+
+.practice-specialties strong {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.specialties-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.service-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--primary-50);
+    color: var(--primary);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid var(--primary);
+}
+
+/* Action Buttons */
+.practice-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.action-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.action-btn .icon {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-phone {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-phone:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.btn-directions {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-directions:hover {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-appointment {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-appointment:hover {
+    background: var(--accent);
+    color: var(--white);
+}
+
+/* Practice Content Grid */
+.practice-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.practice-main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Sections */
+.practice-about,
+.practice-services,
+.practice-community {
+    background: var(--bg-card);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.practice-about h2,
+.practice-services h2,
+.practice-community h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.practice-about p,
+.practice-community p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.practice-about p:last-child,
+.practice-community p:last-child {
+    margin-bottom: 0;
+}
+
+/* Services Grid */
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* Sidebar */
+.practice-sidebar {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    height: fit-content;
+}
+
+.practice-location {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.location-box,
+.contact-box {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all var(--transition);
+}
+
+.location-box:hover,
+.contact-box:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.location-box h3,
+.contact-box h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.location-box .addr {
+    margin: 0.5rem 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.contact-phone a {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.contact-phone a:hover {
+    color: var(--primary-light);
+}
+
+/* Practice Footer */
+.practice-footer {
+    padding: 2rem 0;
+    border-top: 2px solid var(--border);
+    margin-top: 2rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    transition: all var(--transition);
+}
+
+.back-link:hover {
+    gap: 0.75rem;
+    color: var(--primary-light);
+}
+
+.back-link span {
+    font-size: 1.2rem;
+}
+
+/* View Profile Link on Cards */
+.view-profile-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--primary);
+    font-weight: 600;
+    transition: color var(--transition);
+}
+
+.view-profile-link:hover {
+    color: var(--primary-light);
+}
+
 /* ─── Responsive ─────────────────────────────────── */
 @media (max-width: 1024px) {
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .cost-body { grid-template-columns: 1fr; }
+    .practice-content { grid-template-columns: 1fr; }
+    .practice-sidebar { position: static; }
+    .practice-actions { gap: 0.75rem; }
+    .action-btn { padding: 0.65rem 1.25rem; font-size: 0.9rem; }
 }
 
 @media (max-width: 768px) {
@@ -1267,6 +1620,15 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     .article-body h2 { font-size: 1.2rem; }
     .article-header h1 { font-size: clamp(1.5rem, 3vw, 2rem); }
     .search-form { grid-template-columns: 1fr; }
+
+    /* Practice Pages */
+    .practice-name { font-size: 1.75rem; }
+    .practice-actions { flex-direction: column; }
+    .action-btn { width: 100%; justify-content: center; }
+    .practice-info-row { gap: 1rem; }
+    .header-top { flex-direction: column; }
+    .specialties-list { gap: 0.5rem; }
+    .breadcrumb-list { gap: 0.25rem; }
 }
 
 @media (max-width: 480px) {
@@ -1278,4 +1640,13 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     .related-grid { grid-template-columns: 1fr; }
     .procedures-list { grid-template-columns: 1fr; }
     .cost-amount { font-size: 2rem; }
+
+    /* Practice Pages */
+    .practice-name { font-size: 1.5rem; }
+    .practice-address { flex-direction: column; }
+    .service-tag { font-size: 0.85rem; padding: 0.4rem 0.75rem; }
+    .practice-about,
+    .practice-services,
+    .practice-community { padding: 1.5rem; }
+    .breadcrumb { padding: 0.75rem 0; }
 }
