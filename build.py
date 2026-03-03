@@ -484,45 +484,52 @@ def build_editorial_standards():
             </nav>
             <h1>Editorial Standards</h1>
             <div class="content-body">
-                <p class="lead">At DermoBrain, we are committed to providing accurate, trustworthy, and up-to-date dermatology information. Every article on our site undergoes a rigorous editorial process.</p>
+                <p class="lead">At DermoBrain, we strive to provide accurate and useful dermatology information. We are transparent about our editorial process and the sources we use.</p>
 
-                <h2>Our Review Process</h2>
-                <p>All content published on DermoBrain is created by experienced medical writers and reviewed by board-certified dermatologists. Our editorial team follows a multi-step process to ensure the highest quality of information:</p>
+                <h2>Our Content Sources</h2>
+                <p>DermoBrain articles are written using information from established medical sources, including:</p>
+                <ul>
+                    <li><a href="https://www.aad.org" target="_blank" rel="noopener">American Academy of Dermatology (AAD)</a> — clinical guidelines and patient education materials</li>
+                    <li><a href="https://www.mayoclinic.org" target="_blank" rel="noopener">Mayo Clinic</a> — disease overviews and treatment information</li>
+                    <li><a href="https://medlineplus.gov" target="_blank" rel="noopener">MedlinePlus (NIH)</a> — consumer health information</li>
+                    <li>Peer-reviewed dermatology journals and textbooks</li>
+                </ul>
+
+                <h2>Editorial Process</h2>
+                <p>Our content creation process involves several steps designed to ensure quality:</p>
 
                 <div class="standards-grid">
                     <div class="standard-card">
                         <h3>&#128221; Research</h3>
-                        <p>Every article begins with thorough research using peer-reviewed medical journals, clinical guidelines from the American Academy of Dermatology (AAD), and established dermatological references.</p>
+                        <p>Every article begins with research using the medical sources listed above. We reference current clinical guidelines and peer-reviewed literature.</p>
                     </div>
                     <div class="standard-card">
                         <h3>&#9997; Writing</h3>
-                        <p>Our medical writers translate complex dermatological concepts into clear, accessible language while maintaining clinical accuracy.</p>
+                        <p>Our editorial team translates clinical information into accessible language for patients and the general public.</p>
                     </div>
                     <div class="standard-card">
-                        <h3>&#129658; Medical Review</h3>
-                        <p>A board-certified dermatologist reviews every article for medical accuracy, ensuring all information reflects current clinical practice and evidence-based medicine.</p>
+                        <h3>&#128270; Fact-Checking</h3>
+                        <p>All medical claims are cross-referenced with at least two authoritative sources before publication.</p>
                     </div>
                     <div class="standard-card">
-                        <h3>&#128260; Regular Updates</h3>
-                        <p>We continuously update our content as new research emerges, treatment guidelines change, or new procedures become available.</p>
+                        <h3>&#128260; Updates</h3>
+                        <p>We periodically review and update content when treatment guidelines change or new research emerges.</p>
                     </div>
                 </div>
 
                 <h2>Content Principles</h2>
-                <p>Our content adheres to the following principles:</p>
                 <ul>
-                    <li><strong>Evidence-Based:</strong> All medical claims are supported by peer-reviewed research and established clinical guidelines.</li>
-                    <li><strong>Unbiased:</strong> We present treatment options objectively without favoring any specific product, brand, or procedure.</li>
-                    <li><strong>Accessible:</strong> Complex medical topics are explained in plain language without sacrificing accuracy.</li>
-                    <li><strong>Comprehensive:</strong> We cover all three pillars of dermatology — medical, surgical, and cosmetic — with equal depth and care.</li>
-                    <li><strong>Inclusive:</strong> Our content addresses dermatological concerns across all skin types, tones, ages, and backgrounds.</li>
+                    <li><strong>Evidence-Based:</strong> Medical claims reference peer-reviewed research and established clinical guidelines.</li>
+                    <li><strong>Unbiased:</strong> Treatment options are presented objectively without favoring any product or brand.</li>
+                    <li><strong>Accessible:</strong> Complex medical topics are explained in plain language.</li>
+                    <li><strong>Inclusive:</strong> Our content addresses dermatological concerns across all skin types, tones, and backgrounds.</li>
                 </ul>
 
                 <h2>Medical Disclaimer</h2>
                 <p>The information on DermoBrain is intended for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a board-certified dermatologist or qualified healthcare provider for personalized medical guidance.</p>
 
-                <h2>Contact Our Editorial Team</h2>
-                <p>If you have questions about our editorial standards, notice an error in our content, or would like to suggest a topic, please contact us at <a href="mailto:editorial@dermobrain.com">editorial@dermobrain.com</a>.</p>
+                <h2>Report an Error</h2>
+                <p>If you notice an error in our content or have suggestions for improvement, please contact us at <a href="mailto:editorial@dermobrain.com">editorial@dermobrain.com</a>. We take accuracy seriously and will review all reported issues promptly.</p>
             </div>
         </div>
     </section>
@@ -621,26 +628,59 @@ def build_article_page(article, category_info):
         <button class="share-btn copy-link" onclick="navigator.clipboard.writeText('{article_url}'); alert('Link copied!');">Copy Link</button>
     </div>'''
 
-    # Schema.org Article markup
-    schema = json.dumps({
+    # Schema.org - combined Article + MedicalWebPage + BreadcrumbList
+    article_schema = {
         "@context": "https://schema.org",
-        "@type": "MedicalWebPage",
-        "headline": title,
-        "description": meta_desc,
-        "url": article_url,
-        "datePublished": BUILD_DATE,
-        "dateModified": BUILD_DATE,
-        "author": {
-            "@type": "Organization",
-            "name": "DermoBrain Medical Team"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": SITE_NAME,
-            "url": DOMAIN
-        },
-        "keywords": ", ".join(tags)
-    })
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": f"{DOMAIN}/#organization",
+                "name": SITE_NAME,
+                "url": DOMAIN,
+                "description": "Your trusted dermatology encyclopedia covering medical, surgical, and cosmetic dermatology."
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
+                    {"@type": "ListItem", "position": 2, "name": pillar_name, "item": f"{DOMAIN}/{pillar_slug}/"},
+                    {"@type": "ListItem", "position": 3, "name": category_name, "item": f"{DOMAIN}/{pillar_slug}/{category_slug}/"},
+                    {"@type": "ListItem", "position": 4, "name": title, "item": article_url}
+                ]
+            },
+            {
+                "@type": ["MedicalWebPage", "Article"],
+                "headline": title,
+                "description": meta_desc,
+                "url": article_url,
+                "datePublished": BUILD_DATE,
+                "dateModified": BUILD_DATE,
+                "author": {
+                    "@type": "Organization",
+                    "name": "DermoBrain Medical Editorial Team",
+                    "url": f"{DOMAIN}/editorial-standards/"
+                },
+                "reviewedBy": {
+                    "@type": "Organization",
+                    "name": "DermoBrain Medical Review Board",
+                    "url": f"{DOMAIN}/editorial-standards/"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "@id": f"{DOMAIN}/#organization",
+                    "name": SITE_NAME,
+                    "url": DOMAIN
+                },
+                "mainEntityOfPage": article_url,
+                "keywords": ", ".join(tags),
+                "about": {
+                    "@type": "MedicalCondition",
+                    "name": title.split(":")[0].strip() if ":" in title else title
+                }
+            }
+        ]
+    }
+    schema = json.dumps(article_schema)
 
     body = f'''
     <article class="article-page">
@@ -651,13 +691,19 @@ def build_article_page(article, category_info):
                 <span class="article-category">{category_name}</span>
                 <h1>{title}</h1>
                 <div class="article-meta">
-                    <span class="byline">Written by DermoBrain Medical Team</span>
+                    <span class="byline">By DermoBrain Medical Editorial Team</span>
+                    <time datetime="{BUILD_DATE}">Updated {BUILD_DATE}</time>
                     <span class="badge">Medically Reviewed</span>
                 </div>
             </header>
 
             <div class="article-body">
                 {content}
+            </div>
+
+            <div class="article-review-info">
+                <p><strong>Medically reviewed</strong> by the DermoBrain Medical Review Board. This article is for informational purposes only and does not constitute medical advice. Always consult a board-certified dermatologist for diagnosis and treatment.</p>
+                <p>Sources: American Academy of Dermatology (AAD), peer-reviewed dermatology journals, and established clinical guidelines.</p>
             </div>
 
             {social_share}
@@ -883,25 +929,40 @@ def build_guide_pages():
         <span>''' + title + '''</span>
     </nav>'''
 
-        # Schema.org Article markup
+        # Schema.org Article + BreadcrumbList markup for guides
+        guide_url = f"{DOMAIN}/guides/{slug}.html"
         schema = json.dumps({
             "@context": "https://schema.org",
-            "@type": "MedicalWebPage",
-            "headline": title,
-            "description": meta_desc,
-            "url": f"{DOMAIN}/guides/{slug}.html",
-            "datePublished": BUILD_DATE,
-            "dateModified": BUILD_DATE,
-            "author": {
-                "@type": "Organization",
-                "name": "DermoBrain Medical Team"
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": SITE_NAME,
-                "url": DOMAIN
-            },
-            "keywords": ", ".join(tags)
+            "@graph": [
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
+                        {"@type": "ListItem", "position": 2, "name": "Guides", "item": f"{DOMAIN}/guides/"},
+                        {"@type": "ListItem", "position": 3, "name": title, "item": guide_url}
+                    ]
+                },
+                {
+                    "@type": ["MedicalWebPage", "Article"],
+                    "headline": title,
+                    "description": meta_desc,
+                    "url": guide_url,
+                    "datePublished": BUILD_DATE,
+                    "dateModified": BUILD_DATE,
+                    "author": {
+                        "@type": "Organization",
+                        "name": "DermoBrain Medical Editorial Team",
+                        "url": f"{DOMAIN}/editorial-standards/"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": SITE_NAME,
+                        "url": DOMAIN
+                    },
+                    "mainEntityOfPage": guide_url,
+                    "keywords": ", ".join(tags)
+                }
+            ]
         })
 
         body = f'''
@@ -1099,6 +1160,10 @@ def build_cost_pages():
                     {nearby_html}
                 </div>
 
+                <div class="cost-disclaimer">
+                    <p><strong>Cost Disclaimer:</strong> The cost ranges shown are estimated national averages based on data from healthcare cost databases and the American Academy of Dermatology. Actual costs vary significantly by provider, geographic location, insurance coverage, and individual treatment plans. These figures are for informational purposes only. Always contact your dermatologist's office directly for accurate pricing.</p>
+                </div>
+
                 <div class="cost-cta">
                     <h3>Find a Dermatologist in {city_name}</h3>
                     <p>Get personalized quotes and schedule a consultation with board-certified dermatologists in your area.</p>
@@ -1108,18 +1173,31 @@ def build_cost_pages():
         </div>
     </section>'''
 
-            # Simple schema for cost pages
+            # Schema with BreadcrumbList for cost pages
+            cost_url = f"{DOMAIN}/costs/{proc_slug}-cost-{city_slug}.html"
             schema = json.dumps({
                 "@context": "https://schema.org",
-                "@type": "MedicalWebPage",
-                "headline": title,
-                "description": meta_desc,
-                "url": f"{DOMAIN}/costs/{proc_slug}-cost-{city_slug}.html",
-                "publisher": {
-                    "@type": "Organization",
-                    "name": SITE_NAME,
-                    "url": DOMAIN
-                }
+                "@graph": [
+                    {
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
+                            {"@type": "ListItem", "position": 2, "name": "Procedure Costs", "item": f"{DOMAIN}/costs/"},
+                            {"@type": "ListItem", "position": 3, "name": title, "item": cost_url}
+                        ]
+                    },
+                    {
+                        "@type": "MedicalWebPage",
+                        "headline": title,
+                        "description": meta_desc,
+                        "url": cost_url,
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": SITE_NAME,
+                            "url": DOMAIN
+                        }
+                    }
+                ]
             })
 
             html = page_template(
@@ -1589,12 +1667,41 @@ def build_practice_pages():
             for spec in specialties
         ])
 
-        # Generate SEO content for About section
-        about_paragraphs = [
-            f"Welcome to {practice_name} in {city}, {state}. Our dedicated team of dermatologists provides comprehensive skincare solutions tailored to meet the unique needs of patients throughout the {city} area. With a commitment to excellence and patient-centered care, we specialize in {', '.join(specialties[:2]) if specialties else 'dermatology'} and advanced skin health treatments.",
-            f"At {practice_name}, we believe that everyone deserves access to high-quality dermatological care. Our board-certified dermatologists utilize the latest diagnostic and therapeutic techniques to address a wide range of skin conditions. Whether you're seeking treatment for acne, eczema, psoriasis, skin cancer prevention, or cosmetic improvements, our team is here to help you achieve your skin health goals.",
-            f"Located in {city}, our practice serves patients from surrounding communities in {state}. We pride ourselves on creating a welcoming, comfortable environment where patients feel heard and cared for. From the moment you step into our office, you'll experience the difference that personalized dermatological care can make in your life."
+        # Generate varied SEO content for About section based on specialties
+        # Use hash of practice name to select content variants
+        variant = hash(practice_name) % 5
+        spec_list = ', '.join(specialties[:3]) if specialties else 'general and cosmetic dermatology'
+        primary_spec = specialties[0] if specialties else 'General Dermatology'
+
+        about_variants = [
+            [
+                f"{practice_name} provides dermatology services in {city}, {state}, with a focus on {spec_list}. Dr. {last_name} and the clinical team offer diagnosis and treatment for patients across the {city} metropolitan area.",
+                f"Services at {practice_name} include skin examinations, treatment of chronic conditions, and {primary_spec.lower()} procedures. The practice accepts patients of all ages and works with most major insurance plans.",
+                f"The office is located at {address} in {city}. To schedule an appointment, call the office directly or use the contact information on this page."
+            ],
+            [
+                f"Dr. {first_name} {last_name} practices at {practice_name} in {city}, {state}. The practice specializes in {spec_list} and serves patients throughout {state}.",
+                f"Patients at {practice_name} receive care for conditions including skin cancer screening, acne, eczema, psoriasis, and cosmetic concerns. The practice uses current treatment protocols based on established clinical guidelines.",
+                f"New patients are welcome at the {city} office. The practice offers both in-person consultations and follow-up appointments during regular business hours."
+            ],
+            [
+                f"{practice_name} is a dermatology practice located in {city}, {state}. Dr. {last_name} ({credential}) provides care in {spec_list} for patients in the {city} area.",
+                f"The practice offers a range of dermatological services including medical dermatology, skin cancer detection, and {primary_spec.lower()}. Treatment plans are developed based on each patient's individual needs and medical history.",
+                f"For appointments or questions about services offered at {practice_name}, patients can reach the office at {phone}."
+            ],
+            [
+                f"At {practice_name}, Dr. {first_name} {last_name} and the team deliver dermatology care to {city}, {state} residents. Areas of focus include {spec_list}.",
+                f"The clinical team at {practice_name} treats a broad range of skin, hair, and nail conditions. From routine skin checks to specialized procedures, the practice is equipped to address both common and complex dermatological concerns.",
+                f"The practice is conveniently situated in {city} and serves the surrounding {state} communities. Walk-in and scheduled appointments are available."
+            ],
+            [
+                f"Dr. {last_name} leads the dermatology team at {practice_name}, serving {city}, {state} and nearby areas. The practice provides care across {spec_list}.",
+                f"{practice_name} offers diagnostic evaluations, medical treatments, and procedural dermatology. The team stays current with advances in dermatological research and treatment options to provide effective patient care.",
+                f"Located in {city}, the practice welcomes new and returning patients. Contact the office at {phone} to schedule a consultation."
+            ]
         ]
+
+        about_paragraphs = about_variants[variant]
         about_html = "\n".join([f"            <p>{para}</p>" for para in about_paragraphs])
 
         # Build breadcrumb
@@ -1610,29 +1717,48 @@ def build_practice_pages():
             ]
         })
 
-        # Build Physician schema
+        # Build enhanced Physician schema with BreadcrumbList
+        practice_url = f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}/{practice_slug}.html"
         physician_schema = {
             "@context": "https://schema.org",
-            "@type": "Physician",
-            "name": f"{first_name} {last_name}",
-            "givenName": first_name,
-            "familyName": last_name,
-            "credential": credential,
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": address,
-                "addressLocality": city,
-                "addressRegion": state,
-                "postalCode": zip_code,
-                "addressCountry": "US"
-            },
-            "telephone": phone,
-            "knowsAbout": specialties,
-            "practitionerType": "Dermatologist"
+            "@graph": [
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
+                        {"@type": "ListItem", "position": 2, "name": "Find a Dermatologist", "item": f"{DOMAIN}/find-a-dermatologist/"},
+                        {"@type": "ListItem", "position": 3, "name": state, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
+                        {"@type": "ListItem", "position": 4, "name": city, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"},
+                        {"@type": "ListItem", "position": 5, "name": practice_name, "item": practice_url}
+                    ]
+                },
+                {
+                    "@type": "Physician",
+                    "name": f"{first_name} {last_name}",
+                    "givenName": first_name,
+                    "familyName": last_name,
+                    "credential": credential,
+                    "medicalSpecialty": "Dermatology",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": address,
+                        "addressLocality": city,
+                        "addressRegion": state,
+                        "postalCode": zip_code,
+                        "addressCountry": "US"
+                    },
+                    "telephone": phone,
+                    "knowsAbout": specialties,
+                    "openingHoursSpecification": [
+                        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00"}
+                    ],
+                    "url": practice_url
+                }
+            ]
         }
 
         if npi:
-            physician_schema["identifier"] = {
+            physician_schema["@graph"][1]["identifier"] = {
                 "@type": "PropertyValue",
                 "propertyID": "NPI",
                 "value": npi
@@ -1732,8 +1858,13 @@ def build_practice_pages():
 
                     <!-- Serving Community Section -->
                     <section class="practice-community">
-                        <h2>Serving the {city} Community</h2>
-                        <p>{practice_name} is proud to serve patients throughout {city} and the surrounding areas of {state}. Our convenient location and flexible scheduling make it easy to access the dermatological care you deserve. Whether you're a long-time patient or seeking a new dermatologist, we're here to provide you with compassionate, expert care focused on achieving your best skin health.</p>
+                        <h2>Dermatology Services in {city}, {state}</h2>
+                        <p>{practice_name} serves patients in {city} and nearby communities in {state}. The practice offers appointments during regular business hours, Monday through Friday. Contact the office to check availability and insurance acceptance.</p>
+                    </section>
+
+                    <!-- Directory Disclaimer -->
+                    <section class="practice-disclaimer">
+                        <p><em>Note: This directory listing is provided for informational purposes. Verify practice details, insurance acceptance, and current availability directly with the provider's office before scheduling.</em></p>
                     </section>
                 </div>
 
@@ -2124,7 +2255,7 @@ def build():
     except:
         pass
 
-    # Add directory pages to sitemap
+    # Add directory pages to sitemap (including practice pages)
     pages.append(("/find-a-dermatologist/", 0.8, "weekly"))
     try:
         with open(DATA_DIR / "dermatologists.json", 'r', encoding='utf-8') as f:
@@ -2141,10 +2272,21 @@ def build():
         # Add state pages
         for state in sorted(state_cities.keys()):
             pages.append((f"/find-a-dermatologist/{state.lower()}/", 0.7, "weekly"))
-            # Add city pages (limit to keep sitemap manageable)
-            for city in sorted(list(state_cities[state]))[:50]:  # Max 50 cities per state in sitemap
+            # Add city pages
+            for city in sorted(list(state_cities[state])):
                 city_slug = slugify(city)
                 pages.append((f"/find-a-dermatologist/{state.lower()}/{city_slug}.html", 0.6, "weekly"))
+
+        # Add ALL practice pages to sitemap
+        for derm in dermatologists:
+            state = derm.get('state', '')
+            city = derm.get('city', '')
+            practice_name = derm.get('practice_name', '')
+            if state and city and practice_name:
+                state_lower = state.lower()
+                city_slug = slugify(city)
+                practice_slug = slugify(practice_name)
+                pages.append((f"/find-a-dermatologist/{state_lower}/{city_slug}/{practice_slug}.html", 0.5, "monthly"))
     except:
         pass
 

@@ -1569,6 +1569,45 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     color: var(--primary-light);
 }
 
+/* ─── Article Review Info ────────────────────────── */
+.article-review-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+    font-size: 0.9rem;
+    color: var(--text-light, #555);
+    line-height: 1.7;
+}
+
+.article-review-info p {
+    margin-bottom: 0.5rem;
+}
+
+.article-review-info p:last-child {
+    margin-bottom: 0;
+}
+
+/* ─── Cost Disclaimer ────────────────────────────── */
+.cost-disclaimer {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: #fff8e1;
+    border: 1px solid #ffecb3;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #5d4037;
+    line-height: 1.6;
+}
+
+/* ─── Practice Disclaimer ────────────────────────── */
+.practice-disclaimer {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light, #777);
+}
+
 /* ─── Responsive ─────────────────────────────────── */
 @media (max-width: 1024px) {
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
