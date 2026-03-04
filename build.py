@@ -1628,7 +1628,9 @@ def build_directory_main_page():
                     if (state) {{
                         var el = document.getElementById('geo-suggestion');
                         var txt = document.getElementById('geo-text');
-                        txt.innerHTML = 'It looks like you\\'re in <strong>' + state + '</strong>. <a href="/find-a-dermatologist/' + (data.address.state_code || '').toLowerCase() + '/">View dermatologists near you &rarr;</a>';
+                        var iso = data.address['ISO3166-2-lvl4'] || '';
+                        var sc = iso.split('-').pop().toLowerCase();
+                        txt.innerHTML = 'It looks like you\\'re in <strong>' + state + '</strong>. <a href="/find-a-dermatologist/' + sc + '/">View dermatologists near you &rarr;</a>';
                         el.style.display = 'flex';
                     }}
                 }}).catch(function(){{}});
@@ -1654,8 +1656,9 @@ def build_directory_main_page():
                     fetch('https://nominatim.openstreetmap.org/reverse?lat=' + data[0].lat + '&lon=' + data[0].lon + '&format=json')
                     .then(function(r) {{ return r.json(); }})
                     .then(function(rev) {{
-                        var sc = (rev.address && rev.address.state_code) ? rev.address.state_code.toLowerCase() : '';
-                        var city = (rev.address && rev.address.city) ? rev.address.city.toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
+                        var iso = (rev.address && rev.address['ISO3166-2-lvl4']) ? rev.address['ISO3166-2-lvl4'] : '';
+                        var sc = iso ? iso.split('-').pop().toLowerCase() : '';
+                        var city = (rev.address && (rev.address.city || rev.address.town || rev.address.village)) ? (rev.address.city || rev.address.town || rev.address.village).toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
                         if (sc && city) {{
                             window.location.href = '/find-a-dermatologist/' + sc + '/' + city + '.html';
                         }} else if (sc) {{
