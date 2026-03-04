@@ -17,7 +17,7 @@ from xml.dom.minidom import parseString
 DOMAIN = "https://dermobrain.com"
 SITE_NAME = "DermoBrain"
 SITE_TAGLINE = "Your Trusted Dermatology Encyclopedia"
-GA4_ID = "G-XXXXXXXXXX"  # Replace with real GA4 measurement ID
+GA4_ID = "G-LK62PEC2HD"
 
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
