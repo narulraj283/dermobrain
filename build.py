@@ -26,6 +26,38 @@ ASSETS_DIR = BASE_DIR / "assets"
 
 BUILD_DATE = datetime.datetime.now().strftime("%Y-%m-%d")
 
+# ─── State Names Mapping ─────────────────────────────────────────
+STATE_NAMES = {
+    'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
+    'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
+    'DC': 'District of Columbia', 'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii',
+    'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa',
+    'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine',
+    'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota',
+    'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana', 'NE': 'Nebraska',
+    'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey', 'NM': 'New Mexico',
+    'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio',
+    'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 'RI': 'Rhode Island',
+    'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas',
+    'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
+    'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming',
+    'PR': 'Puerto Rico', 'GU': 'Guam', 'VI': 'US Virgin Islands',
+    'AS': 'American Samoa', 'MP': 'Northern Mariana Islands'
+}
+
+def normalize_city_name(city):
+    """Normalize abbreviated city names from NPI data."""
+    replacements = {
+        'Ft ': 'Fort ', 'Ft. ': 'Fort ', 'Mt ': 'Mount ', 'Mt. ': 'Mount ',
+        'St ': 'Saint ', 'St. ': 'Saint ', 'N ': 'North ', 'N. ': 'North ',
+        'S ': 'South ', 'S. ': 'South ', 'E ': 'East ', 'E. ': 'East ',
+        'W ': 'West ', 'W. ': 'West ',
+    }
+    for abbrev, full in replacements.items():
+        if city.startswith(abbrev):
+            city = full + city[len(abbrev):]
+    return city.title() if city == city.upper() else city
+
 # ─── Navigation Structure ────────────────────────────────────────
 NAV_ITEMS = [
     {
@@ -65,7 +97,7 @@ NAV_ITEMS = [
         "label": "Skincare",
         "href": "/skincare/",
         "dropdown": [
-            {"label": "Skincare Science", "href": "/skincare/science/"},
+            {"label": "Skincare Science", "href": "/skincare/skincare-science/"},
             {"label": "Men's Derm", "href": "/skincare/mens/"},
             {"label": "Women's Derm", "href": "/skincare/womens/"},
             {"label": "Lifestyle & Skin", "href": "/skincare/lifestyle/"},
@@ -463,7 +495,7 @@ def build_homepage():
                 <a href="/cosmetic-dermatology/lasers/" class="category-card"><span class="cat-icon">&#9889;</span>Lasers</a>
                 <a href="/cosmetic-dermatology/rejuvenation/" class="category-card"><span class="cat-icon">&#10024;</span>Rejuvenation</a>
                 <a href="/cosmetic-dermatology/body-contouring/" class="category-card"><span class="cat-icon">&#127947;</span>Body Contouring</a>
-                <a href="/skincare/science/" class="category-card"><span class="cat-icon">&#128218;</span>Skincare Science</a>
+                <a href="/skincare/skincare-science/" class="category-card"><span class="cat-icon">&#128218;</span>Skincare Science</a>
                 <a href="/skincare/mens/" class="category-card"><span class="cat-icon">&#128104;</span>Men's Derm</a>
                 <a href="/skincare/womens/" class="category-card"><span class="cat-icon">&#128105;</span>Women's Derm</a>
                 <a href="/skincare/lifestyle/" class="category-card"><span class="cat-icon">&#127793;</span>Lifestyle</a>
@@ -1432,12 +1464,12 @@ def build_directory_main_page():
     states_list = sorted(list(states_set))
 
     # State dropdown HTML
-    state_options = "\n".join([f'                            <option value="{state}">{state}</option>' for state in states_list])
+    state_options = "\n".join([f'                            <option value="{state}">{STATE_NAMES.get(state, state)}</option>' for state in states_list])
 
     # State cards grid
     state_cards = "\n".join([
         f'''            <a href="/find-a-dermatologist/{state.lower()}/" class="state-card">
-                <h3>{state}</h3>
+                <h3>{STATE_NAMES.get(state, state)}</h3>
                 <p>{state_counts.get(state, 0)} dermatologist{'s' if state_counts.get(state, 1) != 1 else ''}</p>
             </a>'''
         for state in states_list
@@ -1524,13 +1556,14 @@ def build_state_pages():
     page_count = 0
     for state, cities in state_data.items():
         state_lower = state.lower()
+        state_full = STATE_NAMES.get(state, state)
         city_count = len(cities)
         total_derms = sum(len(derms) for derms in cities.values())
 
         # Build city list with counts
         city_list_items = "\n".join([
             f'''            <a href="/find-a-dermatologist/{state_lower}/{slugify(city)}.html" class="city-item">
-                <h3>{city}</h3>
+                <h3>{normalize_city_name(city)}</h3>
                 <p>{len(cities[city])} dermatologist{'s' if len(cities[city]) != 1 else ''}</p>
             </a>'''
             for city in sorted(cities.keys())
@@ -1543,13 +1576,21 @@ def build_state_pages():
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
                 {"@type": "ListItem", "position": 2, "name": "Find a Dermatologist", "item": f"{DOMAIN}/find-a-dermatologist/"},
-                {"@type": "ListItem", "position": 3, "name": state, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"}
+                {"@type": "ListItem", "position": 3, "name": state_full, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"}
             ]
         })
 
         body_content = f'''
+    <nav aria-label="breadcrumb" class="breadcrumb">
+        <ol class="breadcrumb-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/find-a-dermatologist/">Find a Dermatologist</a></li>
+            <li class="active">{state_full}</li>
+        </ol>
+    </nav>
+
     <div class="container py-5">
-        <h1>Dermatologists in {state}</h1>
+        <h1>Dermatologists in {state_full}</h1>
         <p class="subtitle">{total_derms} dermatologist{'s' if total_derms != 1 else ''} in {city_count} cit{'ies' if city_count != 1 else 'y'}</p>
 
         <div class="cities-grid">
@@ -1559,9 +1600,9 @@ def build_state_pages():
         '''
 
         html = page_template(
-            title=f"Dermatologists in {state}",
+            title=f"Dermatologists in {state_full}",
             body_content=body_content,
-            meta_description=f"Find dermatologists in {state}. Browse by city or search by specialty.",
+            meta_description=f"Find dermatologists in {state_full}. Browse by city or search by specialty.",
             schema_json=breadcrumb_schema,
             canonical=f"/find-a-dermatologist/{state_lower}/"
         )
@@ -1597,6 +1638,8 @@ def build_city_pages():
         state_lower = state.lower()
 
         for city, derms in cities.items():
+            state_full = STATE_NAMES.get(state, state)
+            city_display = normalize_city_name(city)
             city_slug = slugify(city)
 
             # Sort: premium first, then by last name
@@ -1647,7 +1690,7 @@ def build_city_pages():
                 </div>
                 <div class="card-body">
                     <p class="practice-name"><strong>{practice_name}</strong></p>
-                    <p class="address">{address}<br>{city}, {state} {derm.get("zip", "")}</p>
+                    <p class="address">{address}<br>{city_display}, {state_full} {derm.get("zip", "")}</p>
                     <p class="phone">{phone_link}</p>
                     {specialty_badges}
                     <a href="{practice_url}" class="view-profile-link">View Profile →</a>
@@ -1662,14 +1705,23 @@ def build_city_pages():
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
                     {"@type": "ListItem", "position": 2, "name": "Find a Dermatologist", "item": f"{DOMAIN}/find-a-dermatologist/"},
-                    {"@type": "ListItem", "position": 3, "name": state, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
-                    {"@type": "ListItem", "position": 4, "name": city, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"}
+                    {"@type": "ListItem", "position": 3, "name": state_full, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
+                    {"@type": "ListItem", "position": 4, "name": city_display, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"}
                 ]
             })
 
             body_content = f'''
+    <nav aria-label="breadcrumb" class="breadcrumb">
+        <ol class="breadcrumb-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/find-a-dermatologist/">Find a Dermatologist</a></li>
+            <li><a href="/find-a-dermatologist/{state_lower}/">{state_full}</a></li>
+            <li class="active">{city_display}</li>
+        </ol>
+    </nav>
+
     <div class="container py-5">
-        <h1>{city}, {state}</h1>
+        <h1>Dermatologists in {city_display}, {state_full}</h1>
         <p class="subtitle">{len(sorted_derms)} dermatologist{'s' if len(sorted_derms) != 1 else ''}</p>
 
         <div class="dermatologists-grid">
@@ -1679,9 +1731,9 @@ def build_city_pages():
             '''
 
             html = page_template(
-                title=f"Dermatologists in {city}, {state}",
+                title=f"Dermatologists in {city_display}, {state_full}",
                 body_content=body_content,
-                meta_description=f"Find dermatologists in {city}, {state}. View profiles, contact information, and specialties.",
+                meta_description=f"Find dermatologists in {city_display}, {state_full}. View profiles, contact information, and specialties.",
                 schema_json=breadcrumb_schema,
                 canonical=f"/find-a-dermatologist/{state_lower}/{city_slug}.html"
             )
@@ -1719,6 +1771,8 @@ def build_practice_pages():
             continue
 
         state_lower = state.lower()
+        state_full = STATE_NAMES.get(state, state)
+        city_display = normalize_city_name(city)
         city_slug = slugify(city)
         practice_slug = slugify(practice_name)
 
@@ -1746,29 +1800,29 @@ def build_practice_pages():
 
         about_variants = [
             [
-                f"{practice_name} provides dermatology services in {city}, {state}, with a focus on {spec_list}. Dr. {last_name} and the clinical team offer diagnosis and treatment for patients across the {city} metropolitan area.",
+                f"{practice_name} provides dermatology services in {city_display}, {state_full}, with a focus on {spec_list}. Dr. {last_name} and the clinical team offer diagnosis and treatment for patients across the {city_display} metropolitan area.",
                 f"Services at {practice_name} include skin examinations, treatment of chronic conditions, and {primary_spec.lower()} procedures. The practice accepts patients of all ages and works with most major insurance plans.",
-                f"The office is located at {address} in {city}. To schedule an appointment, call the office directly or use the contact information on this page."
+                f"The office is located at {address} in {city_display}. To schedule an appointment, call the office directly or use the contact information on this page."
             ],
             [
-                f"Dr. {first_name} {last_name} practices at {practice_name} in {city}, {state}. The practice specializes in {spec_list} and serves patients throughout {state}.",
+                f"Dr. {first_name} {last_name} practices at {practice_name} in {city_display}, {state_full}. The practice specializes in {spec_list} and serves patients throughout {state_full}.",
                 f"Patients at {practice_name} receive care for conditions including skin cancer screening, acne, eczema, psoriasis, and cosmetic concerns. The practice uses current treatment protocols based on established clinical guidelines.",
-                f"New patients are welcome at the {city} office. The practice offers both in-person consultations and follow-up appointments during regular business hours."
+                f"New patients are welcome at the {city_display} office. The practice offers both in-person consultations and follow-up appointments during regular business hours."
             ],
             [
-                f"{practice_name} is a dermatology practice located in {city}, {state}. Dr. {last_name} ({credential}) provides care in {spec_list} for patients in the {city} area.",
+                f"{practice_name} is a dermatology practice located in {city_display}, {state_full}. Dr. {last_name} ({credential}) provides care in {spec_list} for patients in the {city_display} area.",
                 f"The practice offers a range of dermatological services including medical dermatology, skin cancer detection, and {primary_spec.lower()}. Treatment plans are developed based on each patient's individual needs and medical history.",
                 f"For appointments or questions about services offered at {practice_name}, patients can reach the office at {phone}."
             ],
             [
-                f"At {practice_name}, Dr. {first_name} {last_name} and the team deliver dermatology care to {city}, {state} residents. Areas of focus include {spec_list}.",
+                f"At {practice_name}, Dr. {first_name} {last_name} and the team deliver dermatology care to {city_display}, {state_full} residents. Areas of focus include {spec_list}.",
                 f"The clinical team at {practice_name} treats a broad range of skin, hair, and nail conditions. From routine skin checks to specialized procedures, the practice is equipped to address both common and complex dermatological concerns.",
-                f"The practice is conveniently situated in {city} and serves the surrounding {state} communities. Walk-in and scheduled appointments are available."
+                f"The practice is conveniently situated in {city_display} and serves the surrounding {state_full} communities. Walk-in and scheduled appointments are available."
             ],
             [
-                f"Dr. {last_name} leads the dermatology team at {practice_name}, serving {city}, {state} and nearby areas. The practice provides care across {spec_list}.",
+                f"Dr. {last_name} leads the dermatology team at {practice_name}, serving {city_display}, {state_full} and nearby areas. The practice provides care across {spec_list}.",
                 f"{practice_name} offers diagnostic evaluations, medical treatments, and procedural dermatology. The team stays current with advances in dermatological research and treatment options to provide effective patient care.",
-                f"Located in {city}, the practice welcomes new and returning patients. Contact the office at {phone} to schedule a consultation."
+                f"Located in {city_display}, the practice welcomes new and returning patients. Contact the office at {phone} to schedule a consultation."
             ]
         ]
 
@@ -1782,8 +1836,8 @@ def build_practice_pages():
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
                 {"@type": "ListItem", "position": 2, "name": "Find a Dermatologist", "item": f"{DOMAIN}/find-a-dermatologist/"},
-                {"@type": "ListItem", "position": 3, "name": state, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
-                {"@type": "ListItem", "position": 4, "name": city, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"},
+                {"@type": "ListItem", "position": 3, "name": state_full, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
+                {"@type": "ListItem", "position": 4, "name": city_display, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"},
                 {"@type": "ListItem", "position": 5, "name": practice_name, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}/{practice_slug}.html"}
             ]
         })
@@ -1798,8 +1852,8 @@ def build_practice_pages():
                     "itemListElement": [
                         {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
                         {"@type": "ListItem", "position": 2, "name": "Find a Dermatologist", "item": f"{DOMAIN}/find-a-dermatologist/"},
-                        {"@type": "ListItem", "position": 3, "name": state, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
-                        {"@type": "ListItem", "position": 4, "name": city, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"},
+                        {"@type": "ListItem", "position": 3, "name": state_full, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/"},
+                        {"@type": "ListItem", "position": 4, "name": city_display, "item": f"{DOMAIN}/find-a-dermatologist/{state_lower}/{city_slug}.html"},
                         {"@type": "ListItem", "position": 5, "name": practice_name, "item": practice_url}
                     ]
                 },
@@ -1813,8 +1867,8 @@ def build_practice_pages():
                     "address": {
                         "@type": "PostalAddress",
                         "streetAddress": address,
-                        "addressLocality": city,
-                        "addressRegion": state,
+                        "addressLocality": city_display,
+                        "addressRegion": state_full,
                         "postalCode": zip_code,
                         "addressCountry": "US"
                     },
@@ -1845,8 +1899,8 @@ def build_practice_pages():
             <ol class="breadcrumb-list">
                 <li><a href="/">Home</a></li>
                 <li><a href="/find-a-dermatologist/">Find a Dermatologist</a></li>
-                <li><a href="/find-a-dermatologist/{state_lower}/">{state}</a></li>
-                <li><a href="/find-a-dermatologist/{state_lower}/{city_slug}.html">{city}</a></li>
+                <li><a href="/find-a-dermatologist/{state_lower}/">{state_full}</a></li>
+                <li><a href="/find-a-dermatologist/{state_lower}/{city_slug}.html">{city_display}</a></li>
                 <li class="active">{practice_name}</li>
             </ol>
         </nav>
@@ -1871,7 +1925,7 @@ def build_practice_pages():
                         </svg>
                         <div>
                             <p>{address}</p>
-                            <p>{city}, {state} {zip_code}</p>
+                            <p>{city_display}, {state_full} {zip_code}</p>
                         </div>
                     </div>
                 </div>
@@ -1898,6 +1952,12 @@ def build_practice_pages():
                         </svg>
                         Request Appointment
                     </button>
+                    <button class="action-btn btn-share" onclick="if(navigator.share){{navigator.share({{title:'{practice_name}',url:window.location.href}})}}else{{navigator.clipboard.writeText(window.location.href);this.textContent='Link Copied!'}}>
+                        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+                        </svg>
+                        Share
+                    </button>
                 </div>
 
                 <!-- Specialties -->
@@ -1920,7 +1980,7 @@ def build_practice_pages():
 
                     <!-- Services Section -->
                     <section class="practice-services">
-                        <h2>Dermatology Services in {city}, {state}</h2>
+                        <h2>Dermatology Services in {city_display}, {state_full}</h2>
                         <p>We offer a comprehensive range of dermatological services to address all your skin care needs:</p>
                         <div class="services-grid">
                             {specialty_badges_html}
@@ -1929,8 +1989,8 @@ def build_practice_pages():
 
                     <!-- Serving Community Section -->
                     <section class="practice-community">
-                        <h2>Dermatology Services in {city}, {state}</h2>
-                        <p>{practice_name} serves patients in {city} and nearby communities in {state}. The practice offers appointments during regular business hours, Monday through Friday. Contact the office to check availability and insurance acceptance.</p>
+                        <h2>Dermatology Services in {city_display}, {state_full}</h2>
+                        <p>{practice_name} serves patients in {city_display} and nearby communities in {state_full}. The practice offers appointments during regular business hours, Monday through Friday. Contact the office to check availability and insurance acceptance.</p>
                     </section>
 
                     <!-- Appointment Request Form -->
@@ -1966,7 +2026,7 @@ def build_practice_pages():
                         <div class="location-box">
                             <h3>Location</h3>
                             <p class="addr">{address}</p>
-                            <p class="addr">{city}, {state} {zip_code}</p>
+                            <p class="addr">{city_display}, {state_full} {zip_code}</p>
                         </div>
                         <div class="contact-box">
                             <h3>Contact</h3>
@@ -1981,7 +2041,7 @@ def build_practice_pages():
             <!-- Back Link -->
             <div class="practice-footer">
                 <a href="/find-a-dermatologist/{state_lower}/{city_slug}.html" class="back-link">
-                    <span>←</span> Back to all dermatologists in {city}, {state}
+                    <span>←</span> Back to all dermatologists in {city_display}, {state_full}
                 </a>
             </div>
         </div>
@@ -1989,9 +2049,9 @@ def build_practice_pages():
         '''
 
         html = page_template(
-            title=f"{first_name} {last_name}, {credential} - {practice_name} in {city}, {state}",
+            title=f"{first_name} {last_name}, {credential} - {practice_name} in {city_display}, {state_full}",
             body_content=body_content,
-            meta_description=f"{first_name} {last_name} is a board-certified dermatologist at {practice_name} in {city}, {state}. Specializing in {', '.join(specialties[:2]) if specialties else 'dermatology'}. Schedule your appointment today.",
+            meta_description=f"{first_name} {last_name} is a board-certified dermatologist at {practice_name} in {city_display}, {state_full}. Specializing in {', '.join(specialties[:2]) if specialties else 'dermatology'}. Schedule your appointment today.",
             schema_json=physician_schema_json,
             canonical=f"/find-a-dermatologist/{state_lower}/{city_slug}/{practice_slug}.html"
         )
