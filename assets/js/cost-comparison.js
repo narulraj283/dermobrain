@@ -85,7 +85,7 @@
 
             tableHTML += `
                 <tr style="background:${bgColor}; border-bottom:1px solid #eee;">
-                    <td style="padding:10px 8px; font-weight:500;">${city.city}, ${city.state}</td>
+                    <td style="padding:10px 8px; font-weight:500;">${city.name || city.city}, ${city.state}</td>
                     <td style="padding:10px 8px; font-weight:700;">$${cityAvg.toLocaleString()}</td>
                     <td style="padding:10px 8px; color:#666;">$${cityLow.toLocaleString()} - $${cityHigh.toLocaleString()}</td>
                     <td style="padding:10px 8px; color:${diffColor}; font-weight:600;">${diffStr}</td>

@@ -1,106 +1,730 @@
 [
-  {"name": "New York", "state": "New York", "state_abbr": "NY", "slug": "new-york-ny"},
-  {"name": "Los Angeles", "state": "California", "state_abbr": "CA", "slug": "los-angeles-ca"},
-  {"name": "Chicago", "state": "Illinois", "state_abbr": "IL", "slug": "chicago-il"},
-  {"name": "Houston", "state": "Texas", "state_abbr": "TX", "slug": "houston-tx"},
-  {"name": "Phoenix", "state": "Arizona", "state_abbr": "AZ", "slug": "phoenix-az"},
-  {"name": "Philadelphia", "state": "Pennsylvania", "state_abbr": "PA", "slug": "philadelphia-pa"},
-  {"name": "San Antonio", "state": "Texas", "state_abbr": "TX", "slug": "san-antonio-tx"},
-  {"name": "San Diego", "state": "California", "state_abbr": "CA", "slug": "san-diego-ca"},
-  {"name": "Dallas", "state": "Texas", "state_abbr": "TX", "slug": "dallas-tx"},
-  {"name": "San Jose", "state": "California", "state_abbr": "CA", "slug": "san-jose-ca"},
-  {"name": "Austin", "state": "Texas", "state_abbr": "TX", "slug": "austin-tx"},
-  {"name": "Jacksonville", "state": "Florida", "state_abbr": "FL", "slug": "jacksonville-fl"},
-  {"name": "Fort Worth", "state": "Texas", "state_abbr": "TX", "slug": "fort-worth-tx"},
-  {"name": "Columbus", "state": "Ohio", "state_abbr": "OH", "slug": "columbus-oh"},
-  {"name": "Charlotte", "state": "North Carolina", "state_abbr": "NC", "slug": "charlotte-nc"},
-  {"name": "San Francisco", "state": "California", "state_abbr": "CA", "slug": "san-francisco-ca"},
-  {"name": "Indianapolis", "state": "Indiana", "state_abbr": "IN", "slug": "indianapolis-in"},
-  {"name": "Seattle", "state": "Washington", "state_abbr": "WA", "slug": "seattle-wa"},
-  {"name": "Denver", "state": "Colorado", "state_abbr": "CO", "slug": "denver-co"},
-  {"name": "Washington", "state": "District of Columbia", "state_abbr": "DC", "slug": "washington-dc"},
-  {"name": "Boston", "state": "Massachusetts", "state_abbr": "MA", "slug": "boston-ma"},
-  {"name": "El Paso", "state": "Texas", "state_abbr": "TX", "slug": "el-paso-tx"},
-  {"name": "Nashville", "state": "Tennessee", "state_abbr": "TN", "slug": "nashville-tn"},
-  {"name": "Detroit", "state": "Michigan", "state_abbr": "MI", "slug": "detroit-mi"},
-  {"name": "Oklahoma City", "state": "Oklahoma", "state_abbr": "OK", "slug": "oklahoma-city-ok"},
-  {"name": "Memphis", "state": "Tennessee", "state_abbr": "TN", "slug": "memphis-tn"},
-  {"name": "Portland", "state": "Oregon", "state_abbr": "OR", "slug": "portland-or"},
-  {"name": "Las Vegas", "state": "Nevada", "state_abbr": "NV", "slug": "las-vegas-nv"},
-  {"name": "Louisville", "state": "Kentucky", "state_abbr": "KY", "slug": "louisville-ky"},
-  {"name": "Baltimore", "state": "Maryland", "state_abbr": "MD", "slug": "baltimore-md"},
-  {"name": "Milwaukee", "state": "Wisconsin", "state_abbr": "WI", "slug": "milwaukee-wi"},
-  {"name": "Albuquerque", "state": "New Mexico", "state_abbr": "NM", "slug": "albuquerque-nm"},
-  {"name": "Tucson", "state": "Arizona", "state_abbr": "AZ", "slug": "tucson-az"},
-  {"name": "Fresno", "state": "California", "state_abbr": "CA", "slug": "fresno-ca"},
-  {"name": "Sacramento", "state": "California", "state_abbr": "CA", "slug": "sacramento-ca"},
-  {"name": "Long Beach", "state": "California", "state_abbr": "CA", "slug": "long-beach-ca"},
-  {"name": "Kansas City", "state": "Missouri", "state_abbr": "MO", "slug": "kansas-city-mo"},
-  {"name": "Mesa", "state": "Arizona", "state_abbr": "AZ", "slug": "mesa-az"},
-  {"name": "Virginia Beach", "state": "Virginia", "state_abbr": "VA", "slug": "virginia-beach-va"},
-  {"name": "Atlanta", "state": "Georgia", "state_abbr": "GA", "slug": "atlanta-ga"},
-  {"name": "Colorado Springs", "state": "Colorado", "state_abbr": "CO", "slug": "colorado-springs-co"},
-  {"name": "Omaha", "state": "Nebraska", "state_abbr": "NE", "slug": "omaha-ne"},
-  {"name": "Miami", "state": "Florida", "state_abbr": "FL", "slug": "miami-fl"},
-  {"name": "Tulsa", "state": "Oklahoma", "state_abbr": "OK", "slug": "tulsa-ok"},
-  {"name": "Oakland", "state": "California", "state_abbr": "CA", "slug": "oakland-ca"},
-  {"name": "Bakersfield", "state": "California", "state_abbr": "CA", "slug": "bakersfield-ca"},
-  {"name": "New Orleans", "state": "Louisiana", "state_abbr": "LA", "slug": "new-orleans-la"},
-  {"name": "Cleveland", "state": "Ohio", "state_abbr": "OH", "slug": "cleveland-oh"},
-  {"name": "Arlington", "state": "Texas", "state_abbr": "TX", "slug": "arlington-tx"},
-  {"name": "Minneapolis", "state": "Minnesota", "state_abbr": "MN", "slug": "minneapolis-mn"},
-  {"name": "Aurora", "state": "Colorado", "state_abbr": "CO", "slug": "aurora-co"},
-  {"name": "Honolulu", "state": "Hawaii", "state_abbr": "HI", "slug": "honolulu-hi"},
-  {"name": "Stockton", "state": "California", "state_abbr": "CA", "slug": "stockton-ca"},
-  {"name": "Saint Paul", "state": "Minnesota", "state_abbr": "MN", "slug": "saint-paul-mn"},
-  {"name": "Pittsburgh", "state": "Pennsylvania", "state_abbr": "PA", "slug": "pittsburgh-pa"},
-  {"name": "Riverside", "state": "California", "state_abbr": "CA", "slug": "riverside-ca"},
-  {"name": "Cincinnati", "state": "Ohio", "state_abbr": "OH", "slug": "cincinnati-oh"},
-  {"name": "Irvine", "state": "California", "state_abbr": "CA", "slug": "irvine-ca"},
-  {"name": "Lexington", "state": "Kentucky", "state_abbr": "KY", "slug": "lexington-ky"},
-  {"name": "Anaheim", "state": "California", "state_abbr": "CA", "slug": "anaheim-ca"},
-  {"name": "Aurora", "state": "Illinois", "state_abbr": "IL", "slug": "aurora-il"},
-  {"name": "Corpus Christi", "state": "Texas", "state_abbr": "TX", "slug": "corpus-christi-tx"},
-  {"name": "Saint Louis", "state": "Missouri", "state_abbr": "MO", "slug": "saint-louis-mo"},
-  {"name": "Plano", "state": "Texas", "state_abbr": "TX", "slug": "plano-tx"},
-  {"name": "Garland", "state": "Texas", "state_abbr": "TX", "slug": "garland-tx"},
-  {"name": "Glendale", "state": "Arizona", "state_abbr": "AZ", "slug": "glendale-az"},
-  {"name": "Chandler", "state": "Arizona", "state_abbr": "AZ", "slug": "chandler-az"},
-  {"name": "Laredo", "state": "Texas", "state_abbr": "TX", "slug": "laredo-tx"},
-  {"name": "Orlando", "state": "Florida", "state_abbr": "FL", "slug": "orlando-fl"},
-  {"name": "Gilbert", "state": "Arizona", "state_abbr": "AZ", "slug": "gilbert-az"},
-  {"name": "Garfield Heights", "state": "Ohio", "state_abbr": "OH", "slug": "garfield-heights-oh"},
-  {"name": "Irving", "state": "Texas", "state_abbr": "TX", "slug": "irving-tx"},
-  {"name": "Fremont", "state": "California", "state_abbr": "CA", "slug": "fremont-ca"},
-  {"name": "Modesto", "state": "California", "state_abbr": "CA", "slug": "modesto-ca"},
-  {"name": "Winston-Salem", "state": "North Carolina", "state_abbr": "NC", "slug": "winston-salem-nc"},
-  {"name": "Jersey City", "state": "New Jersey", "state_abbr": "NJ", "slug": "jersey-city-nj"},
-  {"name": "Santa Ana", "state": "California", "state_abbr": "CA", "slug": "santa-ana-ca"},
-  {"name": "Hialeah", "state": "Florida", "state_abbr": "FL", "slug": "hialeah-fl"},
-  {"name": "Huntsville", "state": "Alabama", "state_abbr": "AL", "slug": "huntsville-al"},
-  {"name": "Baton Rouge", "state": "Louisiana", "state_abbr": "LA", "slug": "baton-rouge-la"},
-  {"name": "Fontana", "state": "California", "state_abbr": "CA", "slug": "fontana-ca"},
-  {"name": "Montgomery", "state": "Alabama", "state_abbr": "AL", "slug": "montgomery-al"},
-  {"name": "Moreno Valley", "state": "California", "state_abbr": "CA", "slug": "moreno-valley-ca"},
-  {"name": "Shreveport", "state": "Louisiana", "state_abbr": "LA", "slug": "shreveport-la"},
-  {"name": "Brownsville", "state": "Texas", "state_abbr": "TX", "slug": "brownsville-tx"},
-  {"name": "Tallahassee", "state": "Florida", "state_abbr": "FL", "slug": "tallahassee-fl"},
-  {"name": "Garland", "state": "Texas", "state_abbr": "TX", "slug": "garland-tx"},
-  {"name": "Aurora", "state": "Colorado", "state_abbr": "CO", "slug": "aurora-co"},
-  {"name": "Huntington Beach", "state": "California", "state_abbr": "CA", "slug": "huntington-beach-ca"},
-  {"name": "Aurora", "state": "Illinois", "state_abbr": "IL", "slug": "aurora-il"},
-  {"name": "Amarillo", "state": "Texas", "state_abbr": "TX", "slug": "amarillo-tx"},
-  {"name": "Knoxville", "state": "Tennessee", "state_abbr": "TN", "slug": "knoxville-tn"},
-  {"name": "Providence", "state": "Rhode Island", "state_abbr": "RI", "slug": "providence-ri"},
-  {"name": "Grand Prairie", "state": "Texas", "state_abbr": "TX", "slug": "grand-prairie-tx"},
-  {"name": "Gainesville", "state": "Florida", "state_abbr": "FL", "slug": "gainesville-fl"},
-  {"name": "Tampa", "state": "Florida", "state_abbr": "FL", "slug": "tampa-fl"},
-  {"name": "Fontana", "state": "California", "state_abbr": "CA", "slug": "fontana-ca"},
-  {"name": "Huntsville", "state": "Alabama", "state_abbr": "AL", "slug": "huntsville-al"},
-  {"name": "Akron", "state": "Ohio", "state_abbr": "OH", "slug": "akron-oh"},
-  {"name": "Beaumont", "state": "Texas", "state_abbr": "TX", "slug": "beaumont-tx"},
-  {"name": "Port Saint Lucie", "state": "Florida", "state_abbr": "FL", "slug": "port-saint-lucie-fl"},
-  {"name": "Madison", "state": "Wisconsin", "state_abbr": "WI", "slug": "madison-wi"},
-  {"name": "Grand Rapids", "state": "Michigan", "state_abbr": "MI", "slug": "grand-rapids-mi"},
-  {"name": "Salt Lake City", "state": "Utah", "state_abbr": "UT", "slug": "salt-lake-city-ut"}
+  {
+    "name": "New York",
+    "state": "New York",
+    "state_abbr": "NY",
+    "slug": "new-york-ny",
+    "cost_modifier": 1.35
+  },
+  {
+    "name": "Los Angeles",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "los-angeles-ca",
+    "cost_modifier": 1.25
+  },
+  {
+    "name": "Chicago",
+    "state": "Illinois",
+    "state_abbr": "IL",
+    "slug": "chicago-il",
+    "cost_modifier": 1.1
+  },
+  {
+    "name": "Houston",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "houston-tx",
+    "cost_modifier": 0.95
+  },
+  {
+    "name": "Phoenix",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "slug": "phoenix-az",
+    "cost_modifier": 0.92
+  },
+  {
+    "name": "Philadelphia",
+    "state": "Pennsylvania",
+    "state_abbr": "PA",
+    "slug": "philadelphia-pa",
+    "cost_modifier": 1.12
+  },
+  {
+    "name": "San Antonio",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "san-antonio-tx",
+    "cost_modifier": 0.88
+  },
+  {
+    "name": "San Diego",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "san-diego-ca",
+    "cost_modifier": 1.22
+  },
+  {
+    "name": "Dallas",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "dallas-tx",
+    "cost_modifier": 0.98
+  },
+  {
+    "name": "San Jose",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "san-jose-ca",
+    "cost_modifier": 1.4
+  },
+  {
+    "name": "Austin",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "austin-tx",
+    "cost_modifier": 1.05
+  },
+  {
+    "name": "Jacksonville",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "jacksonville-fl",
+    "cost_modifier": 0.9
+  },
+  {
+    "name": "Fort Worth",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "fort-worth-tx",
+    "cost_modifier": 0.95
+  },
+  {
+    "name": "Columbus",
+    "state": "Ohio",
+    "state_abbr": "OH",
+    "slug": "columbus-oh",
+    "cost_modifier": 0.92
+  },
+  {
+    "name": "Charlotte",
+    "state": "North Carolina",
+    "state_abbr": "NC",
+    "slug": "charlotte-nc",
+    "cost_modifier": 0.95
+  },
+  {
+    "name": "San Francisco",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "san-francisco-ca",
+    "cost_modifier": 1.45
+  },
+  {
+    "name": "Indianapolis",
+    "state": "Indiana",
+    "state_abbr": "IN",
+    "slug": "indianapolis-in",
+    "cost_modifier": 0.88
+  },
+  {
+    "name": "Seattle",
+    "state": "Washington",
+    "state_abbr": "WA",
+    "slug": "seattle-wa",
+    "cost_modifier": 1.28
+  },
+  {
+    "name": "Denver",
+    "state": "Colorado",
+    "state_abbr": "CO",
+    "slug": "denver-co",
+    "cost_modifier": 1.1
+  },
+  {
+    "name": "Washington",
+    "state": "District of Columbia",
+    "state_abbr": "DC",
+    "slug": "washington-dc",
+    "cost_modifier": 1.3
+  },
+  {
+    "name": "Boston",
+    "state": "Massachusetts",
+    "state_abbr": "MA",
+    "slug": "boston-ma",
+    "cost_modifier": 1.32
+  },
+  {
+    "name": "El Paso",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "el-paso-tx",
+    "cost_modifier": 0.82
+  },
+  {
+    "name": "Nashville",
+    "state": "Tennessee",
+    "state_abbr": "TN",
+    "slug": "nashville-tn",
+    "cost_modifier": 1.02
+  },
+  {
+    "name": "Detroit",
+    "state": "Michigan",
+    "state_abbr": "MI",
+    "slug": "detroit-mi",
+    "cost_modifier": 0.85
+  },
+  {
+    "name": "Oklahoma City",
+    "state": "Oklahoma",
+    "state_abbr": "OK",
+    "slug": "oklahoma-city-ok",
+    "cost_modifier": 0.84
+  },
+  {
+    "name": "Memphis",
+    "state": "Tennessee",
+    "state_abbr": "TN",
+    "slug": "memphis-tn",
+    "cost_modifier": 0.82
+  },
+  {
+    "name": "Portland",
+    "state": "Oregon",
+    "state_abbr": "OR",
+    "slug": "portland-or",
+    "cost_modifier": 1.15
+  },
+  {
+    "name": "Las Vegas",
+    "state": "Nevada",
+    "state_abbr": "NV",
+    "slug": "las-vegas-nv",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Louisville",
+    "state": "Kentucky",
+    "state_abbr": "KY",
+    "slug": "louisville-ky",
+    "cost_modifier": 0.87
+  },
+  {
+    "name": "Baltimore",
+    "state": "Maryland",
+    "state_abbr": "MD",
+    "slug": "baltimore-md",
+    "cost_modifier": 1.05
+  },
+  {
+    "name": "Milwaukee",
+    "state": "Wisconsin",
+    "state_abbr": "WI",
+    "slug": "milwaukee-wi",
+    "cost_modifier": 0.92
+  },
+  {
+    "name": "Albuquerque",
+    "state": "New Mexico",
+    "state_abbr": "NM",
+    "slug": "albuquerque-nm",
+    "cost_modifier": 0.88
+  },
+  {
+    "name": "Tucson",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "slug": "tucson-az",
+    "cost_modifier": 0.88
+  },
+  {
+    "name": "Fresno",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "fresno-ca",
+    "cost_modifier": 0.9
+  },
+  {
+    "name": "Sacramento",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "sacramento-ca",
+    "cost_modifier": 1.08
+  },
+  {
+    "name": "Long Beach",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "long-beach-ca",
+    "cost_modifier": 1.22
+  },
+  {
+    "name": "Kansas City",
+    "state": "Missouri",
+    "state_abbr": "MO",
+    "slug": "kansas-city-mo",
+    "cost_modifier": 0.9
+  },
+  {
+    "name": "Mesa",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "slug": "mesa-az",
+    "cost_modifier": 0.92
+  },
+  {
+    "name": "Virginia Beach",
+    "state": "Virginia",
+    "state_abbr": "VA",
+    "slug": "virginia-beach-va",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Atlanta",
+    "state": "Georgia",
+    "state_abbr": "GA",
+    "slug": "atlanta-ga",
+    "cost_modifier": 1.05
+  },
+  {
+    "name": "Colorado Springs",
+    "state": "Colorado",
+    "state_abbr": "CO",
+    "slug": "colorado-springs-co",
+    "cost_modifier": 0.98
+  },
+  {
+    "name": "Omaha",
+    "state": "Nebraska",
+    "state_abbr": "NE",
+    "slug": "omaha-ne",
+    "cost_modifier": 0.88
+  },
+  {
+    "name": "Miami",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "miami-fl",
+    "cost_modifier": 1.18
+  },
+  {
+    "name": "Tulsa",
+    "state": "Oklahoma",
+    "state_abbr": "OK",
+    "slug": "tulsa-ok",
+    "cost_modifier": 0.84
+  },
+  {
+    "name": "Oakland",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "oakland-ca",
+    "cost_modifier": 1.38
+  },
+  {
+    "name": "Bakersfield",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "bakersfield-ca",
+    "cost_modifier": 0.9
+  },
+  {
+    "name": "New Orleans",
+    "state": "Louisiana",
+    "state_abbr": "LA",
+    "slug": "new-orleans-la",
+    "cost_modifier": 0.95
+  },
+  {
+    "name": "Cleveland",
+    "state": "Ohio",
+    "state_abbr": "OH",
+    "slug": "cleveland-oh",
+    "cost_modifier": 0.88
+  },
+  {
+    "name": "Arlington",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "arlington-tx",
+    "cost_modifier": 0.98
+  },
+  {
+    "name": "Minneapolis",
+    "state": "Minnesota",
+    "state_abbr": "MN",
+    "slug": "minneapolis-mn",
+    "cost_modifier": 1.08
+  },
+  {
+    "name": "Aurora",
+    "state": "Colorado",
+    "state_abbr": "CO",
+    "slug": "aurora-co",
+    "cost_modifier": 1.08
+  },
+  {
+    "name": "Honolulu",
+    "state": "Hawaii",
+    "state_abbr": "HI",
+    "slug": "honolulu-hi",
+    "cost_modifier": 1.42
+  },
+  {
+    "name": "Stockton",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "stockton-ca",
+    "cost_modifier": 0.95
+  },
+  {
+    "name": "Saint Paul",
+    "state": "Minnesota",
+    "state_abbr": "MN",
+    "slug": "saint-paul-mn",
+    "cost_modifier": 1.05
+  },
+  {
+    "name": "Pittsburgh",
+    "state": "Pennsylvania",
+    "state_abbr": "PA",
+    "slug": "pittsburgh-pa",
+    "cost_modifier": 0.95
+  },
+  {
+    "name": "Riverside",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "riverside-ca",
+    "cost_modifier": 1.05
+  },
+  {
+    "name": "Cincinnati",
+    "state": "Ohio",
+    "state_abbr": "OH",
+    "slug": "cincinnati-oh",
+    "cost_modifier": 0.9
+  },
+  {
+    "name": "Irvine",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "irvine-ca",
+    "cost_modifier": 1.3
+  },
+  {
+    "name": "Lexington",
+    "state": "Kentucky",
+    "state_abbr": "KY",
+    "slug": "lexington-ky",
+    "cost_modifier": 0.88
+  },
+  {
+    "name": "Anaheim",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "anaheim-ca",
+    "cost_modifier": 1.22
+  },
+  {
+    "name": "Aurora",
+    "state": "Illinois",
+    "state_abbr": "IL",
+    "slug": "aurora-il",
+    "cost_modifier": 1.08
+  },
+  {
+    "name": "Corpus Christi",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "corpus-christi-tx",
+    "cost_modifier": 0.85
+  },
+  {
+    "name": "Saint Louis",
+    "state": "Missouri",
+    "state_abbr": "MO",
+    "slug": "saint-louis-mo",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Plano",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "plano-tx",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Garland",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "garland-tx",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Glendale",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "slug": "glendale-az",
+    "cost_modifier": 0.92
+  },
+  {
+    "name": "Chandler",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "slug": "chandler-az",
+    "cost_modifier": 0.92
+  },
+  {
+    "name": "Laredo",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "laredo-tx",
+    "cost_modifier": 0.78
+  },
+  {
+    "name": "Orlando",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "orlando-fl",
+    "cost_modifier": 0.98
+  },
+  {
+    "name": "Gilbert",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "slug": "gilbert-az",
+    "cost_modifier": 0.95
+  },
+  {
+    "name": "Garfield Heights",
+    "state": "Ohio",
+    "state_abbr": "OH",
+    "slug": "garfield-heights-oh",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Irving",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "irving-tx",
+    "cost_modifier": 0.98
+  },
+  {
+    "name": "Fremont",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "fremont-ca",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Modesto",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "modesto-ca",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Winston-Salem",
+    "state": "North Carolina",
+    "state_abbr": "NC",
+    "slug": "winston-salem-nc",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Jersey City",
+    "state": "New Jersey",
+    "state_abbr": "NJ",
+    "slug": "jersey-city-nj",
+    "cost_modifier": 1.3
+  },
+  {
+    "name": "Santa Ana",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "santa-ana-ca",
+    "cost_modifier": 1.22
+  },
+  {
+    "name": "Hialeah",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "hialeah-fl",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Huntsville",
+    "state": "Alabama",
+    "state_abbr": "AL",
+    "slug": "huntsville-al",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Baton Rouge",
+    "state": "Louisiana",
+    "state_abbr": "LA",
+    "slug": "baton-rouge-la",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Fontana",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "fontana-ca",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Montgomery",
+    "state": "Alabama",
+    "state_abbr": "AL",
+    "slug": "montgomery-al",
+    "cost_modifier": 0.82
+  },
+  {
+    "name": "Moreno Valley",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "moreno-valley-ca",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Shreveport",
+    "state": "Louisiana",
+    "state_abbr": "LA",
+    "slug": "shreveport-la",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Brownsville",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "brownsville-tx",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Tallahassee",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "tallahassee-fl",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Garland",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "garland-tx",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Aurora",
+    "state": "Colorado",
+    "state_abbr": "CO",
+    "slug": "aurora-co",
+    "cost_modifier": 1.08
+  },
+  {
+    "name": "Huntington Beach",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "huntington-beach-ca",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Aurora",
+    "state": "Illinois",
+    "state_abbr": "IL",
+    "slug": "aurora-il",
+    "cost_modifier": 1.08
+  },
+  {
+    "name": "Amarillo",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "amarillo-tx",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Knoxville",
+    "state": "Tennessee",
+    "state_abbr": "TN",
+    "slug": "knoxville-tn",
+    "cost_modifier": 0.85
+  },
+  {
+    "name": "Providence",
+    "state": "Rhode Island",
+    "state_abbr": "RI",
+    "slug": "providence-ri",
+    "cost_modifier": 1.05
+  },
+  {
+    "name": "Grand Prairie",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "grand-prairie-tx",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Gainesville",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "gainesville-fl",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Tampa",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "tampa-fl",
+    "cost_modifier": 0.98
+  },
+  {
+    "name": "Fontana",
+    "state": "California",
+    "state_abbr": "CA",
+    "slug": "fontana-ca",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Huntsville",
+    "state": "Alabama",
+    "state_abbr": "AL",
+    "slug": "huntsville-al",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Akron",
+    "state": "Ohio",
+    "state_abbr": "OH",
+    "slug": "akron-oh",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Beaumont",
+    "state": "Texas",
+    "state_abbr": "TX",
+    "slug": "beaumont-tx",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Port Saint Lucie",
+    "state": "Florida",
+    "state_abbr": "FL",
+    "slug": "port-saint-lucie-fl",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Madison",
+    "state": "Wisconsin",
+    "state_abbr": "WI",
+    "slug": "madison-wi",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Grand Rapids",
+    "state": "Michigan",
+    "state_abbr": "MI",
+    "slug": "grand-rapids-mi",
+    "cost_modifier": 1.0
+  },
+  {
+    "name": "Salt Lake City",
+    "state": "Utah",
+    "state_abbr": "UT",
+    "slug": "salt-lake-city-ut",
+    "cost_modifier": 0.98
+  }
 ]

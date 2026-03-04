@@ -37,7 +37,7 @@
         });
 
         // Populate cities
-        const cities = cityData.map(c => `${c.city}, ${c.state}`).sort();
+        const cities = cityData.map(c => `${c.name || c.city}, ${c.state}`).sort();
         const uniqueCities = [...new Set(cities)];
         uniqueCities.forEach(city => {
             const opt = document.createElement('option');
@@ -80,7 +80,7 @@
         // City cost adjustment
         if (cityVal) {
             const cityName = cityVal.split(',')[0].trim();
-            const cityInfo = cityData.find(c => c.city === cityName);
+            const cityInfo = cityData.find(c => (c.name || c.city) === cityName);
             if (cityInfo) {
                 const modifier = cityInfo.cost_modifier || cityInfo.cost_index || 1.0;
                 avgCost = Math.round(avgCost * modifier);
