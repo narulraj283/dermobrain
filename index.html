@@ -26,7 +26,8 @@
 
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalWebPage", "name": "DermoBrain", "description": "Your trusted dermatology encyclopedia covering medical, surgical, and cosmetic dermatology.", "url": "https://dermobrain.com", "publisher": {"@type": "Organization", "name": "DermoBrain", "url": "https://dermobrain.com"}}</script>
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=2">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="stylesheet" href="/assets/css/style.css?v=3">
     
 
     <!-- GA4 -->
@@ -93,11 +94,24 @@
 
                 </div>
             </li>
-            <li class="nav-item">
-                <a href="/find-a-dermatologist/" class="nav-link cta-link">Find a Dermatologist</a>
+            <li class="nav-item has-dropdown">
+                <a href="/tools/" class="nav-link">Tools <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+                <div class="dropdown-menu">
+                    <a href="/tools/cost-calculator/">Cost Calculator</a>
+<a href="/tools/cost-comparison/">Cost Comparison</a>
+<a href="/skin-quiz/">Skin Quiz</a>
+<a href="/tools/widget/">Embeddable Widget</a>
+
+                </div>
             </li>
             <li class="nav-item">
-                <a href="/skin-quiz/" class="nav-link">Skin Quiz</a>
+                <a href="/news/" class="nav-link">News</a>
+            </li>
+            <li class="nav-item">
+                <a href="/for-dermatologists/" class="nav-link">For Dermatologists</a>
+            </li>
+            <li class="nav-item">
+                <a href="/find-a-dermatologist/" class="nav-link cta-link">Find a Dermatologist</a>
             </li>
                 </ul>
             </nav>
@@ -126,7 +140,7 @@
                 <button class="btn btn-primary search-btn">Search</button>
             </div>
             <div class="hero-stats">
-                <div class="stat"><strong>481+</strong> Articles</div>
+                <div class="stat"><strong>1081+</strong> Articles</div>
                 <div class="stat"><strong>50</strong> States</div>
                 <div class="stat"><strong>&#9745;</strong> Medically Reviewed</div>
                 <div class="stat"><strong>3</strong> Specialties</div>
@@ -144,19 +158,19 @@
                     <div class="pillar-icon">&#129657;</div>
                     <h3>Medical Dermatology</h3>
                     <p>Skin conditions, cancer, allergies, pediatric dermatology, hair, nails, and skin of color.</p>
-                    <span class="pillar-count">174+ articles</span>
+                    <span class="pillar-count">441+ articles</span>
                 </a>
                 <a href="/surgical-dermatology/" class="pillar-card pillar-surgical">
                     <div class="pillar-icon">&#129658;</div>
                     <h3>Surgical Dermatology</h3>
                     <p>Mohs surgery, skin cancer surgery, surgical procedures, and pre/post-operative care.</p>
-                    <span class="pillar-count">65+ articles</span>
+                    <span class="pillar-count">135+ articles</span>
                 </a>
                 <a href="/cosmetic-dermatology/" class="pillar-card pillar-cosmetic">
                     <div class="pillar-icon">&#10024;</div>
                     <h3>Cosmetic Dermatology</h3>
                     <p>Injectables, laser treatments, skin rejuvenation, body contouring, and anti-aging.</p>
-                    <span class="pillar-count">107+ articles</span>
+                    <span class="pillar-count">229+ articles</span>
                 </a>
             </div>
         </div>
@@ -276,20 +290,31 @@
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="/find-a-dermatologist/">Find a Dermatologist</a></li>
+                        <li><a href="/tools/">Tools & Calculators</a></li>
                         <li><a href="/skin-quiz/">Skin Health Quiz</a></li>
                         <li><a href="/guides/">Expert Guides</a></li>
-                        <li><a href="/myths/">Myths vs Facts</a></li>
+                        <li><a href="/news/">What's New</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>About</h4>
                     <ul>
                         <li><a href="/about/">About DermoBrain</a></li>
+                        <li><a href="/for-dermatologists/">For Dermatologists</a></li>
+                        <li><a href="/contact/">Contact Us</a></li>
                         <li><a href="/editorial-standards/">Editorial Standards</a></li>
                         <li><a href="/privacy-policy/">Privacy Policy</a></li>
-                        <li><a href="/sitemap.xml">Sitemap</a></li>
                     </ul>
                 </div>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get the latest dermatology insights delivered to your inbox.</p>
+                <form action="https://formspree.io/f/xpwzgkqq" method="POST" class="newsletter-form">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <input type="hidden" name="_subject" value="DermoBrain Newsletter Signup">
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 DermoBrain.com — All rights reserved.</p>
@@ -298,6 +323,6 @@
         </div>
     </footer>
 
-    <script src="/assets/js/main.js?v=2" defer></script>
+    <script src="/assets/js/main.js?v=3" defer></script>
 </body>
 </html>

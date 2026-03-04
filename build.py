@@ -72,13 +72,28 @@ NAV_ITEMS = [
         ]
     },
     {
-        "label": "Find a Dermatologist",
-        "href": "/find-a-dermatologist/",
+        "label": "Tools",
+        "href": "/tools/",
+        "dropdown": [
+            {"label": "Cost Calculator", "href": "/tools/cost-calculator/"},
+            {"label": "Cost Comparison", "href": "/tools/cost-comparison/"},
+            {"label": "Skin Quiz", "href": "/skin-quiz/"},
+            {"label": "Embeddable Widget", "href": "/tools/widget/"},
+        ]
+    },
+    {
+        "label": "News",
+        "href": "/news/",
         "dropdown": None
     },
     {
-        "label": "Skin Quiz",
-        "href": "/skin-quiz/",
+        "label": "For Dermatologists",
+        "href": "/for-dermatologists/",
+        "dropdown": None
+    },
+    {
+        "label": "Find a Dermatologist",
+        "href": "/find-a-dermatologist/",
         "dropdown": None
     },
 ]
@@ -146,7 +161,8 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
 
     {schema_tag}
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=2">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="stylesheet" href="/assets/css/style.css?v=3">
     {extra_head}
 
     <!-- GA4 -->
@@ -213,20 +229,31 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="/find-a-dermatologist/">Find a Dermatologist</a></li>
+                        <li><a href="/tools/">Tools & Calculators</a></li>
                         <li><a href="/skin-quiz/">Skin Health Quiz</a></li>
                         <li><a href="/guides/">Expert Guides</a></li>
-                        <li><a href="/myths/">Myths vs Facts</a></li>
+                        <li><a href="/news/">What's New</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>About</h4>
                     <ul>
                         <li><a href="/about/">About DermoBrain</a></li>
+                        <li><a href="/for-dermatologists/">For Dermatologists</a></li>
+                        <li><a href="/contact/">Contact Us</a></li>
                         <li><a href="/editorial-standards/">Editorial Standards</a></li>
                         <li><a href="/privacy-policy/">Privacy Policy</a></li>
-                        <li><a href="/sitemap.xml">Sitemap</a></li>
                     </ul>
                 </div>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get the latest dermatology insights delivered to your inbox.</p>
+                <form action="https://formspree.io/f/xpwzgkqq" method="POST" class="newsletter-form">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <input type="hidden" name="_subject" value="DermoBrain Newsletter Signup">
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
             <div class="footer-bottom">
                 <p>&copy; {datetime.datetime.now().year} DermoBrain.com — All rights reserved.</p>
@@ -235,7 +262,7 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
         </div>
     </footer>
 
-    <script src="/assets/js/main.js?v=2" defer></script>
+    <script src="/assets/js/main.js?v=3" defer></script>
 </body>
 </html>'''
 
@@ -592,6 +619,33 @@ def build_article_page(article, category_info):
     related_articles = article.get('related_articles', [])
     tags = article.get('tags', [])
 
+    # Read time estimate
+    import re as _re
+    word_count = len(_re.findall(r'\w+', _re.sub(r'<[^>]+>', '', content)))
+    read_time = max(1, round(word_count / 200))
+
+    # Generate Table of Contents from H2 headings
+    toc_html = ""
+    h2_matches = list(_re.finditer(r'<h2>(.*?)</h2>', content))
+    if len(h2_matches) >= 3:
+        toc_items = ""
+        modified_content = content
+        for i, match in enumerate(h2_matches):
+            heading_text = match.group(1)
+            anchor_id = f"section-{i+1}"
+            toc_items += f'<li><a href="#{anchor_id}">{heading_text}</a></li>\n'
+            modified_content = modified_content.replace(
+                f'<h2>{heading_text}</h2>',
+                f'<h2 id="{anchor_id}">{heading_text}</h2>',
+                1
+            )
+        content = modified_content
+        toc_html = f'''
+            <div class="table-of-contents">
+                <h3 class="toc-title">Table of Contents</h3>
+                <ol>{toc_items}</ol>
+            </div>'''
+
     # Breadcrumb
     pillar_name = {
         'medical-dermatology': 'Medical Dermatology',
@@ -636,6 +690,8 @@ def build_article_page(article, category_info):
         <a href="https://twitter.com/intent/tweet?url={encoded_url}&text={encoded_title}" class="share-btn twitter" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">Twitter</a>
         <a href="https://www.facebook.com/sharer/sharer.php?u={encoded_url}" class="share-btn facebook" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
         <a href="https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}" class="share-btn linkedin" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+        <a href="https://api.whatsapp.com/send?text={encoded_title}%20{encoded_url}" class="share-btn whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">WhatsApp</a>
+        <a href="https://pinterest.com/pin/create/button/?url={encoded_url}&description={encoded_title}" class="share-btn pinterest" target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest">Pinterest</a>
         <button class="share-btn copy-link" data-url="{article_url}" aria-label="Copy link to clipboard">Copy Link</button>
     </div>'''
 
@@ -705,8 +761,11 @@ def build_article_page(article, category_info):
                     <span class="byline">By DermoBrain Medical Editorial Team</span>
                     <time datetime="{BUILD_DATE}">Updated {BUILD_DATE}</time>
                     <span class="badge">Medically Reviewed</span>
+                    <span class="read-time">&#9201; {read_time} min read</span>
                 </div>
             </header>
+
+            {toc_html}
 
             <div class="article-body">
                 {content}
@@ -1874,6 +1933,27 @@ def build_practice_pages():
                         <p>{practice_name} serves patients in {city} and nearby communities in {state}. The practice offers appointments during regular business hours, Monday through Friday. Contact the office to check availability and insurance acceptance.</p>
                     </section>
 
+                    <!-- Appointment Request Form -->
+                    <section class="practice-appointment" id="appointment-form">
+                        <h2>Request an Appointment</h2>
+                        <p>Fill out the form below to request an appointment with {practice_name}. The practice will contact you to confirm availability.</p>
+                        <form action="https://formspree.io/f/xpwzgkqq" method="POST" style="margin-top:16px;">
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                                <input type="text" name="name" placeholder="Your Name" required style="padding:10px; border:2px solid #ddd; border-radius:8px; font-size:0.95rem;">
+                                <input type="email" name="email" placeholder="Email Address" required style="padding:10px; border:2px solid #ddd; border-radius:8px; font-size:0.95rem;">
+                            </div>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                                <input type="tel" name="phone" placeholder="Phone Number" style="padding:10px; border:2px solid #ddd; border-radius:8px; font-size:0.95rem;">
+                                <input type="text" name="preferred_date" placeholder="Preferred Date" style="padding:10px; border:2px solid #ddd; border-radius:8px; font-size:0.95rem;">
+                            </div>
+                            <textarea name="message" rows="3" placeholder="Reason for visit or additional notes" style="width:100%; padding:10px; border:2px solid #ddd; border-radius:8px; font-size:0.95rem; resize:vertical; margin-bottom:12px;"></textarea>
+                            <input type="hidden" name="_subject" value="Appointment Request - {practice_name}">
+                            <input type="hidden" name="practice" value="{practice_name}">
+                            <input type="hidden" name="doctor" value="{first_name} {last_name}">
+                            <button type="submit" style="padding:12px 28px; background:#1A6B54; color:#fff; border:none; border-radius:8px; font-weight:600; cursor:pointer; font-size:1rem;">Submit Request</button>
+                        </form>
+                    </section>
+
                     <!-- Directory Disclaimer -->
                     <section class="practice-disclaimer">
                         <p><em>Note: This directory listing is provided for informational purposes. Verify practice details, insurance acceptance, and current availability directly with the provider's office before scheduling.</em></p>
@@ -2118,6 +2198,466 @@ def build_about_page():
     return 1
 
 
+def build_404_page():
+    """Generate custom 404 page."""
+    body_content = '''
+    <div class="container py-5" style="text-align:center; max-width:700px; margin:0 auto; padding:80px 20px;">
+        <h1 style="font-size:4rem; color:#1A6B54; margin-bottom:10px;">404</h1>
+        <h2 style="font-size:1.5rem; margin-bottom:20px;">Page Not Found</h2>
+        <p style="font-size:1.1rem; color:#666; margin-bottom:30px;">Sorry, the page you're looking for doesn't exist or has been moved. Try searching for what you need below.</p>
+        <form action="/search/" method="get" style="max-width:450px; margin:0 auto 30px; display:flex; gap:8px;">
+            <input type="text" name="q" placeholder="Search DermoBrain..." style="flex:1; padding:12px 16px; border:2px solid #ddd; border-radius:8px; font-size:1rem;">
+            <button type="submit" style="padding:12px 24px; background:#1A6B54; color:#fff; border:none; border-radius:8px; font-size:1rem; cursor:pointer;">Search</button>
+        </form>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:30px;">
+            <a href="/medical-dermatology/" style="padding:8px 16px; background:#f0f7f5; color:#1A6B54; border-radius:20px; text-decoration:none; font-size:0.9rem;">Medical Derm</a>
+            <a href="/cosmetic-dermatology/" style="padding:8px 16px; background:#f0f7f5; color:#1A6B54; border-radius:20px; text-decoration:none; font-size:0.9rem;">Cosmetic Derm</a>
+            <a href="/find-a-dermatologist/" style="padding:8px 16px; background:#f0f7f5; color:#1A6B54; border-radius:20px; text-decoration:none; font-size:0.9rem;">Find a Dermatologist</a>
+            <a href="/tools/" style="padding:8px 16px; background:#f0f7f5; color:#1A6B54; border-radius:20px; text-decoration:none; font-size:0.9rem;">Tools</a>
+            <a href="/news/" style="padding:8px 16px; background:#f0f7f5; color:#1A6B54; border-radius:20px; text-decoration:none; font-size:0.9rem;">News</a>
+        </div>
+        <a href="/" style="color:#1A6B54; font-weight:600; text-decoration:none;">← Back to Homepage</a>
+    </div>
+    '''
+    html = page_template(
+        title="Page Not Found",
+        body_content=body_content,
+        meta_description="The page you're looking for doesn't exist. Search DermoBrain for dermatology information.",
+        body_class="error-page"
+    )
+    write_file(OUTPUT_DIR / "404.html", html)
+    return 1
+
+
+def build_contact_page():
+    """Generate contact page with Formspree form."""
+    body_content = '''
+    <div class="container py-5" style="max-width:800px; margin:0 auto;">
+        <article class="article-content">
+            <h1>Contact Us</h1>
+            <p>Have questions, feedback, or suggestions? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
+
+            <form action="https://formspree.io/f/xpwzgkqq" method="POST" style="margin-top:30px;">
+                <div style="margin-bottom:20px;">
+                    <label for="name" style="display:block; font-weight:600; margin-bottom:6px;">Name</label>
+                    <input type="text" id="name" name="name" required style="width:100%; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem;">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label for="email" style="display:block; font-weight:600; margin-bottom:6px;">Email</label>
+                    <input type="email" id="email" name="email" required style="width:100%; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem;">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label for="subject" style="display:block; font-weight:600; margin-bottom:6px;">Subject</label>
+                    <select id="subject" name="subject" style="width:100%; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem;">
+                        <option value="general">General Inquiry</option>
+                        <option value="content">Content Suggestion</option>
+                        <option value="dermatologist">Dermatologist Listing</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="bug">Report a Bug</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label for="message" style="display:block; font-weight:600; margin-bottom:6px;">Message</label>
+                    <textarea id="message" name="message" rows="6" required style="width:100%; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem; resize:vertical;"></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="DermoBrain Contact Form">
+                <button type="submit" style="padding:14px 32px; background:#1A6B54; color:#fff; border:none; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer;">Send Message</button>
+            </form>
+
+            <div style="margin-top:40px; padding:20px; background:#f0f7f5; border-radius:12px;">
+                <h3>Other Ways to Reach Us</h3>
+                <p>Email: <a href="mailto:info@dermobrain.com">info@dermobrain.com</a></p>
+                <p>For dermatologist listing inquiries, visit our <a href="/for-dermatologists/">For Dermatologists</a> page.</p>
+            </div>
+        </article>
+    </div>
+    '''
+    html = page_template(
+        title="Contact Us",
+        body_content=body_content,
+        meta_description="Contact DermoBrain with questions, feedback, or partnership inquiries. We'd love to hear from you.",
+        canonical="/contact/",
+        body_class="contact-page"
+    )
+    output_file = OUTPUT_DIR / "contact" / "index.html"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_file(output_file, html)
+    return 1
+
+
+def build_news_pages():
+    """Build news section with index and individual news pages."""
+    try:
+        with open(DATA_DIR / "news.json", 'r', encoding='utf-8') as f:
+            news_items = json.load(f)
+    except:
+        return 0
+
+    page_count = 0
+
+    # Build individual news pages
+    cards_html = ""
+    for item in news_items:
+        title = item.get('title', '')
+        slug = item.get('slug', '')
+        date = item.get('date', '')
+        summary = item.get('summary', '')
+        content = item.get('content', '')
+        category = item.get('category', 'News')
+
+        # Individual news page
+        body_content = f'''
+    <div class="container py-5" style="max-width:800px; margin:0 auto;">
+        <article class="article-content">
+            <div class="article-meta" style="margin-bottom:20px;">
+                <span class="badge" style="background:#E8734A; color:white; padding:4px 12px; border-radius:20px; font-size:0.8rem;">{category}</span>
+                <time style="color:#666; margin-left:12px;">{date}</time>
+            </div>
+            <h1>{title}</h1>
+            <div class="article-body">{content}</div>
+            <div style="margin-top:40px; padding-top:20px; border-top:1px solid #eee;">
+                <a href="/news/" style="color:#1A6B54; font-weight:600; text-decoration:none;">← Back to All News</a>
+            </div>
+        </article>
+    </div>
+        '''
+
+        html = page_template(
+            title=title,
+            body_content=body_content,
+            meta_description=summary[:160],
+            canonical=f"/news/{slug}/",
+            body_class="news-page"
+        )
+        output_file = OUTPUT_DIR / "news" / slug / "index.html"
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        write_file(output_file, html)
+        page_count += 1
+
+        # Card for index
+        cards_html += f'''
+        <div class="guide-card" style="margin-bottom:20px;">
+            <a href="/news/{slug}/" style="text-decoration:none; color:inherit;">
+                <div style="padding:24px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <span class="badge" style="background:#E8734A; color:white; padding:4px 12px; border-radius:20px; font-size:0.8rem;">{category}</span>
+                        <time style="color:#999; font-size:0.85rem;">{date}</time>
+                    </div>
+                    <h3 style="margin:0 0 8px; color:#1a1a1a;">{title}</h3>
+                    <p style="margin:0; color:#666; font-size:0.95rem;">{summary}</p>
+                </div>
+            </a>
+        </div>
+        '''
+
+    # Build news index page
+    body_content = f'''
+    <div class="container py-5">
+        <h1>What's New in Dermatology</h1>
+        <p class="subtitle" style="color:#666; font-size:1.1rem; margin-bottom:30px;">Stay updated with the latest dermatology news, research highlights, FDA approvals, and industry developments.</p>
+        <div class="guides-grid" style="max-width:800px;">
+            {cards_html}
+        </div>
+    </div>
+    '''
+
+    html = page_template(
+        title="What's New in Dermatology",
+        body_content=body_content,
+        meta_description="Latest dermatology news, research updates, FDA approvals, and industry developments from DermoBrain.",
+        canonical="/news/",
+        body_class="news-index"
+    )
+    output_file = OUTPUT_DIR / "news" / "index.html"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_file(output_file, html)
+    page_count += 1
+
+    # Build RSS feed
+    rss_items = ""
+    for item in news_items[:20]:
+        rss_items += f'''
+    <item>
+        <title>{item.get('title', '')}</title>
+        <link>{DOMAIN}/news/{item.get('slug', '')}/</link>
+        <description>{item.get('summary', '')}</description>
+        <pubDate>{item.get('date', '')}</pubDate>
+        <guid>{DOMAIN}/news/{item.get('slug', '')}/</guid>
+    </item>'''
+
+    rss = f'''<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+    <title>DermoBrain - What's New in Dermatology</title>
+    <link>{DOMAIN}/news/</link>
+    <description>Latest dermatology news, research, and updates from DermoBrain.</description>
+    <language>en-us</language>
+    {rss_items}
+</channel>
+</rss>'''
+    write_file(OUTPUT_DIR / "news" / "feed.xml", rss)
+
+    return page_count
+
+
+def build_professional_hub():
+    """Build the professional resources hub for dermatologists."""
+    try:
+        with open(DATA_DIR / "professional_resources.json", 'r', encoding='utf-8') as f:
+            resources = json.load(f)
+    except:
+        return 0
+
+    page_count = 0
+    section_links = ""
+
+    for section in resources.get('sections', []):
+        section_slug = section.get('slug', '')
+        section_title = section.get('title', '')
+        section_desc = section.get('description', '')
+        items = section.get('items', [])
+
+        items_html = ""
+        for item in items:
+            items_html += f'''
+                <div style="padding:16px; border:1px solid #eee; border-radius:8px; margin-bottom:12px;">
+                    <h4 style="margin:0 0 6px;"><a href="{item.get('url', '#')}" target="_blank" rel="noopener" style="color:#1A6B54; text-decoration:none;">{item.get('name', '')}</a></h4>
+                    <p style="margin:0; color:#666; font-size:0.9rem;">{item.get('description', '')}</p>
+                </div>'''
+
+        body_content = f'''
+    <div class="container py-5" style="max-width:800px; margin:0 auto;">
+        <article class="article-content">
+            <a href="/for-dermatologists/" style="color:#1A6B54; text-decoration:none; font-size:0.9rem;">← Back to Resources Hub</a>
+            <h1 style="margin-top:16px;">{section_title}</h1>
+            <p style="color:#666; font-size:1.1rem; margin-bottom:30px;">{section_desc}</p>
+            <div>{items_html}</div>
+        </article>
+    </div>
+        '''
+
+        html = page_template(
+            title=section_title,
+            body_content=body_content,
+            meta_description=section_desc[:160],
+            canonical=f"/for-dermatologists/{section_slug}/",
+            body_class="professional-page"
+        )
+        output_file = OUTPUT_DIR / "for-dermatologists" / section_slug / "index.html"
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        write_file(output_file, html)
+        page_count += 1
+
+        section_links += f'''
+        <a href="/for-dermatologists/{section_slug}/" class="guide-card" style="display:block; padding:24px; text-decoration:none; color:inherit; margin-bottom:16px;">
+            <h3 style="margin:0 0 8px; color:#1a1a1a;">{section_title}</h3>
+            <p style="margin:0; color:#666;">{section_desc}</p>
+        </a>'''
+
+    # Build main hub page
+    body_content = f'''
+    <div class="container py-5">
+        <h1>Resources for Dermatologists</h1>
+        <p class="subtitle" style="color:#666; font-size:1.1rem; margin-bottom:30px;">Professional resources, continuing education, research tools, and practice management for dermatology professionals.</p>
+
+        <div class="guides-grid" style="max-width:800px;">
+            {section_links}
+        </div>
+
+        <div style="margin-top:40px; padding:30px; background:#f0f7f5; border-radius:12px; text-align:center;">
+            <h3>Claim Your Free DermoBrain Profile</h3>
+            <p style="color:#666;">Get listed on DermoBrain's directory, claim your profile, and reach more patients.</p>
+            <a href="/contact/" style="display:inline-block; padding:12px 28px; background:#1A6B54; color:white; border-radius:8px; text-decoration:none; font-weight:600;">Get Started</a>
+        </div>
+
+        <div style="margin-top:30px; padding:30px; background:#fff5f0; border-radius:12px; text-align:center;">
+            <h3>Embed DermoBrain on Your Website</h3>
+            <p style="color:#666;">Add our free widget to your practice website for patient education content and a direct link to your profile.</p>
+            <a href="/tools/widget/" style="display:inline-block; padding:12px 28px; background:#E8734A; color:white; border-radius:8px; text-decoration:none; font-weight:600;">Learn More</a>
+        </div>
+    </div>
+    '''
+    html = page_template(
+        title="Resources for Dermatologists",
+        body_content=body_content,
+        meta_description="Professional resources for dermatologists: CME, research journals, practice management, clinical guidelines, events, and more.",
+        canonical="/for-dermatologists/",
+        body_class="professional-hub"
+    )
+    output_file = OUTPUT_DIR / "for-dermatologists" / "index.html"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_file(output_file, html)
+    page_count += 1
+
+    return page_count
+
+
+def build_tools_pages():
+    """Build the tools section including hub, cost calculator, cost comparison, and widget pages."""
+    page_count = 0
+
+    # Tools Hub Page
+    tools_hub = '''
+    <div class="container py-5">
+        <h1>Dermatology Tools & Calculators</h1>
+        <p class="subtitle" style="color:#666; font-size:1.1rem; margin-bottom:30px;">Interactive tools to help you research dermatology procedures, compare costs, and make informed decisions.</p>
+
+        <div class="category-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px;">
+            <a href="/tools/cost-calculator/" class="guide-card" style="display:block; padding:30px; text-decoration:none; color:inherit; text-align:center;">
+                <div style="font-size:2.5rem; margin-bottom:12px;">&#128176;</div>
+                <h3 style="margin:0 0 8px; color:#1a1a1a;">Cost Calculator</h3>
+                <p style="margin:0; color:#666; font-size:0.9rem;">Estimate the cost of dermatology procedures based on your location and insurance status.</p>
+            </a>
+            <a href="/tools/cost-comparison/" class="guide-card" style="display:block; padding:30px; text-decoration:none; color:inherit; text-align:center;">
+                <div style="font-size:2.5rem; margin-bottom:12px;">&#128200;</div>
+                <h3 style="margin:0 0 8px; color:#1a1a1a;">Cost Comparison</h3>
+                <p style="margin:0; color:#666; font-size:0.9rem;">Compare procedure costs across different cities to find the best value.</p>
+            </a>
+            <a href="/skin-quiz/" class="guide-card" style="display:block; padding:30px; text-decoration:none; color:inherit; text-align:center;">
+                <div style="font-size:2.5rem; margin-bottom:12px;">&#128221;</div>
+                <h3 style="margin:0 0 8px; color:#1a1a1a;">Skin Health Quiz</h3>
+                <p style="margin:0; color:#666; font-size:0.9rem;">Take our quiz to learn about your skin type and get personalized skincare recommendations.</p>
+            </a>
+            <a href="/tools/widget/" class="guide-card" style="display:block; padding:30px; text-decoration:none; color:inherit; text-align:center;">
+                <div style="font-size:2.5rem; margin-bottom:12px;">&#128295;</div>
+                <h3 style="margin:0 0 8px; color:#1a1a1a;">Embeddable Widget</h3>
+                <p style="margin:0; color:#666; font-size:0.9rem;">Free widget for dermatologists to embed on their practice website.</p>
+            </a>
+        </div>
+    </div>
+    '''
+    html = page_template(title="Tools & Calculators", body_content=tools_hub,
+        meta_description="Free dermatology tools: cost calculator, city comparison, skin quiz, and embeddable widget for practices.",
+        canonical="/tools/", body_class="tools-page")
+    output_file = OUTPUT_DIR / "tools" / "index.html"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_file(output_file, html)
+    page_count += 1
+
+    # Cost Calculator Page
+    calc_body = '''
+    <div class="container py-5" style="max-width:900px; margin:0 auto;">
+        <h1>Dermatology Cost Calculator</h1>
+        <p style="color:#666; margin-bottom:30px;">Estimate the cost of common dermatology procedures. Select a procedure, adjust for your area, and see estimated costs with and without insurance.</p>
+
+        <div id="cost-calculator" style="background:#fff; border:2px solid #eee; border-radius:16px; padding:30px;">
+            <div style="margin-bottom:20px;">
+                <label for="procedure-select" style="display:block; font-weight:600; margin-bottom:8px;">Select a Procedure</label>
+                <select id="procedure-select" style="width:100%; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem;">
+                    <option value="">-- Choose a procedure --</option>
+                </select>
+            </div>
+            <div style="margin-bottom:20px;">
+                <label for="city-select" style="display:block; font-weight:600; margin-bottom:8px;">Select a City</label>
+                <select id="city-select" style="width:100%; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem;">
+                    <option value="">-- Choose a city --</option>
+                </select>
+            </div>
+            <div style="margin-bottom:20px;">
+                <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                    <input type="checkbox" id="insurance-toggle" style="width:20px; height:20px;">
+                    <span style="font-weight:600;">I have insurance</span>
+                </label>
+            </div>
+            <div id="cost-result" style="display:none; padding:24px; background:#f0f7f5; border-radius:12px; margin-top:20px;">
+                <h3 style="margin:0 0 12px; color:#1A6B54;">Estimated Cost</h3>
+                <div id="cost-amount" style="font-size:2rem; font-weight:700; color:#1a1a1a;"></div>
+                <p id="cost-range" style="color:#666; margin-top:8px;"></p>
+                <p style="color:#999; font-size:0.8rem; margin-top:12px;">* Estimates are based on national averages and may vary. Always confirm pricing with your provider.</p>
+            </div>
+        </div>
+    </div>
+    '''
+    html = page_template(title="Dermatology Cost Calculator", body_content=calc_body,
+        meta_description="Estimate the cost of dermatology procedures with our free calculator. Compare prices with and without insurance.",
+        canonical="/tools/cost-calculator/", body_class="tools-page",
+        extra_head='<script src="/assets/js/cost-calculator.js" defer></script>')
+    output_file = OUTPUT_DIR / "tools" / "cost-calculator" / "index.html"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_file(output_file, html)
+    page_count += 1
+
+    # Cost Comparison Page
+    comparison_body = '''
+    <div class="container py-5" style="max-width:900px; margin:0 auto;">
+        <h1>Compare Procedure Costs by City</h1>
+        <p style="color:#666; margin-bottom:30px;">See how dermatology procedure costs vary across different cities. Select a procedure and compare pricing nationwide.</p>
+
+        <div id="cost-comparison" style="background:#fff; border:2px solid #eee; border-radius:16px; padding:30px;">
+            <div style="margin-bottom:20px;">
+                <label for="compare-procedure" style="display:block; font-weight:600; margin-bottom:8px;">Select a Procedure</label>
+                <select id="compare-procedure" style="width:100%; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem;">
+                    <option value="">-- Choose a procedure --</option>
+                </select>
+            </div>
+            <div id="comparison-results" style="display:none; margin-top:20px;">
+                <h3 style="margin:0 0 16px;">Cost by City</h3>
+                <div id="comparison-table"></div>
+            </div>
+        </div>
+    </div>
+    '''
+    html = page_template(title="Compare Procedure Costs by City", body_content=comparison_body,
+        meta_description="Compare dermatology procedure costs across US cities. Find the most affordable options near you.",
+        canonical="/tools/cost-comparison/", body_class="tools-page",
+        extra_head='<script src="/assets/js/cost-comparison.js" defer></script>')
+    output_file = OUTPUT_DIR / "tools" / "cost-comparison" / "index.html"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_file(output_file, html)
+    page_count += 1
+
+    # Widget Documentation Page
+    widget_body = '''
+    <div class="container py-5" style="max-width:800px; margin:0 auto;">
+        <article class="article-content">
+            <h1>Free Embeddable Widget for Dermatologists</h1>
+            <p>Add DermoBrain's free widget to your practice website. It displays your DermoBrain profile, educational content, and helps build trust with patients — while earning you a valuable backlink.</p>
+
+            <h2>How It Works</h2>
+            <p>Simply add one line of code to your website. The widget automatically pulls your profile from DermoBrain and displays it in a clean, professional format that matches your website's style.</p>
+
+            <h2>Installation</h2>
+            <p>Copy and paste this code into your website's HTML where you want the widget to appear:</p>
+            <div style="background:#1a1a1a; color:#00ff88; padding:20px; border-radius:12px; font-family:monospace; font-size:0.9rem; overflow-x:auto; margin:20px 0;">
+                &lt;script src="https://dermobrain.com/assets/js/dermobrain-widget.js" data-npi="YOUR_NPI_NUMBER"&gt;&lt;/script&gt;
+            </div>
+            <p>Replace <code>YOUR_NPI_NUMBER</code> with your 10-digit NPI number.</p>
+
+            <h2>Widget Features</h2>
+            <ul>
+                <li><strong>Your Profile</strong> — Displays your name, credentials, practice info, and specialties</li>
+                <li><strong>Educational Content</strong> — Shows relevant dermatology articles for patient education</li>
+                <li><strong>Appointment Link</strong> — Drives patients to your DermoBrain profile page</li>
+                <li><strong>Responsive Design</strong> — Looks great on desktop, tablet, and mobile</li>
+                <li><strong>SEO Benefit</strong> — Provides a dofollow backlink from dermobrain.com to your site</li>
+            </ul>
+
+            <h2>Customization Options</h2>
+            <p>You can customize the widget with these optional attributes:</p>
+            <ul>
+                <li><code>data-theme="light"</code> or <code>data-theme="dark"</code> — Set color theme</li>
+                <li><code>data-width="400"</code> — Set widget width in pixels</li>
+                <li><code>data-articles="3"</code> — Number of educational articles to show</li>
+            </ul>
+
+            <div style="margin-top:30px; padding:24px; background:#f0f7f5; border-radius:12px;">
+                <h3>Need Help?</h3>
+                <p>Contact us at <a href="mailto:info@dermobrain.com">info@dermobrain.com</a> for widget installation assistance.</p>
+            </div>
+        </article>
+    </div>
+    '''
+    html = page_template(title="Free Embeddable Widget for Dermatologists", body_content=widget_body,
+        meta_description="Add DermoBrain's free widget to your dermatology practice website. Display your profile and educational content for patients.",
+        canonical="/tools/widget/", body_class="tools-page")
+    output_file = OUTPUT_DIR / "tools" / "widget" / "index.html"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_file(output_file, html)
+    page_count += 1
+
+    return page_count
+
+
 def build():
     """Main build function."""
     print(f"\n{'='*50}")
@@ -2200,6 +2740,27 @@ def build():
     print("\nBuilding directory...")
     directory_count = build_directory()
     print(f"  Generated {directory_count} directory pages")
+
+    # Build new sections (Phase 3 & 4)
+    print("\nBuilding 404 page...")
+    build_404_page()
+    print("  Generated 404 page")
+
+    print("\nBuilding contact page...")
+    contact_count = build_contact_page()
+    print(f"  Generated {contact_count} contact page")
+
+    print("\nBuilding news pages...")
+    news_count = build_news_pages()
+    print(f"  Generated {news_count} news pages")
+
+    print("\nBuilding professional resources hub...")
+    pro_count = build_professional_hub()
+    print(f"  Generated {pro_count} professional pages")
+
+    print("\nBuilding tools pages...")
+    tools_count = build_tools_pages()
+    print(f"  Generated {tools_count} tools pages")
 
     # Build Phase 6: Final Touches
     print("\nBuilding Phase 6 pages (final touches)...")

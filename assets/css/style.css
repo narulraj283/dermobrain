@@ -1921,3 +1921,138 @@ input:focus-visible,
 .skip-link:focus {
     top: 1rem;
 }
+
+/* ─── Table of Contents ─── */
+.table-of-contents {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 20px 24px;
+    margin: 24px 0 32px;
+}
+
+.toc-title {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.table-of-contents ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.table-of-contents li {
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.table-of-contents a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.table-of-contents a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* ─── Read Time ─── */
+.read-time {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ─── Newsletter Form ─── */
+.footer-newsletter {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 20px;
+}
+
+.footer-newsletter h4 {
+    color: #fff;
+    margin: 0 0 8px;
+}
+
+.footer-newsletter p {
+    color: #aaa;
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 8px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: #999;
+}
+
+.newsletter-form button {
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.newsletter-form button:hover {
+    background: #d4632e;
+}
+
+/* ─── WhatsApp & Pinterest share buttons ─── */
+.share-btn.whatsapp {
+    background: #25D366;
+    color: #fff;
+}
+
+.share-btn.pinterest {
+    background: #E60023;
+    color: #fff;
+}
+
+/* ─── Key Takeaway Boxes ─── */
+.key-takeaway {
+    background: #f0f7f5;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 0.95rem;
+}
+
+.key-takeaway::before {
+    content: "💡 Key Takeaway";
+    display: block;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .newsletter-form button {
+        width: 100%;
+    }
+}

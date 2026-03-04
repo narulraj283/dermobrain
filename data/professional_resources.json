@@ -1,0 +1,76 @@
+{
+  "sections": [
+    {
+      "slug": "cme-education",
+      "title": "CME & Continuing Education",
+      "description": "Stay current with continuing medical education resources, board preparation, and professional development opportunities for dermatologists.",
+      "items": [
+        {"name": "AAD Continuing Medical Education", "url": "https://www.aad.org/education", "description": "The American Academy of Dermatology offers CME courses, workshops, and self-assessment modules for board-certified dermatologists."},
+        {"name": "DermNet CME Resources", "url": "https://dermnetnz.org/", "description": "DermNet provides free educational content and clinical images useful for continuing education and teaching."},
+        {"name": "VisualDx", "url": "https://www.visualdx.com/", "description": "Clinical decision support with over 32,000 images spanning 1,300 diagnoses for diagnostic confidence."},
+        {"name": "Board Vitals Dermatology", "url": "https://www.boardvitals.com/dermatology-board-review", "description": "Board review question banks for dermatology certification and recertification preparation."},
+        {"name": "Oakstone Dermatology CME", "url": "https://www.oakstone.com/dermatology", "description": "Dermatology CME courses and conferences featuring leading dermatology experts."}
+      ]
+    },
+    {
+      "slug": "research-journals",
+      "title": "Research & Journals",
+      "description": "Access leading dermatology journals, PubMed searches, and research databases for the latest clinical evidence.",
+      "items": [
+        {"name": "Journal of the American Academy of Dermatology (JAAD)", "url": "https://www.jaad.org/", "description": "The official journal of the AAD, publishing peer-reviewed original research, reviews, and clinical studies."},
+        {"name": "JAMA Dermatology", "url": "https://jamanetwork.com/journals/jamadermatology", "description": "JAMA's dermatology specialty journal with high-impact research articles and clinical reviews."},
+        {"name": "British Journal of Dermatology", "url": "https://academic.oup.com/bjd", "description": "Leading international dermatology journal with global research perspectives."},
+        {"name": "PubMed Dermatology Search", "url": "https://pubmed.ncbi.nlm.nih.gov/?term=dermatology", "description": "Search the National Library of Medicine's database for dermatology research articles and clinical trials."},
+        {"name": "ClinicalTrials.gov - Dermatology", "url": "https://clinicaltrials.gov/search?cond=Dermatology", "description": "Find active and recruiting clinical trials in dermatology across the United States."}
+      ]
+    },
+    {
+      "slug": "professional-organizations",
+      "title": "Professional Organizations",
+      "description": "Connect with professional dermatology organizations for networking, advocacy, and career development.",
+      "items": [
+        {"name": "American Academy of Dermatology (AAD)", "url": "https://www.aad.org/", "description": "The largest and most influential dermatology group in the United States with over 20,000 members."},
+        {"name": "Society for Investigative Dermatology (SID)", "url": "https://www.sidnet.org/", "description": "Promoting research in dermatology and cutaneous biology through scientific meetings and publications."},
+        {"name": "American Society for Dermatologic Surgery (ASDS)", "url": "https://www.asds.net/", "description": "The largest specialty organization for dermatologic surgery and cosmetic procedures."},
+        {"name": "Women's Dermatologic Society (WDS)", "url": "https://www.womensderm.org/", "description": "Supporting women dermatologists through mentorship, advocacy, and community service."},
+        {"name": "Skin of Color Society", "url": "https://skinofcolorsociety.org/", "description": "Promoting awareness and excellence in dermatologic care for skin of color patients."}
+      ]
+    },
+    {
+      "slug": "practice-management",
+      "title": "Practice Management",
+      "description": "Resources for running an efficient dermatology practice, including EHR systems, billing, compliance, and marketing.",
+      "items": [
+        {"name": "Dermatology EHR Solutions", "url": "https://www.modmed.com/dermatology/", "description": "Electronic health record systems designed specifically for dermatology workflows and documentation."},
+        {"name": "AAD Practice Management Center", "url": "https://www.aad.org/member/practice", "description": "Practice management resources from the AAD including coding, compliance, and regulatory guidance."},
+        {"name": "CMS Dermatology Billing Codes", "url": "https://www.cms.gov/", "description": "Current CPT and ICD-10 coding resources for dermatology procedures and diagnoses."},
+        {"name": "OSHA Compliance for Medical Offices", "url": "https://www.osha.gov/healthcare", "description": "Workplace safety and compliance guidelines for healthcare facilities and medical offices."},
+        {"name": "Healthcare Marketing Best Practices", "url": "https://www.ama-assn.org/", "description": "Ethical marketing guidelines and digital presence strategies for medical practices."}
+      ]
+    },
+    {
+      "slug": "events-conferences",
+      "title": "Events & Conferences",
+      "description": "Major dermatology conferences, annual meetings, and educational events happening this year and beyond.",
+      "items": [
+        {"name": "AAD Annual Meeting 2026", "url": "https://www.aad.org/member/meetings-education", "description": "The premier dermatology conference with thousands of attendees, featuring the latest research, workshops, and networking."},
+        {"name": "ASDS Annual Meeting", "url": "https://www.asds.net/medical-professionals/meetings", "description": "The ASDS Annual Meeting focuses on surgical and cosmetic dermatology innovations and techniques."},
+        {"name": "World Congress of Dermatology", "url": "https://www.ilds.org/", "description": "The world's largest gathering of dermatologists, held every four years by the International League of Dermatological Societies."},
+        {"name": "Maui Derm", "url": "https://www.mauiderm.com/", "description": "Focused dermatology conference covering clinical updates, new therapies, and practice innovations."},
+        {"name": "Orlando Dermatology Conference", "url": "https://orlandoderm.org/", "description": "Annual aesthetic and clinical dermatology conference with hands-on workshops and expert lectures."}
+      ]
+    },
+    {
+      "slug": "clinical-guidelines",
+      "title": "Clinical Guidelines",
+      "description": "Evidence-based clinical practice guidelines, treatment algorithms, and consensus statements from leading dermatology organizations.",
+      "items": [
+        {"name": "AAD Clinical Guidelines", "url": "https://www.aad.org/member/clinical-quality/guidelines", "description": "Official guidelines from the AAD covering acne, atopic dermatitis, psoriasis, skin cancer, and more."},
+        {"name": "NCCN Skin Cancer Guidelines", "url": "https://www.nccn.org/guidelines/category_1", "description": "National Comprehensive Cancer Network guidelines for melanoma, basal cell, squamous cell, and Merkel cell carcinoma."},
+        {"name": "WHO Skin Disease Guidelines", "url": "https://www.who.int/", "description": "World Health Organization guidelines on neglected tropical diseases and global dermatological conditions."},
+        {"name": "BAD Clinical Guidelines", "url": "https://www.bad.org.uk/healthcare-professionals/clinical-standards/clinical-guidelines", "description": "British Association of Dermatologists evidence-based guidelines for common skin conditions."},
+        {"name": "European Dermatology Forum Guidelines", "url": "https://www.edf.one/home/Guidelines.html", "description": "European consensus guidelines for diagnosis and treatment of dermatological diseases."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+    <title>DermoBrain - What's New in Dermatology</title>
+    <link>https://dermobrain.com/news/</link>
+    <description>Latest dermatology news, research, and updates from DermoBrain.</description>
+    <language>en-us</language>
+    
+    <item>
+        <title>FDA Approves New Biologic for Moderate-to-Severe Eczema in Children</title>
+        <link>https://dermobrain.com/news/fda-approves-biologic-eczema-children/</link>
+        <description>The FDA has granted approval for a new IL-13 inhibitor biologic for pediatric patients aged 6-11 with moderate-to-severe atopic dermatitis.</description>
+        <pubDate>2026-02-28</pubDate>
+        <guid>https://dermobrain.com/news/fda-approves-biologic-eczema-children/</guid>
+    </item>
+    <item>
+        <title>New Study Links Gut Microbiome Diversity to Psoriasis Severity</title>
+        <link>https://dermobrain.com/news/gut-microbiome-psoriasis-study/</link>
+        <description>Researchers have found a significant correlation between gut microbiome composition and the severity of psoriatic disease in a large-scale clinical study.</description>
+        <pubDate>2026-02-25</pubDate>
+        <guid>https://dermobrain.com/news/gut-microbiome-psoriasis-study/</guid>
+    </item>
+    <item>
+        <title>AI-Powered Skin Cancer Detection Achieves Dermatologist-Level Accuracy</title>
+        <link>https://dermobrain.com/news/ai-skin-cancer-detection-accuracy/</link>
+        <description>A new artificial intelligence system for melanoma detection has demonstrated diagnostic accuracy matching that of experienced dermatologists in a multi-center validation study.</description>
+        <pubDate>2026-02-20</pubDate>
+        <guid>https://dermobrain.com/news/ai-skin-cancer-detection-accuracy/</guid>
+    </item>
+    <item>
+        <title>AAD Updates Guidelines for Acne Treatment in Adults</title>
+        <link>https://dermobrain.com/news/aad-acne-treatment-guidelines-update/</link>
+        <description>The American Academy of Dermatology has released updated evidence-based guidelines for the management of acne vulgaris in adult patients.</description>
+        <pubDate>2026-02-15</pubDate>
+        <guid>https://dermobrain.com/news/aad-acne-treatment-guidelines-update/</guid>
+    </item>
+    <item>
+        <title>Breakthrough in Vitiligo Treatment: New Oral JAK Inhibitor Shows Promise</title>
+        <link>https://dermobrain.com/news/vitiligo-jak-inhibitor-breakthrough/</link>
+        <description>A novel oral JAK inhibitor has shown remarkable repigmentation results in Phase 3 vitiligo trials, potentially transforming treatment for this challenging condition.</description>
+        <pubDate>2026-02-10</pubDate>
+        <guid>https://dermobrain.com/news/vitiligo-jak-inhibitor-breakthrough/</guid>
+    </item>
+    <item>
+        <title>Teledermatology Adoption Continues to Grow Post-Pandemic</title>
+        <link>https://dermobrain.com/news/teledermatology-growth-2026/</link>
+        <description>New data shows teledermatology visits now account for 25% of all dermatology consultations, with growing acceptance among both patients and providers.</description>
+        <pubDate>2026-02-05</pubDate>
+        <guid>https://dermobrain.com/news/teledermatology-growth-2026/</guid>
+    </item>
+    <item>
+        <title>Novel Topical Treatment for Alopecia Areata Enters Phase 3 Trials</title>
+        <link>https://dermobrain.com/news/topical-alopecia-areata-phase3/</link>
+        <description>A new topical JAK inhibitor formulation for alopecia areata has entered Phase 3 clinical trials after promising Phase 2 results showing significant hair regrowth.</description>
+        <pubDate>2026-01-30</pubDate>
+        <guid>https://dermobrain.com/news/topical-alopecia-areata-phase3/</guid>
+    </item>
+    <item>
+        <title>Sunscreen Regulation Update: FDA Finalizes New Testing Standards</title>
+        <link>https://dermobrain.com/news/fda-sunscreen-regulation-update/</link>
+        <description>The FDA has finalized updated testing standards for sunscreen products, including new requirements for UVA protection claims and water resistance testing.</description>
+        <pubDate>2026-01-25</pubDate>
+        <guid>https://dermobrain.com/news/fda-sunscreen-regulation-update/</guid>
+    </item>
+    <item>
+        <title>Emerging Role of GLP-1 Medications in Dermatological Conditions</title>
+        <link>https://dermobrain.com/news/glp1-medications-dermatology/</link>
+        <description>Preliminary research suggests that GLP-1 receptor agonists may have beneficial effects on inflammatory skin conditions including psoriasis and hidradenitis suppurativa.</description>
+        <pubDate>2026-01-20</pubDate>
+        <guid>https://dermobrain.com/news/glp1-medications-dermatology/</guid>
+    </item>
+    <item>
+        <title>Dermatology Workforce Shortage: New Report Highlights Growing Gap</title>
+        <link>https://dermobrain.com/news/dermatology-workforce-shortage-report/</link>
+        <description>A new workforce analysis projects a shortage of over 4,000 dermatologists in the US by 2030, with rural areas facing the greatest access challenges.</description>
+        <pubDate>2026-01-15</pubDate>
+        <guid>https://dermobrain.com/news/dermatology-workforce-shortage-report/</guid>
+    </item>
+    <item>
+        <title>New Combination Therapy Shows Superior Results for Melasma</title>
+        <link>https://dermobrain.com/news/combination-therapy-melasma-results/</link>
+        <description>A novel triple-combination topical therapy for melasma has demonstrated superior efficacy compared to standard hydroquinone monotherapy in a randomized controlled trial.</description>
+        <pubDate>2026-01-10</pubDate>
+        <guid>https://dermobrain.com/news/combination-therapy-melasma-results/</guid>
+    </item>
+    <item>
+        <title>Advances in 3D Bioprinting for Skin Grafts and Wound Healing</title>
+        <link>https://dermobrain.com/news/3d-bioprinting-skin-grafts-advances/</link>
+        <description>Researchers have demonstrated successful in-situ 3D bioprinting of skin grafts directly onto burn wounds, achieving faster healing times in preclinical studies.</description>
+        <pubDate>2026-01-05</pubDate>
+        <guid>https://dermobrain.com/news/3d-bioprinting-skin-grafts-advances/</guid>
+    </item>
+</channel>
+</rss>
