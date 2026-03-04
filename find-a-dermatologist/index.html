@@ -532,6 +532,49 @@
         document.getElementById('stateSelect').addEventListener('change', function(e) {
             if (e.target.value) window.location.href = '/find-a-dermatologist/' + e.target.value.toLowerCase() + '/';
         });
+
+        // ZIP code search
+        document.getElementById('zipSearchBtn').addEventListener('click', function() {
+            var zip = document.getElementById('zipSearch').value.trim();
+            if (zip.length !== 5 || isNaN(zip)) { alert('Please enter a valid 5-digit ZIP code.'); return; }
+            fetch('https://nominatim.openstreetmap.org/search?postalcode=' + zip + '&country=US&format=json&limit=1')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data && data.length > 0) {
+                    var display = data[0].display_name || '';
+                    var parts = display.split(',').map(function(s) { return s.trim(); });
+                    // Try to find state abbreviation from address
+                    fetch('https://nominatim.openstreetmap.org/reverse?lat=' + data[0].lat + '&lon=' + data[0].lon + '&format=json')
+                    .then(function(r) { return r.json(); })
+                    .then(function(rev) {
+                        var sc = (rev.address && rev.address.state_code) ? rev.address.state_code.toLowerCase() : '';
+                        var city = (rev.address && rev.address.city) ? rev.address.city.toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
+                        if (sc && city) {
+                            window.location.href = '/find-a-dermatologist/' + sc + '/' + city + '.html';
+                        } else if (sc) {
+                            window.location.href = '/find-a-dermatologist/' + sc + '/';
+                        } else {
+                            alert('Could not find dermatologists for ZIP ' + zip + '. Try searching by state instead.');
+                        }
+                    }).catch(function() { alert('Search error. Please try again or search by state.'); });
+                } else {
+                    alert('ZIP code not found. Please check and try again.');
+                }
+            }).catch(function() { alert('Search error. Please try again.'); });
+        });
+        document.getElementById('zipSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') document.getElementById('zipSearchBtn').click();
+        });
+
+        // Name search - site search via Google
+        document.getElementById('nameSearchBtn').addEventListener('click', function() {
+            var name = document.getElementById('nameSearch').value.trim();
+            if (!name) { alert('Please enter a doctor name.'); return; }
+            window.open('https://www.google.com/search?q=site:dermobrain.com/find-a-dermatologist+' + encodeURIComponent(name), '_blank');
+        });
+        document.getElementById('nameSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') document.getElementById('nameSearchBtn').click();
+        });
     </script>
     
     </main>
