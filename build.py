@@ -79,7 +79,7 @@ NAV_ITEMS = [
         "href": "/surgical-dermatology/",
         "dropdown": [
             {"label": "Mohs Surgery", "href": "/surgical-dermatology/mohs-surgery/"},
-            {"label": "Skin Cancer Surgery", "href": "/surgical-dermatology/skin-cancer-surgery/"},
+            {"label": "Skin Cancer", "href": "/medical-dermatology/skin-cancer/"},
             {"label": "Surgical Procedures", "href": "/surgical-dermatology/procedures/"},
             {"label": "Pre/Post-Op Care", "href": "/surgical-dermatology/pre-post-op/"},
         ]
@@ -99,8 +99,8 @@ NAV_ITEMS = [
         "href": "/skincare/",
         "dropdown": [
             {"label": "Skincare Science", "href": "/skincare/skincare-science/"},
-            {"label": "Men's Derm", "href": "/skincare/mens/"},
-            {"label": "Women's Derm", "href": "/skincare/womens/"},
+            {"label": "Men's Derm", "href": "/skincare/mens-derm/"},
+            {"label": "Women's Derm", "href": "/skincare/womens-derm/"},
             {"label": "Lifestyle & Skin", "href": "/skincare/lifestyle/"},
         ]
     },
@@ -200,7 +200,10 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
     {schema_tag}
 
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-    <link rel="stylesheet" href="/assets/css/style.css?v=4">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="/assets/css/style.css?v=5">
     {extra_head}
 
     <!-- GA4 -->
@@ -301,7 +304,7 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
         </div>
     </footer>
 
-    <script src="/assets/js/main.js?v=4" defer></script>
+    <script src="/assets/js/main.js?v=5" defer></script>
 </body>
 </html>'''
 
@@ -1211,17 +1214,50 @@ def build_guide_pages():
 
 
 def build_quiz_page():
-    """Copy quiz.html from assets to output/skin-quiz/index.html."""
+    """Build the skin quiz page with proper SEO using page_template."""
     try:
         quiz_src = ASSETS_DIR / "quiz.html"
+        with open(quiz_src, 'r', encoding='utf-8') as f:
+            raw = f.read()
+
+        # Extract <style> and <script> blocks, plus body inner content
+        import re
+        style_match = re.search(r'<style>(.*?)</style>', raw, re.DOTALL)
+        script_match = re.search(r'<script>(.*?)</script>', raw, re.DOTALL)
+        body_match = re.search(r'<body[^>]*>(.*?)<script', raw, re.DOTALL)
+
+        quiz_style = style_match.group(1) if style_match else ""
+        quiz_script = script_match.group(0) if script_match else ""
+        quiz_body = body_match.group(1).strip() if body_match else ""
+
+        extra_head = f"<style>{quiz_style}</style>" if quiz_style else ""
+        body_content = f'{quiz_body}\n{quiz_script}'
+
+        schema = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Skin Health Quiz",
+            "description": "Take our free skin health quiz to learn about your skin type and get personalized dermatology recommendations.",
+            "url": f"{DOMAIN}/skin-quiz/",
+            "applicationCategory": "HealthApplication",
+            "provider": {"@type": "Organization", "name": SITE_NAME, "url": DOMAIN}
+        })
+
+        html = page_template(
+            title="Skin Health Quiz",
+            body_content=body_content,
+            meta_description="Take our free skin health quiz to learn about your skin type and get personalized skincare and dermatology recommendations from experts.",
+            canonical="/skin-quiz/",
+            extra_head=extra_head,
+            schema_json=schema,
+            body_class="quiz-page"
+        )
         quiz_dst = OUTPUT_DIR / "skin-quiz" / "index.html"
         quiz_dst.parent.mkdir(parents=True, exist_ok=True)
-        with open(quiz_src, 'r', encoding='utf-8') as f:
-            quiz_content = f.read()
-        write_file(quiz_dst, quiz_content)
+        write_file(quiz_dst, html)
         return 1
     except Exception as e:
-        print(f"  Error copying quiz page: {e}")
+        print(f"  Error building quiz page: {e}")
         return 0
 
 
@@ -1691,7 +1727,7 @@ def build_directory_main_page():
     html = page_template(
         title="Find a Dermatologist",
         body_content=body_content,
-        meta_description="Find and connect with dermatologists in your area. Search by state or ZIP code.",
+        meta_description="Find board-certified dermatologists near you. Search by state, city, or ZIP code. View profiles, specialties, contact information, and patient reviews for 9,000+ dermatologists.",
         schema_json=breadcrumb_schema,
         canonical="/find-a-dermatologist/"
     )
@@ -2382,10 +2418,10 @@ def build_podcast_pages():
                     <h1>The Growing Dermatologist</h1>
                     <p class="podcast-tagline">Real conversations with dermatologists who are building thriving practices, advancing the specialty, and shaping the future of skin care.</p>
                     <div class="podcast-subscribe">
-                        <a href="#" class="subscribe-btn apple">Apple Podcasts</a>
-                        <a href="#" class="subscribe-btn spotify">Spotify</a>
-                        <a href="#" class="subscribe-btn google">Google Podcasts</a>
-                        <a href="#" class="subscribe-btn rss">RSS Feed</a>
+                        <a href="https://podcasts.apple.com/" class="subscribe-btn apple" target="_blank" rel="noopener">Apple Podcasts</a>
+                        <a href="https://open.spotify.com/" class="subscribe-btn spotify" target="_blank" rel="noopener">Spotify</a>
+                        <a href="https://podcasts.google.com/" class="subscribe-btn google" target="_blank" rel="noopener">Google Podcasts</a>
+                        <a href="/news/feed.xml" class="subscribe-btn rss">RSS Feed</a>
                     </div>
                     <p class="podcast-stats">12 Episodes &bull; Bi-weekly &bull; New episodes every other Tuesday</p>
                 </div>
@@ -2406,11 +2442,21 @@ def build_podcast_pages():
     </section>
     '''
 
+    podcast_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "PodcastSeries",
+        "name": "The Growing Dermatologist",
+        "url": f"{DOMAIN}/podcast/",
+        "description": "Real conversations with dermatologists building thriving practices.",
+        "provider": {"@type": "Organization", "name": SITE_NAME, "url": DOMAIN},
+        "genre": "Health & Medicine"
+    })
     html = page_template(
         title="The Growing Dermatologist Podcast",
         body_content=body_content,
         meta_description="Listen to real conversations with dermatologists building thriving practices. The Growing Dermatologist podcast features industry experts discussing practice management, business strategy, and career insights.",
-        canonical="/podcast/"
+        canonical="/podcast/",
+        schema_json=podcast_schema
     )
 
     podcast_dir = OUTPUT_DIR / "podcast"
@@ -2561,9 +2607,9 @@ def build_podcast_pages():
                         <h3>Never Miss an Episode</h3>
                         <p>New episodes every other Tuesday</p>
                         <div class="subscribe-links">
-                            <a href="#" class="subscribe-link">Apple Podcasts</a>
-                            <a href="#" class="subscribe-link">Spotify</a>
-                            <a href="#" class="subscribe-link">RSS Feed</a>
+                            <a href="https://podcasts.apple.com/" class="subscribe-link" target="_blank" rel="noopener">Apple Podcasts</a>
+                            <a href="https://open.spotify.com/" class="subscribe-link" target="_blank" rel="noopener">Spotify</a>
+                            <a href="/news/feed.xml" class="subscribe-link">RSS Feed</a>
                         </div>
                     </div>
                 </aside>
@@ -2855,8 +2901,9 @@ def build_contact_page():
     html = page_template(
         title="Contact Us",
         body_content=body_content,
-        meta_description="Contact DermoBrain with questions, feedback, or partnership inquiries. We'd love to hear from you.",
+        meta_description="Contact the DermoBrain team with questions, feedback, partnership inquiries, or to claim your dermatologist profile listing. We respond within 48 hours.",
         canonical="/contact/",
+        schema_json=json.dumps({"@context": "https://schema.org", "@type": "ContactPage", "name": "Contact DermoBrain", "url": f"{DOMAIN}/contact/", "description": "Contact the DermoBrain team for questions, feedback, or partnership inquiries."}),
         body_class="contact-page"
     )
     output_file = OUTPUT_DIR / "contact" / "index.html"
@@ -2944,8 +2991,9 @@ def build_news_pages():
     html = page_template(
         title="What's New in Dermatology",
         body_content=body_content,
-        meta_description="Latest dermatology news, research updates, FDA approvals, and industry developments from DermoBrain.",
+        meta_description="Stay up to date with the latest dermatology news, research breakthroughs, FDA approvals, treatment advances, and industry developments curated by the DermoBrain team.",
         canonical="/news/",
+        schema_json=json.dumps({"@context": "https://schema.org", "@type": "CollectionPage", "name": "Dermatology News", "url": f"{DOMAIN}/news/", "description": "Latest dermatology news and research updates."}),
         body_class="news-index"
     )
     output_file = OUTPUT_DIR / "news" / "index.html"
@@ -3034,34 +3082,72 @@ def build_professional_hub():
             <p style="margin:0; color:#666;">{section_desc}</p>
         </a>'''
 
+    # Section icons for visual cards
+    section_icons = {
+        'cme-education': '&#127891;',
+        'research-journals': '&#128218;',
+        'professional-organizations': '&#127963;',
+        'practice-management': '&#128188;',
+        'events-conferences': '&#128197;',
+        'clinical-guidelines': '&#128203;',
+    }
+
+    # Build styled section cards
+    section_cards = ""
+    for section in resources.get('sections', []):
+        slug = section.get('slug', '')
+        icon = section_icons.get(slug, '&#128204;')
+        section_cards += f'''
+            <a href="/for-dermatologists/{slug}/" class="pro-card">
+                <div class="pro-card-icon">{icon}</div>
+                <h3>{section.get('title', '')}</h3>
+                <p>{section.get('description', '')}</p>
+                <span class="pro-card-link">Explore &rarr;</span>
+            </a>'''
+
     # Build main hub page
     body_content = f'''
+    <!-- Hero Section -->
+    <section class="pro-hero">
+        <div class="container">
+            <h1>Resources for Dermatologists</h1>
+            <p>Professional resources, continuing education, research tools, and practice management for dermatology professionals.</p>
+        </div>
+    </section>
+
     <div class="container py-5">
-        <h1>Resources for Dermatologists</h1>
-        <p class="subtitle" style="color:#666; font-size:1.1rem; margin-bottom:30px;">Professional resources, continuing education, research tools, and practice management for dermatology professionals.</p>
-
-        <div class="guides-grid" style="max-width:800px;">
-            {section_links}
+        <div class="pro-grid">
+            {section_cards}
         </div>
 
-        <div style="margin-top:40px; padding:30px; background:#f0f7f5; border-radius:12px; text-align:center;">
-            <h3>Claim Your Free DermoBrain Profile</h3>
-            <p style="color:#666;">Get listed on DermoBrain's directory, claim your profile, and reach more patients.</p>
-            <a href="/contact/" style="display:inline-block; padding:12px 28px; background:#1A6B54; color:white; border-radius:8px; text-decoration:none; font-weight:600;">Get Started</a>
-        </div>
-
-        <div style="margin-top:30px; padding:30px; background:#fff5f0; border-radius:12px; text-align:center;">
-            <h3>Embed DermoBrain on Your Website</h3>
-            <p style="color:#666;">Add our free widget to your practice website for patient education content and a direct link to your profile.</p>
-            <a href="/tools/widget/" style="display:inline-block; padding:12px 28px; background:#E8734A; color:white; border-radius:8px; text-decoration:none; font-weight:600;">Learn More</a>
+        <div class="pro-cta-grid">
+            <div class="pro-cta-card pro-cta-claim">
+                <h3>&#9734; Claim Your Free DermoBrain Profile</h3>
+                <p>Get listed on DermoBrain's directory, manage your profile, and reach more patients searching for dermatologists.</p>
+                <a href="/for-dermatologists/premium.html" class="btn btn-primary">Get Started</a>
+            </div>
+            <div class="pro-cta-card pro-cta-widget">
+                <h3>&#128295; Embed DermoBrain on Your Website</h3>
+                <p>Add our free widget to your practice website for patient education content and a direct link to your profile.</p>
+                <a href="/tools/widget/" class="btn btn-accent">Learn More</a>
+            </div>
         </div>
     </div>
     '''
+    pro_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Resources for Dermatologists",
+        "url": f"{DOMAIN}/for-dermatologists/",
+        "description": "Professional resources for dermatologists including CME, research journals, practice management, and clinical guidelines.",
+        "provider": {"@type": "Organization", "name": SITE_NAME, "url": DOMAIN}
+    })
     html = page_template(
         title="Resources for Dermatologists",
         body_content=body_content,
-        meta_description="Professional resources for dermatologists: CME, research journals, practice management, clinical guidelines, events, and more.",
+        meta_description="Professional resources for dermatologists: continuing medical education, research journals, practice management tools, clinical guidelines, events, and professional organizations.",
         canonical="/for-dermatologists/",
+        schema_json=pro_schema,
         body_class="professional-hub"
     )
     output_file = OUTPUT_DIR / "for-dermatologists" / "index.html"
@@ -3107,8 +3193,10 @@ def build_tools_pages():
     </div>
     '''
     html = page_template(title="Tools & Calculators", body_content=tools_hub,
-        meta_description="Free dermatology tools: cost calculator, city comparison, skin quiz, and embeddable widget for practices.",
-        canonical="/tools/", body_class="tools-page")
+        meta_description="Free interactive dermatology tools: procedure cost calculator, city-by-city cost comparison, skin health quiz, and embeddable practice widget. Research and plan your care.",
+        canonical="/tools/",
+        schema_json=json.dumps({"@context": "https://schema.org", "@type": "CollectionPage", "name": "Dermatology Tools & Calculators", "url": f"{DOMAIN}/tools/", "description": "Free interactive dermatology tools for patients and practices."}),
+        body_class="tools-page")
     output_file = OUTPUT_DIR / "tools" / "index.html"
     output_file.parent.mkdir(parents=True, exist_ok=True)
     write_file(output_file, html)
