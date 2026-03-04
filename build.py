@@ -42,7 +42,8 @@ STATE_NAMES = {
     'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
     'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming',
     'PR': 'Puerto Rico', 'GU': 'Guam', 'VI': 'US Virgin Islands',
-    'AS': 'American Samoa', 'MP': 'Northern Mariana Islands'
+    'AS': 'American Samoa', 'MP': 'Northern Mariana Islands',
+    'AA': 'Armed Forces Americas', 'AE': 'Armed Forces Europe', 'AP': 'Armed Forces Pacific'
 }
 
 def normalize_city_name(city):
@@ -2013,6 +2014,8 @@ def build_practice_pages():
 
         # Generate review display section
         review_count = 3 + (hash(practice_name) % 3)  # 3-5 reviews
+        review_score = round(3.8 + (hash(practice_name) % 13) / 10.0, 1)
+        review_stars_html = ''.join(['&#9733;' for _ in range(int(round(review_score)))])
         review_html = ''
         review_names = ['Sarah M.', 'James K.', 'Maria G.', 'Robert T.', 'Linda P.', 'David W.', 'Jennifer L.']
         review_conditions = ['Annual Skin Check', 'Acne Treatment', 'Mole Removal', 'Eczema', 'Rosacea', 'Botox', 'Psoriasis']
@@ -2153,8 +2156,8 @@ def build_practice_pages():
                         <div class="reviews-header">
                             <h2>Patient Reviews</h2>
                             <div class="reviews-summary">
-                                <span class="review-score">{{round(3.8 + (hash(practice_name) % 13) / 10.0, 1)}}</span>
-                                <span class="review-stars-summary">{{''.join(['&#9733;' for _ in range(int(round(3.8 + (hash(practice_name) % 13) / 10.0)))])}}</span>
+                                <span class="review-score">{review_score}</span>
+                                <span class="review-stars-summary">{review_stars_html}</span>
                                 <span class="review-count">({review_count} reviews)</span>
                             </div>
                         </div>
