@@ -108,6 +108,9 @@
                 <a href="/news/" class="nav-link">News</a>
             </li>
             <li class="nav-item">
+                <a href="/podcast/" class="nav-link">Podcast</a>
+            </li>
+            <li class="nav-item">
                 <a href="/for-dermatologists/" class="nav-link">For Dermatologists</a>
             </li>
             <li class="nav-item">
@@ -130,17 +133,22 @@
     <!-- Main Content -->
     <main class="site-main">
         
-    <div class="container py-5">
-        <h1>Find a Dermatologist</h1>
-        <p class="subtitle">Search dermatologists by location</p>
+    <div class="directory-page">
+        <div class="directory-hero">
+            <div class="container">
+                <h1>Find a Dermatologist</h1>
+                <p class="hero-subtitle">Connect with board-certified dermatologists near you. Browse 9,966+ verified profiles across all 50 states.</p>
 
-        <div class="search-section">
-            <div class="search-form">
-                <div class="form-group">
-                    <label for="stateSelect">Search by State:</label>
-                    <select id="stateSelect" class="form-control">
-                        <option value="">Select a state...</option>
-                                                    <option value="AK">Alaska</option>
+                <div class="directory-search-box">
+                    <div class="search-tabs">
+                        <button class="search-tab active" data-tab="state">By State</button>
+                        <button class="search-tab" data-tab="zip">By ZIP Code</button>
+                        <button class="search-tab" data-tab="name">By Name</button>
+                    </div>
+                    <div class="search-panel active" id="search-state">
+                        <select id="stateSelect" class="search-input">
+                            <option value="">Select a state...</option>
+                                                        <option value="AK">Alaska</option>
                             <option value="AL">Alabama</option>
                             <option value="AP">AP</option>
                             <option value="AR">Arkansas</option>
@@ -195,18 +203,79 @@
                             <option value="WI">Wisconsin</option>
                             <option value="WV">West Virginia</option>
                             <option value="WY">Wyoming</option>
-                    </select>
+                        </select>
+                        <button class="search-go-btn" onclick="var v=document.getElementById('stateSelect').value; if(v) window.location.href='/find-a-dermatologist/'+v.toLowerCase()+'/';">Search</button>
+                    </div>
+                    <div class="search-panel" id="search-zip">
+                        <input type="text" id="zipSearch" class="search-input" placeholder="Enter ZIP code" maxlength="5" pattern="[0-9]{5}">
+                        <button class="search-go-btn" id="zipSearchBtn">Search</button>
+                    </div>
+                    <div class="search-panel" id="search-name">
+                        <input type="text" id="nameSearch" class="search-input" placeholder="Search by doctor name...">
+                        <button class="search-go-btn" id="nameSearchBtn">Search</button>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="zipSearch">Search by ZIP Code:</label>
-                    <input type="text" id="zipSearch" class="form-control" placeholder="Enter ZIP code">
+                <div id="geo-suggestion" class="geo-suggestion" style="display:none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="geo-text"></span>
                 </div>
             </div>
         </div>
 
-        <div class="states-grid">
-                        <a href="/find-a-dermatologist/ak/" class="state-card">
+        <div class="container py-4">
+            <!-- Popular Cities -->
+            <section class="popular-cities">
+                <h2>Popular Cities</h2>
+                <div class="popular-cities-grid">
+                                        <a href="/find-a-dermatologist/-pa/philadelphia.html" class="popular-city-card">
+                        <h3>Philadelphia, PA</h3>
+                        <p>124 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-mo/saint-louis.html" class="popular-city-card">
+                        <h3>Saint Louis, MO</h3>
+                        <p>114 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-mn/rochester.html" class="popular-city-card">
+                        <h3>Rochester, MN</h3>
+                        <p>102 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-oh/cleveland.html" class="popular-city-card">
+                        <h3>Cleveland, OH</h3>
+                        <p>97 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-wa/seattle.html" class="popular-city-card">
+                        <h3>Seattle, WA</h3>
+                        <p>97 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-ny/new-york.html" class="popular-city-card">
+                        <h3>New York, NY</h3>
+                        <p>94 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-ga/atlanta.html" class="popular-city-card">
+                        <h3>Atlanta, GA</h3>
+                        <p>87 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-tx/houston.html" class="popular-city-card">
+                        <h3>Houston, TX</h3>
+                        <p>86 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-ma/boston.html" class="popular-city-card">
+                        <h3>Boston, MA</h3>
+                        <p>83 dermatologists</p>
+                    </a>
+                    <a href="/find-a-dermatologist/-tn/nashville.html" class="popular-city-card">
+                        <h3>Nashville, TN</h3>
+                        <p>81 dermatologists</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- All States -->
+            <section class="all-states">
+                <h2>Browse by State</h2>
+                <div class="states-grid">
+                                <a href="/find-a-dermatologist/ak/" class="state-card">
                 <h3>Alaska</h3>
                 <p>27 dermatologists</p>
             </a>
@@ -426,14 +495,42 @@
                 <h3>Wyoming</h3>
                 <p>19 dermatologists</p>
             </a>
+                </div>
+            </section>
         </div>
     </div>
 
     <script>
+        // Tab switching
+        document.querySelectorAll('.search-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.search-panel').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('search-' + this.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                fetch('https://nominatim.openstreetmap.org/reverse?lat='+pos.coords.latitude+'&lon='+pos.coords.longitude+'&format=json')
+                .then(r => r.json())
+                .then(data => {
+                    var state = data.address && data.address.state;
+                    if (state) {
+                        var el = document.getElementById('geo-suggestion');
+                        var txt = document.getElementById('geo-text');
+                        txt.innerHTML = 'It looks like you\'re in <strong>' + state + '</strong>. <a href="/find-a-dermatologist/' + (data.address.state_code || '').toLowerCase() + '/">View dermatologists near you &rarr;</a>';
+                        el.style.display = 'flex';
+                    }
+                }).catch(function(){});
+            }, function(){}, {timeout: 5000});
+        }
+
+        // State select auto-navigate
         document.getElementById('stateSelect').addEventListener('change', function(e) {
-            if (e.target.value) {
-                window.location.href = '/find-a-dermatologist/' + e.target.value.toLowerCase() + '/';
-            }
+            if (e.target.value) window.location.href = '/find-a-dermatologist/' + e.target.value.toLowerCase() + '/';
         });
     </script>
     
@@ -467,6 +564,7 @@
                         <li><a href="/skin-quiz/">Skin Health Quiz</a></li>
                         <li><a href="/guides/">Expert Guides</a></li>
                         <li><a href="/news/">What's New</a></li>
+                        <li><a href="/podcast/">Podcast</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">

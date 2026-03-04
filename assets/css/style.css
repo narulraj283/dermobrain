@@ -2056,3 +2056,611 @@ input:focus-visible,
         width: 100%;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE A: Strategic Growth Features
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Smart Patient Routing CTA ─── */
+.find-specialist-cta {
+    margin: 3rem 0 1rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    border: 2px solid #1A6B54;
+    overflow: hidden;
+}
+.cta-inner {
+    padding: 2.5rem;
+    text-align: center;
+}
+.cta-icon { margin-bottom: 1rem; }
+.cta-inner h3 {
+    font-size: 1.5rem;
+    color: #1A1A2E;
+    margin-bottom: 0.5rem;
+}
+.cta-inner p {
+    color: #555;
+    margin-bottom: 1.25rem;
+    max-width: 480px;
+    margin-inline: auto;
+}
+.cta-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #1A6B54;
+    color: #fff !important;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: background 0.2s, transform 0.15s;
+}
+.cta-btn:hover {
+    background: #145544;
+    transform: translateY(-1px);
+}
+.cta-stats {
+    font-size: 0.85rem !important;
+    color: #1A6B54 !important;
+    font-weight: 600;
+    margin-top: 0.75rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* ─── Claim Your Profile CTA ─── */
+.claim-profile-cta {
+    margin: 2rem 0;
+    border-radius: 16px;
+    border: 2px dashed #1A6B54;
+    background: linear-gradient(135deg, #f8fffe 0%, #E8F5E9 100%);
+}
+.claim-inner {
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+.claim-badge {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(26,107,84,0.15);
+}
+.claim-content { flex: 1; min-width: 240px; }
+.claim-content h3 {
+    font-size: 1.25rem;
+    color: #1A1A2E;
+    margin-bottom: 0.35rem;
+}
+.claim-content p {
+    color: #555;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+.claim-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: #1A6B54;
+    font-weight: 600;
+}
+.claim-btn {
+    align-self: center;
+    padding: 14px 28px;
+    background: #1A6B54;
+    color: #fff !important;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+}
+.claim-btn:hover {
+    background: #145544;
+    transform: translateY(-1px);
+}
+
+/* ─── Patient Reviews ─── */
+.practice-reviews {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+.reviews-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+.reviews-header h2 { margin: 0; }
+.reviews-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.review-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1A6B54;
+}
+.review-stars-summary {
+    color: #F5A623;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+.review-count { color: #777; font-size: 0.9rem; }
+.review-card {
+    padding: 1.25rem;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.2s;
+}
+.review-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.reviewer-name { font-weight: 700; color: #1A1A2E; }
+.review-badge {
+    background: #E8F5E9;
+    color: #1A6B54;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+.review-stars .star { color: #ddd; font-size: 1rem; }
+.review-stars .star.filled { color: #F5A623; }
+.review-condition {
+    font-size: 0.85rem;
+    color: #1A6B54;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.review-text { color: #444; line-height: 1.6; margin-bottom: 0.5rem; }
+.review-date { font-size: 0.8rem; color: #999; }
+.review-cta {
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px dashed #ccc;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+.review-cta p { margin-bottom: 0.75rem; color: #555; }
+.write-review-btn, .submit-review-btn {
+    padding: 12px 28px;
+    background: #1A6B54;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.write-review-btn:hover, .submit-review-btn:hover { background: #145544; }
+.review-form-section {
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+.review-form-section h3 { margin-bottom: 1rem; }
+.review-form-section .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.review-form-section input, .review-form-section select, .review-form-section textarea {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+.review-form-section textarea { resize: vertical; margin-bottom: 12px; }
+
+/* ─── Podcast Section ─── */
+.podcast-page { padding-bottom: 3rem; }
+.podcast-hero {
+    background: linear-gradient(135deg, #1A1A2E 0%, #2D2D4E 100%);
+    padding: 4rem 0 3rem;
+    color: #fff;
+    text-align: center;
+}
+.podcast-label {
+    display: inline-block;
+    background: #1A6B54;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+.podcast-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+.podcast-tagline {
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+}
+.podcast-subscribe {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.subscribe-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff !important;
+    transition: opacity 0.2s, transform 0.15s;
+}
+.subscribe-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.subscribe-btn.apple { background: #A855F7; }
+.subscribe-btn.spotify { background: #1DB954; }
+.subscribe-btn.google { background: #EA4335; }
+.subscribe-btn.rss { background: #F97316; }
+.podcast-stats { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+.episodes-list { padding: 2rem 0; }
+.episodes-list h2 { margin-bottom: 1.5rem; }
+.episode-card {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.episode-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-color: #1A6B54;
+}
+.episode-number {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: #1A6B54;
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+.episode-content { flex: 1; }
+.episode-content h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+    color: #1A1A2E;
+}
+.episode-guest {
+    font-size: 0.9rem;
+    color: #1A6B54;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.episode-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+.episode-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.episode-duration {
+    font-size: 0.8rem;
+    color: #999;
+    font-weight: 600;
+}
+.episode-topics {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.topic-badge {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #555;
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* Episode Detail Page */
+.episode-page { padding: 2rem 0 3rem; }
+.episode-header-section {
+    background: linear-gradient(135deg, #1A1A2E 0%, #2D2D4E 100%);
+    padding: 3rem 0;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+.episode-header-section .episode-number-lg {
+    display: inline-block;
+    background: #1A6B54;
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+.episode-header-section h1 { color: #fff; font-size: 2rem; margin-bottom: 0.5rem; }
+.episode-header-section .episode-guest-info {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 0.75rem;
+}
+.episode-body { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; }
+.episode-main { min-width: 0; }
+.episode-sidebar { }
+.episode-sidebar .sidebar-box {
+    background: #f8f8f8;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+.sidebar-box h3 { font-size: 1rem; margin-bottom: 0.75rem; }
+.key-takeaway-list { list-style: none; padding: 0; }
+.key-takeaway-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #444;
+    display: flex;
+    gap: 0.5rem;
+}
+.key-takeaway-list li:last-child { border-bottom: none; }
+.transcript-placeholder {
+    background: #f8f8f8;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Podcast Guest CTA */
+.podcast-guest-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    border-radius: 16px;
+    margin-top: 2rem;
+}
+.podcast-guest-cta h2 { margin-bottom: 0.75rem; }
+.podcast-guest-cta p {
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+    color: #555;
+}
+
+/* ─── Enhanced Directory Page ─── */
+.directory-page { }
+.directory-hero {
+    background: linear-gradient(135deg, #1A6B54 0%, #145544 100%);
+    padding: 3.5rem 0 3rem;
+    color: #fff;
+    text-align: center;
+}
+.directory-hero h1 { color: #fff; font-size: 2.5rem; margin-bottom: 0.5rem; }
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+}
+.directory-search-box {
+    max-width: 560px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.search-tabs {
+    display: flex;
+    border-bottom: 2px solid #eee;
+}
+.search-tab {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    font-weight: 600;
+    color: #777;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.2s, background 0.2s;
+}
+.search-tab.active {
+    color: #1A6B54;
+    border-bottom: 2px solid #1A6B54;
+    margin-bottom: -2px;
+}
+.search-panel {
+    display: none;
+    padding: 1rem;
+    gap: 0.5rem;
+}
+.search-panel.active {
+    display: flex;
+}
+.search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+}
+.search-input:focus { border-color: #1A6B54; }
+.search-go-btn {
+    padding: 12px 24px;
+    background: #1A6B54;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+.search-go-btn:hover { background: #145544; }
+.geo-suggestion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+.geo-suggestion a { color: #fff; font-weight: 600; text-decoration: underline; }
+
+.popular-cities { margin-bottom: 2rem; }
+.popular-cities h2 { margin-bottom: 1rem; }
+.popular-cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+.popular-city-card {
+    display: block;
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.popular-city-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border-color: #1A6B54;
+}
+.popular-city-card h3 { font-size: 1.05rem; color: #1A1A2E; margin-bottom: 0.25rem; }
+.popular-city-card p { font-size: 0.85rem; color: #1A6B54; font-weight: 600; margin: 0; }
+
+.all-states { margin-bottom: 2rem; }
+.all-states h2 { margin-bottom: 1rem; }
+
+/* ─── Share Button Style ─── */
+.btn-share {
+    background: #f0f0f0;
+    color: #555;
+}
+.btn-share:hover {
+    background: #e0e0e0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE A: RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+    .episode-body { grid-template-columns: 1fr; }
+    .episode-sidebar { order: -1; }
+}
+
+@media (max-width: 768px) {
+    .find-specialist-cta { margin: 2rem 0; }
+    .cta-inner { padding: 1.5rem; }
+    .cta-inner h3 { font-size: 1.25rem; }
+
+    .claim-inner {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .claim-benefits { justify-content: center; }
+    .claim-btn { width: 100%; text-align: center; }
+
+    .review-form-section .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .podcast-hero { padding: 2.5rem 0 2rem; }
+    .podcast-hero h1 { font-size: 1.75rem; }
+    .podcast-subscribe { gap: 0.5rem; }
+    .subscribe-btn { padding: 8px 14px; font-size: 0.8rem; }
+
+    .episode-card { flex-direction: column; gap: 0.75rem; }
+    .episode-number {
+        width: 40px;
+        height: 40px;
+        font-size: 0.75rem;
+    }
+
+    .directory-hero { padding: 2.5rem 0 2rem; }
+    .directory-hero h1 { font-size: 1.75rem; }
+    .search-tabs { font-size: 0.8rem; }
+
+    .popular-cities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .episode-header-section { padding: 2rem 0; }
+    .episode-header-section h1 { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .cta-inner { padding: 1.25rem; }
+    .podcast-subscribe { flex-direction: column; align-items: center; }
+    .subscribe-btn { width: 100%; text-align: center; }
+    .search-tab { padding: 10px 6px; font-size: 0.8rem; }
+    .popular-cities-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-header { flex-direction: column; align-items: flex-start; }
+}
