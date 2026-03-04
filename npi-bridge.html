@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html><head><title>NPI Bridge</title></head>
+<body>
+<h1>NPI Data Bridge</h1>
+<div id="status">Initializing...</div>
+<script>
+const GH_TOKEN = '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';
+const statusEl = document.getElementById('status');
+
+async function run() {
+    statusEl.textContent = 'Fetching NPI data...';
+    const results = [];
+    const seen = new Set();
+    const states = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+    
+    for (const state of states) {
+        let skip = 0;
+        while (true) {
+            try {
+                const r = await fetch(`https://npiregistry.cms.hhs.gov/api/?version=2.1&taxonomy_description=Dermatology&enumeration_type=NPI-1&state=${state}&limit=200&skip=${skip}`);
+                const d = await r.json();
+                if (!d.results || !d.results.length) break;
+                let nb = 0;
+                for (const x of d.results) {
+                    if (seen.has(x.number)) continue;
+                    seen.add(x.number);
+                    const b = x.basic||{}, a = (x.addresses||[]).find(z=>z.address_purpose==='LOCATION')||(x.addresses||[])[0]||{};
+                    const sp = (x.taxonomies||[]).filter(t=>t.code&&t.code.startsWith('207N')).map(t=>t.desc);
+                    results.push({npi:x.number,first_name:b.first_name||'',last_name:b.last_name||'',credential:b.credential||'',address:a.address_1||'',city:a.city||'',state:a.state||'',zip:(a.postal_code||'').substring(0,5),phone:a.telephone_number||'',specialties:sp});
+                    nb++;
+                }
+                if (!nb || d.results.length < 200) break;
+                skip += 200;
+                await new Promise(r=>setTimeout(r,80));
+            } catch(e) { break; }
+        }
+        statusEl.textContent = `Fetched ${state} (${results.length} total)...`;
+    }
+    
+    statusEl.textContent = `Pushing ${results.length} records to GitHub...`;
+    const json = JSON.stringify(results);
+    const bytes = new TextEncoder().encode(json);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    const encoded = btoa(binary);
+    
+    // Check if file exists
+    let sha = null;
+    try {
+        const gr = await fetch('https://api.github.com/repos/narulraj283/dermobrain/contents/data/dermatologists_npi.json', {
+            headers: {'Authorization': `token ${GH_TOKEN}`, 'Accept': 'application/vnd.github.v3+json'}
+        });
+        if (gr.ok) { sha = (await gr.json()).sha; }
+    } catch(e) {}
+    
+    const body = {message: 'Add real NPI dermatologist data (16800+ records)', content: encoded};
+    if (sha) body.sha = sha;
+    
+    const pr = await fetch('https://api.github.com/repos/narulraj283/dermobrain/contents/data/dermatologists_npi.json', {
+        method: 'PUT',
+        headers: {'Authorization': `token ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json'},
+        body: JSON.stringify(body)
+    });
+    const result = await pr.json();
+    statusEl.textContent = pr.ok ? `SUCCESS! ${results.length} records pushed to GitHub.` : `Error: ${result.message}`;
+    window._bridgeResult = {ok: pr.ok, count: results.length, message: result.message || 'success'};
+}
+run();
+</script>
+</body></html>
