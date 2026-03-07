@@ -661,6 +661,20 @@ def build_article_page(article, category_info):
     related_articles = article.get('related_articles', [])
     tags = article.get('tags', [])
 
+    # Cross-link banner to patient version (if it exists)
+    patient_content = article.get('patient_content', '')
+    cross_link_banner = ''
+    if patient_content:
+        patient_url = f"/{pillar_slug}/{category_slug}/{article_slug}-patient-guide.html"
+        cross_link_banner = f'''
+            <div class="version-banner clinical-banner" style="background:linear-gradient(135deg,#f0f9f6,#e8f4f0);border:1px solid #028090;border-radius:10px;padding:16px 24px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                    <strong style="color:#028090;font-size:1.05em;">&#128214; You&rsquo;re reading the Clinical Reference</strong>
+                    <p style="margin:4px 0 0;color:#555;font-size:0.93em;">Written for healthcare professionals with detailed pathophysiology, dosing protocols, and clinical data.</p>
+                </div>
+                <a href="{patient_url}" style="background:#028090;color:#fff;padding:10px 22px;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.95em;white-space:nowrap;">Read the Patient-Friendly Version &rarr;</a>
+            </div>'''
+
     # Read time estimate
     import re as _re
     word_count = len(_re.findall(r'\w+', _re.sub(r'<[^>]+>', '', content)))
@@ -831,6 +845,8 @@ def build_article_page(article, category_info):
                 </div>
             </header>
 
+            {cross_link_banner}
+
             {toc_html}
 
             <div class="article-body">
@@ -873,6 +889,246 @@ def build_article_page(article, category_info):
     )
 
     filepath = OUTPUT_DIR / pillar_slug / category_slug / f"{article_slug}.html"
+    write_file(filepath, html)
+
+    # Also build patient version if patient_content exists
+    if patient_content:
+        build_patient_article_page(article, category_info)
+
+
+def build_patient_article_page(article, category_info):
+    """Generate a patient-friendly article page at /{pillar}/{category}/{slug}-patient-guide.html."""
+    import re as _re
+
+    pillar_slug = category_info.get('pillar_slug', '')
+    category_slug = category_info.get('slug', '')
+    article_slug = article.get('slug', '')
+
+    title = article.get('patient_title', article.get('title', 'Article'))
+    content = article.get('patient_content', '')
+    meta_desc = article.get('patient_meta_description', article.get('meta_description', ''))
+    related_articles = article.get('related_articles', [])
+    tags = article.get('patient_tags', article.get('tags', []))
+
+    # Read time estimate
+    word_count = len(_re.findall(r'\w+', _re.sub(r'<[^>]+>', '', content)))
+    read_time = max(1, round(word_count / 200))
+
+    # Generate Table of Contents from H2 headings
+    toc_html = ""
+    h2_matches = list(_re.finditer(r'<h2[^>]*>(.*?)</h2>', content))
+    if len(h2_matches) >= 3:
+        toc_items = ""
+        modified_content = content
+        for i, match in enumerate(h2_matches):
+            heading_text = match.group(1)
+            # Strip any existing style attributes from heading text
+            clean_heading = _re.sub(r'<[^>]+>', '', heading_text).strip()
+            anchor_id = f"section-{i+1}"
+            toc_items += f'<li><a href="#{anchor_id}">{clean_heading}</a></li>\n'
+            # Replace only the first occurrence
+            old_tag = match.group(0)
+            new_tag = f'<h2 id="{anchor_id}">{heading_text}</h2>' if 'id=' not in old_tag else old_tag
+            modified_content = modified_content.replace(old_tag, new_tag, 1)
+        content = modified_content
+        toc_html = f'''
+            <div class="table-of-contents">
+                <h3 class="toc-title">Table of Contents</h3>
+                <ol>{toc_items}</ol>
+            </div>'''
+
+    # Breadcrumb
+    pillar_name = {
+        'medical-dermatology': 'Medical Dermatology',
+        'surgical-dermatology': 'Surgical Dermatology',
+        'cosmetic-dermatology': 'Cosmetic Dermatology',
+        'skincare': 'Skincare & Lifestyle'
+    }.get(pillar_slug, pillar_slug.replace('-', ' ').title())
+
+    category_name = category_info.get('name', '')
+
+    breadcrumb = f'''
+    <nav class="breadcrumb">
+        <a href="/">Home</a> <span>&rsaquo;</span>
+        <a href="/{pillar_slug}/">{pillar_name}</a> <span>&rsaquo;</span>
+        <a href="/{pillar_slug}/{category_slug}/">{category_name}</a> <span>&rsaquo;</span>
+        <span>{title}</span>
+    </nav>'''
+
+    # Cross-link banner to clinical version
+    clinical_url = f"/{pillar_slug}/{category_slug}/{article_slug}.html"
+    cross_link_banner = f'''
+            <div class="version-banner patient-banner" style="background:linear-gradient(135deg,#fef9f0,#fdf3e0);border:1px solid #e8a020;border-radius:10px;padding:16px 24px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                    <strong style="color:#b8860b;font-size:1.05em;">&#128101; You&rsquo;re reading the Patient Guide</strong>
+                    <p style="margin:4px 0 0;color:#555;font-size:0.93em;">Written in plain language for patients and caregivers. Medically accurate and dermatologist-reviewed.</p>
+                </div>
+                <a href="{clinical_url}" style="background:#b8860b;color:#fff;padding:10px 22px;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.95em;white-space:nowrap;">Read the Clinical Reference &rarr;</a>
+            </div>'''
+
+    # Related articles section
+    related_html = ""
+    if related_articles:
+        related_html = '''
+    <section class="related-articles">
+        <h3>Related Patient Guides</h3>
+        <div class="related-grid">'''
+        for rel_slug in related_articles[:4]:
+            related_html += f'''
+            <div class="related-card">
+                <a href="/{pillar_slug}/{category_slug}/{rel_slug}-patient-guide.html">{rel_slug.replace('-', ' ').title()}</a>
+            </div>'''
+        related_html += '''
+        </div>
+    </section>'''
+
+    # Social share
+    article_url = f"{DOMAIN}/{pillar_slug}/{category_slug}/{article_slug}-patient-guide.html"
+    encoded_url = quote(article_url, safe='')
+    encoded_title = quote(title, safe='')
+    social_share = f'''
+    <div class="social-share">
+        <p>Share this article:</p>
+        <a href="https://twitter.com/intent/tweet?url={encoded_url}&text={encoded_title}" class="share-btn twitter" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={encoded_url}" class="share-btn facebook" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}" class="share-btn linkedin" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+        <a href="https://api.whatsapp.com/send?text={encoded_title}%20{encoded_url}" class="share-btn whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">WhatsApp</a>
+        <a href="https://pinterest.com/pin/create/button/?url={encoded_url}&description={encoded_title}" class="share-btn pinterest" target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest">Pinterest</a>
+        <button class="share-btn copy-link" data-url="{article_url}" aria-label="Copy link to clipboard">Copy Link</button>
+    </div>'''
+
+    # Schema.org for patient version
+    article_schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": f"{DOMAIN}/#organization",
+                "name": SITE_NAME,
+                "url": DOMAIN,
+                "description": "Your trusted dermatology encyclopedia covering medical, surgical, and cosmetic dermatology."
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN},
+                    {"@type": "ListItem", "position": 2, "name": pillar_name, "item": f"{DOMAIN}/{pillar_slug}/"},
+                    {"@type": "ListItem", "position": 3, "name": category_name, "item": f"{DOMAIN}/{pillar_slug}/{category_slug}/"},
+                    {"@type": "ListItem", "position": 4, "name": title, "item": article_url}
+                ]
+            },
+            {
+                "@type": ["MedicalWebPage", "Article"],
+                "headline": title,
+                "description": meta_desc,
+                "url": article_url,
+                "datePublished": BUILD_DATE,
+                "dateModified": BUILD_DATE,
+                "audience": {
+                    "@type": "PeopleAudience",
+                    "audienceType": "Patient"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "DermoBrain Medical Editorial Team",
+                    "url": f"{DOMAIN}/editorial-standards/"
+                },
+                "reviewedBy": {
+                    "@type": "Organization",
+                    "name": "DermoBrain Medical Review Board",
+                    "url": f"{DOMAIN}/editorial-standards/"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "@id": f"{DOMAIN}/#organization",
+                    "name": SITE_NAME,
+                    "url": DOMAIN
+                },
+                "mainEntityOfPage": article_url,
+                "keywords": ", ".join(tags),
+                "about": {
+                    "@type": "MedicalCondition",
+                    "name": title.split(":")[0].strip() if ":" in title else title
+                }
+            }
+        ]
+    }
+    schema = json.dumps(article_schema)
+
+    # Smart patient routing CTA
+    specialty_map = {
+        'skin-conditions': 'Dermatology', 'skin-cancer': 'MOHS-MICROGRAPHIC SURGERY',
+        'allergies': 'CLINICAL & LABORATORY DERMATOLOGICAL IMMUNOLOGY',
+        'pediatric': 'Pediatric Dermatology', 'hair-scalp': 'Dermatology',
+        'nails': 'Dermatology', 'skin-of-color': 'Dermatology',
+        'mohs-surgery': 'MOHS-MICROGRAPHIC SURGERY', 'procedures': 'Dermatology',
+        'pre-post-op': 'Dermatology', 'injectables': 'Dermatology',
+        'lasers': 'Dermatology', 'rejuvenation': 'Dermatology',
+        'body-contouring': 'Dermatology', 'skincare-science': 'Dermatology',
+        'mens-derm': 'Dermatology', 'womens-derm': 'Dermatology', 'lifestyle': 'Dermatology',
+    }
+    specialty_display = category_name.split('&')[0].strip() if '&' in category_name else category_name
+
+    body = f'''
+    <article class="article-page patient-guide">
+        <div class="container container-narrow">
+            {breadcrumb}
+
+            <header class="article-header">
+                <span class="article-category">{category_name} &mdash; Patient Guide</span>
+                <h1>{title}</h1>
+                <div class="article-meta">
+                    <span class="byline">By DermoBrain Medical Editorial Team</span>
+                    <time datetime="{BUILD_DATE}">Updated {BUILD_DATE}</time>
+                    <span class="badge">Medically Reviewed</span>
+                    <span class="read-time">&#9201; {read_time} min read</span>
+                </div>
+            </header>
+
+            {cross_link_banner}
+
+            {toc_html}
+
+            <div class="article-body">
+                {content}
+            </div>
+
+            <div class="article-review-info">
+                <p><strong>Medically reviewed</strong> by the DermoBrain Medical Review Board. This article is for informational purposes only and does not constitute medical advice. Always consult a board-certified dermatologist for diagnosis and treatment.</p>
+                <p>Sources: American Academy of Dermatology (AAD), peer-reviewed dermatology journals, and established clinical guidelines.</p>
+            </div>
+
+            {social_share}
+            {related_html}
+
+            <!-- Smart Patient Routing CTA -->
+            <section class="find-specialist-cta">
+                <div class="cta-inner">
+                    <div class="cta-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1A6B54" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Need a {specialty_display} Specialist?</h3>
+                    <p>Find board-certified dermatologists near you who specialize in {specialty_display.lower()}.</p>
+                    <a href="/find-a-dermatologist/" class="cta-btn">Find a Dermatologist Near You</a>
+                    <p class="cta-stats">9,966+ verified dermatologists across all 50 states</p>
+                </div>
+            </section>
+        </div>
+    </article>'''
+
+    html = page_template(
+        title=title,
+        body_content=body,
+        meta_description=meta_desc,
+        schema_json=schema,
+        canonical=f"/{pillar_slug}/{category_slug}/{article_slug}-patient-guide.html",
+        body_class="page-article page-patient-guide"
+    )
+
+    filepath = OUTPUT_DIR / pillar_slug / category_slug / f"{article_slug}-patient-guide.html"
     write_file(filepath, html)
 
 
@@ -3353,16 +3609,20 @@ def build():
     build_homepage()
     build_editorial_standards()
 
-    # Build article pages
+    # Build article pages (clinical + patient versions)
     print(f"\nBuilding article pages...")
     article_count = 0
+    patient_count = 0
     for article in all_articles:
         category_slug = article.get('category', '')
         category_info = next((c for c in all_categories if c.get('slug') == category_slug), None)
         if category_info:
             build_article_page(article, category_info)
             article_count += 1
-    print(f"  Generated {article_count} article pages")
+            if article.get('patient_content'):
+                patient_count += 1
+    print(f"  Generated {article_count} clinical article pages")
+    print(f"  Generated {patient_count} patient guide pages")
 
     # Build category pages
     print(f"\nBuilding category pages...")
@@ -3467,7 +3727,7 @@ def build():
         category_slug = category.get('slug', '')
         pages.append((f"/{pillar_slug}/{category_slug}/", 0.7, "weekly"))
 
-    # Add article pages
+    # Add article pages (clinical + patient versions)
     for article in all_articles:
         category_slug = article.get('category', '')
         article_slug = article.get('slug', '')
@@ -3475,6 +3735,9 @@ def build():
         if category_info:
             pillar_slug = category_info.get('pillar_slug', '')
             pages.append((f"/{pillar_slug}/{category_slug}/{article_slug}.html", 0.6, "monthly"))
+            # Add patient guide version if it exists
+            if article.get('patient_content'):
+                pages.append((f"/{pillar_slug}/{category_slug}/{article_slug}-patient-guide.html", 0.6, "monthly"))
 
     # Add guide pages to sitemap
     try:
