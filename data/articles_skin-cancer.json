@@ -155,7 +155,7 @@
     ]
   },
   {
-    "title": "ABCDE Rule for Melanoma: Clinical Application and Detection Sensitivity",
+    "title": "ABCDE Rule for Melanoma: Clinical Application and Detection Sensitivity (Detection Screening)",
     "slug": "abcde-rule-melanoma",
     "category": "skin-cancer",
     "subcategory": "detection-screening",
@@ -186,7 +186,7 @@
     ]
   },
   {
-    "title": "Melanoma Staging and Prognosis: TNM Classification, Breslow Depth, and Survival Outcomes",
+    "title": "Melanoma Staging and Prognosis: TNM Classification, Breslow Depth, and Survival Outcomes (Melanoma)",
     "slug": "melanoma-staging-prognosis",
     "category": "skin-cancer",
     "subcategory": "melanoma",
