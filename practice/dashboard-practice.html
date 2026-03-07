@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DermoBrain Practice Owner Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #028090;
+            --dark: #015f6b;
+            --light: #04b5ce;
+            --bg: #f8fbfc;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --border: #e0e0e0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+        }
+
+        .login-box {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.1);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 12px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .login-error {
+            color: var(--danger);
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .demo-hint {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Dashboard Layout */
+        .dashboard {
+            display: flex;
+            height: 100vh;
+            background: var(--bg);
+        }
+
+        .sidebar {
+            width: 240px;
+            background: var(--white);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 24px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .practice-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .practice-status {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .practice-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .online-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .nav-menu {
+            flex: 1;
+            padding: 20px 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 0;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            background: rgba(2, 128, 144, 0.08);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-footer {
+            padding: 20px 16px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .logout-button {
+            width: 100%;
+            padding: 10px 12px;
+            background: transparent;
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .logout-button:hover {
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .powered-by {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .top-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .welcome-subtitle {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .kpi-label {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .kpi-change {
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .kpi-change.positive {
+            color: var(--success);
+        }
+
+        .kpi-change.negative {
+            color: var(--danger);
+        }
+
+        .sparkline {
+            height: 40px;
+            margin-top: 12px;
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            margin-bottom: 32px;
+        }
+
+        .activity-title {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .activity-item {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .activity-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .action-button {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .action-button:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .action-button-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .action-button-secondary:hover {
+            background: rgba(2, 128, 144, 0.08);
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        thead {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dark);
+        }
+
+        tbody tr:hover {
+            background: var(--bg);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-badge.active {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-badge.inactive {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        /* Forms */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group {
+            margin-bottom: 20px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-label:hover {
+            background: var(--bg);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-header {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        /* Charts */
+        .chart-container {
+            margin-bottom: 32px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            height: 200px;
+        }
+
+        .bar-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--light) 100%);
+            border-radius: 4px 4px 0 0;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar-label {
+            font-size: 12px;
+            color: var(--text-light);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .bar-value {
+            font-size: 11px;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 14px 20px;
+            border-radius: 6px;
+            box-shadow: var(--shadow-lg);
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Training Overview */
+        .training-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        /* Patient Resources */
+        .resource-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .resource-filter-btn {
+            padding: 8px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .resource-filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .resource-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .resource-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .resource-category {
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(2, 128, 144, 0.1);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .resource-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+            margin-top: 12px;
+        }
+
+        .small-button {
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .small-button:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                max-height: 60px;
+                flex-direction: row;
+                align-items: center;
+                padding: 0 16px;
+                overflow-x: auto;
+            }
+
+            .sidebar-header {
+                padding: 0;
+                border-bottom: none;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                flex: 1;
+                border-right: 1px solid var(--border);
+                padding-right: 20px;
+            }
+
+            .nav-menu {
+                padding: 0;
+                display: flex;
+                gap: 0;
+            }
+
+            .nav-link {
+                padding: 12px 16px;
+                white-space: nowrap;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            .nav-link.active {
+                border-left: none;
+                border-bottom-color: var(--primary);
+            }
+
+            .sidebar-footer {
+                display: none;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-title {
+                font-size: 22px;
+            }
+        }
+
+        /* Expandable Rows */
+        .expandable-row {
+            cursor: pointer;
+        }
+
+        .expandable-row:hover {
+            background: var(--bg);
+        }
+
+        .expand-icon {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .expand-icon.expanded {
+            transform: rotate(90deg);
+        }
+
+        .expanded-content {
+            display: none;
+        }
+
+        .expanded-content.show {
+            display: table-row;
+        }
+
+        .expanded-cell {
+            padding: 16px;
+            background: rgba(2, 128, 144, 0.02);
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border);
+            transition: 0.3s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--success);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        .search-box {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+            max-width: 300px;
+            transition: all 0.2s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.1);
+        }
+
+        /* Color Picker */
+        .color-picker-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .color-input {
+            width: 60px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Analytics */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .date-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .date-btn {
+            padding: 8px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .date-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .date-btn:hover:not(.active) {
+            background: var(--border);
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <div class="login-logo">DermoBrain</div>
+            <div class="login-subtitle">Practice Owner Portal</div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Practice ID</label>
+                    <input type="text" class="form-input" id="practiceId" value="drs-skincare" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="password" placeholder="Enter password" required>
+                </div>
+
+                <button type="submit" class="login-button">Sign In</button>
+
+                <div class="login-error" id="loginError"></div>
+            </form>
+
+            <div class="demo-hint">
+                <strong>Demo Credentials:</strong><br>
+                Practice ID: drs-skincare<br>
+                Password: drs2024
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>🧬</span>
+                    <span>DermoBrain</span>
+                </div>
+                <div class="practice-info">
+                    <div class="practice-status">
+                        <div class="practice-name">DRS Skincare</div>
+                        <div class="online-indicator">
+                            <div class="online-dot"></div>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a class="nav-link active" data-tab="overview">
+                        <div class="nav-icon">📊</div>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="resources">
+                        <div class="nav-icon">👥</div>
+                        <span>Patient Resources</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="training">
+                        <div class="nav-icon">📚</div>
+                        <span>Team Training</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="staff">
+                        <div class="nav-icon">👔</div>
+                        <span>Staff Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="analytics">
+                        <div class="nav-icon">📈</div>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="settings">
+                        <div class="nav-icon">⚙️</div>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutBtn">Logout</button>
+                <div class="powered-by">Powered by DermoBrain</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <div></div>
+                <div class="user-profile">
+                    <div class="user-avatar">DS</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userNameDisplay">Dr. Shukla</div>
+                        <div class="user-role">Practice Owner</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <!-- Tab 1: Overview Dashboard -->
+                <div id="overviewTab" class="tab-content active">
+                    <div class="welcome-banner">
+                        <div class="welcome-title">Welcome back, Dr. Shukla</div>
+                        <div class="welcome-subtitle" id="currentDate"></div>
+                    </div>
+
+                    <!-- KPI Cards -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Patient Page Views</div>
+                            <div class="kpi-value">2,847</div>
+                            <div class="kpi-change positive">↑ 12% vs last month</div>
+                            <svg class="sparkline" viewBox="0 0 100 40" preserveAspectRatio="none">
+                                <polyline points="0,30 10,25 20,20 30,15 40,18 50,10 60,12 70,8 80,5 90,15 100,20"
+                                    fill="none" stroke="#04b5ce" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Active Staff</div>
+                            <div class="kpi-value">8/12</div>
+                            <div class="kpi-change positive">Currently logged in</div>
+                            <div style="margin-top: 12px; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+                                <div style="height: 100%; width: 67%; background: linear-gradient(90deg, #028090, #04b5ce);"></div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Training Completion</div>
+                            <div class="kpi-value">73%</div>
+                            <div class="kpi-change positive">Average across all staff</div>
+                            <div style="margin-top: 12px; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+                                <div style="height: 100%; width: 73%; background: linear-gradient(90deg, #10b981, #34d399);"></div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Articles Available</div>
+                            <div class="kpi-value">57</div>
+                            <div class="kpi-change">Curated for your practice</div>
+                            <svg class="sparkline" viewBox="0 0 100 40" preserveAspectRatio="none">
+                                <polyline points="0,25 10,22 20,18 30,20 40,15 50,12 60,10 70,8 80,5 90,3 100,5"
+                                    fill="none" stroke="#f59e0b" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Activity Feed -->
+                    <div class="card activity-feed">
+                        <div class="activity-title">Recent Activity</div>
+                        <div id="activityFeed"></div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div style="margin-bottom: 32px;">
+                        <div style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-dark);">Quick Actions</div>
+                        <div class="quick-actions">
+                            <button class="action-button" onclick="openModal('addStaffModal')">➕ Add Staff Member</button>
+                            <button class="action-button action-button-secondary" onclick="customizePatientPage()">✏️ Customize Patient Page</button>
+                            <button class="action-button action-button-secondary" onclick="viewTrainingReports()">📊 View Training Reports</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Patient Resources -->
+                <div id="resourcesTab" class="tab-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2 style="font-size: 24px;">Patient Resources</h2>
+                        <button class="action-button" onclick="openModal('addArticleModal')">➕ Add Article</button>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 24px;">
+                        <input type="text" class="search-box" placeholder="Search articles..." id="articleSearch">
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Filter by Category</div>
+                        <div class="resource-filters">
+                            <button class="resource-filter-btn active" onclick="filterArticles('all')">All</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Acne')">Acne</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Aging')">Aging</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Eczema')">Eczema</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Melanoma')">Melanoma</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Psoriasis')">Psoriasis</button>
+                        </div>
+                    </div>
+
+                    <div id="articleGrid" class="resource-grid"></div>
+
+                    <div style="margin-top: 40px;">
+                        <h3 style="font-size: 18px; margin-bottom: 20px;">Top Viewed Articles</h3>
+                        <div class="card">
+                            <div class="bar-chart">
+                                <div id="topViewsChart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="action-button" onclick="openPatientPage()" style="margin-top: 20px;">👁️ Preview Patient Page</button>
+                </div>
+
+                <!-- Tab 3: Team Training -->
+                <div id="trainingTab" class="tab-content">
+                    <h2 style="font-size: 24px; margin-bottom: 24px;">Team Training</h2>
+
+                    <div class="training-overview">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Learning Tracks</div>
+                            <div class="kpi-value">6</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Quizzes Completed</div>
+                            <div class="kpi-value">127</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Average Score</div>
+                            <div class="kpi-value">84%</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Certificates Issued</div>
+                            <div class="kpi-value">14</div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="font-size: 18px;">Staff Training Progress</h3>
+                            <div style="display: flex; gap: 12px;">
+                                <button class="action-button" onclick="openModal('assignTrainingModal')">📝 Assign Training</button>
+                                <button class="action-button action-button-secondary" onclick="downloadTrainingReport()">⬇️ Download Report</button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="trainingTable">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Staff Member</th>
+                                        <th>Role</th>
+                                        <th>Tracks Completed</th>
+                                        <th>Quiz Avg</th>
+                                        <th>Last Active</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="trainingTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Staff Management -->
+                <div id="staffTab" class="tab-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2 style="font-size: 24px;">Staff Management</h2>
+                        <button class="action-button" onclick="openModal('addStaffModal')">➕ Add Staff Member</button>
+                    </div>
+
+                    <div id="staffGrid" class="resource-grid"></div>
+
+                    <div class="card" style="margin-top: 40px;">
+                        <h3 style="font-size: 18px; margin-bottom: 20px;">Pending Invitations</h3>
+                        <div id="pendingInvitations"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Analytics -->
+                <div id="analyticsTab" class="tab-content">
+                    <h2 style="font-size: 24px; margin-bottom: 24px;">Analytics & Insights</h2>
+
+                    <div class="date-selector">
+                        <button class="date-btn active" onclick="changeDateRange('7')">Last 7 Days</button>
+                        <button class="date-btn" onclick="changeDateRange('30')">Last 30 Days</button>
+                        <button class="date-btn" onclick="changeDateRange('90')">Last 90 Days</button>
+                        <button class="date-btn" onclick="changeDateRange('custom')">Custom Range</button>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="card">
+                            <div class="chart-title">Patient Engagement</div>
+                            <div style="height: 200px; display: flex; align-items: flex-end; gap: 8px; justify-content: space-around;">
+                                <div id="engagementChart"></div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="chart-title">Article Views Distribution</div>
+                            <div id="articleDistribution"></div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="chart-title">Training Score Distribution</div>
+                        <div style="height: 150px; display: flex; align-items: flex-end; gap: 12px;">
+                            <div id="scoreDistribution"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="chart-title">Key Metrics</div>
+                        <div id="keyMetrics"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: Settings -->
+                <div id="settingsTab" class="tab-content">
+                    <h2 style="font-size: 24px; margin-bottom: 24px;">Settings</h2>
+
+                    <div class="card" style="margin-bottom: 24px;">
+                        <h3 style="font-size: 18px; margin-bottom: 20px;">Practice Profile</h3>
+                        <form id="practiceForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Practice Name</label>
+                                    <input type="text" class="form-input" value="DRS Skincare" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Practice Website</label>
+                                    <input type="url" class="form-input" value="www.drsskincare.ca" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-input" value="123 Medical Plaza, Toronto, ON" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input type="tel" class="form-input" value="+1 (416) 555-0123" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Practice Logo</label>
+                                <input type="file" class="form-input">
+                                <div style="font-size: 12px; color: var(--text-light); margin-top: 8px;">PNG or JPG, max 2MB</div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 24px;">
+                        <h3 style="font-size: 18px; margin-bottom: 20px;">Portal Configuration</h3>
+                        <div class="form-group">
+                            <label class="form-label">Portal Accent Color</label>
+                            <div class="color-picker-group">
+                                <input type="color" class="color-input" value="#028090">
+                                <span style="font-size: 14px; color: var(--text-light);">#028090</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Welcome Message</label>
+                            <textarea class="form-input" rows="4" style="resize: vertical; padding: 12px;">Welcome to our patient education portal. Here you'll find evidence-based information about skin health and dermatological conditions.</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Portal Sections</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Articles & Guides</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Video Tutorials</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Appointment Booking</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>Patient Testimonials</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 24px;">
+                        <h3 style="font-size: 18px; margin-bottom: 20px;">Notifications</h3>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>Staff Training Completions</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>New DermoBrain Articles Available</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>Patient Engagement Milestones</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 24px;">
+                        <h3 style="font-size: 18px; margin-bottom: 20px;">Subscription</h3>
+                        <div style="padding: 20px; background: var(--bg); border-radius: 8px; margin-bottom: 20px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <div style="font-size: 12px; color: var(--text-light); margin-bottom: 4px;">Current Plan</div>
+                                    <div style="font-size: 20px; font-weight: 700; color: var(--text-dark);">Professional</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 12px; color: var(--text-light); margin-bottom: 4px;">Price</div>
+                                    <div style="font-size: 20px; font-weight: 700; color: var(--text-dark);">$349<span style="font-size: 14px;">/mo</span></div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 12px; color: var(--text-light); margin-bottom: 4px;">Next Billing Date</div>
+                                    <div style="font-size: 14px; color: var(--text-dark);">April 7, 2026</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 12px; color: var(--text-light); margin-bottom: 4px;">Status</div>
+                                    <div class="status-badge active">Active</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="showToast('Upgrade coming soon!')">Upgrade to Enterprise</button>
+                    </div>
+
+                    <button class="action-button" onclick="showToast('Settings saved successfully!')">💾 Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="addStaffModal" class="modal">
+        <div class="modal-content" style="position: relative;">
+            <button class="modal-close" onclick="closeModal('addStaffModal')">✕</button>
+            <div class="modal-header">Add Staff Member</div>
+
+            <form id="addStaffForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <select class="form-input" required>
+                        <option value="">Select a role</option>
+                        <option value="Lead Esthetician">Lead Esthetician</option>
+                        <option value="Esthetician">Esthetician</option>
+                        <option value="Clinical Assistant">Clinical Assistant</option>
+                        <option value="Nurse">Nurse</option>
+                        <option value="Nurse Practitioner">Nurse Practitioner</option>
+                        <option value="Front Desk">Front Desk</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Assign Learning Tracks</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>New Staff Onboarding</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Skin Cancer Awareness</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Customer Service Excellence</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Cosmetic Procedures</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Acne Management</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Patient Safety Protocols</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="action-button" style="width: 100%;">Send Invitation</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="addArticleModal" class="modal">
+        <div class="modal-content" style="position: relative; max-height: 500px;">
+            <button class="modal-close" onclick="closeModal('addArticleModal')">✕</button>
+            <div class="modal-header">Add Articles to Your Portal</div>
+
+            <div style="max-height: 400px; overflow-y: auto;">
+                <div id="availableArticlesGrid" class="resource-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="assignTrainingModal" class="modal">
+        <div class="modal-content" style="position: relative;">
+            <button class="modal-close" onclick="closeModal('assignTrainingModal')">✕</button>
+            <div class="modal-header">Assign Training</div>
+
+            <form id="assignTrainingForm">
+                <div class="form-group">
+                    <label class="form-label">Select Staff Members</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Sarah Mitchell</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Jason Kim</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Maria Torres</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>David Chen</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Priya Patel</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Amanda Foster</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Select Training Tracks</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>New Staff Onboarding</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Skin Cancer Awareness</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Customer Service Excellence</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Cosmetic Procedures</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Acne Management</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Patient Safety Protocols</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="action-button" style="width: 100%;">Assign Training</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ============= APP STATE =============
+        const APP_STATE = {
+            user: {
+                name: 'Dr. Shukla',
+                email: 'dr.shukla@drsskincare.ca',
+                role: 'practice_owner',
+                practiceId: 'drs-skincare'
+            },
+            currentFilter: 'all',
+            currentDateRange: '7'
+        };
+
+        // ============= DEMO DATA =============
+        const ARTICLES = [
+            { id: 1, title: 'Understanding Acne Vulgaris', category: 'Acne', views: 487 },
+            { id: 2, title: 'Acne Treatment Options', category: 'Acne', views: 342 },
+            { id: 3, title: 'Hormonal Acne: Causes & Solutions', category: 'Acne', views: 298 },
+            { id: 4, title: 'Anti-Aging Skincare Routine', category: 'Aging', views: 521 },
+            { id: 5, title: 'Retinol for Mature Skin', category: 'Aging', views: 456 },
+            { id: 6, title: 'Botox & Fillers Explained', category: 'Aging', views: 389 },
+            { id: 7, title: 'Melanoma Awareness & Prevention', category: 'Melanoma', views: 234 },
+            { id: 8, title: 'Skin Cancer Screening', category: 'Melanoma', views: 178 },
+            { id: 9, title: 'Eczema Management Guide', category: 'Eczema', views: 412 },
+            { id: 10, title: 'Eczema Triggers & Avoidance', category: 'Eczema', views: 367 },
+            { id: 11, title: 'Understanding Psoriasis', category: 'Psoriasis', views: 289 },
+            { id: 12, title: 'Psoriasis Treatment Plan', category: 'Psoriasis', views: 245 },
+            { id: 13, title: 'Chemical Peels Explained', category: 'Aging', views: 401 },
+            { id: 14, title: 'Laser Hair Removal Guide', category: 'Cosmetic', views: 356 },
+            { id: 15, title: 'Microdermabrasion Benefits', category: 'Aging', views: 298 },
+            { id: 16, title: 'Sun Protection Essentials', category: 'Prevention', views: 534 },
+            { id: 17, title: 'Moisturizer Selection Guide', category: 'General', views: 467 },
+            { id: 18, title: 'Rosacea Management', category: 'General', views: 312 },
+            { id: 19, title: 'Hair Loss Solutions', category: 'General', views: 289 },
+            { id: 20, title: 'Vitiligo Treatment Options', category: 'General', views: 156 },
+            { id: 21, title: 'Wart Removal Techniques', category: 'General', views: 201 },
+            { id: 22, title: 'Mole Monitoring Guidelines', category: 'Melanoma', views: 267 },
+            { id: 23, title: 'Makeup Tips for Sensitive Skin', category: 'General', views: 445 },
+            { id: 24, title: 'Post-Procedure Skincare', category: 'General', views: 378 },
+            { id: 25, title: 'Natural Skin Brightening', category: 'Aging', views: 423 },
+            { id: 26, title: 'Vitamin C Serums Guide', category: 'General', views: 391 },
+            { id: 27, title: 'Hyaluronic Acid Benefits', category: 'General', views: 456 },
+            { id: 28, title: 'Night Skincare Routine', category: 'General', views: 412 },
+            { id: 29, title: 'Winter Skin Protection', category: 'Prevention', views: 334 },
+            { id: 30, title: 'Summer Sun Care', category: 'Prevention', views: 389 },
+            { id: 31, title: 'Dermatitis Types & Treatment', category: 'General', views: 267 },
+            { id: 32, title: 'Fungal Infection Prevention', category: 'Prevention', views: 198 },
+            { id: 33, title: 'Acne Scars: Treatment Options', category: 'Acne', views: 445 },
+            { id: 34, title: 'Blackhead Removal', category: 'Acne', views: 378 },
+            { id: 35, title: 'Pore Size Reduction', category: 'General', views: 412 },
+            { id: 36, title: 'Face Wash Selection', category: 'General', views: 489 },
+            { id: 37, title: 'Exfoliation Guide', category: 'General', views: 401 },
+            { id: 38, title: 'Sunscreen SPF Explained', category: 'Prevention', views: 523 },
+            { id: 39, title: 'Lip Care Guide', category: 'General', views: 267 },
+            { id: 40, title: 'Eye Cream Benefits', category: 'Aging', views: 334 },
+            { id: 41, title: 'Neck & Décolletage Care', category: 'Aging', views: 289 },
+            { id: 42, title: 'Stretch Mark Treatment', category: 'General', views: 212 },
+            { id: 43, title: 'Cellulite Reduction', category: 'General', views: 178 },
+            { id: 44, title: 'Body Acne Solutions', category: 'Acne', views: 245 },
+            { id: 45, title: 'Keratosis Pilaris Guide', category: 'General', views: 198 },
+            { id: 46, title: 'Age Spots & Pigmentation', category: 'Aging', views: 367 },
+            { id: 47, title: 'Sensitive Skin Management', category: 'General', views: 456 },
+            { id: 48, title: 'Skin Type Assessment', category: 'General', views: 512 },
+            { id: 49, title: 'Combination Skin Care', category: 'General', views: 378 },
+            { id: 50, title: 'Oily Skin Solutions', category: 'General', views: 445 },
+            { id: 51, title: 'Dry Skin Management', category: 'General', views: 423 },
+            { id: 52, title: 'T-Zone Care Routine', category: 'General', views: 334 },
+            { id: 53, title: 'Hormonal Changes & Skin', category: 'General', views: 289 },
+            { id: 54, title: 'Stress & Skin Health', category: 'General', views: 267 },
+            { id: 55, title: 'Sleep & Skin Recovery', category: 'General', views: 201 },
+            { id: 56, title: 'Nutrition for Healthy Skin', category: 'Prevention', views: 478 },
+            { id: 57, title: 'Hydration Guide', category: 'Prevention', views: 412 }
+        ];
+
+        const CURRENT_ARTICLES = ARTICLES.slice(0, 30);
+
+        const AVAILABLE_ARTICLES = ARTICLES.slice(30);
+
+        const STAFF = [
+            { id: 1, name: 'Sarah Mitchell', role: 'Lead Esthetician', email: 'sarah.m@drsskincare.ca', phone: '+1 (416) 555-0101', status: 'Active', tracks: 4, quizAvg: 91 },
+            { id: 2, name: 'Jason Kim', role: 'Clinical Assistant', email: 'jason.k@drsskincare.ca', phone: '+1 (416) 555-0102', status: 'Active', tracks: 2, quizAvg: 78 },
+            { id: 3, name: 'Maria Torres', role: 'Front Desk', email: 'maria.t@drsskincare.ca', phone: '+1 (416) 555-0103', status: 'Active', tracks: 5, quizAvg: 88 },
+            { id: 4, name: 'David Chen', role: 'Nurse', email: 'david.c@drsskincare.ca', phone: '+1 (416) 555-0104', status: 'Active', tracks: 3, quizAvg: 82 },
+            { id: 5, name: 'Priya Patel', role: 'Esthetician', email: 'priya.p@drsskincare.ca', phone: '+1 (416) 555-0105', status: 'Inactive', tracks: 1, quizAvg: 74 },
+            { id: 6, name: 'Amanda Foster', role: 'Clinical Assistant', email: 'amanda.f@drsskincare.ca', phone: '+1 (416) 555-0106', status: 'Active', tracks: 6, quizAvg: 95 },
+            { id: 7, name: 'Ryan Park', role: 'Front Desk', email: 'ryan.p@drsskincare.ca', phone: '+1 (416) 555-0107', status: 'Active', tracks: 2, quizAvg: 69 },
+            { id: 8, name: 'Lisa Wong', role: 'Nurse Practitioner', email: 'lisa.w@drsskincare.ca', phone: '+1 (416) 555-0108', status: 'Active', tracks: 4, quizAvg: 87 }
+        ];
+
+        const ACTIVITY_EVENTS = [
+            { text: 'Sarah M. completed Quiz: Skin Cancer Awareness (Score: 92%)', time: '2h ago', badge: 'Completed' },
+            { text: 'New patient viewed Acne Vulgaris guide', time: '3h ago', badge: 'Viewed' },
+            { text: 'Jason K. started Learning Track: Cosmetic Procedures', time: 'Yesterday', badge: 'Started' },
+            { text: 'Maria T. earned Certificate: New Staff Onboarding', time: '2 days ago', badge: 'Certificate' },
+            { text: 'Amanda F. completed Quiz: Patient Safety Protocols (Score: 98%)', time: '2 days ago', badge: 'Completed' },
+            { text: 'New patient views: 15 visits to Aging & Anti-Aging articles', time: '3 days ago', badge: 'Engagement' },
+            { text: 'Ryan P. started Learning Track: Customer Service Excellence', time: '4 days ago', badge: 'Started' },
+            { text: 'Lisa W. completed Training Track: Advanced Procedures', time: '5 days ago', badge: 'Completed' },
+            { text: '3 new staff members invited and awaiting registration', time: '1 week ago', badge: 'Invitations' },
+            { text: 'Practice portal received 847 patient visits this month', time: '1 week ago', badge: 'Milestone' }
+        ];
+
+        // ============= AUTHENTICATION =============
+        function checkAuth() {
+            const session = localStorage.getItem('dermobrain_session');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    if (data.role === 'practice_owner') {
+                        showDashboard(data);
+                        return;
+                    }
+                } catch (e) {}
+            }
+            showLoginScreen();
+        }
+
+        function showLoginScreen() {
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        function showDashboard(userData) {
+            APP_STATE.user = userData;
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'flex';
+            document.getElementById('userNameDisplay').textContent = userData.name;
+            setCurrentDate();
+        }
+
+        // ============= INITIALIZATION =============
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const practiceId = document.getElementById('practiceId').value;
+            const password = document.getElementById('password').value;
+
+            if (password === 'drs2024') {
+                const session = {
+                    role: 'practice_owner',
+                    practiceId: practiceId,
+                    name: 'Dr. Shukla',
+                    email: 'dr.shukla@drsskincare.ca',
+                    loginTime: Date.now()
+                };
+                localStorage.setItem('dermobrain_session', JSON.stringify(session));
+                showDashboard(session);
+                initializeUI();
+            } else {
+                const errorEl = document.getElementById('loginError');
+                errorEl.textContent = 'Invalid credentials. Use password: drs2024';
+                errorEl.classList.add('show');
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('dermobrain_session');
+            showLoginScreen();
+        });
+
+        // ============= UI FUNCTIONS =============
+        function setCurrentDate() {
+            const date = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = date.toLocaleDateString('en-US', options);
+        }
+
+        function initializeUI() {
+            renderActivityFeed();
+            renderArticles();
+            renderAvailableArticles();
+            renderTrainingTable();
+            renderStaffCards();
+            renderPendingInvitations();
+            setupNavigation();
+            setupFormHandlers();
+            renderAnalytics();
+        }
+
+        function setCurrentDate() {
+            const date = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formatted = date.toLocaleDateString('en-US', options);
+            const dateEl = document.getElementById('currentDate');
+            if (dateEl) dateEl.textContent = formatted;
+        }
+
+        // ============= NAVIGATION =============
+        function setupNavigation() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabName = link.dataset.tab;
+                    switchTab(tabName);
+                });
+            });
+        }
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Update nav
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected tab
+            const tabEl = document.getElementById(tabName + 'Tab');
+            if (tabEl) {
+                tabEl.classList.add('active');
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            }
+        }
+
+        // ============= ACTIVITY FEED =============
+        function renderActivityFeed() {
+            const container = document.getElementById('activityFeed');
+            container.innerHTML = ACTIVITY_EVENTS.map(event => `
+                <div class="activity-item">
+                    <div class="activity-content">
+                        <div class="activity-text">${event.text}</div>
+                        <div class="activity-time">${event.time}</div>
+                    </div>
+                    <div class="activity-badge">${event.badge}</div>
+                </div>
+            `).join('');
+        }
+
+        // ============= PATIENT RESOURCES =============
+        function renderArticles(filter = 'all') {
+            const container = document.getElementById('articleGrid');
+            const filtered = filter === 'all' ? CURRENT_ARTICLES : CURRENT_ARTICLES.filter(a => a.category === filter);
+
+            container.innerHTML = filtered.map(article => `
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div>
+                            <div class="resource-title">${article.title}</div>
+                            <span class="resource-category">${article.category}</span>
+                        </div>
+                    </div>
+                    <div class="resource-meta">
+                        <span>${article.views} views</span>
+                        <span style="display: flex; align-items: center; gap: 6px;">
+                            <input type="checkbox" checked style="cursor: pointer;">
+                            <label style="cursor: pointer; font-size: 12px;">Active</label>
+                        </span>
+                    </div>
+                    <div class="resource-actions">
+                        <button class="small-button" onclick="previewArticle(${article.id})">Preview</button>
+                        <button class="small-button" onclick="removeArticle(${article.id})">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+
+            renderTopViewsChart();
+        }
+
+        function filterArticles(category) {
+            APP_STATE.currentFilter = category;
+            document.querySelectorAll('.resource-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderArticles(category);
+        }
+
+        function renderAvailableArticles() {
+            const container = document.getElementById('availableArticlesGrid');
+            container.innerHTML = AVAILABLE_ARTICLES.map(article => `
+                <div class="resource-card">
+                    <div class="resource-title">${article.title}</div>
+                    <span class="resource-category" style="display: block; margin: 8px 0;">${article.category}</span>
+                    <button class="action-button" style="width: 100%; margin-top: 8px; font-size: 12px; padding: 8px;" onclick="addArticleToPortal(${article.id})">Add</button>
+                </div>
+            `).join('');
+        }
+
+        function addArticleToPortal(id) {
+            const article = AVAILABLE_ARTICLES.find(a => a.id === id);
+            if (article && !CURRENT_ARTICLES.find(a => a.id === id)) {
+                CURRENT_ARTICLES.push(article);
+                renderArticles();
+                renderAvailableArticles();
+                showToast(`"${article.title}" added to your portal!`);
+            }
+        }
+
+        function previewArticle(id) {
+            const article = CURRENT_ARTICLES.find(a => a.id === id);
+            showToast(`Preview: ${article.title}`);
+        }
+
+        function removeArticle(id) {
+            const index = CURRENT_ARTICLES.findIndex(a => a.id === id);
+            if (index > -1) {
+                CURRENT_ARTICLES.splice(index, 1);
+                renderArticles();
+            }
+        }
+
+        function renderTopViewsChart() {
+            const sorted = CURRENT_ARTICLES.sort((a, b) => b.views - a.views).slice(0, 10);
+            const maxViews = Math.max(...sorted.map(a => a.views));
+            const container = document.querySelector('#topViewsChart');
+
+            container.innerHTML = sorted.map(article => {
+                const height = (article.views / maxViews) * 100;
+                return `
+                    <div class="bar-item">
+                        <div class="bar" style="height: ${height}%;"></div>
+                        <div class="bar-label">${article.title.substring(0, 10)}</div>
+                        <div class="bar-value">${article.views}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openPatientPage() {
+            window.open('/practice/drs-skincare-patients.html', '_blank');
+        }
+
+        // ============= TEAM TRAINING =============
+        function renderTrainingTable() {
+            const tbody = document.getElementById('trainingTableBody');
+            tbody.innerHTML = STAFF.map(member => `
+                <tr class="expandable-row" onclick="toggleTrainingExpand(this)">
+                    <td><span class="expand-icon">▶</span></td>
+                    <td>${member.name}</td>
+                    <td>${member.role}</td>
+                    <td>${member.tracks}/6</td>
+                    <td>${member.quizAvg}%</td>
+                    <td>${member.email}</td>
+                    <td><span class="status-badge ${member.status.toLowerCase()}">${member.status}</span></td>
+                </tr>
+                <tr class="expanded-content">
+                    <td colspan="7">
+                        <div class="expanded-cell">
+                            <div style="font-size: 13px; margin-bottom: 12px;">
+                                <strong>Completed Tracks:</strong>
+                                <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
+                                    ${['New Staff Onboarding', 'Skin Cancer Awareness', 'Customer Service'].slice(0, member.tracks).map(t => `<span style="padding: 4px 8px; background: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 4px; font-size: 12px;">${t}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div style="font-size: 13px;">
+                                <strong>Recent Quizzes:</strong>
+                                <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <span style="padding: 4px 8px; background: #f8fbfc; border-radius: 4px; font-size: 12px;">Acne Management - ${Math.min(100, member.quizAvg + Math.floor(Math.random() * 10))}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function toggleTrainingExpand(row) {
+            const expandIcon = row.querySelector('.expand-icon');
+            const nextRow = row.nextElementSibling;
+
+            expandIcon.classList.toggle('expanded');
+            nextRow.classList.toggle('show');
+        }
+
+        function downloadTrainingReport() {
+            showToast('Training report downloaded successfully!');
+        }
+
+        // ============= STAFF MANAGEMENT =============
+        function renderStaffCards() {
+            const container = document.getElementById('staffGrid');
+            container.innerHTML = STAFF.map(staff => {
+                const initials = staff.name.split(' ').map(n => n[0]).join('');
+                return `
+                    <div class="resource-card">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #028090, #04b5ce); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 16px;">${initials}</div>
+                            <div>
+                                <div class="resource-title">${staff.name}</div>
+                                <div style="font-size: 12px; color: var(--text-light);">${staff.role}</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">
+                            <div>📧 ${staff.email}</div>
+                            <div>📱 ${staff.phone}</div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span class="status-badge ${staff.status.toLowerCase()}">${staff.status}</span>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="small-button" onclick="editStaff(${staff.id})">Edit</button>
+                            <button class="small-button" onclick="removeStaff(${staff.id})">Remove</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function editStaff(id) {
+            showToast('Edit staff coming soon!');
+        }
+
+        function removeStaff(id) {
+            showToast('Staff member removal action triggered');
+        }
+
+        function renderPendingInvitations() {
+            const container = document.getElementById('pendingInvitations');
+            const invitations = [
+                { email: 'new.esthetician@drsskincare.ca', role: 'Esthetician', sentDate: 'Mar 5, 2026' },
+                { email: 'new.assistant@drsskincare.ca', role: 'Clinical Assistant', sentDate: 'Mar 3, 2026' },
+                { email: 'new.frontdesk@drsskincare.ca', role: 'Front Desk', sentDate: 'Feb 28, 2026' }
+            ];
+
+            container.innerHTML = invitations.map(inv => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div>
+                        <div style="font-weight: 500; font-size: 14px; color: var(--text-dark);">${inv.email}</div>
+                        <div style="font-size: 12px; color: var(--text-light);">${inv.role} • Sent ${inv.sentDate}</div>
+                    </div>
+                    <button class="small-button" onclick="resendInvitation('${inv.email}')">Resend</button>
+                </div>
+            `).join('');
+        }
+
+        function resendInvitation(email) {
+            showToast(`Invitation resent to ${email}`);
+        }
+
+        // ============= ANALYTICS =============
+        function renderAnalytics() {
+            renderEngagementChart();
+            renderArticleDistribution();
+            renderScoreDistribution();
+            renderKeyMetrics();
+        }
+
+        function renderEngagementChart() {
+            const container = document.getElementById('engagementChart');
+            const data = [450, 520, 480, 640, 720, 580, 695];
+            const maxVal = Math.max(...data);
+
+            container.innerHTML = data.map((val, i) => {
+                const height = (val / maxVal) * 120;
+                return `
+                    <div class="bar-item" style="flex: 1;">
+                        <div class="bar" style="height: ${height}px;"></div>
+                        <div class="bar-label" style="font-size: 11px;">Day ${i + 1}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderArticleDistribution() {
+            const container = document.getElementById('articleDistribution');
+            const data = [
+                { label: 'Acne', value: 1250, percent: 28 },
+                { label: 'Aging', value: 980, percent: 22 },
+                { label: 'Prevention', value: 875, percent: 20 },
+                { label: 'Cosmetic', value: 650, percent: 15 },
+                { label: 'Other', value: 545, percent: 15 }
+            ];
+
+            container.innerHTML = data.map(item => `
+                <div style="margin-bottom: 16px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
+                        <span>${item.label}</span>
+                        <span style="font-weight: 600;">${item.value} views</span>
+                    </div>
+                    <div style="height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+                        <div style="height: 100%; width: ${item.percent}%; background: linear-gradient(90deg, #028090, #04b5ce);"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderScoreDistribution() {
+            const container = document.getElementById('scoreDistribution');
+            const ranges = [
+                { range: '90-100', count: 24 },
+                { range: '80-89', count: 45 },
+                { range: '70-79', count: 32 },
+                { range: '60-69', count: 18 },
+                { range: '<60', count: 8 }
+            ];
+            const maxCount = 45;
+
+            container.innerHTML = ranges.map(r => {
+                const height = (r.count / maxCount) * 100;
+                return `
+                    <div class="bar-item">
+                        <div class="bar" style="height: ${height}%;"></div>
+                        <div class="bar-label">${r.range}</div>
+                        <div class="bar-value">${r.count}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderKeyMetrics() {
+            const container = document.getElementById('keyMetrics');
+            const metrics = [
+                { label: 'Total Patient Visits', value: '2,847' },
+                { label: 'Avg. Time on Page', value: '4m 32s' },
+                { label: 'Bounce Rate', value: '12%' },
+                { label: 'Referral: Direct', value: '45%' },
+                { label: 'Referral: Google', value: '30%' },
+                { label: 'Referral: Social', value: '15%' }
+            ];
+
+            container.innerHTML = metrics.map(m => `
+                <div class="metric-item">
+                    <span class="metric-label">${m.label}</span>
+                    <span class="metric-value">${m.value}</span>
+                </div>
+            `).join('');
+        }
+
+        function changeDateRange(range) {
+            APP_STATE.currentDateRange = range;
+            document.querySelectorAll('.date-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderAnalytics();
+        }
+
+        // ============= FORM HANDLERS =============
+        function setupFormHandlers() {
+            const addStaffForm = document.getElementById('addStaffForm');
+            if (addStaffForm) {
+                addStaffForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    showToast('Staff member invitation sent!');
+                    closeModal('addStaffModal');
+                    addStaffForm.reset();
+                });
+            }
+
+            const assignForm = document.getElementById('assignTrainingForm');
+            if (assignForm) {
+                assignForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    showToast('Training assigned successfully!');
+                    closeModal('assignTrainingModal');
+                    assignForm.reset();
+                });
+            }
+        }
+
+        // ============= MODALS =============
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // ============= UTILITY FUNCTIONS =============
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function customizePatientPage() {
+            openPatientPage();
+        }
+
+        function viewTrainingReports() {
+            switchTab('training');
+            showToast('Loading training reports...');
+        }
+
+        // ============= PAGE LOAD =============
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            if (localStorage.getItem('dermobrain_session')) {
+                initializeUI();
+            }
+        });
+
+        // Session timeout
+        let inactivityTimer;
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                showToast('Session expired. Please log in again.');
+                localStorage.removeItem('dermobrain_session');
+                showLoginScreen();
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keypress', resetInactivityTimer);
+        resetInactivityTimer();
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

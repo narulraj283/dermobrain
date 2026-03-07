@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DermoBrain Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fbfc 0%, #e8f4f8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #028090;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .logo-subtitle {
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 2px solid transparent;
+            position: relative;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(2, 128, 144, 0.15);
+            border-color: #028090;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #015f6b;
+            margin-bottom: 10px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-arrow {
+            color: #028090;
+            font-size: 20px;
+            margin-top: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-arrow {
+            transform: translateX(4px);
+        }
+
+        .card-front {
+            pointer-events: auto;
+        }
+
+        .login-form {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #015f6b;
+            margin-bottom: 6px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #028090;
+            box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.1);
+        }
+
+        .form-error {
+            color: #d32f2f;
+            font-size: 13px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .btn-submit {
+            flex: 1;
+            padding: 10px;
+            background: #028090;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-size: 14px;
+        }
+
+        .btn-submit:hover {
+            background: #015f6b;
+        }
+
+        .btn-back {
+            flex: 1;
+            padding: 10px;
+            background: #f0f0f0;
+            color: #333;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            background: #e0e0e0;
+        }
+
+        .back-link {
+            color: #028090;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .bottom-section {
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .signup-prompt {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .signup-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .signup-link {
+            color: #028090;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .signup-link:hover {
+            color: #015f6b;
+        }
+
+        .footer {
+            color: #999;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .signup-links {
+                gap: 15px;
+            }
+
+            .card {
+                min-height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">DermoBrain</div>
+            <div class="logo-subtitle">Unified Portal</div>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Admin Card -->
+            <div class="card" data-role="admin">
+                <div class="card-front">
+                    <div class="card-icon">🛡️</div>
+                    <div class="card-title">Admin Portal</div>
+                    <div class="card-subtitle">Platform Administration</div>
+                    <div class="card-subtitle" style="font-size: 13px; color: #999; margin-top: 10px;">Manage editors, practices, content, and analytics</div>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="login-form">
+                    <a href="#" class="back-link" onclick="resetCard(event)">← Back to roles</a>
+                    <div class="form-group">
+                        <label class="form-label">Admin Code</label>
+                        <input type="password" class="form-input" placeholder="Enter admin code" data-field="adminCode">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="btn-submit" onclick="loginAdmin(event)">Sign In</button>
+                        <button class="btn-back" onclick="resetCard(event)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editor Card -->
+            <div class="card" data-role="editor">
+                <div class="card-front">
+                    <div class="card-icon">✏️</div>
+                    <div class="card-title">Editor Portal</div>
+                    <div class="card-subtitle">Medical Editor Dashboard</div>
+                    <div class="card-subtitle" style="font-size: 13px; color: #999; margin-top: 10px;">Review articles, manage your profile, track your badge</div>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="login-form">
+                    <a href="#" class="back-link" onclick="resetCard(event)">← Back to roles</a>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your.email@example.com" data-field="editorEmail">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter password" data-field="editorPassword">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="btn-submit" onclick="loginEditor(event)">Sign In</button>
+                        <button class="btn-back" onclick="resetCard(event)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Owner Card -->
+            <div class="card" data-role="practice_owner">
+                <div class="card-front">
+                    <div class="card-icon">🏢</div>
+                    <div class="card-title">Practice Owner</div>
+                    <div class="card-subtitle">Practice Management Dashboard</div>
+                    <div class="card-subtitle" style="font-size: 13px; color: #999; margin-top: 10px;">Analytics, team training, patient resources</div>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="login-form">
+                    <a href="#" class="back-link" onclick="resetCard(event)">← Back to roles</a>
+                    <div class="form-group">
+                        <label class="form-label">Practice ID</label>
+                        <input type="text" class="form-input" placeholder="your-practice-id" data-field="practiceId">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter password" data-field="practicePassword">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="btn-submit" onclick="loginPractice(event)">Sign In</button>
+                        <button class="btn-back" onclick="resetCard(event)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trainee Card -->
+            <div class="card" data-role="trainee">
+                <div class="card-front">
+                    <div class="card-icon">🎓</div>
+                    <div class="card-title">Staff Training</div>
+                    <div class="card-subtitle">Employee Training Portal</div>
+                    <div class="card-subtitle" style="font-size: 13px; color: #999; margin-top: 10px;">Complete training, take quizzes, earn certificates</div>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="login-form">
+                    <a href="#" class="back-link" onclick="resetCard(event)">← Back to roles</a>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your.email@example.com" data-field="traineeEmail">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Access Code</label>
+                        <input type="password" class="form-input" placeholder="Enter access code" data-field="traineeCode">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="btn-submit" onclick="loginTrainee(event)">Sign In</button>
+                        <button class="btn-back" onclick="resetCard(event)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        <div class="bottom-content">
+            <div class="signup-prompt">New to DermoBrain?</div>
+            <div class="signup-links">
+                <a href="editor-program.html" class="signup-link">Apply as an Editor →</a>
+                <a href="mailto:hello@dermobrain.com" class="signup-link">Set up your Practice →</a>
+            </div>
+            <div class="footer">© 2026 DermoBrain. All rights reserved.</div>
+        </div>
+    </div>
+
+    <script>
+        // Check for existing session on load
+        window.addEventListener('load', () => {
+            const session = localStorage.getItem('dermobrain_session');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    if (data.role) {
+                        routeUser(data.role);
+                        return;
+                    }
+                } catch (e) {
+                    localStorage.removeItem('dermobrain_session');
+                }
+            }
+        });
+
+        function routeUser(role) {
+            const routes = {
+                'admin': 'editor-admin.html',
+                'editor': 'editor-dashboard.html',
+                'practice_owner': 'dashboard-practice.html',
+                'trainee': 'dashboard-trainee.html'
+            };
+
+            if (routes[role]) {
+                window.location.href = routes[role];
+            }
+        }
+
+        function toggleCard(event) {
+            const card = event.currentTarget;
+            const form = card.querySelector('.login-form');
+            const front = card.querySelector('.card-front');
+
+            if (!form.classList.contains('active')) {
+                form.classList.add('active');
+                front.style.display = 'none';
+                clearErrors(card);
+            }
+        }
+
+        function resetCard(event) {
+            event.preventDefault();
+            const card = event.target.closest('.card');
+            const form = card.querySelector('.login-form');
+            const front = card.querySelector('.card-front');
+
+            form.classList.remove('active');
+            front.style.display = 'block';
+            clearErrors(card);
+            clearInputs(card);
+        }
+
+        function clearErrors(card) {
+            card.querySelectorAll('.form-error').forEach(err => {
+                err.classList.remove('show');
+                err.textContent = '';
+            });
+        }
+
+        function clearInputs(card) {
+            card.querySelectorAll('.form-input').forEach(input => {
+                input.value = '';
+            });
+        }
+
+        function showError(card, field, message) {
+            const input = card.querySelector(`input[data-field="${field}"]`);
+            if (input) {
+                const error = input.parentElement.querySelector('.form-error');
+                if (error) {
+                    error.textContent = message;
+                    error.classList.add('show');
+                }
+            }
+        }
+
+        function loginAdmin(event) {
+            event.preventDefault();
+            const card = event.target.closest('.card');
+            clearErrors(card);
+
+            const code = card.querySelector('input[data-field="adminCode"]').value;
+
+            if (!code) {
+                showError(card, 'adminCode', 'Admin code is required');
+                return;
+            }
+
+            if (code !== 'dermoadmin2024') {
+                showError(card, 'adminCode', 'Invalid admin code');
+                return;
+            }
+
+            const session = {
+                role: 'admin',
+                name: 'Admin',
+                loginTime: Date.now()
+            };
+
+            localStorage.setItem('dermobrain_session', JSON.stringify(session));
+            routeUser('admin');
+        }
+
+        function loginEditor(event) {
+            event.preventDefault();
+            const card = event.target.closest('.card');
+            clearErrors(card);
+
+            const email = card.querySelector('input[data-field="editorEmail"]').value;
+            const password = card.querySelector('input[data-field="editorPassword"]').value;
+
+            if (!email) {
+                showError(card, 'editorEmail', 'Email is required');
+                return;
+            }
+
+            if (!password) {
+                showError(card, 'editorPassword', 'Password is required');
+                return;
+            }
+
+            if (email !== 'dr.smith@derm.com' || password !== 'editor2024') {
+                showError(card, 'editorEmail', 'Invalid email or password');
+                return;
+            }
+
+            const session = {
+                role: 'editor',
+                name: 'Dr. Sarah Smith',
+                email: 'dr.smith@derm.com',
+                specialty: 'Medical Dermatology',
+                tier: 'Senior Reviewer',
+                articlesReviewed: 8,
+                loginTime: Date.now()
+            };
+
+            localStorage.setItem('dermobrain_session', JSON.stringify(session));
+            routeUser('editor');
+        }
+
+        function loginPractice(event) {
+            event.preventDefault();
+            const card = event.target.closest('.card');
+            clearErrors(card);
+
+            const practiceId = card.querySelector('input[data-field="practiceId"]').value;
+            const password = card.querySelector('input[data-field="practicePassword"]').value;
+
+            if (!practiceId) {
+                showError(card, 'practiceId', 'Practice ID is required');
+                return;
+            }
+
+            if (!password) {
+                showError(card, 'practicePassword', 'Password is required');
+                return;
+            }
+
+            if (practiceId !== 'drs-skincare' || password !== 'drs2024') {
+                showError(card, 'practiceId', 'Invalid practice ID or password');
+                return;
+            }
+
+            const session = {
+                role: 'practice_owner',
+                practiceId: 'drs-skincare',
+                name: 'Dr. Shukla',
+                email: 'dr.shukla@drsskincare.ca',
+                loginTime: Date.now()
+            };
+
+            localStorage.setItem('dermobrain_session', JSON.stringify(session));
+            routeUser('practice_owner');
+        }
+
+        function loginTrainee(event) {
+            event.preventDefault();
+            const card = event.target.closest('.card');
+            clearErrors(card);
+
+            const email = card.querySelector('input[data-field="traineeEmail"]').value;
+            const code = card.querySelector('input[data-field="traineeCode"]').value;
+
+            if (!email) {
+                showError(card, 'traineeEmail', 'Email is required');
+                return;
+            }
+
+            if (!code) {
+                showError(card, 'traineeCode', 'Access code is required');
+                return;
+            }
+
+            if (email !== 'sarah.m@drsskincare.ca' || code !== 'staff2024') {
+                showError(card, 'traineeEmail', 'Invalid email or access code');
+                return;
+            }
+
+            const session = {
+                role: 'trainee',
+                practiceId: 'drs-skincare',
+                name: 'Sarah Mitchell',
+                email: 'sarah.m@drsskincare.ca',
+                staffRole: 'Lead Esthetician',
+                loginTime: Date.now()
+            };
+
+            localStorage.setItem('dermobrain_session', JSON.stringify(session));
+            routeUser('trainee');
+        }
+
+        // Add click handlers to cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', toggleCard);
+        });
+    </script>
+</body>
+</html>
