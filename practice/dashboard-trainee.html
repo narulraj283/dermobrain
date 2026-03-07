@@ -2461,6 +2461,47 @@
             if (navLink) {
                 navLink.classList.add('active');
             }
+
+            // If quiz tab clicked directly with no active quiz, show quiz selection
+            if (tabName === 'quiz') {
+                const container = document.getElementById('quizContainer');
+                if (container && container.innerHTML.trim() === '') {
+                    renderQuizSelection();
+                }
+            }
+
+            // If certificates tab, render certificates
+            if (tabName === 'certificates') {
+                initializeCertificates();
+            }
+        }
+
+        function renderQuizSelection() {
+            const container = document.getElementById('quizContainer');
+            let html = '<h1 class="section-title" style="margin-bottom: 30px;">Available Quizzes</h1>';
+            html += '<p style="color: var(--text-light); margin-bottom: 24px;">Select a quiz from your learning tracks to test your knowledge.</p>';
+
+            learningTracks.forEach(track => {
+                const isLocked = track.status === 'not-started' && track.id === 6;
+                html += `<div style="background: var(--white); border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow-sm);">
+                    <h3 style="margin-bottom: 12px; color: var(--primary);">${track.name}</h3>
+                    <div style="display: grid; gap: 8px;">`;
+
+                track.articles_list.forEach((article, index) => {
+                    const statusIcon = article.status === 'completed' ? '✅' : article.status === 'in-progress' ? '🔄' : '⬜';
+                    html += `<div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg); border-radius: 8px;">
+                        <span>${statusIcon} ${article.title}</span>
+                        <button class="btn-article btn-quiz ${isLocked ? 'locked' : ''}"
+                                onclick="startQuiz(${track.id}, ${index})"
+                                ${isLocked ? 'disabled' : ''}
+                                style="margin-left: 12px;">Take Quiz</button>
+                    </div>`;
+                });
+
+                html += '</div></div>';
+            });
+
+            container.innerHTML = html;
         }
 
         function showNotifications() {
