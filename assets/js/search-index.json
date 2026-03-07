@@ -1392,6 +1392,30 @@
     "meta_description": "What dermatologists need to know: post-injectable care \u2014 presentation, workup, and therapeutic approach."
   },
   {
+    "title": "Kybella (Deoxycholic Acid) for Submental Fat Reduction: Clinical Evidence and Treatment Protocols",
+    "slug": "belkyra-kybella-deoxycholic-acid",
+    "category": "injectables",
+    "meta_description": "Kybella (deoxycholic acid) FDA-approved injectable for submental fat reduction. Clinical techniques, REFINE trials, adverse effects, and injection protocols for dermatologists."
+  },
+  {
+    "title": "Intradermal Micro-Botox (Microtoxin) for Skin Quality Enhancement: Clinical Applications and Technique",
+    "slug": "micro-botox-intradermal",
+    "category": "injectables",
+    "meta_description": "Micro-botox (intradermal microtoxin) clinical guide: injection technique, dilution protocols, pore refinement, sebaceous suppression, and skin quality improvement for dermatologists."
+  },
+  {
+    "title": "Skinvive: Clinical Applications of HA Microdroplet Injectables for Skin Quality Enhancement",
+    "slug": "skinvive-ha-microdroplets",
+    "category": "injectables",
+    "meta_description": "Skinvive intradermal HA microdroplets: FDA-approved skin quality treatment. Clinical data, injection technique, patient satisfaction, and duration."
+  },
+  {
+    "title": "Platysmal Bands: Comprehensive Clinical Evaluation and Botulinum Toxin Treatment Strategies",
+    "slug": "platysmal-bands-treatment",
+    "category": "injectables",
+    "meta_description": "Platysmal bands treatment with botulinum toxin. Clinical anatomy, injection technique, Nefertiti lift, dosing, complications, and surgical alternatives."
+  },
+  {
     "title": "CO2 Laser Resurfacing: Ablative Resurfacing for Wrinkles and Scars",
     "slug": "co2-laser-resurfacing-ablative",
     "category": "lasers",
@@ -1768,6 +1792,18 @@
     "slug": "laser-safety-in-dermatology-what-patients-should-know",
     "category": "lasers",
     "meta_description": "Laser Safety in Dermatology \u2014 diagnostic criteria, treatment selection, and monitoring in dermatologic practice."
+  },
+  {
+    "title": "Fractora RF Microneedling: Clinical Applications and Efficacy in Dermatologic Practice",
+    "slug": "fractora-rf-microneedling",
+    "category": "lasers",
+    "meta_description": "Fractora RF microneedling: InMode bipolar radiofrequency technology for acne scars, wrinkles, skin tightening with 3-4 treatments spaced 4-6 weeks."
+  },
+  {
+    "title": "AviClear 1726nm Laser: FDA-Cleared Treatment for Acne Vulgaris",
+    "slug": "aviclear-laser-acne",
+    "category": "lasers",
+    "meta_description": "AviClear is the FDA-cleared 1726nm laser for acne treatment targeting sebaceous glands. Three 30-minute sessions show 87% reduction in lesions with lasting results."
   },
   {
     "title": "How Diet Affects Your Skin: From Etiology to Therapeutic Outcomes",
@@ -4464,6 +4500,12 @@
     "meta_description": "How to diagnose and manage eye area rejuvenation: dermatological treatment that Eye Area Rejuven. Dermatologist-level clinical reference."
   },
   {
+    "title": "Perioral Rhytides: Pathophysiology, Clinical Grading, and Multimodal Treatment Approaches for Smoker's Lines",
+    "slug": "smokers-lines-perioral-rhytides",
+    "category": "rejuvenation",
+    "meta_description": "Comprehensive clinical guide to perioral rhytides: botulinum toxin dosing, hyaluronic acid filler techniques, ablative laser resurfacing, and combination approaches."
+  },
+  {
     "title": "Superficial Spreading Melanoma: Clinical Features, Staging, and Treatment",
     "slug": "melanoma-overview",
     "category": "skin-cancer",
@@ -5536,6 +5578,12 @@
     "slug": "sweet-syndrome-acute-febrile-neutrophilic-dermatosis",
     "category": "skin-conditions",
     "meta_description": "Expert clinical review of sweet syndrome: diagnostic approach, management protocols, and outcome data."
+  },
+  {
+    "title": "Xanthelasma Palpebrarum: Clinical Diagnosis, Pathophysiology, and Evidence-Based Treatment Strategies",
+    "slug": "xanthelasma",
+    "category": "skin-conditions",
+    "meta_description": "Expert guide to xanthelasma palpebrarum: pathophysiology, dyslipidemia assessment, and evidence-based treatment with CO2 laser, TCA, and excision."
   },
   {
     "title": "Post-Inflammatory Hyperpigmentation IV-VI Evidence-Based Management in Dark Skin: Fitzpatrick V-VI Management",
