@@ -2453,13 +2453,10 @@
                 tabContent.classList.add('active');
             }
 
-            // Highlight active nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            const navLink = document.querySelector(`.nav-link[onclick="switchTab('${tabName}')"]`);
-            if (navLink) {
-                navLink.classList.add('active');
+            // Highlight active tab button
+            const activeBtn = document.querySelector(`.tab-btn[onclick="switchTab('${tabName}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
             }
 
             // If quiz tab clicked directly with no active quiz, show quiz selection
