@@ -1,0 +1,517 @@
+Loading articles...
+Found 119 articles to process
+
+
+======================================================================
+BATCH 1/24 (Articles 1-5)
+======================================================================
+[  1] Acne Vulgaris: Pathophysiology, Classification, and Evidence...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[  2] Cystic Acne: A Comprehensive Clinical Guide...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[  3] Hormonal Acne: A Comprehensive Clinical Guide...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[  4] Eczema (Atopic Dermatitis): Causes, Symptoms, and Treatment ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[  5] Managing Contact Dermatitis: Causes, Symptoms, and Treatment...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 2/24 (Articles 6-10)
+======================================================================
+[  6] Seborrheic Dermatitis: Diagnosis and Management Strategies...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[  7] Plaque Psoriasis: Pathogenesis, Clinical Staging, and System...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[  8] Guttate Psoriasis: Acute Inflammatory Variant and Post-Strep...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[  9] Inverse Psoriasis: Intertriginous Disease, Diagnosis, and Ma...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 10] Erythematotelangiectatic Rosacea Type I: Vascular Pathophysi...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 3/24 (Articles 11-15)
+======================================================================
+[ 11] Papulopustular Rosacea Type II: Inflammatory Features, Demod...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 12] Phymatous Rosacea Type III: Rhinophyma, Rhinitis, Severe Tis...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 13] Ocular Rosacea: Eyelid Inflammation, Meibomian Gland Dysfunc...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 14] Urticaria and Angioedema: Classification, Pathogenesis, and ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 15] Vitiligo: Autoimmune Depigmentation, Genetic Predisposition,...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 4/24 (Articles 16-20)
+======================================================================
+[ 16] Lichen Planus: Autoimmune Erosive Dermatosis and Mucosal Inv...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 17] Pityriasis Rosea: Acute Viral-Triggered Exanthem, Herald Pat...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 18] Tinea Corporis: Dermatophyte Infection, Clinical Variants, a...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 19] Cellulitis: Acute Bacterial Infection, Streptococcal/Staphyl...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 20] Impetigo: Contagious Streptococcal/Staphylococcal Skin Infec...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 5/24 (Articles 21-25)
+======================================================================
+[ 21] Herpes Simplex Virus Infection: HSV-1 Orolabial and HSV-2 Ge...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 22] Herpes Zoster (Shingles): Varicella Reactivation, Postherpet...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 23] Warts (Verruca Vulgaris): HPV Pathogenesis, Plantar/Common V...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 24] Molluscum Contagiosum: Viral Pathophysiology, Clinical Recog...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 25] Scabies: Sarcoptes Mite Infestation, Burrow Recognition, and...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 6/24 (Articles 26-30)
+======================================================================
+[ 26] Lupus Skin Manifestations: Classification, Pathophysiology, ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 27] Dermatomyositis: Systemic Autoimmune Disease, Cutaneous Mani...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 28] Pemphigus Vulgaris: Autoimmune Acantholytic Disease, Oral Mu...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 29] Granuloma Annulare: Clinical Variants, Immunopathology, and ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 30] Seborrheic Keratosis: Benign Growth Classification, Removal ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 7/24 (Articles 31-35)
+======================================================================
+[ 31] Acne Mechanica: Friction-Induced Breakouts from Equipment an...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 32] Neonatal Acne: Sebaceous Gland Hyperplasia and Transient New...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 33] Acne Conglobata: Severe Interconnected Nodular Acne with Sys...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 34] Acne Keloidalis Nuchae: Chronic Folliculitis with Keloidal S...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 35] Chloracne: Dioxin and Industrial Chemical-Induced Acneiform ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 8/24 (Articles 36-40)
+======================================================================
+[ 36] Acne Excoriée des Jeunes Filles: Lesion Manipulation and Sel...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 37] Steroid Acne: Corticosteroid-Induced Acneiform Eruption and ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 38] Infantile Acne: Persistent Neonatal-Onset Acne Indicating An...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 39] Acne Fulminans: Severe Systemic Acne Emergency with Explosiv...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 40] Gram-Negative Folliculitis: Antibiotic-Associated Bacterial ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 9/24 (Articles 41-45)
+======================================================================
+[ 41] Pomade Acne: Hair Product-Induced Folliculitis from Occlusiv...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 42] Occupational Acne: Chemical Irritants and Workplace Environm...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 43] Tropical Acne: Heat and Humidity-Exacerbated Acneiform Erupt...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 44] Drug-Induced Acne: Medications and Substances Causing Acneif...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 45] Premenstrual Acne: Hormonal Flares Linked to Menstrual Cycle...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 10/24 (Articles 46-50)
+======================================================================
+[ 46] Nummular Eczema: Coin-Shaped Patches of Irritated Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 47] Dyshidrotic Eczema: Blisters on Hands and Feet...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 48] Stasis Dermatitis: Eczema from Poor Circulation...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 49] Seborrheic Dermatitis: Flaky Skin on the Face and Scalp...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 50] Neurodermatitis: The Itch-Scratch Cycle...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 11/24 (Articles 51-55)
+======================================================================
+[ 51] Asteatotic Eczema: Dry Winter Skin Condition...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 52] Photoallergic Dermatitis: Sun-Triggered Skin Reactions...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 53] Hand Eczema: Occupational and Chronic Hand Dermatitis...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 54] Eyelid Dermatitis: Sensitive Skin Around the Eyes...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 55] Venous Eczema: Lower Leg Skin Changes...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 12/24 (Articles 56-60)
+======================================================================
+[ 56] Perioral Dermatitis: Rash Around the Mouth...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 57] Eczema Herpeticum: When Herpes Complicates Eczema...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 58] Guttate Psoriasis: Small Drop-Like Lesions After Infection...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 59] Inverse Psoriasis: Smooth Red Patches in Skin Folds...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 60] Pustular Psoriasis: Pus-Filled Blisters on Red Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 13/24 (Articles 61-65)
+======================================================================
+[ 61] Erythrodermic Psoriasis: Life-Threatening Skin Inflammation...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 62] Nail Psoriasis: How Psoriasis Affects Your Nails...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 63] Psoriatic Arthritis: When Psoriasis Attacks Your Joints...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 64] Scalp Psoriasis: Beyond Dandruff...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 65] Palmoplantar Psoriasis: Hands and Feet Involvement...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 14/24 (Articles 66-70)
+======================================================================
+[ 66] Psoriasis and Cardiovascular Risk: The Heart Connection...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 67] Biologic Therapy for Psoriasis: A Patient Guide...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 68] Ocular Rosacea: The Overlooked Subtype That Can Threaten You...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 69] Phymatous Rosacea: Skin Thickening and Rhinophyma...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 70] Papulopustular Rosacea: Inflammatory Bumps and Pimples...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 15/24 (Articles 71-75)
+======================================================================
+[ 71] Erythematotelangiectatic Rosacea: Persistent Facial Redness...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 72] Rosacea Triggers: Foods, Weather, and Lifestyle Factors...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 73] Demodex Mites and Rosacea: The Microscopic Connection...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 74] Rosacea vs Acne: How to Tell the Difference...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 75] Managing Rosacea Flares: A Practical Action Plan...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 16/24 (Articles 76-80)
+======================================================================
+[ 76] Tinea Versicolor: Multicolored Patches on the Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 77] Tinea Corporis: Ringworm of the Body...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 78] Tinea Pedis: Athlete's Foot Complete Guide...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 79] Tinea Cruris: Jock Itch Prevention and Treatment...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 80] Candidal Intertrigo: Yeast Infections in Skin Folds...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 17/24 (Articles 81-85)
+======================================================================
+[ 81] Tinea Capitis: Fungal Scalp Infections in Children...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 82] Sporotrichosis: The Rose Gardener's Disease...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 83] Majocchi Granuloma: Deep Follicular Fungal Infection...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 84] Cellulitis: Deep Skin Bacterial Infection...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 85] Impetigo: Highly Contagious Skin Infection in Children...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 18/24 (Articles 86-90)
+======================================================================
+[ 86] MRSA Skin Infections: Resistant Staph Awareness...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 87] Folliculitis: Infected Hair Follicles...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 88] Erysipelas: Superficial Skin Infection with Sharp Borders...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 89] Furuncles and Carbuncles: Boils and Skin Abscesses...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 90] Necrotizing Fasciitis: Understanding Flesh-Eating Bacteria...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 19/24 (Articles 91-95)
+======================================================================
+[ 91] Staphylococcal Scalded Skin Syndrome: Toxin-Mediated Disease...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 92] Molluscum Contagiosum: Pearly Bumps in Children and Adults...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 93] Herpes Zoster (Shingles): Causes and Modern Treatment...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 94] Common Warts: HPV Types and Removal Options...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 95] Plantar Warts: Painful Foot Warts Guide...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 20/24 (Articles 96-100)
+======================================================================
+[ 96] Hand-Foot-and-Mouth Disease: Viral Skin Rash in Kids...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 97] Herpes Simplex: Cold Sores and Genital Herpes Management...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 98] Pityriasis Rosea: The Herald Patch, Christmas Tree Pattern, ...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[ 99] Viral Exanthems: Childhood Rashes From Common Viruses...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[100] Dermatomyositis: Muscle Weakness with Skin Rash...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 21/24 (Articles 101-105)
+======================================================================
+[101] Morphea: Localized Scleroderma of the Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[102] Pemphigus Vulgaris: Autoimmune Blistering Disease...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[103] Bullous Pemphigoid: Blistering in Older Adults...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[104] Systemic Lupus Erythematosus: The Butterfly Rash...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[105] Cutaneous Vasculitis: When Blood Vessels Become Inflamed...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 22/24 (Articles 106-110)
+======================================================================
+[106] Scleroderma: Hardening and Tightening of the Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[107] Lichen Planus: Purple Polygonal Papules...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[108] Melasma: The Mask of Pregnancy...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[109] Vitiligo: Autoimmune Depigmentation of the Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[110] Post-Inflammatory Hyperpigmentation: Dark Spots After Skin I...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 23/24 (Articles 111-115)
+======================================================================
+[111] Albinism: Genetic Absence of Melanin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[112] Solar Lentigines: Age Spots and Sun Damage...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[113] Pityriasis Alba: White Patches on Children's Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[114] Hidradenitis Suppurativa: Chronic Skin Abscesses...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[115] Granuloma Annulare: Ring-Shaped Skin Bumps...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+Waiting 2s before next batch...
+
+======================================================================
+BATCH 24/24 (Articles 116-119)
+======================================================================
+[116] Lichen Sclerosus: White Patches on Genital Skin...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[117] Pyoderma Gangrenosum: Rapidly Enlarging Skin Ulcers...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[118] Pityriasis Rubra Pilaris: Orange-Red Scaling Disorder...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+[119] Sweet Syndrome: Acute Febrile Neutrophilic Dermatosis...
+  ERROR: API call failed: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+       FAILED: Could not generate content
+
+======================================================================
+PROCESSING SUMMARY
+======================================================================
+Total articles:        119
+Processed:             0
+Skipped (existing):    0
+Failed (generation):   119
+Failed (validation):   0
+Success rate:          0/119 (0%)
+
+WARNING: 119 articles not processed
+
+Saving updated articles to /sessions/affectionate-nifty-archimedes/mnt/ClaudeMacStudio/dermobrain/data/articles_skin-conditions.json...
+Done!
