@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRS Skincare | Patient Resources & Team Training — DermoBrain</title>
+<meta name="description" content="Patient resources and team training for DRS Skincare. Curated dermatology education by Dr. Rahul Shukla, Hamilton ON.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --db-green: #1A6B54;
+    --db-green-light: #238C6E;
+    --db-green-50: #E8F5F0;
+    --db-accent: #E8734A;
+    --teal: #028090;
+    --teal-light: #E0F4F5;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
+    --radius: 12px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--gray-800);
+    background: #fff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Top bar ── */
+  .topbar {
+    background: var(--db-green);
+    color: white;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+  }
+  .topbar a { color: #A7F3D0; text-decoration: none; }
+  .topbar a:hover { text-decoration: underline; }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #0C4A3E 0%, var(--db-green) 40%, var(--teal) 100%);
+    color: white;
+    padding: 60px 24px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: 0.01em;
+  }
+  .hero-badge svg { flex-shrink: 0; }
+  .hero h1 {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    opacity: 0.9;
+    max-width: 550px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+  .hero-doctor {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 100px;
+    padding: 6px 20px 6px 6px;
+  }
+  .hero-doctor-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--db-green-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .hero-doctor-info { text-align: left; }
+  .hero-doctor-name { font-weight: 600; font-size: 0.95rem; }
+  .hero-doctor-title { font-size: 0.78rem; opacity: 0.8; }
+
+  /* ── Tab Toggle ── */
+  .tab-toggle-container {
+    max-width: 640px;
+    margin: -28px auto 0;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+  }
+  .tab-toggle {
+    background: white;
+    border-radius: 100px;
+    padding: 4px;
+    display: flex;
+    gap: 8px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
+  }
+  .tab-btn {
+    padding: 10px 24px;
+    border: none;
+    background: transparent;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--gray-800); }
+  .tab-btn.active {
+    background: var(--teal);
+    color: white;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* ── Search ── */
+  .search-section {
+    max-width: 640px;
+    margin: 32px auto 0;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+  }
+  .search-box {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .search-box:focus-within { border-color: var(--teal); }
+  .search-box svg { margin-left: 16px; color: var(--gray-500); flex-shrink: 0; }
+  .search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--gray-800);
+    background: transparent;
+  }
+  .search-box input::placeholder { color: var(--gray-400, #9CA3AF); }
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 24px;
+    right: 24px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    margin-top: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    z-index: 100;
+    border: 1px solid var(--gray-200);
+  }
+  .search-results.active { display: block; }
+  .search-result-item {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--gray-800);
+    border-bottom: 1px solid var(--gray-100);
+    transition: background 0.15s;
+  }
+  .search-result-item:hover { background: var(--db-green-50); }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-title { font-weight: 500; font-size: 0.92rem; }
+  .search-result-cat { font-size: 0.78rem; color: var(--gray-500); margin-top: 2px; }
+
+  /* ── Quick access pills ── */
+  .quick-access {
+    max-width: 800px;
+    margin: 32px auto 0;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .quick-label { font-size: 0.8rem; color: var(--gray-500); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .pill {
+    display: inline-block;
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    background: var(--gray-100);
+    color: var(--gray-700);
+    transition: all 0.2s;
+    border: 1px solid var(--gray-200);
+  }
+  .pill:hover { background: var(--teal-light); color: var(--teal); border-color: var(--teal); }
+
+  /* ── Content sections ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gray-100);
+  }
+  .section-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gray-900);
+  }
+  .section-header p { font-size: 0.88rem; color: var(--gray-500); margin-top: 2px; }
+
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .article-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    text-decoration: none;
+    color: var(--gray-800);
+    transition: all 0.2s;
+    background: white;
+  }
+  .article-card:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+  .article-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+  .article-card-text h3 { font-size: 0.92rem; font-weight: 600; line-height: 1.35; }
+  .article-card-text span { font-size: 0.78rem; color: var(--gray-500); }
+
+  /* ── Section colors ── */
+  .sec-medical .section-icon { background: #FEF3C7; color: #D97706; }
+  .sec-medical .article-card-icon { background: #FEF3C7; }
+  .sec-cosmetic .section-icon { background: #FCE7F3; color: #DB2777; }
+  .sec-cosmetic .article-card-icon { background: #FCE7F3; }
+  .sec-cancer .section-icon { background: #FEE2E2; color: #DC2626; }
+  .sec-cancer .article-card-icon { background: #FEE2E2; }
+  .sec-hair .section-icon { background: #E0E7FF; color: #4F46E5; }
+  .sec-hair .article-card-icon { background: #E0E7FF; }
+  .sec-skincare .section-icon { background: var(--teal-light); color: var(--teal); }
+  .sec-skincare .article-card-icon { background: var(--teal-light); }
+  .sec-procedures .section-icon { background: #F3E8FF; color: #7C3AED; }
+  .sec-procedures .article-card-icon { background: #F3E8FF; }
+
+  /* ── CTA banner ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--db-green-50), var(--teal-light));
+    border: 1px solid #B2DFDB;
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: center;
+    margin: 16px 0 48px;
+  }
+  .cta-banner h3 { font-size: 1.15rem; color: var(--gray-900); margin-bottom: 8px; }
+  .cta-banner p { font-size: 0.92rem; color: var(--gray-600); margin-bottom: 16px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--teal);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .cta-btn:hover { background: #026E7A; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+  /* ── Team Training Styles ── */
+  .team-content {
+    display: none;
+  }
+  .team-content.active {
+    display: block;
+  }
+
+  .tracks-intro {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .tracks-intro h2 {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 1.4rem;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+  }
+  .tracks-intro p { color: var(--gray-500); font-size: 0.95rem; }
+
+  .track-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .track-card:hover { box-shadow: var(--shadow-md); }
+
+  .track-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .track-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.3rem;
+  }
+  .track-info { flex: 1; }
+  .track-info h3 { font-size: 1.05rem; font-weight: 700; color: var(--gray-900); }
+  .track-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+    font-size: 0.82rem;
+    color: var(--gray-500);
+  }
+  .track-meta-item { display: flex; align-items: center; gap: 4px; }
+  .track-badge {
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .badge-essential { background: #FEF3C7; color: #92400E; }
+  .badge-clinical { background: #DBEAFE; color: #1E40AF; }
+  .badge-cosmetic { background: #FCE7F3; color: #9D174D; }
+  .badge-surgical { background: #F3E8FF; color: #6B21A8; }
+  .badge-advanced { background: #D1FAE5; color: #065F46; }
+
+  .track-toggle {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .track-toggle svg { transition: transform 0.2s; color: var(--gray-500); }
+  .track-card.open .track-toggle svg { transform: rotate(180deg); }
+  .track-card.open .track-toggle { background: var(--teal-light); }
+  .track-card.open .track-toggle svg { color: var(--teal); }
+
+  .track-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .track-card.open .track-body { max-height: 2000px; }
+
+  .track-articles {
+    padding: 0 24px 20px;
+    border-top: 1px solid var(--gray-100);
+  }
+  .track-articles-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray-500);
+    font-weight: 600;
+    padding: 12px 0 8px;
+  }
+
+  .track-article {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--gray-800);
+    transition: background 0.15s;
+    border-bottom: 1px solid var(--gray-50);
+  }
+  .track-article:hover { background: var(--gray-50); }
+  .track-article:last-child { border-bottom: none; }
+  .track-article-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    flex-shrink: 0;
+  }
+  .track-article-text { flex: 1; }
+  .track-article-title { font-size: 0.9rem; font-weight: 500; }
+  .track-article-type { font-size: 0.75rem; color: var(--gray-500); }
+  .track-article-arrow { color: var(--gray-300); flex-shrink: 0; }
+  .track-article:hover .track-article-arrow { color: var(--teal); }
+  .track-article:hover .track-article-num { background: var(--teal-light); color: var(--teal); }
+
+  .type-clinical { color: #1E40AF; }
+  .type-patient { color: #059669; }
+
+  /* ── Tip box ── */
+  .tip-box {
+    background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+    border: 1px solid #FCD34D;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 32px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .tip-box-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .tip-box h4 { font-size: 0.92rem; color: #92400E; margin-bottom: 4px; }
+  .tip-box p { font-size: 0.85rem; color: #78350F; line-height: 1.55; }
+
+  /* ── Coming soon ── */
+  .coming-soon {
+    background: white;
+    border: 2px dashed var(--gray-300);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: center;
+    margin: 24px 0;
+  }
+  .coming-soon h3 { font-size: 1.05rem; color: var(--gray-700); margin-bottom: 8px; }
+  .coming-soon p { font-size: 0.88rem; color: var(--gray-500); max-width: 420px; margin: 0 auto; }
+  .coming-soon-badge {
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Footer ── */
+  .portal-footer {
+    background: var(--gray-900);
+    color: var(--gray-400);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  .portal-footer a { color: var(--gray-300); text-decoration: none; }
+  .portal-footer a:hover { color: white; }
+  .portal-footer-brand { font-size: 0.92rem; color: var(--gray-300); margin-bottom: 8px; font-weight: 500; }
+
+  /* ── Patient content ── */
+  .patient-content {
+    display: block;
+  }
+  .patient-content.hidden {
+    display: none;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 36px; }
+    .hero h1 { font-size: 1.5rem; }
+    .article-grid { grid-template-columns: 1fr; }
+    .hero-doctor { flex-direction: column; padding: 12px; border-radius: 12px; }
+    .hero-doctor-info { text-align: center; }
+    .tab-toggle { flex-direction: column; gap: 4px; }
+    .tab-btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  Powered by <a href="https://dermobrain.com">DermoBrain</a> — Evidence-based dermatology education
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    DRS Skincare — Patient & Team Hub
+  </div>
+  <h1>Your Dermatology<br>Resource Hub</h1>
+  <p class="hero-subtitle">Evidence-based patient resources and staff training curated by your dermatologist.</p>
+  <div class="hero-doctor">
+    <div class="hero-doctor-avatar">RS</div>
+    <div class="hero-doctor-info">
+      <div class="hero-doctor-name">Dr. Rahul Shukla, MD FRCPC</div>
+      <div class="hero-doctor-title">Board-Certified Dermatologist — DRS Skincare, Hamilton ON</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab Toggle -->
+<div class="tab-toggle-container">
+  <div class="tab-toggle">
+    <button class="tab-btn active" onclick="switchTab('patients')">Patient Resources</button>
+    <button class="tab-btn" onclick="switchTab('team')">Team Training</button>
+  </div>
+</div>
+
+<!-- PATIENT CONTENT START -->
+<div id="patients-content" class="patient-content">
+
+  <!-- Search -->
+  <div class="search-section">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search conditions, treatments, procedures..." autocomplete="off">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <!-- Quick Access -->
+  <div class="quick-access">
+    <div class="quick-label">Common Topics</div>
+    <div class="pills">
+      <a href="#medical" class="pill">Skin Conditions</a>
+      <a href="#cosmetic" class="pill">Cosmetic Treatments</a>
+      <a href="#cancer" class="pill">Skin Cancer</a>
+      <a href="#hair" class="pill">Hair &amp; Scalp</a>
+      <a href="#skincare" class="pill">Skincare</a>
+      <a href="#procedures" class="pill">Procedures</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+
+    <!-- Medical Dermatology -->
+    <div class="sec-medical" id="medical">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <h2>Skin Conditions</h2>
+          <p>Understand your diagnosis and treatment options</p>
+        </div>
+      </div>
+      <div class="article-grid">
+        <a href="/medical-dermatology/skin-conditions/acne-vulgaris-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🔴</div>
+          <div class="article-card-text">
+            <h3>Acne: Causes, Treatment &amp; Daily Care</h3>
+            <span>Skin Conditions</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-conditions/eczema-atopic-dermatitis-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🩹</div>
+          <div class="article-card-text">
+            <h3>Eczema (Atopic Dermatitis): Your Complete Guide</h3>
+            <span>Skin Conditions</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-conditions/psoriasis-plaque-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🧬</div>
+          <div class="article-card-text">
+            <h3>Psoriasis: Symptoms, Triggers &amp; Treatment</h3>
+            <span>Skin Conditions</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-conditions/rosacea-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🌡️</div>
+          <div class="article-card-text">
+            <h3>Rosacea: What It Is and How to Manage It</h3>
+            <span>Skin Conditions</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-conditions/seborrheic-dermatitis-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🧴</div>
+          <div class="article-card-text">
+            <h3>Seborrheic Dermatitis: Diagnosis to Treatment</h3>
+            <span>Skin Conditions</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/allergies/allergic-contact-dermatitis-patient-guide.html" class="article-card">
+          <div class="article-card-icon">⚠️</div>
+          <div class="article-card-text">
+            <h3>Contact Dermatitis: Causes &amp; Prevention</h3>
+            <span>Allergies</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/allergies/chronic-urticaria-long-lasting-hives-management-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🔵</div>
+          <div class="article-card-text">
+            <h3>Chronic Hives (Urticaria): Management Guide</h3>
+            <span>Allergies</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-conditions/fungal-skin-infections-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🍄</div>
+          <div class="article-card-text">
+            <h3>Fungal Skin Infections: Types &amp; Treatment</h3>
+            <span>Skin Conditions</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-conditions/post-inflammatory-hyperpigmentation-dark-spots-after-skin-injury-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🎨</div>
+          <div class="article-card-text">
+            <h3>Hyperpigmentation &amp; Dark Spots</h3>
+            <span>Skin Conditions</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cosmetic Treatments -->
+    <div class="sec-cosmetic" id="cosmetic">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5.5 8.5l13 7M5.5 15.5l13-7"/></svg>
+        </div>
+        <div>
+          <h2>Cosmetic Treatments</h2>
+          <p>What to expect from cosmetic dermatology procedures</p>
+        </div>
+      </div>
+      <div class="article-grid">
+        <a href="/cosmetic-dermatology/injectables/botox-cosmetic-wrinkle-treatment-patient-guide.html" class="article-card">
+          <div class="article-card-icon">💉</div>
+          <div class="article-card-text">
+            <h3>Botox: What to Know Before Your Appointment</h3>
+            <span>Injectables</span>
+          </div>
+        </a>
+        <a href="/cosmetic-dermatology/injectables/hyaluronic-acid-fillers-patient-guide.html" class="article-card">
+          <div class="article-card-icon">💧</div>
+          <div class="article-card-text">
+            <h3>Dermal Fillers: Types, Results &amp; Recovery</h3>
+            <span>Injectables</span>
+          </div>
+        </a>
+        <a href="/cosmetic-dermatology/rejuvenation/chemical-peel-types-patient-guide.html" class="article-card">
+          <div class="article-card-icon">✨</div>
+          <div class="article-card-text">
+            <h3>Chemical Peels: Types &amp; What to Expect</h3>
+            <span>Rejuvenation</span>
+          </div>
+        </a>
+        <a href="/cosmetic-dermatology/rejuvenation/microneedling-collagen-induction-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🪡</div>
+          <div class="article-card-text">
+            <h3>Microneedling: How It Works &amp; Results</h3>
+            <span>Rejuvenation</span>
+          </div>
+        </a>
+        <a href="/cosmetic-dermatology/lasers/ipl-photofacial-patient-guide.html" class="article-card">
+          <div class="article-card-icon">💡</div>
+          <div class="article-card-text">
+            <h3>IPL Photofacial: Treating Redness &amp; Sun Damage</h3>
+            <span>Lasers</span>
+          </div>
+        </a>
+        <a href="/cosmetic-dermatology/lasers/co2-laser-resurfacing-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🔬</div>
+          <div class="article-card-text">
+            <h3>CO2 Laser Resurfacing: What to Expect</h3>
+            <span>Lasers</span>
+          </div>
+        </a>
+        <a href="/cosmetic-dermatology/body-contouring/scar-treatment-overview-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🩹</div>
+          <div class="article-card-text">
+            <h3>Scar Treatment: Your Options Explained</h3>
+            <span>Body &amp; Skin</span>
+          </div>
+        </a>
+        <a href="/cosmetic-dermatology/injectables/prp-prfinjections-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🩸</div>
+          <div class="article-card-text">
+            <h3>PRP Therapy: Platelet-Rich Plasma Treatment</h3>
+            <span>Injectables</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Skin Cancer -->
+    <div class="sec-cancer" id="cancer">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <h2>Skin Cancer</h2>
+          <p>Early detection, diagnosis, and treatment options</p>
+        </div>
+      </div>
+      <div class="article-grid">
+        <a href="/medical-dermatology/skin-cancer/melanoma-detection-screening-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🔍</div>
+          <div class="article-card-text">
+            <h3>Melanoma: Detection &amp; Screening</h3>
+            <span>Skin Cancer</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-cancer/basal-cell-carcinoma-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🔬</div>
+          <div class="article-card-text">
+            <h3>Basal Cell Carcinoma: What You Should Know</h3>
+            <span>Skin Cancer</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-cancer/squamous-cell-carcinoma-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🧪</div>
+          <div class="article-card-text">
+            <h3>Squamous Cell Carcinoma: Risks &amp; Treatment</h3>
+            <span>Skin Cancer</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-cancer/actinic-keratosis-patient-guide.html" class="article-card">
+          <div class="article-card-icon">☀️</div>
+          <div class="article-card-text">
+            <h3>Actinic Keratosis: Precancerous Spots</h3>
+            <span>Skin Cancer</span>
+          </div>
+        </a>
+        <a href="/surgical-dermatology/mohs-surgery/mohs-surgery-melanoma-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🏥</div>
+          <div class="article-card-text">
+            <h3>Mohs Surgery: What to Expect</h3>
+            <span>Surgery</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/skin-cancer/skin-biopsy-types-patient-guide.html" class="article-card">
+          <div class="article-card-icon">📋</div>
+          <div class="article-card-text">
+            <h3>Skin Biopsy: Types &amp; What to Expect</h3>
+            <span>Diagnostics</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hair & Scalp -->
+    <div class="sec-hair" id="hair">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7c0-3-2-5-5-5s-5 2-5 5c0 3 2 5 5 5M4 17c0-3 2-5 5-5"/><path d="M15 12v10"/><path d="M9 12v10"/></svg>
+        </div>
+        <div>
+          <h2>Hair &amp; Scalp</h2>
+          <p>Hair loss, scalp conditions, and treatment options</p>
+        </div>
+      </div>
+      <div class="article-grid">
+        <a href="/medical-dermatology/hair-scalp/androgenetic-alopecia-male-pattern-baldness-patient-guide.html" class="article-card">
+          <div class="article-card-icon">👨</div>
+          <div class="article-card-text">
+            <h3>Male Pattern Baldness: Treatment Options</h3>
+            <span>Hair Loss</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/hair-scalp/female-pattern-hair-loss-patient-guide.html" class="article-card">
+          <div class="article-card-icon">👩</div>
+          <div class="article-card-text">
+            <h3>Female Pattern Hair Loss: What Helps</h3>
+            <span>Hair Loss</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/hair-scalp/alopecia-areata-patient-guide.html" class="article-card">
+          <div class="article-card-icon">⭕</div>
+          <div class="article-card-text">
+            <h3>Alopecia Areata: Causes &amp; Treatment</h3>
+            <span>Hair Loss</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/hair-scalp/minoxidil-hair-loss-patient-guide.html" class="article-card">
+          <div class="article-card-icon">💊</div>
+          <div class="article-card-text">
+            <h3>Minoxidil for Hair Loss: How It Works</h3>
+            <span>Treatment</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/hair-scalp/prp-therapy-for-hair-loss-platelet-rich-plasma-treatment-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🩸</div>
+          <div class="article-card-text">
+            <h3>PRP for Hair Loss: Does It Work?</h3>
+            <span>Treatment</span>
+          </div>
+        </a>
+        <a href="/medical-dermatology/hair-scalp/scalp-psoriasis-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🧴</div>
+          <div class="article-card-text">
+            <h3>Scalp Psoriasis: Managing Flare-Ups</h3>
+            <span>Scalp Conditions</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Skincare -->
+    <div class="sec-skincare" id="skincare">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h2>Skincare &amp; Prevention</h2>
+          <p>Evidence-based guidance for healthy skin</p>
+        </div>
+      </div>
+      <div class="article-grid">
+        <a href="/skincare/skincare-science/sunscreen-comprehensive-guide-patient-guide.html" class="article-card">
+          <div class="article-card-icon">☀️</div>
+          <div class="article-card-text">
+            <h3>Sunscreen Guide: SPF, Application &amp; Myths</h3>
+            <span>Sun Protection</span>
+          </div>
+        </a>
+        <a href="/skincare/skincare-science/retinoids-anti-aging-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🧬</div>
+          <div class="article-card-text">
+            <h3>Retinoids: The Anti-Aging Gold Standard</h3>
+            <span>Active Ingredients</span>
+          </div>
+        </a>
+        <a href="/skincare/skincare-science/vitamin-c-serum-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🍊</div>
+          <div class="article-card-text">
+            <h3>Vitamin C Serums: Benefits &amp; How to Use</h3>
+            <span>Active Ingredients</span>
+          </div>
+        </a>
+        <a href="/skincare/skincare-science/hyaluronic-acid-skin-hydration-patient-guide.html" class="article-card">
+          <div class="article-card-icon">💧</div>
+          <div class="article-card-text">
+            <h3>Hyaluronic Acid: Hydration for Your Skin</h3>
+            <span>Active Ingredients</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CTA banner -->
+    <div class="cta-banner">
+      <h3>Questions about your care?</h3>
+      <p>These resources are meant to supplement — not replace — your dermatologist's guidance. If you have questions, your care team is always here to help.</p>
+      <a href="https://www.drsskincare.ca/request-an-appointment/" class="cta-btn" target="_blank">
+        Book an Appointment
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <!-- Procedures -->
+    <div class="sec-procedures" id="procedures">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div>
+          <h2>Surgical &amp; Diagnostic Procedures</h2>
+          <p>Preparing for your procedure and what comes after</p>
+        </div>
+      </div>
+      <div class="article-grid">
+        <a href="/surgical-dermatology/procedures/mole-removal-when-how-patient-guide.html" class="article-card">
+          <div class="article-card-icon">✂️</div>
+          <div class="article-card-text">
+            <h3>Mole Removal: When and How</h3>
+            <span>Lesion Removal</span>
+          </div>
+        </a>
+        <a href="/surgical-dermatology/procedures/cryotherapy-liquid-nitrogen-patient-guide.html" class="article-card">
+          <div class="article-card-icon">❄️</div>
+          <div class="article-card-text">
+            <h3>Cryotherapy: Freezing Skin Lesions</h3>
+            <span>Procedures</span>
+          </div>
+        </a>
+        <a href="/surgical-dermatology/pre-post-op/wound-care-after-skin-surgery-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🩹</div>
+          <div class="article-card-text">
+            <h3>Wound Care After Skin Surgery</h3>
+            <span>Post-Op Care</span>
+          </div>
+        </a>
+        <a href="/surgical-dermatology/procedures/scar-revision-patient-guide.html" class="article-card">
+          <div class="article-card-icon">🔧</div>
+          <div class="article-card-text">
+            <h3>Scar Revision: Improving Surgical Scars</h3>
+            <span>Procedures</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!-- PATIENT CONTENT END -->
+
+<!-- TEAM TRAINING CONTENT START -->
+<div id="team-content" class="team-content">
+
+  <div class="main">
+
+    <div class="tracks-intro">
+      <h2>Learning Tracks</h2>
+      <p>Each track contains clinical articles (for deep understanding) and patient guides (for learning how to explain things to patients). Click a track to see the reading list.</p>
+    </div>
+
+    <!-- Track 1: Onboarding Essentials -->
+    <div class="track-card open">
+      <div class="track-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="track-icon" style="background:#FEF3C7;">📋</div>
+        <div class="track-info">
+          <h3>New Staff Onboarding Essentials</h3>
+          <div class="track-meta">
+            <span class="track-badge badge-essential">Start Here</span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg>
+              8 articles
+            </span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~45 min
+            </span>
+          </div>
+        </div>
+        <div class="track-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="track-body">
+        <div class="track-articles">
+          <div class="track-articles-label">Reading List</div>
+          <a href="/medical-dermatology/skin-conditions/acne-vulgaris.html" class="track-article">
+            <div class="track-article-num">1</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Acne Vulgaris: Pathophysiology &amp; Treatment</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-conditions/eczema-atopic-dermatitis.html" class="track-article">
+            <div class="track-article-num">2</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Eczema (Atopic Dermatitis): Diagnosis &amp; Management</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-conditions/psoriasis-plaque.html" class="track-article">
+            <div class="track-article-num">3</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Psoriasis: Clinical Presentation &amp; Treatment</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-conditions/rosacea.html" class="track-article">
+            <div class="track-article-num">4</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Rosacea: Subtypes, Triggers &amp; Management</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-conditions/acne-vulgaris-patient-guide.html" class="track-article">
+            <div class="track-article-num">5</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Acne: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — practice your patient communication</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-conditions/eczema-atopic-dermatitis-patient-guide.html" class="track-article">
+            <div class="track-article-num">6</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Eczema: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — practice your patient communication</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-conditions/psoriasis-plaque-patient-guide.html" class="track-article">
+            <div class="track-article-num">7</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Psoriasis: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — practice your patient communication</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-conditions/rosacea-patient-guide.html" class="track-article">
+            <div class="track-article-num">8</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Rosacea: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — practice your patient communication</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track 2: Cosmetic Procedures -->
+    <div class="track-card">
+      <div class="track-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="track-icon" style="background:#FCE7F3;">💉</div>
+        <div class="track-info">
+          <h3>Cosmetic Procedures &amp; Injectables</h3>
+          <div class="track-meta">
+            <span class="track-badge badge-cosmetic">Cosmetic</span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg>
+              8 articles
+            </span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~45 min
+            </span>
+          </div>
+        </div>
+        <div class="track-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="track-body">
+        <div class="track-articles">
+          <div class="track-articles-label">Reading List</div>
+          <a href="/cosmetic-dermatology/injectables/botox-cosmetic-wrinkle-treatment.html" class="track-article">
+            <div class="track-article-num">1</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Botulinum Toxin: Mechanism, Dosing &amp; Injection Sites</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/injectables/hyaluronic-acid-fillers.html" class="track-article">
+            <div class="track-article-num">2</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Hyaluronic Acid Fillers: Properties &amp; Applications</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/rejuvenation/chemical-peel-types.html" class="track-article">
+            <div class="track-article-num">3</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Chemical Peels: Depth, Agents &amp; Protocols</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/rejuvenation/microneedling-collagen-induction.html" class="track-article">
+            <div class="track-article-num">4</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Microneedling: Collagen Induction Therapy</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/injectables/botox-cosmetic-wrinkle-treatment-patient-guide.html" class="track-article">
+            <div class="track-article-num">5</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Botox: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — learn the language patients use</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/injectables/hyaluronic-acid-fillers-patient-guide.html" class="track-article">
+            <div class="track-article-num">6</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Fillers: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — learn the language patients use</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/rejuvenation/chemical-peel-types-patient-guide.html" class="track-article">
+            <div class="track-article-num">7</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Chemical Peels: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — learn the language patients use</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/rejuvenation/microneedling-collagen-induction-patient-guide.html" class="track-article">
+            <div class="track-article-num">8</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Microneedling: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide — learn the language patients use</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track 3: Skin Cancer -->
+    <div class="track-card">
+      <div class="track-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="track-icon" style="background:#FEE2E2;">🔍</div>
+        <div class="track-info">
+          <h3>Skin Cancer: Detection &amp; Triage</h3>
+          <div class="track-meta">
+            <span class="track-badge badge-clinical">Critical Knowledge</span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg>
+              8 articles
+            </span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~50 min
+            </span>
+          </div>
+        </div>
+        <div class="track-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="track-body">
+        <div class="track-articles">
+          <div class="track-articles-label">Reading List</div>
+          <a href="/medical-dermatology/skin-cancer/melanoma-detection-screening.html" class="track-article">
+            <div class="track-article-num">1</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Melanoma Detection &amp; ABCDE Screening</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-cancer/basal-cell-carcinoma.html" class="track-article">
+            <div class="track-article-num">2</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Basal Cell Carcinoma: Types &amp; Management</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-cancer/squamous-cell-carcinoma.html" class="track-article">
+            <div class="track-article-num">3</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Squamous Cell Carcinoma: Risk Factors &amp; Treatment</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-cancer/actinic-keratosis.html" class="track-article">
+            <div class="track-article-num">4</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Actinic Keratosis: Precancerous Lesions</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-cancer/skin-biopsy-types.html" class="track-article">
+            <div class="track-article-num">5</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Skin Biopsy: Types, Techniques &amp; Handling</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-cancer/melanoma-detection-screening-patient-guide.html" class="track-article">
+            <div class="track-article-num">6</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Melanoma: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-cancer/basal-cell-carcinoma-patient-guide.html" class="track-article">
+            <div class="track-article-num">7</div>
+            <div class="track-article-text">
+              <div class="track-article-title">BCC: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/skin-cancer/squamous-cell-carcinoma-patient-guide.html" class="track-article">
+            <div class="track-article-num">8</div>
+            <div class="track-article-text">
+              <div class="track-article-title">SCC: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track 4: Laser & Light -->
+    <div class="track-card">
+      <div class="track-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="track-icon" style="background:#DBEAFE;">💡</div>
+        <div class="track-info">
+          <h3>Laser &amp; Light Therapies</h3>
+          <div class="track-meta">
+            <span class="track-badge badge-cosmetic">Cosmetic</span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg>
+              8 articles
+            </span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~45 min
+            </span>
+          </div>
+        </div>
+        <div class="track-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="track-body">
+        <div class="track-articles">
+          <div class="track-articles-label">Reading List</div>
+          <a href="/cosmetic-dermatology/lasers/ipl-photofacial.html" class="track-article">
+            <div class="track-article-num">1</div>
+            <div class="track-article-text">
+              <div class="track-article-title">IPL Photofacial: Mechanism &amp; Protocols</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/lasers/co2-laser-resurfacing.html" class="track-article">
+            <div class="track-article-num">2</div>
+            <div class="track-article-text">
+              <div class="track-article-title">CO2 Laser Resurfacing: Ablative Treatment</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/lasers/fractional-laser-skin-resurfacing.html" class="track-article">
+            <div class="track-article-num">3</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Fractional Laser: Non-Ablative Resurfacing</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/lasers/laser-hair-removal-comprehensive.html" class="track-article">
+            <div class="track-article-num">4</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Laser Hair Removal: Comprehensive Guide</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/lasers/ipl-photofacial-patient-guide.html" class="track-article">
+            <div class="track-article-num">5</div>
+            <div class="track-article-text">
+              <div class="track-article-title">IPL: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/lasers/co2-laser-resurfacing-patient-guide.html" class="track-article">
+            <div class="track-article-num">6</div>
+            <div class="track-article-text">
+              <div class="track-article-title">CO2 Laser: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/lasers/fractional-laser-skin-resurfacing-patient-guide.html" class="track-article">
+            <div class="track-article-num">7</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Fractional Laser: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/cosmetic-dermatology/lasers/laser-hair-removal-comprehensive-patient-guide.html" class="track-article">
+            <div class="track-article-num">8</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Laser Hair Removal: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track 5: Hair Loss -->
+    <div class="track-card">
+      <div class="track-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="track-icon" style="background:#D1FAE5;">✂️</div>
+        <div class="track-info">
+          <h3>Hair Loss: Diagnosis &amp; Treatment</h3>
+          <div class="track-meta">
+            <span class="track-badge badge-clinical">Clinical</span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg>
+              8 articles
+            </span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~40 min
+            </span>
+          </div>
+        </div>
+        <div class="track-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="track-body">
+        <div class="track-articles">
+          <div class="track-articles-label">Reading List</div>
+          <a href="/medical-dermatology/hair-scalp/androgenetic-alopecia-male-pattern-baldness.html" class="track-article">
+            <div class="track-article-num">1</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Androgenetic Alopecia: Pathogenesis &amp; Treatment</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/hair-scalp/female-pattern-hair-loss.html" class="track-article">
+            <div class="track-article-num">2</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Female Pattern Hair Loss: Evaluation &amp; Management</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/hair-scalp/alopecia-areata.html" class="track-article">
+            <div class="track-article-num">3</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Alopecia Areata: Immunopathology &amp; Treatment</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/hair-scalp/minoxidil-hair-loss.html" class="track-article">
+            <div class="track-article-num">4</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Minoxidil: Mechanism of Action &amp; Efficacy</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/hair-scalp/androgenetic-alopecia-male-pattern-baldness-patient-guide.html" class="track-article">
+            <div class="track-article-num">5</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Male Pattern Baldness: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/hair-scalp/female-pattern-hair-loss-patient-guide.html" class="track-article">
+            <div class="track-article-num">6</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Female Hair Loss: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/hair-scalp/alopecia-areata-patient-guide.html" class="track-article">
+            <div class="track-article-num">7</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Alopecia Areata: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/medical-dermatology/hair-scalp/minoxidil-hair-loss-patient-guide.html" class="track-article">
+            <div class="track-article-num">8</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Minoxidil: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track 6: Surgical Procedures -->
+    <div class="track-card">
+      <div class="track-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="track-icon" style="background:#F3E8FF;">🔬</div>
+        <div class="track-info">
+          <h3>Surgical Procedures &amp; Wound Care</h3>
+          <div class="track-meta">
+            <span class="track-badge badge-surgical">Surgical</span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg>
+              8 articles
+            </span>
+            <span class="track-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~50 min
+            </span>
+          </div>
+        </div>
+        <div class="track-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="track-body">
+        <div class="track-articles">
+          <div class="track-articles-label">Reading List</div>
+          <a href="/surgical-dermatology/mohs-surgery/mohs-surgery-melanoma.html" class="track-article">
+            <div class="track-article-num">1</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Mohs Micrographic Surgery: Technique &amp; Indications</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/surgical-dermatology/procedures/mole-removal-when-how.html" class="track-article">
+            <div class="track-article-num">2</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Mole Removal: Indications &amp; Techniques</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/surgical-dermatology/procedures/cryotherapy-liquid-nitrogen.html" class="track-article">
+            <div class="track-article-num">3</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Cryotherapy: Liquid Nitrogen Treatment</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/surgical-dermatology/pre-post-op/wound-care-after-skin-surgery.html" class="track-article">
+            <div class="track-article-num">4</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Post-Operative Wound Care Protocols</div>
+              <div class="track-article-type type-clinical">Clinical Reference</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/surgical-dermatology/mohs-surgery/mohs-surgery-melanoma-patient-guide.html" class="track-article">
+            <div class="track-article-num">5</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Mohs Surgery: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/surgical-dermatology/procedures/mole-removal-when-how-patient-guide.html" class="track-article">
+            <div class="track-article-num">6</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Mole Removal: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/surgical-dermatology/procedures/cryotherapy-liquid-nitrogen-patient-guide.html" class="track-article">
+            <div class="track-article-num">7</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Cryotherapy: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/surgical-dermatology/pre-post-op/wound-care-after-skin-surgery-patient-guide.html" class="track-article">
+            <div class="track-article-num">8</div>
+            <div class="track-article-text">
+              <div class="track-article-title">Wound Care: How We Explain It to Patients</div>
+              <div class="track-article-type type-patient">Patient Guide</div>
+            </div>
+            <svg class="track-article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tip box -->
+    <div class="tip-box">
+      <div class="tip-box-icon">💡</div>
+      <div>
+        <h4>How to use these tracks</h4>
+        <p>Read the clinical article first for deep understanding, then read the patient guide to learn how to explain the same concept to patients in plain language. Each track pairs clinical + patient articles on the same topics so you build both knowledge and communication skills.</p>
+      </div>
+    </div>
+
+    <!-- Coming Soon: Quizzes -->
+    <div class="coming-soon">
+      <div class="coming-soon-badge">Coming Soon</div>
+      <h3>Knowledge Check Quizzes</h3>
+      <p>Short quizzes after each learning track to confirm understanding. Results are shared with your practice manager so they know you're up to speed.</p>
+    </div>
+
+  </div>
+
+</div>
+<!-- TEAM TRAINING CONTENT END -->
+
+<!-- Footer -->
+<footer class="portal-footer">
+  <div class="portal-footer-brand">DRS Skincare × DermoBrain</div>
+  <p>
+    Patient resources and staff training curated by <a href="https://www.drsskincare.ca/" target="_blank">Dr. Rahul Shukla</a> — 1662 Upper James St, Hamilton ON<br>
+    Content powered by <a href="https://dermobrain.com">DermoBrain.com</a> — Evidence-based dermatology education<br><br>
+    These materials are for educational purposes only and do not replace professional medical advice.<br>
+    If you are experiencing a medical emergency, call 911.
+  </p>
+</footer>
+
+<script>
+// Tab switching
+function switchTab(tab) {
+  const patientsBtn = document.querySelectorAll('.tab-btn')[0];
+  const teamBtn = document.querySelectorAll('.tab-btn')[1];
+  const patientsContent = document.getElementById('patients-content');
+  const teamContent = document.getElementById('team-content');
+
+  if (tab === 'patients') {
+    patientsBtn.classList.add('active');
+    teamBtn.classList.remove('active');
+    patientsContent.style.display = 'block';
+    teamContent.style.display = 'none';
+  } else {
+    teamBtn.classList.add('active');
+    patientsBtn.classList.remove('active');
+    patientsContent.style.display = 'none';
+    teamContent.style.display = 'block';
+  }
+}
+
+// Patient search functionality
+const articles = [
+  {t:"Acne: Causes, Treatment & Daily Care", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/acne-vulgaris-patient-guide.html"},
+  {t:"Eczema (Atopic Dermatitis)", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/eczema-atopic-dermatitis-patient-guide.html"},
+  {t:"Psoriasis: Symptoms & Treatment", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/psoriasis-plaque-patient-guide.html"},
+  {t:"Rosacea: Management Guide", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/rosacea-patient-guide.html"},
+  {t:"Contact Dermatitis", c:"Allergies", u:"/medical-dermatology/allergies/allergic-contact-dermatitis-patient-guide.html"},
+  {t:"Chronic Hives (Urticaria)", c:"Allergies", u:"/medical-dermatology/allergies/chronic-urticaria-long-lasting-hives-management-patient-guide.html"},
+  {t:"Fungal Skin Infections", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/fungal-skin-infections-patient-guide.html"},
+  {t:"Hyperpigmentation & Dark Spots", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/post-inflammatory-hyperpigmentation-dark-spots-after-skin-injury-patient-guide.html"},
+  {t:"Botox: What to Know", c:"Cosmetic", u:"/cosmetic-dermatology/injectables/botox-cosmetic-wrinkle-treatment-patient-guide.html"},
+  {t:"Dermal Fillers", c:"Cosmetic", u:"/cosmetic-dermatology/injectables/hyaluronic-acid-fillers-patient-guide.html"},
+  {t:"Chemical Peels", c:"Cosmetic", u:"/cosmetic-dermatology/rejuvenation/chemical-peel-types-patient-guide.html"},
+  {t:"Microneedling", c:"Cosmetic", u:"/cosmetic-dermatology/rejuvenation/microneedling-collagen-induction-patient-guide.html"},
+  {t:"IPL Photofacial", c:"Lasers", u:"/cosmetic-dermatology/lasers/ipl-photofacial-patient-guide.html"},
+  {t:"CO2 Laser Resurfacing", c:"Lasers", u:"/cosmetic-dermatology/lasers/co2-laser-resurfacing-patient-guide.html"},
+  {t:"Scar Treatment Options", c:"Body & Skin", u:"/cosmetic-dermatology/body-contouring/scar-treatment-overview-patient-guide.html"},
+  {t:"PRP Therapy", c:"Injectables", u:"/cosmetic-dermatology/injectables/prp-prfinjections-patient-guide.html"},
+  {t:"Melanoma: Detection & Screening", c:"Skin Cancer", u:"/medical-dermatology/skin-cancer/melanoma-detection-screening-patient-guide.html"},
+  {t:"Basal Cell Carcinoma", c:"Skin Cancer", u:"/medical-dermatology/skin-cancer/basal-cell-carcinoma-patient-guide.html"},
+  {t:"Squamous Cell Carcinoma", c:"Skin Cancer", u:"/medical-dermatology/skin-cancer/squamous-cell-carcinoma-patient-guide.html"},
+  {t:"Actinic Keratosis", c:"Skin Cancer", u:"/medical-dermatology/skin-cancer/actinic-keratosis-patient-guide.html"},
+  {t:"Mohs Surgery", c:"Surgery", u:"/surgical-dermatology/mohs-surgery/mohs-surgery-melanoma-patient-guide.html"},
+  {t:"Skin Biopsy", c:"Diagnostics", u:"/medical-dermatology/skin-cancer/skin-biopsy-types-patient-guide.html"},
+  {t:"Male Pattern Baldness", c:"Hair Loss", u:"/medical-dermatology/hair-scalp/androgenetic-alopecia-male-pattern-baldness-patient-guide.html"},
+  {t:"Female Hair Loss", c:"Hair Loss", u:"/medical-dermatology/hair-scalp/female-pattern-hair-loss-patient-guide.html"},
+  {t:"Alopecia Areata", c:"Hair Loss", u:"/medical-dermatology/hair-scalp/alopecia-areata-patient-guide.html"},
+  {t:"Minoxidil for Hair Loss", c:"Treatment", u:"/medical-dermatology/hair-scalp/minoxidil-hair-loss-patient-guide.html"},
+  {t:"PRP for Hair Loss", c:"Treatment", u:"/medical-dermatology/hair-scalp/prp-therapy-for-hair-loss-platelet-rich-plasma-treatment-patient-guide.html"},
+  {t:"Scalp Psoriasis", c:"Scalp", u:"/medical-dermatology/hair-scalp/scalp-psoriasis-patient-guide.html"},
+  {t:"Sunscreen Guide", c:"Skincare", u:"/skincare/skincare-science/sunscreen-comprehensive-guide-patient-guide.html"},
+  {t:"Retinoids: Anti-Aging", c:"Skincare", u:"/skincare/skincare-science/retinoids-anti-aging-patient-guide.html"},
+  {t:"Vitamin C Serums", c:"Skincare", u:"/skincare/skincare-science/vitamin-c-serum-patient-guide.html"},
+  {t:"Hyaluronic Acid for Skin", c:"Skincare", u:"/skincare/skincare-science/hyaluronic-acid-skin-hydration-patient-guide.html"},
+  {t:"Mole Removal", c:"Procedures", u:"/surgical-dermatology/procedures/mole-removal-when-how-patient-guide.html"},
+  {t:"Cryotherapy", c:"Procedures", u:"/surgical-dermatology/procedures/cryotherapy-liquid-nitrogen-patient-guide.html"},
+  {t:"Wound Care After Surgery", c:"Post-Op", u:"/surgical-dermatology/pre-post-op/wound-care-after-skin-surgery-patient-guide.html"},
+  {t:"Scar Revision Surgery", c:"Procedures", u:"/surgical-dermatology/procedures/scar-revision-patient-guide.html"},
+  {t:"Seborrheic Dermatitis", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/seborrheic-dermatitis-patient-guide.html"},
+];
+
+const input = document.getElementById('searchInput');
+const results = document.getElementById('searchResults');
+
+if (input) {
+  input.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    if (q.length < 2) { results.classList.remove('active'); return; }
+    const matches = articles.filter(a => a.t.toLowerCase().includes(q) || a.c.toLowerCase().includes(q));
+    if (matches.length === 0) { results.classList.remove('active'); return; }
+    results.innerHTML = matches.slice(0, 8).map(a =>
+      `<a href="${a.u}" class="search-result-item"><div class="search-result-title">${a.t}</div><div class="search-result-cat">${a.c}</div></a>`
+    ).join('');
+    results.classList.add('active');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-section')) results.classList.remove('active');
+  });
+}
+</script>
+</body>
+</html>
