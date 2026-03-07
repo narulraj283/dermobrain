@@ -1293,12 +1293,12 @@
                     <div style="margin-bottom: 20px;">
                         <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Filter by Category</div>
                         <div class="resource-filters">
-                            <button class="resource-filter-btn active" onclick="filterArticles('all')">All</button>
-                            <button class="resource-filter-btn" onclick="filterArticles('Acne')">Acne</button>
-                            <button class="resource-filter-btn" onclick="filterArticles('Aging')">Aging</button>
-                            <button class="resource-filter-btn" onclick="filterArticles('Eczema')">Eczema</button>
-                            <button class="resource-filter-btn" onclick="filterArticles('Melanoma')">Melanoma</button>
-                            <button class="resource-filter-btn" onclick="filterArticles('Psoriasis')">Psoriasis</button>
+                            <button class="resource-filter-btn active" onclick="filterArticles('all', this)">All</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Acne', this)">Acne</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Aging', this)">Aging</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Eczema', this)">Eczema</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Melanoma', this)">Melanoma</button>
+                            <button class="resource-filter-btn" onclick="filterArticles('Psoriasis', this)">Psoriasis</button>
                         </div>
                     </div>
 
@@ -1386,10 +1386,10 @@
                     <h2 style="font-size: 24px; margin-bottom: 24px;">Analytics & Insights</h2>
 
                     <div class="date-selector">
-                        <button class="date-btn active" onclick="changeDateRange('7')">Last 7 Days</button>
-                        <button class="date-btn" onclick="changeDateRange('30')">Last 30 Days</button>
-                        <button class="date-btn" onclick="changeDateRange('90')">Last 90 Days</button>
-                        <button class="date-btn" onclick="changeDateRange('custom')">Custom Range</button>
+                        <button class="date-btn active" onclick="changeDateRange('7', this)">Last 7 Days</button>
+                        <button class="date-btn" onclick="changeDateRange('30', this)">Last 30 Days</button>
+                        <button class="date-btn" onclick="changeDateRange('90', this)">Last 90 Days</button>
+                        <button class="date-btn" onclick="changeDateRange('custom', this)">Custom Range</button>
                     </div>
 
                     <div class="analytics-grid">
@@ -1966,12 +1966,12 @@
             renderTopViewsChart();
         }
 
-        function filterArticles(category) {
+        function filterArticles(category, el) {
             APP_STATE.currentFilter = category;
             document.querySelectorAll('.resource-filter-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            if (el) el.classList.add('active');
             renderArticles(category);
         }
 
@@ -2226,12 +2226,12 @@
             `).join('');
         }
 
-        function changeDateRange(range) {
+        function changeDateRange(range, el) {
             APP_STATE.currentDateRange = range;
             document.querySelectorAll('.date-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            if (el) el.classList.add('active');
             renderAnalytics();
         }
 

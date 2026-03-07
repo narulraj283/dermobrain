@@ -2453,8 +2453,14 @@
                 tabContent.classList.add('active');
             }
 
-            // Highlight active button
-            event.target.classList.add('active');
+            // Highlight active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            const navLink = document.querySelector(`.nav-link[onclick="switchTab('${tabName}')"]`);
+            if (navLink) {
+                navLink.classList.add('active');
+            }
         }
 
         function showNotifications() {

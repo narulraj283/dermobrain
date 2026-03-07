@@ -1844,13 +1844,16 @@
                 selectedTab.classList.add('active');
             }
 
-            // Highlight active button
-            event.target.classList.add('active');
-
             // Highlight active nav link
             const navLink = document.querySelector(`.nav-link[onclick="switchTab('${tabName}')"]`);
             if (navLink) {
                 navLink.classList.add('active');
+            }
+
+            // Highlight active tab button if exists
+            const tabBtn = document.querySelector(`.tab-btn[onclick="switchTab('${tabName}')"]`);
+            if (tabBtn) {
+                tabBtn.classList.add('active');
             }
         }
 
