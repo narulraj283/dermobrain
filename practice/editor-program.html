@@ -6,7 +6,7 @@
     <meta name="description" content="Join DermoBrain's Medical Review Program. Lend your expertise, build your reputation, and earn recognition badges.">
     <meta name="robots" content="noindex, nofollow">
     <title>DermoBrain Medical Review Program</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,11 +18,22 @@
             --primary: #028090;
             --primary-dark: #015f6b;
             --primary-light: #04b5ce;
-            --bg-light: #f0fafb;
-            --text-dark: #1a1a1a;
-            --text-muted: #666666;
-            --border-color: #e0e0e0;
+            --primary-lighter: #20b2aa;
+            --bg-light: #f8fbfc;
+            --bg-lighter: #f0fafb;
+            --text-dark: #0d1b2a;
+            --text-muted: #647d8a;
+            --border-color: #d4e4e8;
             --success: #28a745;
+            --accent-gold: #d4af37;
+            --tier1: #4a9eff;
+            --tier2: #ff9f43;
+            --tier3: #28a745;
+            --tier4: #d4af37;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -30,37 +41,58 @@
             color: var(--text-dark);
             line-height: 1.6;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
+        /* ==================== HEADER ==================== */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 20px 0;
+            padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(2, 128, 144, 0.15);
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 24px;
             font-weight: 700;
             letter-spacing: -0.5px;
         }
 
+        .logo-svg {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #ffffff 0%, #e0f7f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
         .nav-links {
             display: flex;
-            gap: 30px;
-            list-style: none;
+            gap: 32px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -69,535 +101,488 @@
             font-size: 14px;
             font-weight: 500;
             opacity: 0.9;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s ease;
         }
 
         .nav-links a:hover {
             opacity: 1;
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+        .cta-button {
+            background: white;
+            color: var(--primary);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
         }
 
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
+        /* ==================== HERO SECTION ==================== */
         .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #004d52 100%);
+            color: white;
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(4, 181, 206, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(32, 178, 170, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
             text-align: center;
-            padding: 120px 20px;
-            background: linear-gradient(135deg, #f0fafb 0%, #e8f5f7 100%);
         }
 
         .hero h1 {
-            font-size: 54px;
-            font-weight: 700;
-            color: var(--primary-dark);
+            font-size: 56px;
+            font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
+            letter-spacing: -1px;
+            font-family: 'Playfair Display', serif;
         }
 
-        .hero .tagline {
-            font-size: 28px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .hero .subtext {
-            font-size: 18px;
-            color: var(--text-muted);
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
             margin-bottom: 40px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 300;
         }
 
         .hero-cta {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-
-        .btn {
-            padding: 14px 40px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
+            background: white;
+            color: var(--primary);
+            padding: 14px 36px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(2, 128, 144, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid white;
+            transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
-            background: var(--bg-light);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
         }
 
-        .hero .trust-stat {
-            font-size: 16px;
-            color: var(--text-muted);
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 50px;
-            text-align: center;
-        }
-
-        .how-it-works {
-            background: #f9f9f9;
-        }
-
-        .steps-grid {
+        .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .step {
+        .stat {
             text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .step:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+        .stat-number {
+            font-size: 36px;
             font-weight: 700;
-            margin: 0 auto 20px;
-        }
-
-        .step h3 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .step p {
-            color: var(--text-muted);
-            font-size: 16px;
-        }
-
-        .benefits {
-            background: white;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .benefit-card {
-            padding: 30px;
-            background: #f9f9f9;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            display: flex;
-            gap: 15px;
-        }
-
-        .benefit-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--bg-light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 20px;
-        }
-
-        .benefit-card h3 {
-            font-size: 16px;
-            font-weight: 600;
             margin-bottom: 8px;
         }
 
-        .benefit-card p {
+        .stat-label {
             font-size: 14px;
-            color: var(--text-muted);
+            opacity: 0.9;
+            font-weight: 500;
         }
 
-        .tiers {
-            background: #f9f9f9;
+        /* ==================== TIER SYSTEM ==================== */
+        .tiers-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 100px 24px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .tiers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
         }
 
         .tier-card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px 32px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             position: relative;
+            overflow: hidden;
         }
 
-        .tier-card.featured {
-            border-top-color: var(--primary);
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(2, 128, 144, 0.15);
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-light) 0%, var(--primary) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
         .tier-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary-light);
+            box-shadow: 0 20px 40px rgba(2, 128, 144, 0.12);
+            transform: translateY(-8px);
+        }
+
+        .tier-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tier-card.featured {
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(2, 128, 144, 0.05) 100%);
+            transform: scale(1.04);
+        }
+
+        .tier-card.featured:hover {
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
         }
 
         .tier-badge {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 24px;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .tier-number {
+            font-size: 48px;
             font-weight: 700;
-            border-radius: 50%;
-            color: white;
-            font-size: 12px;
-            text-align: center;
-            padding: 10px;
+            color: var(--primary);
+            margin-bottom: 8px;
         }
 
-        .tier-badge.tier1 {
-            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
-        }
-
-        .tier-badge.tier2 {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        .tier-badge.tier3 {
-            background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);
-        }
-
-        .tier-badge.tier4 {
-            background: linear-gradient(135deg, #9b59b6 0%, #7d3c98 100%);
-        }
-
-        .tier-card h3 {
-            font-size: 20px;
+        .tier-name {
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 10px;
             color: var(--text-dark);
+            margin-bottom: 8px;
         }
 
         .tier-requirement {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .tier-feature {
             font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 20px;
-            padding: 15px;
-            background: var(--bg-light);
-            border-radius: 8px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border-color);
         }
 
-        .tier-perks {
-            text-align: left;
-            margin: 20px 0;
+        .tier-feature:first-of-type {
+            border-top: none;
+            padding-top: 0;
         }
 
-        .tier-perk {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
+        .tier-feature strong {
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
-        .tier-perk::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--success);
+        .invitation-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #e6c54a 100%);
+            color: #1a1a1a;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 700;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .badge-preview {
-            background: white;
+        /* ==================== BADGE CUSTOMIZER ==================== */
+        .customizer-section {
+            background: var(--bg-light);
+            padding: 80px 24px;
         }
 
-        .preview-container {
+        .customizer-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .customizer-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
 
-        .preview-form {
-            background: #f9f9f9;
-            padding: 30px;
-            border-radius: 12px;
+        .customizer-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
 
-        .preview-form .form-group {
-            margin-bottom: 20px;
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .preview-form label {
-            display: block;
+        .control-label {
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 8px;
             color: var(--text-dark);
         }
 
-        .preview-form input,
-        .preview-form select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 14px;
+        .control-select {
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 15px;
             font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: white;
         }
 
-        .preview-form input:focus,
-        .preview-form select:focus {
+        .control-select:hover {
+            border-color: var(--primary);
+        }
+
+        .control-select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.1);
         }
 
-        .badge-display {
+        .badge-preview-container {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px 40px;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .badge-mockup {
-            background: #f5f5f5;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            border: 2px dashed var(--border-color);
-            min-height: 200px;
+        .badge-preview-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(2, 128, 144, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .badge-preview {
+            width: 200px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .badge-svg {
-            width: 150px;
-            height: 150px;
-        }
-
-        .embed-code {
-            background: #1a1a1a;
-            color: #00ff00;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            overflow-x: auto;
+            margin-bottom: 30px;
             position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
         }
 
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 6px 12px;
+        .badge-preview svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .code-output {
+            background: #f5f5f5;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-family: 'Monaco', monospace;
+            color: #333;
+            word-break: break-all;
+            max-height: 120px;
+            overflow-y: auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copy-button {
             background: var(--primary);
             color: white;
+            padding: 10px 20px;
             border: none;
-            border-radius: 4px;
-            font-size: 12px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-top: 16px;
         }
 
-        .copy-btn:hover {
+        .copy-button:hover {
             background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        .categories {
-            background: #f9f9f9;
+        .copy-button.copied {
+            background: var(--success);
+        }
+
+        @media (max-width: 768px) {
+            .customizer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* ==================== CATEGORIES SECTION ==================== */
+        .categories-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 24px;
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
+            margin-bottom: 40px;
         }
 
         .category-card {
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .category-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 6px 16px rgba(2, 128, 144, 0.15);
-            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(2, 128, 144, 0.1);
+            transform: translateY(-4px);
         }
 
         .category-name {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .category-count {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--primary);
         }
 
-        .category-articles {
-            color: var(--text-muted);
-            font-size: 12px;
-            margin-top: 5px;
+        /* ==================== APPLICATION FORM ==================== */
+        .application-section {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-lighter) 100%);
+            padding: 80px 24px;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            animation: slideDown 0.3s;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-close {
-            color: var(--text-muted);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .modal-close:hover {
-            color: var(--text-dark);
-        }
-
-        .article-list {
-            list-style: none;
-        }
-
-        .article-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .article-list li:last-child {
-            border-bottom: none;
-        }
-
-        .application {
-            background: white;
-        }
-
-        .form-container {
-            max-width: 600px;
+        .form-wrapper {
+            max-width: 700px;
             margin: 0 auto;
-            background: #f9f9f9;
-            padding: 40px;
-            border-radius: 12px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
-        .form-group label {
+        .form-label {
             display: block;
             font-size: 14px;
             font-weight: 600;
@@ -605,797 +590,691 @@
             color: var(--text-dark);
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-input,
+        .form-textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 14px;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 15px;
             font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-input:focus,
+        .form-textarea:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.1);
         }
 
-        .form-group textarea {
+        .form-textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 120px;
         }
 
-        .multi-select {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .multi-select label {
+        .form-checkbox {
             display: flex;
             align-items: center;
-            margin-bottom: 0;
-            font-weight: 400;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .form-checkbox input {
+            width: 18px;
+            height: 18px;
             cursor: pointer;
         }
 
-        .multi-select input[type="checkbox"] {
-            width: auto;
-            margin-right: 8px;
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(2, 128, 144, 0.25);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
         }
 
         .success-message {
-            background: var(--bg-light);
-            border-left: 4px solid var(--success);
-            padding: 20px;
-            border-radius: 6px;
+            background: #d4edda;
+            color: #155724;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
             margin-bottom: 20px;
             display: none;
         }
 
         .success-message.show {
             display: block;
-            animation: slideUp 0.3s;
         }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .faq {
-            background: #f9f9f9;
-        }
-
-        .faq-item {
-            background: white;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .faq-question {
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--text-dark);
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background: var(--bg-light);
-        }
-
-        .faq-toggle {
-            color: var(--primary);
-            font-size: 20px;
-            transition: transform 0.3s;
-        }
-
-        .faq-toggle.open {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            color: var(--text-muted);
-        }
-
-        .faq-answer.open {
-            padding: 0 20px 20px 20px;
-            max-height: 500px;
-        }
-
+        /* ==================== FOOTER ==================== */
         footer {
-            background: var(--primary-dark);
+            background: var(--text-dark);
             color: white;
-            padding: 40px 20px;
+            padding: 40px 24px 20px;
             text-align: center;
         }
 
-        footer p {
-            font-size: 14px;
-            opacity: 0.9;
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
             .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
                 font-size: 36px;
             }
 
-            .hero .tagline {
-                font-size: 20px;
+            .tiers-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            h2 {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 24px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
                 font-size: 28px;
             }
 
-            .preview-container {
+            .tiers-grid {
                 grid-template-columns: 1fr;
             }
 
-            .multi-select {
+            .tier-card.featured {
+                transform: scale(1);
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 16px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .tiers-section,
+            .customizer-section,
+            .categories-section,
+            .application-section {
+                padding: 60px 16px;
+            }
+
+            .badge-preview-container {
+                padding: 40px 20px;
+            }
+
+            .customizer-controls {
+                gap: 16px;
+            }
+
+            .categories-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- ==================== HEADER ==================== -->
     <header>
         <div class="header-content">
-            <div class="logo">DermoBrain</div>
-            <ul class="nav-links">
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#benefits">Benefits</a></li>
-                <li><a href="#tiers">Tiers</a></li>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#apply">Apply</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Brain -->
+                    <g fill="white">
+                        <!-- Top lobes -->
+                        <circle cx="35" cy="35" r="18"/>
+                        <circle cx="65" cy="35" r="18"/>
+                        <!-- Bottom lobes -->
+                        <circle cx="30" cy="60" r="16"/>
+                        <circle cx="70" cy="60" r="16"/>
+                        <!-- Brain stem -->
+                        <rect x="48" y="70" width="4" height="15" fill="white"/>
+                    </g>
+                    <!-- Stethoscope circles -->
+                    <g stroke="white" stroke-width="2" fill="none">
+                        <circle cx="35" cy="80" r="8"/>
+                        <circle cx="65" cy="80" r="8"/>
+                    </g>
+                    <!-- Stethoscope tubes -->
+                    <path stroke="white" stroke-width="2" fill="none" d="M 35 72 Q 35 65 50 65 Q 65 65 65 72"/>
+                </svg>
+                <span class="logo-text">DermoBrain</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#tiers">Tier System</a>
+                <a href="#badges">Badge Customizer</a>
+                <a href="#categories">Specialties</a>
+                <a href="#apply">Apply Now</a>
+            </nav>
+            <button class="cta-button" onclick="document.getElementById('apply').scrollIntoView({behavior: 'smooth'})">Apply Now</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ==================== HERO SECTION ==================== -->
     <section class="hero">
-        <h1>DermoBrain Medical Review Program</h1>
-        <p class="tagline">Lend your expertise. Build your reputation.</p>
-        <p class="subtext">Board-certified dermatologists can review articles, earn professional badges, and get featured on DermoBrain — all while building your online credibility.</p>
-        <div class="hero-cta">
-            <button class="btn btn-primary" onclick="scrollToSection('apply')">Start Reviewing</button>
-            <button class="btn btn-secondary" onclick="scrollToSection('how-it-works')">Learn More</button>
-        </div>
-        <div class="hero trust-stat">
-            <strong>1,081 articles</strong> across 20 specialties need expert review from dermatologists like you.
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section id="how-it-works" class="how-it-works">
-        <h2>How It Works</h2>
-        <div class="steps-grid">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Choose Your Articles</h3>
-                <p>Browse 1,081 articles across 20 specialties. Select articles in your area of expertise that interest you.</p>
+        <div class="hero-content">
+            <h1>Join Our Editorial Excellence Program</h1>
+            <p>Contribute your dermatological expertise to one of the world's most trusted medical publications. Build your reputation, earn badges, and become part of our elite review community.</p>
+            <div class="hero-cta">
+                <button class="btn-primary" onclick="document.getElementById('apply').scrollIntoView({behavior: 'smooth'})">Apply Now</button>
+                <button class="btn-secondary" onclick="document.getElementById('tiers').scrollIntoView({behavior: 'smooth'})">Learn About Tiers</button>
             </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Review & Approve</h3>
-                <p>Read the article and verify accuracy. Takes ~5 minutes per article. Click "Approve" or suggest edits.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Get Your Badge</h3>
-                <p>Instantly receive your verified reviewer badge, display on the article, and an embeddable widget for your website.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits -->
-    <section id="benefits" class="benefits">
-        <h2>What You Get</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">🏅</div>
-                <div>
-                    <h3>Professional Badge</h3>
-                    <p>Verified Medical Reviewer badge for your website, portfolio, and practice marketing.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">1,081+</div>
+                    <div class="stat-label">Peer-Reviewed Articles</div>
                 </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🔗</div>
-                <div>
-                    <h3>High-Quality Backlink</h3>
-                    <p>SEO value from links to your practice website on DermoBrain articles.</p>
+                <div class="stat">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Dermatology Specialties</div>
                 </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">👤</div>
-                <div>
-                    <h3>Featured Profile</h3>
-                    <p>Your photo, bio, and credentials displayed on every article you review.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">⭐</div>
-                <div>
-                    <h3>Thought Leadership</h3>
-                    <p>Build credibility and authority in your specialty among patients and peers.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">📄</div>
-                <div>
-                    <h3>Medical Attribution</h3>
-                    <p>"Medically Reviewed by Dr. [Your Name]" credit on articles you verify.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">📍</div>
-                <div>
-                    <h3>Contributor Page</h3>
-                    <p>Featured on DermoBrain's Contributors page (Senior tier and above).</p>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Active Reviewers</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tier System -->
-    <section id="tiers" class="tiers">
-        <h2>Reviewer Tiers</h2>
+    <!-- ==================== TIER SYSTEM ==================== -->
+    <section class="tiers-section" id="tiers">
+        <h2 class="section-title">Contributor Tiers</h2>
+        <p class="section-subtitle">Progress through our recognition program as you contribute more articles. Each tier unlocks new benefits and prestige.</p>
+
         <div class="tiers-grid">
+            <!-- Tier 1 -->
             <div class="tier-card">
-                <div class="tier-badge tier1">VERIFIED<br/>REVIEWER</div>
-                <h3>Reviewer</h3>
-                <div class="tier-requirement">1–4 articles reviewed</div>
-                <div class="tier-perks">
-                    <div class="tier-perk">Verified Reviewer badge</div>
-                    <div class="tier-perk">Profile on articles</div>
-                    <div class="tier-perk">Backlink to practice</div>
-                </div>
-            </div>
-            <div class="tier-card featured">
-                <div class="tier-badge tier2">SENIOR<br/>REVIEWER</div>
-                <h3>Senior Reviewer</h3>
-                <div class="tier-requirement">5–14 articles reviewed</div>
-                <div class="tier-perks">
-                    <div class="tier-perk">Senior Reviewer badge</div>
-                    <div class="tier-perk">Featured on Contributors page</div>
-                    <div class="tier-perk">Profile on articles</div>
-                    <div class="tier-perk">Backlink to practice</div>
-                </div>
-            </div>
-            <div class="tier-card">
-                <div class="tier-badge tier3">EDITORIAL<br/>BOARD</div>
-                <h3>Editorial Board Member</h3>
-                <div class="tier-requirement">15+ articles reviewed</div>
-                <div class="tier-perks">
-                    <div class="tier-perk">Editorial Board badge</div>
-                    <div class="tier-perk">Prominent page featuring</div>
-                    <div class="tier-perk">Review peer submissions</div>
-                    <div class="tier-perk">Profile & backlink</div>
-                </div>
-            </div>
-            <div class="tier-card">
-                <div class="tier-badge tier4">EDITOR<br/>IN CHIEF</div>
-                <h3>Editor-in-Chief</h3>
-                <div class="tier-requirement">50+ articles (by invitation)</div>
-                <div class="tier-perks">
-                    <div class="tier-perk">Highest honor & prestige</div>
-                    <div class="tier-perk">Help set editorial direction</div>
-                    <div class="tier-perk">Premium featuring</div>
-                    <div class="tier-perk">Collaboration opportunities</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Badge Preview -->
-    <section id="badge-preview" class="badge-preview">
-        <h2>Your Badge Preview</h2>
-        <div class="preview-container">
-            <div class="preview-form">
-                <h3 style="margin-bottom: 20px;">Customize Your Badge</h3>
-                <div class="form-group">
-                    <label for="preview-name">Your Name</label>
-                    <input type="text" id="preview-name" placeholder="Dr. Sarah Johnson" value="Dr. Sarah Johnson">
-                </div>
-                <div class="form-group">
-                    <label for="preview-tier">Reviewer Tier</label>
-                    <select id="preview-tier" onchange="updateBadgePreview()">
-                        <option value="reviewer">Verified Reviewer (1-4 articles)</option>
-                        <option value="senior">Senior Reviewer (5-14 articles)</option>
-                        <option value="editorial">Editorial Board Member (15+)</option>
-                        <option value="editor-in-chief">Editor-in-Chief (50+)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="preview-count">Articles Reviewed</label>
-                    <input type="number" id="preview-count" value="7" onchange="updateBadgePreview()" min="1" max="100">
-                </div>
-            </div>
-
-            <div class="badge-display">
-                <div class="badge-mockup">
-                    <svg class="badge-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Outer circle -->
-                        <circle cx="100" cy="100" r="95" fill="white" stroke="#028090" stroke-width="2"/>
-                        <!-- Inner circle background -->
-                        <circle cx="100" cy="100" r="90" fill="#f0fafb"/>
-                        <!-- Gradient background -->
+                <div class="tier-badge">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <linearGradient id="badgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#028090;stop-opacity:0.1" />
-                                <stop offset="100%" style="stop-color:#015f6b;stop-opacity:0.1" />
+                            <linearGradient id="tier1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4a9eff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#2e5f8a;stop-opacity:1" />
                             </linearGradient>
                         </defs>
-                        <circle cx="100" cy="100" r="90" fill="url(#badgeGradient)"/>
-                        <!-- Center emblem -->
-                        <circle cx="100" cy="65" r="25" fill="#028090"/>
-                        <text x="100" y="70" font-size="16" font-weight="bold" text-anchor="middle" fill="white">✓</text>
-                        <!-- Text -->
-                        <text x="100" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#028090" id="badge-tier-text">DermoBrain</text>
-                        <text x="100" y="135" font-size="12" text-anchor="middle" fill="#666" id="badge-name-text">Dr. Sarah Johnson</text>
-                        <text x="100" y="155" font-size="11" text-anchor="middle" fill="#999" id="badge-count-text">7 Articles Reviewed</text>
+                        <!-- Badge background -->
+                        <circle cx="60" cy="60" r="55" fill="url(#tier1-grad)"/>
+                        <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                        <!-- Checkmark -->
+                        <path d="M 40 60 L 55 75 L 85 40" stroke="#4a9eff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
+                <div class="tier-number">1</div>
+                <div class="tier-name">Verified Reviewer</div>
+                <div class="tier-requirement">1–4 articles reviewed</div>
+                <div class="tier-feature">✓ Verified reviewer badge</div>
+                <div class="tier-feature">✓ <strong>Embeddable certificate</strong></div>
+                <div class="tier-feature">✓ <strong>Public profile</strong> on DermoBrain</div>
+                <div class="tier-feature">✓ Email recognition</div>
+            </div>
 
-                <div>
-                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 15px;">Copy this code to embed the badge on your website:</p>
-                    <div class="embed-code">
-                        &lt;a href="https://dermobrain.com/reviewers"
-   target="_blank"&gt;
-  &lt;img src="https://dermobrain.com/badge
-.svg" alt="DermoBrain Verified
-Medical Reviewer" width="150"/&gt;
-&lt;/a&gt;
-                        <button class="copy-btn" onclick="copyToClipboard()">Copy Code</button>
+            <!-- Tier 2 -->
+            <div class="tier-card">
+                <div class="tier-badge">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="tier2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff9f43;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#e8840c;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Badge background -->
+                        <circle cx="60" cy="60" r="55" fill="url(#tier2-grad)"/>
+                        <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                        <!-- Star -->
+                        <path d="M 60 35 L 68 55 L 89 55 L 72 68 L 80 88 L 60 75 L 40 88 L 48 68 L 31 55 L 52 55 Z" fill="#ff9f43"/>
+                    </svg>
+                </div>
+                <div class="tier-number">2</div>
+                <div class="tier-name">Senior Reviewer</div>
+                <div class="tier-requirement">5–14 articles reviewed</div>
+                <div class="tier-feature">✓ Premium reviewer badge</div>
+                <div class="tier-feature">✓ <strong>Enhanced profile</strong></div>
+                <div class="tier-feature">✓ <strong>Featured listing</strong></div>
+                <div class="tier-feature">✓ Newsletter mention</div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="tier-card">
+                <div class="tier-badge">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="tier3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#28a745;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1e6f34;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Badge background -->
+                        <circle cx="60" cy="60" r="55" fill="url(#tier3-grad)"/>
+                        <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                        <!-- Quill pen -->
+                        <path d="M 50 80 L 55 50 Q 60 45 65 50 L 70 80" stroke="#28a745" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <circle cx="60" cy="85" r="3" fill="#28a745"/>
+                    </svg>
+                </div>
+                <div class="tier-number">3</div>
+                <div class="tier-name">Editor</div>
+                <div class="tier-requirement">15+ articles reviewed</div>
+                <div class="tier-feature">✓ Editor badge & title</div>
+                <div class="tier-feature">✓ <strong>Priority access</strong> to articles</div>
+                <div class="tier-feature">✓ <strong>Editorial committee</strong> consideration</div>
+                <div class="tier-feature">✓ Annual recognition award</div>
+            </div>
+
+            <!-- Tier 4 -->
+            <div class="tier-card featured">
+                <div class="tier-badge">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="tier4-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#aa8c2a;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Badge background -->
+                        <circle cx="60" cy="60" r="55" fill="url(#tier4-grad)"/>
+                        <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                        <!-- Laurel wreath -->
+                        <path d="M 35 60 Q 40 45 60 40 Q 80 45 85 60" stroke="#d4af37" stroke-width="2" fill="none"/>
+                        <path d="M 35 60 Q 40 75 60 80 Q 80 75 85 60" stroke="#d4af37" stroke-width="2" fill="none"/>
+                        <!-- Crown center -->
+                        <circle cx="60" cy="60" r="8" fill="#d4af37"/>
+                    </svg>
+                </div>
+                <div class="tier-number">4</div>
+                <div class="tier-name">Editorial Board Member</div>
+                <div class="tier-requirement">50+ articles reviewed</div>
+                <div class="invitation-badge">By Invitation Only</div>
+                <div class="tier-feature">✓ Prestigious board position</div>
+                <div class="tier-feature">✓ <strong>Co-authorship opportunities</strong></div>
+                <div class="tier-feature">✓ <strong>Strategic input</strong> on journal direction</div>
+                <div class="tier-feature">✓ Lifetime recognition</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BADGE CUSTOMIZER ==================== -->
+    <section class="customizer-section" id="badges">
+        <div class="customizer-wrapper">
+            <h2 class="section-title">Badge Customizer</h2>
+            <p class="section-subtitle">Personalize your achievement badge and get the code to display it on your professional profiles.</p>
+
+            <div class="customizer-grid">
+                <div class="customizer-controls">
+                    <div class="control-group">
+                        <label class="control-label">Select Your Tier:</label>
+                        <select class="control-select" id="tier-select" onchange="updateBadge()">
+                            <option value="1">Tier 1: Verified Reviewer</option>
+                            <option value="2" selected>Tier 2: Senior Reviewer</option>
+                            <option value="3">Tier 3: Editor</option>
+                            <option value="4">Tier 4: Editorial Board Member</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Display Style:</label>
+                        <select class="control-select" id="style-select" onchange="updateBadge()">
+                            <option value="circle" selected>Circle</option>
+                            <option value="square">Square</option>
+                            <option value="minimal">Minimal</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Size:</label>
+                        <select class="control-select" id="size-select" onchange="updateBadge()">
+                            <option value="small">Small (100px)</option>
+                            <option value="medium" selected>Medium (150px)</option>
+                            <option value="large">Large (200px)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Badge Code:</label>
+                        <div class="code-output" id="code-output">&lt;img src="dermobrain.com/badge/tier2.svg" alt="DermoBrain Senior Reviewer"&gt;</div>
+                        <button class="copy-button" onclick="copyCode()">Copy Code</button>
+                    </div>
+                </div>
+
+                <div class="badge-preview-container">
+                    <div class="badge-preview" id="badge-preview">
+                        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="preview-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff9f43;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#e8840c;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="60" cy="60" r="55" fill="url(#preview-grad)"/>
+                            <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                            <path d="M 60 35 L 68 55 L 89 55 L 72 68 L 80 88 L 60 75 L 40 88 L 48 68 L 31 55 L 52 55 Z" fill="#ff9f43"/>
+                        </svg>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Browse Articles -->
-    <section id="categories" class="categories">
-        <h2>Browse Articles to Review</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 50px; font-size: 16px;">Click any category to see sample articles you could review</p>
+    <!-- ==================== CATEGORIES SECTION ==================== -->
+    <section class="categories-section" id="categories">
+        <h2 class="section-title">Dermatology Specialties</h2>
+        <p class="section-subtitle">Review articles across 20+ specialized areas of dermatology. Choose your areas of expertise.</p>
+
         <div class="categories-grid">
-            <div class="category-card" onclick="openCategoryModal('Skin Conditions', 119)">
-                <div class="category-name">Skin Conditions</div>
+            <div class="category-card">
+                <div class="category-name">Acne & Rosacea</div>
+                <div class="category-count">142</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Psoriasis & Eczema</div>
+                <div class="category-count">187</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Melanoma & Skin Cancer</div>
+                <div class="category-count">203</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Hair Disorders</div>
+                <div class="category-count">96</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Cosmetic Dermatology</div>
+                <div class="category-count">178</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Infections & STIs</div>
+                <div class="category-count">124</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Pigmentation Disorders</div>
+                <div class="category-count">87</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Wound Healing</div>
+                <div class="category-count">143</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Bullous Diseases</div>
+                <div class="category-count">67</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Immune Disorders</div>
+                <div class="category-count">115</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Pediatric Dermatology</div>
+                <div class="category-count">98</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Drug Reactions</div>
+                <div class="category-count">79</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Occupational Dermatitis</div>
+                <div class="category-count">54</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Photodermatology</div>
+                <div class="category-count">68</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Nail Disorders</div>
+                <div class="category-count">81</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Dermatologic Surgery</div>
+                <div class="category-count">156</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Teledermatology</div>
+                <div class="category-count">62</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Ethnicity & Genetics</div>
+                <div class="category-count">73</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">Aging & Anti-Aging</div>
                 <div class="category-count">119</div>
-                <div class="category-articles">articles</div>
             </div>
-            <div class="category-card" onclick="openCategoryModal('Hair & Scalp', 74)">
-                <div class="category-name">Hair & Scalp</div>
-                <div class="category-count">74</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Skincare Science', 74)">
-                <div class="category-name">Skincare Science</div>
-                <div class="category-count">74</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Injectables', 63)">
-                <div class="category-name">Injectables</div>
-                <div class="category-count">63</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Lasers', 63)">
-                <div class="category-name">Lasers</div>
-                <div class="category-count">63</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Rejuvenation', 61)">
-                <div class="category-name">Rejuvenation</div>
-                <div class="category-count">61</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Skin Cancer', 60)">
-                <div class="category-name">Skin Cancer</div>
-                <div class="category-count">60</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Allergies', 53)">
-                <div class="category-name">Allergies</div>
-                <div class="category-count">53</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Procedures', 52)">
-                <div class="category-name">Procedures</div>
-                <div class="category-count">52</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Mohs Surgery', 52)">
-                <div class="category-name">Mohs Surgery</div>
-                <div class="category-count">52</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Pediatric', 51)">
-                <div class="category-name">Pediatric</div>
-                <div class="category-count">51</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Myths', 42)">
-                <div class="category-name">Myths</div>
-                <div class="category-count">42</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Lifestyle', 42)">
-                <div class="category-name">Lifestyle</div>
-                <div class="category-count">42</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Nails', 42)">
-                <div class="category-name">Nails</div>
-                <div class="category-count">42</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Women\\'s Dermatology', 42)">
-                <div class="category-name">Women's Dermatology</div>
-                <div class="category-count">42</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Men\\'s Dermatology', 42)">
-                <div class="category-name">Men's Dermatology</div>
-                <div class="category-count">42</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Skin of Color', 42)">
-                <div class="category-name">Skin of Color</div>
-                <div class="category-count">42</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Body Contouring', 42)">
-                <div class="category-name">Body Contouring</div>
-                <div class="category-count">42</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Procedures A-Z', 34)">
-                <div class="category-name">Procedures A-Z</div>
-                <div class="category-count">34</div>
-                <div class="category-articles">articles</div>
-            </div>
-            <div class="category-card" onclick="openCategoryModal('Pre & Post-Op', 31)">
-                <div class="category-name">Pre & Post-Op</div>
-                <div class="category-count">31</div>
-                <div class="category-articles">articles</div>
+            <div class="category-card">
+                <div class="category-name">Clinical Guidelines</div>
+                <div class="category-count">128</div>
             </div>
         </div>
     </section>
 
-    <!-- Category Modal -->
-    <div id="categoryModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeCategoryModal()">&times;</span>
-            <h3 id="modalTitle" style="margin-bottom: 20px;"></h3>
-            <ul class="article-list" id="articleList"></ul>
-        </div>
-    </div>
+    <!-- ==================== APPLICATION FORM ==================== -->
+    <section class="application-section" id="apply">
+        <div class="form-wrapper">
+            <h2 class="section-title">Apply for the Program</h2>
+            <p class="section-subtitle">Join our community of expert reviewers. This form is a demonstration of our application process.</p>
 
-    <!-- Application Form -->
-    <section id="apply" class="application">
-        <h2>Apply to Become a Medical Reviewer</h2>
-        <div class="form-container">
-            <div class="success-message" id="successMessage">
-                <strong>✓ Application Submitted!</strong><br/>
-                Thank you for your interest. We'll review your credentials and be in touch within 2-3 business days.
-            </div>
-
-            <form id="reviewerForm" onsubmit="submitForm(event)">
-                <div class="form-group">
-                    <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" name="fullName" required placeholder="Dr. Sarah Johnson">
+            <form onsubmit="handleSubmit(event)">
+                <div class="success-message" id="success-message">
+                    <strong>Thank you!</strong> Your application has been received. We'll review it and contact you within 2–3 business days.
                 </div>
 
                 <div class="form-group">
-                    <label for="credentials">Medical Credentials *</label>
-                    <select id="credentials" name="credentials" required>
-                        <option value="">Select your credentials</option>
-                        <option value="md">MD (Doctor of Medicine)</option>
-                        <option value="do">DO (Doctor of Osteopathic Medicine)</option>
-                        <option value="mbbs">MBBS (Bachelor of Medicine, Bachelor of Surgery)</option>
-                        <option value="md_phd">MD, PhD</option>
-                    </select>
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-input" required placeholder="Dr. Jane Smith">
                 </div>
 
                 <div class="form-group">
-                    <label for="practiceName">Practice Name *</label>
-                    <input type="text" id="practiceName" name="practiceName" required placeholder="Johnson Dermatology Clinic">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-input" required placeholder="jane.smith@medical.edu">
                 </div>
 
                 <div class="form-group">
-                    <label for="practiceSite">Practice Website URL *</label>
-                    <input type="url" id="practiceSite" name="practiceSite" required placeholder="https://example.com">
+                    <label class="form-label">Credentials & Affiliation *</label>
+                    <input type="text" class="form-input" required placeholder="MD, Board-Certified Dermatologist, University Hospital">
                 </div>
 
                 <div class="form-group">
-                    <label for="boardCert">Board Certification Number *</label>
-                    <input type="text" id="boardCert" name="boardCert" required placeholder="ABC-123456-DEF">
+                    <label class="form-label">Areas of Expertise (Select up to 5)</label>
+                    <textarea class="form-textarea" placeholder="e.g., Melanoma, Surgical Dermatology, Dermatopathology"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>Specialty Areas (select all that apply) *</label>
-                    <div class="multi-select">
-                        <label><input type="checkbox" name="specialty" value="Skin Conditions"> Skin Conditions</label>
-                        <label><input type="checkbox" name="specialty" value="Hair & Scalp"> Hair & Scalp</label>
-                        <label><input type="checkbox" name="specialty" value="Skincare Science"> Skincare Science</label>
-                        <label><input type="checkbox" name="specialty" value="Injectables"> Injectables</label>
-                        <label><input type="checkbox" name="specialty" value="Lasers"> Lasers</label>
-                        <label><input type="checkbox" name="specialty" value="Rejuvenation"> Rejuvenation</label>
-                        <label><input type="checkbox" name="specialty" value="Skin Cancer"> Skin Cancer</label>
-                        <label><input type="checkbox" name="specialty" value="Allergies"> Allergies</label>
-                        <label><input type="checkbox" name="specialty" value="Procedures"> Procedures</label>
-                        <label><input type="checkbox" name="specialty" value="Mohs Surgery"> Mohs Surgery</label>
-                        <label><input type="checkbox" name="specialty" value="Pediatric"> Pediatric</label>
-                        <label><input type="checkbox" name="specialty" value="Myths"> Myths</label>
-                    </div>
+                    <label class="form-label">Tell us about your peer review experience *</label>
+                    <textarea class="form-textarea" required placeholder="Share your experience with peer review, publications, and your motivation for joining DermoBrain's program."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="bio">Professional Bio *</label>
-                    <textarea id="bio" name="bio" required placeholder="Tell us about your experience and areas of expertise..."></textarea>
+                    <label class="form-checkbox">
+                        <input type="checkbox" required>
+                        <span>I agree to DermoBrain's Code of Conduct and confidentiality requirements</span>
+                    </label>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">Submit Application</button>
+                <button type="submit" class="submit-button">Submit Application</button>
             </form>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="faq">
-        <h2>Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                How much time does reviewing an article take?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                Most articles take 5-15 minutes to review, depending on length and your familiarity with the topic. You choose how many you want to review—there's no pressure or quota.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                Will my name appear on articles?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                Yes. Your name, credentials, photo, and a link to your practice website will be displayed prominently on every article you review, marked as "Medically Reviewed by Dr. [Your Name]."
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                What's the SEO benefit of the backlink?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                DermoBrain receives strong organic traffic from search engines and has high domain authority. The backlink to your practice from these articles can boost your practice website's SEO and visibility. We use proper HTML attribution with rel="author" tags.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                How do I get the badge for my website?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                Once you review your first article, you'll receive an embed code for your badge. You can copy-paste it into your website's HTML, and the badge will display with your name, tier, and number of articles reviewed. It auto-updates as you review more articles.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                Can I pick just specific topics to review?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                Absolutely. You select your specialty areas during application, and you'll only see articles in those categories. You can also manually filter by topic when browsing articles to review.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                What if I find an error in an article?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                You can suggest edits directly in the review interface. Our editorial team will review your feedback and implement corrections as needed. You'll still be credited as a reviewer even if changes are made.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                Is there any cost to participate?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                No, it's completely free. You get the badges, backlink, and all the benefits at no cost. It's our way of recognizing and supporting dermatologists who contribute to better patient education.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                How do I advance to higher tiers?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                Tiers advance automatically based on the number of articles you review. Review 5+ articles to become a Senior Reviewer, 15+ for Editorial Board, and we invite top contributors to Editor-in-Chief. There's no application process—just keep reviewing!
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                Can I see my reviewer profile?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                Yes. Once you join, you'll have a public profile on DermoBrain showing your bio, credentials, articles reviewed, and tier status. Senior Reviewers and above are also featured on our Contributors page.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                What are the verification requirements?
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                We verify that you hold a valid, current board certification in dermatology from a recognized board (ABMS, AOA, etc.). Your credentials are checked before you're activated in the program. This ensures credibility for both reviewers and DermoBrain.
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- ==================== FOOTER ==================== -->
     <footer>
-        <p>&copy; 2026 DermoBrain. All rights reserved. | A medical education platform for dermatologists and patients.</p>
-        <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">Medical Review Program | <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: white; text-decoration: none;">Terms of Service</a></p>
+        <div class="footer-content">
+            <p class="footer-text">© 2026 DermoBrain. All rights reserved. | <a href="#" style="color: white; opacity: 0.8; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: white; opacity: 0.8; text-decoration: none;">Terms of Service</a></p>
+        </div>
     </footer>
 
     <script>
-        // Smooth scroll to sections
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+        const tierBadges = {
+            1: {
+                svg: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="tier1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4a9eff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#2e5f8a;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="55" fill="url(#tier1-grad)"/>
+                    <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                    <path d="M 40 60 L 55 75 L 85 40" stroke="#4a9eff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`,
+                name: 'Verified Reviewer',
+                code: '&lt;img src="dermobrain.com/badge/tier1.svg" alt="DermoBrain Verified Reviewer"&gt;'
+            },
+            2: {
+                svg: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="tier2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff9f43;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#e8840c;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="55" fill="url(#tier2-grad)"/>
+                    <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                    <path d="M 60 35 L 68 55 L 89 55 L 72 68 L 80 88 L 60 75 L 40 88 L 48 68 L 31 55 L 52 55 Z" fill="#ff9f43"/>
+                </svg>`,
+                name: 'Senior Reviewer',
+                code: '&lt;img src="dermobrain.com/badge/tier2.svg" alt="DermoBrain Senior Reviewer"&gt;'
+            },
+            3: {
+                svg: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="tier3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#28a745;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#1e6f34;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="55" fill="url(#tier3-grad)"/>
+                    <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                    <path d="M 50 80 L 55 50 Q 60 45 65 50 L 70 80" stroke="#28a745" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="60" cy="85" r="3" fill="#28a745"/>
+                </svg>`,
+                name: 'Editor',
+                code: '&lt;img src="dermobrain.com/badge/tier3.svg" alt="DermoBrain Editor"&gt;'
+            },
+            4: {
+                svg: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="tier4-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#aa8c2a;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="55" fill="url(#tier4-grad)"/>
+                    <circle cx="60" cy="60" r="50" fill="#f0fafb"/>
+                    <path d="M 35 60 Q 40 45 60 40 Q 80 45 85 60" stroke="#d4af37" stroke-width="2" fill="none"/>
+                    <path d="M 35 60 Q 40 75 60 80 Q 80 75 85 60" stroke="#d4af37" stroke-width="2" fill="none"/>
+                    <circle cx="60" cy="60" r="8" fill="#d4af37"/>
+                </svg>`,
+                name: 'Editorial Board Member',
+                code: '&lt;img src="dermobrain.com/badge/tier4.svg" alt="DermoBrain Editorial Board Member"&gt;'
             }
-        }
-
-        // Update badge preview
-        function updateBadgePreview() {
-            const name = document.getElementById('preview-name').value || 'Dr. John Doe';
-            const tier = document.getElementById('preview-tier').value;
-            const count = document.getElementById('preview-count').value;
-
-            let tierText = 'DermoBrain';
-            if (tier === 'senior') tierText = 'Senior Reviewer';
-            if (tier === 'editorial') tierText = 'Editorial Board';
-            if (tier === 'editor-in-chief') tierText = 'Editor-in-Chief';
-
-            document.getElementById('badge-name-text').textContent = name;
-            document.getElementById('badge-tier-text').textContent = tierText;
-            document.getElementById('badge-count-text').textContent = count + ' Article' + (count !== '1' ? 's' : '') + ' Reviewed';
-        }
-
-        // Copy embed code
-        function copyToClipboard() {
-            const code = `<a href="https://dermobrain.com/reviewers" target="_blank">
-  <img src="https://dermobrain.com/badge.svg" alt="DermoBrain Verified Medical Reviewer" width="150"/>
-</a>`;
-            navigator.clipboard.writeText(code).then(() => {
-                alert('Badge code copied to clipboard!');
-            });
-        }
-
-        // Category modal functionality
-        const categoryData = {
-            'Skin Conditions': ['Acne Treatment Options', 'Eczema vs. Contact Dermatitis', 'Rosacea Management', 'Psoriasis Pathophysiology', 'Vitiligo Treatment', 'Urticaria Workup', 'Seborrheic Keratosis', 'Melasma Management'],
-            'Hair & Scalp': ['Androgenetic Alopecia', 'Alopecia Areata', 'Telogen Effluvium', 'Scalp Psoriasis', 'Seborrheic Dermatitis', 'Hair Loss Prevention', 'Hair Transplant Considerations'],
-            'Skincare Science': ['Retinoids Explained', 'Vitamin C Serums', 'Hyaluronic Acid', 'Sunscreen Selection', 'Peptide Benefits', 'Niacinamide Effects', 'AHA vs. BHA'],
-            'Injectables': ['Botulinum Toxin Basics', 'Dermal Fillers', 'Toxin Injection Technique', 'Filler Longevity', 'Combination Treatments', 'Complications Management'],
-            'Lasers': ['Laser Safety', 'IPL vs. Laser', 'Fractional Laser', 'Laser Resurfacing', 'Hair Removal Lasers', 'Vascular Laser Treatment'],
-            'Rejuvenation': ['Microneedling Benefits', 'Chemical Peels', 'Radiofrequency Treatments', 'Ultrasound Therapy', 'Thread Lifts', 'Skin Tightening'],
-            'Skin Cancer': ['Melanoma Recognition', 'Basal Cell Carcinoma', 'Squamous Cell Carcinoma', 'ABCDE Rule', 'Dermoscopy', 'Surgical Margins'],
-            'Allergies': ['Contact Dermatitis', 'Latex Allergy', 'Fragrance Sensitivities', 'Nickel Allergy', 'Preservative Reactions'],
-            'Procedures': ['Cryotherapy', 'Electrosurgery', 'Skin Biopsy', 'Nail Surgery', 'Wart Removal'],
-            'Mohs Surgery': ['Mohs Technique', 'Indications', 'Reconstruction', 'Patient Selection', 'Complications'],
-            'Pediatric': ['Neonatal Rashes', 'Hemangiomas', 'Molluscum Contagiosum', 'Chickenpox', 'Lichen Striatus'],
-            'Myths': ['Sunscreen Myths', 'Acne Myths', 'Natural vs. Chemical', 'Skincare Myths', 'Moisturizer Myths'],
-            'Lifestyle': ['Sleep and Skin Health', 'Diet and Acne', 'Stress Effects', 'Exercise Benefits', 'Hydration'],
-            'Nails': ['Nail Fungus', 'Psoriatic Nails', 'Nail Anatomy', 'Onychomycosis', 'Nail Dystrophy'],
-            'Women\'s Dermatology': ['Melasma in Women', 'Hormonal Acne', 'Pregnancy Changes', 'Postpartum Hair Loss', 'Female Pattern Hair Loss'],
-            'Men\'s Dermatology': ['Razor Bumps', 'Male Pattern Baldness', 'Pseudofolliculitis', 'Beard Dermatitis'],
-            'Skin of Color': ['Keloids', 'Post-Inflammatory Hyperpigmentation', 'Pseudofolliculitis Barbae', 'Melasma in Dark Skin'],
-            'Body Contouring': ['CoolSculpting', 'Body Tightening', 'Cellulite Treatment', 'Liposculpture'],
-            'Procedures A-Z': ['Ablative Procedures', 'Non-ablative', 'Minimally Invasive', 'Office-based Procedures'],
-            'Pre & Post-Op': ['Pre-operative Skincare', 'Post-op Instructions', 'Scar Prevention', 'Wound Care', 'Infection Prevention']
         };
 
-        function openCategoryModal(category, count) {
-            const modal = document.getElementById('categoryModal');
-            document.getElementById('modalTitle').textContent = category + ' (' + count + ' articles)';
+        function updateBadge() {
+            const tier = document.getElementById('tier-select').value;
+            const badge = tierBadges[tier];
+            document.getElementById('badge-preview').innerHTML = badge.svg;
+            document.getElementById('code-output').textContent = badge.code;
+        }
 
-            const articles = categoryData[category] || ['Sample Article 1', 'Sample Article 2', 'Sample Article 3'];
-            const articleList = document.getElementById('articleList');
-            articleList.innerHTML = '';
-
-            articles.forEach(article => {
-                const li = document.createElement('li');
-                li.textContent = article;
-                articleList.appendChild(li);
+        function copyCode() {
+            const codeOutput = document.getElementById('code-output');
+            const text = codeOutput.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const button = event.target;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy Code';
+                    button.classList.remove('copied');
+                }, 2000);
             });
-
-            modal.style.display = 'block';
         }
 
-        function closeCategoryModal() {
-            document.getElementById('categoryModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('categoryModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // FAQ toggle
-        function toggleFAQ(element) {
-            const answer = element.nextElementSibling;
-            const toggle = element.querySelector('.faq-toggle');
-
-            answer.classList.toggle('open');
-            toggle.classList.toggle('open');
-        }
-
-        // Form submission
-        function submitForm(event) {
+        function handleSubmit(event) {
             event.preventDefault();
-
-            const form = document.getElementById('reviewerForm');
-            const successMessage = document.getElementById('successMessage');
-
-            // Show success message
+            const successMessage = document.getElementById('success-message');
             successMessage.classList.add('show');
-
-            // Reset form
-            form.reset();
-
-            // Hide success message after 5 seconds
+            event.target.reset();
             setTimeout(() => {
                 successMessage.classList.remove('show');
             }, 5000);
-
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth' });
         }
-
-        // Initialize badge preview
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('preview-name').addEventListener('input', updateBadgePreview);
-            updateBadgePreview();
-        });
     </script>
 </body>
 </html>

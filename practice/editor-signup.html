@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>DermoBrain - Editor Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #028090;
+            --dark: #015f6b;
+            --light: #04b5ce;
+            --bg: #f0fafb;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --border: #d0e8ec;
+            --success: #10b981;
+            --error: #ef4444;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 15px 30px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            margin-bottom: 40px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--light));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .progress-labels span {
+            color: var(--text-light);
+        }
+
+        .progress-labels span.active {
+            color: var(--primary);
+        }
+
+        /* Form Sections */
+        .form-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-number {
+            background: var(--light);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: var(--error);
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 12px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        /* Checkboxes and Multi-select */
+        .checkbox-group,
+        .multiselect-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        /* File Upload */
+        .file-upload-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .file-upload-input {
+            display: none;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 30px;
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--bg);
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--primary);
+            background: rgba(2, 128, 144, 0.05);
+        }
+
+        .file-upload-label.has-file {
+            border-color: var(--success);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .file-preview {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .file-preview img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-remove-btn {
+            margin-top: 10px;
+            padding: 6px 12px;
+            background: var(--error);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .file-remove-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--light));
+            color: white;
+            flex-grow: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 128, 144, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: #c0d8dd;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+        }
+
+        .success-message {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .success-text {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        /* Verification Code */
+        .code-display {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid var(--light);
+        }
+
+        .code-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .code-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 8px;
+        }
+
+        .code-description {
+            color: var(--text-light);
+            font-size: 13px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Review Section */
+        .review-item {
+            padding: 15px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--light);
+        }
+
+        .review-label {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .review-value {
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .review-headshot {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Checkbox Consent */
+        .consent-checkbox {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 15px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .consent-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .consent-text {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading State */
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .character-count {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .character-count.warning {
+            color: var(--error);
+        }
+
+        @media (max-width: 768px) {
+            .form-section {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .checkbox-group,
+            .multiselect-group {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="2"/>
+                <path d="M100 30C65 30 45 55 45 85C45 110 60 130 85 135C70 140 55 150 55 165C55 180 70 190 100 190C130 190 145 180 145 165C145 150 130 140 115 135C140 130 155 110 155 85C155 55 135 30 100 30Z" fill="currentColor"/>
+                <circle cx="75" cy="90" r="6" fill="white"/>
+                <circle cx="125" cy="90" r="6" fill="white"/>
+            </svg>
+            DermoBrain
+        </a>
+        <ul class="nav-links">
+            <li><a href="#editor-program">Editor Program</a></li>
+            <li><a href="#sign-up">Sign Up</a></li>
+            <li><a href="#editor-dashboard">Editor Dashboard</a></li>
+            <li><a href="#admin">Admin</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Become a DermoBrain Editor</h1>
+            <p>Join our community of expert dermatologists reviewing cutting-edge content</p>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-labels">
+                <span class="active">Step 1: Professional Info</span>
+                <span id="step2-label">Step 2: Expertise</span>
+                <span id="step3-label">Step 3: Review</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Professional Info -->
+        <form id="signupForm">
+            <div id="step1" class="form-section">
+                <div class="section-title">
+                    <div class="section-number">1</div>
+                    Professional Information
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Dr. Jane Smith" required>
+                    <div class="error-message">Full name is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                    <div class="error-message">Valid email is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="licenseNumber">Medical License Number</label>
+                    <input type="text" id="licenseNumber" name="licenseNumber" placeholder="e.g., MD123456" required>
+                    <div class="error-message">License number is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="certification">Board Certification</label>
+                    <select id="certification" name="certification" required>
+                        <option value="">Select certification...</option>
+                        <option value="abms-derm">ABMS Dermatology</option>
+                        <option value="aobderm">AOBDERM</option>
+                        <option value="canadian-frcpc">Canadian FRCPC</option>
+                        <option value="international">International equivalent</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message">Board certification is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="practiceName">Practice Name</label>
+                    <input type="text" id="practiceName" name="practiceName" placeholder="Dermatology Associates" required>
+                    <div class="error-message">Practice name is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="practiceWebsite">Practice Website URL</label>
+                    <input type="url" id="practiceWebsite" name="practiceWebsite" placeholder="https://example.com" required>
+                    <div class="error-message">Valid website URL is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="stateProvince">State/Province</label>
+                    <input type="text" id="stateProvince" name="stateProvince" placeholder="California" required>
+                    <div class="error-message">State/Province is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Specialty Areas</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="spec-medical" name="specialties" value="Medical Dermatology">
+                            <label for="spec-medical">Medical Dermatology</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="spec-surgical" name="specialties" value="Surgical Dermatology">
+                            <label for="spec-surgical">Surgical Dermatology</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="spec-cosmetic" name="specialties" value="Cosmetic Dermatology">
+                            <label for="spec-cosmetic">Cosmetic Dermatology</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="spec-pediatric" name="specialties" value="Pediatric Dermatology">
+                            <label for="spec-pediatric">Pediatric Dermatology</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="spec-path" name="specialties" value="Dermatopathology">
+                            <label for="spec-path">Dermatopathology</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="spec-mohs" name="specialties" value="Mohs Surgery">
+                            <label for="spec-mohs">Mohs Surgery</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-primary" onclick="goToStep(2)">Next: Select Expertise →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Area of Expertise -->
+            <div id="step2" class="form-section hidden">
+                <div class="section-title">
+                    <div class="section-number">2</div>
+                    Area of Expertise
+                </div>
+
+                <div class="form-group">
+                    <label>Review Categories (select up to 5)</label>
+                    <div class="multiselect-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="skin-conditions" data-label="Skin Conditions">
+                            <label>Skin Conditions</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="skincare-science" data-label="Skincare Science">
+                            <label>Skincare Science</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="injectables" data-label="Injectables">
+                            <label>Injectables</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="lasers" data-label="Lasers">
+                            <label>Lasers</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="hair-scalp" data-label="Hair & Scalp">
+                            <label>Hair & Scalp</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="rejuvenation" data-label="Rejuvenation">
+                            <label>Rejuvenation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="skin-cancer" data-label="Skin Cancer">
+                            <label>Skin Cancer</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="allergies" data-label="Allergies">
+                            <label>Allergies</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="mohs-surgery" data-label="Mohs Surgery">
+                            <label>Mohs Surgery</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="procedures" data-label="Procedures">
+                            <label>Procedures</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="pediatric" data-label="Pediatric">
+                            <label>Pediatric</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="body-contouring" data-label="Body Contouring">
+                            <label>Body Contouring</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="lifestyle" data-label="Lifestyle">
+                            <label>Lifestyle</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="mens-derm" data-label="Men's Derm">
+                            <label>Men's Derm</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="myths" data-label="Myths & Misconceptions">
+                            <label>Myths & Misconceptions</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="nails" data-label="Nails">
+                            <label>Nails</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="skin-of-color" data-label="Skin of Color">
+                            <label>Skin of Color</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="womens-derm" data-label="Women's Derm">
+                            <label>Women's Derm</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="procedures-az" data-label="Procedures A-Z">
+                            <label>Procedures A-Z</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="categories" value="pre-post-op" data-label="Pre/Post-Op Care">
+                            <label>Pre/Post-Op Care</label>
+                        </div>
+                    </div>
+                    <div class="error-message" id="categoriesError">Select up to 5 categories</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Short Bio (150-500 characters)</label>
+                    <textarea id="bio" name="bio" placeholder="Tell us about your expertise and why you want to become an editor..." required></textarea>
+                    <div class="character-count"><span id="charCount">0</span>/500</div>
+                    <div class="error-message">Bio must be 150-500 characters</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="headshot">Headshot Photo</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="headshot" name="headshot" class="file-upload-input" accept="image/*" required>
+                        <label for="headshot" class="file-upload-label">
+                            <div class="upload-icon">📸</div>
+                            <div class="upload-text">Click to upload or drag & drop<br><span style="font-size: 12px; color: #999;">PNG, JPG up to 5MB</span></div>
+                        </label>
+                        <div id="headshotPreview" class="file-preview hidden"></div>
+                    </div>
+                    <div class="error-message">A headshot is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn URL (Optional)</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+
+                <div class="form-group">
+                    <label for="referralSource">How did you hear about us?</label>
+                    <select id="referralSource" name="referralSource" required>
+                        <option value="">Select an option...</option>
+                        <option value="colleague">Colleague referral</option>
+                        <option value="dermatology-org">Dermatology organization</option>
+                        <option value="conference">Conference or event</option>
+                        <option value="social-media">Social media</option>
+                        <option value="search">Search engine</option>
+                        <option value="press">Press or media</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message">Please select a referral source</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToStep(1)">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="goToStep(3)">Review & Submit →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Review & Submit -->
+            <div id="step3" class="form-section hidden">
+                <div class="section-title">
+                    <div class="section-number">3</div>
+                    Review & Submit
+                </div>
+
+                <p style="color: var(--text-light); margin-bottom: 25px;">Please review your information before submitting your application.</p>
+
+                <div id="reviewContent"></div>
+
+                <div class="consent-checkbox">
+                    <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                    <label for="termsAgree" class="consent-text">
+                        I confirm I am a licensed dermatologist and agree to DermoBrain's editorial guidelines and professional standards.
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToStep(2)">← Back</button>
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Success Screen -->
+        <div id="successScreen" class="form-section hidden">
+            <div class="success-screen">
+                <div class="success-icon">✓</div>
+                <div class="success-message">Application Received!</div>
+                <div class="success-text">Check your email for verification instructions.</div>
+
+                <div class="code-display">
+                    <div class="code-label">Your 6-digit verification code:</div>
+                    <div class="code-value" id="verificationCode">000000</div>
+                    <div class="code-description">In production, this code would be emailed to <strong id="successEmail">your@email.com</strong>. For demo purposes, your code is shown above.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="codeInput">Enter your verification code:</label>
+                    <input type="text" id="codeInput" placeholder="000000" maxlength="6" pattern="[0-9]{6}">
+                    <div class="error-message">Code must be 6 digits</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="resendCode()">Resend Code</button>
+                    <button type="button" class="btn btn-primary" onclick="verifyCode()">Verify Code</button>
+                </div>
+            </div>
+
+            <div id="verifiedScreen" class="hidden" style="text-align: center;">
+                <div class="success-icon" style="background: var(--light);">🎉</div>
+                <div class="success-message">You're Verified!</div>
+                <div class="success-text">Welcome to the DermoBrain Editor Program</div>
+
+                <div style="margin: 30px 0; padding: 20px; background: var(--bg); border-radius: 8px;">
+                    <div style="font-size: 48px; margin-bottom: 10px;">⭐</div>
+                    <div style="font-weight: 700; color: var(--primary); font-size: 18px;">Verified Reviewer - Tier 1</div>
+                    <div style="color: var(--text-light); font-size: 14px; margin-top: 8px;">Your badge is now active</div>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="goToDashboard()" style="width: 100%;">Go to Your Dashboard →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let formData = {
+            fullName: '',
+            email: '',
+            licenseNumber: '',
+            certification: '',
+            practiceName: '',
+            practiceWebsite: '',
+            stateProvince: '',
+            specialties: [],
+            categories: [],
+            bio: '',
+            headshot: '',
+            linkedin: '',
+            referralSource: '',
+            verificationCode: ''
+        };
+
+        // Character counter
+        document.getElementById('bio').addEventListener('input', function() {
+            const count = this.value.length;
+            document.getElementById('charCount').textContent = count;
+            const countEl = document.querySelector('.character-count');
+            if (count < 150 || count > 500) {
+                countEl.classList.add('warning');
+            } else {
+                countEl.classList.remove('warning');
+            }
+        });
+
+        // File upload
+        const headshotInput = document.getElementById('headshot');
+        const headshotLabel = document.querySelector('.file-upload-label');
+        const headshotPreview = document.getElementById('headshotPreview');
+
+        headshotInput.addEventListener('change', handleFileUpload);
+        headshotLabel.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            headshotLabel.style.borderColor = 'var(--primary)';
+        });
+        headshotLabel.addEventListener('dragleave', () => {
+            headshotLabel.style.borderColor = 'var(--border)';
+        });
+        headshotLabel.addEventListener('drop', (e) => {
+            e.preventDefault();
+            headshotLabel.style.borderColor = 'var(--border)';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                headshotInput.files = files;
+                handleFileUpload();
+            }
+        });
+
+        function handleFileUpload() {
+            const file = headshotInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    formData.headshot = e.target.result;
+                    headshotLabel.classList.add('has-file');
+                    headshotPreview.innerHTML = `
+                        <img src="${e.target.result}" alt="Headshot preview">
+                        <button type="button" class="file-remove-btn" onclick="removeHeadshot()">Remove</button>
+                    `;
+                    headshotPreview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeHeadshot() {
+            headshotInput.value = '';
+            formData.headshot = '';
+            headshotLabel.classList.remove('has-file');
+            headshotPreview.classList.add('hidden');
+            headshotPreview.innerHTML = '';
+        }
+
+        // Category limit
+        const categoryCheckboxes = document.querySelectorAll('input[name="categories"]');
+        categoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checked = document.querySelectorAll('input[name="categories"]:checked');
+                if (checked.length > 5) {
+                    this.checked = false;
+                }
+            });
+        });
+
+        function goToStep(step) {
+            if (step > currentStep) {
+                if (!validateStep(currentStep)) return;
+            }
+
+            // Hide all steps
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.add('hidden');
+
+            // Show selected step
+            document.getElementById('step' + step).classList.remove('hidden');
+
+            // Update progress
+            updateProgress(step);
+            currentStep = step;
+
+            if (step === 3) {
+                generateReviewContent();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress(step) {
+            const progress = (step / 3) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+
+            document.querySelectorAll('.progress-labels span').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelector('.progress-labels span:nth-child(' + step + ')').classList.add('active');
+        }
+
+        function validateStep(step) {
+            const form = document.getElementById('signupForm');
+            if (step === 1) {
+                const fields = ['fullName', 'email', 'licenseNumber', 'certification', 'practiceName', 'practiceWebsite', 'stateProvince'];
+                let isValid = true;
+
+                fields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    const value = field.value.trim();
+                    const group = field.closest('.form-group');
+
+                    if (!value || (fieldId === 'email' && !isValidEmail(value))) {
+                        group.classList.add('error');
+                        isValid = false;
+                    } else {
+                        group.classList.remove('error');
+                        formData[fieldId] = value;
+                    }
+                });
+
+                formData.specialties = Array.from(document.querySelectorAll('input[name="specialties"]:checked')).map(cb => cb.value);
+
+                return isValid;
+            } else if (step === 2) {
+                let isValid = true;
+
+                const categories = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value);
+                const bioField = document.getElementById('bio');
+                const bioValue = bioField.value.trim();
+                const bioGroup = bioField.closest('.form-group');
+
+                if (categories.length === 0 || categories.length > 5) {
+                    document.getElementById('categoriesError').closest('.form-group').classList.add('error');
+                    isValid = false;
+                } else {
+                    document.getElementById('categoriesError').closest('.form-group').classList.remove('error');
+                    formData.categories = categories;
+                }
+
+                if (bioValue.length < 150 || bioValue.length > 500) {
+                    bioGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    bioGroup.classList.remove('error');
+                    formData.bio = bioValue;
+                }
+
+                if (!formData.headshot) {
+                    document.querySelector('input[name="headshot"]').closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+
+                const linkedinField = document.getElementById('linkedin');
+                if (linkedinField.value.trim()) {
+                    formData.linkedin = linkedinField.value.trim();
+                }
+
+                const referralField = document.getElementById('referralSource');
+                if (!referralField.value) {
+                    referralField.closest('.form-group').classList.add('error');
+                    isValid = false;
+                } else {
+                    formData.referralSource = referralField.value;
+                }
+
+                return isValid;
+            }
+            return true;
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function generateReviewContent() {
+            const reviewContent = document.getElementById('reviewContent');
+            const categoryLabels = {};
+            document.querySelectorAll('input[name="categories"]').forEach(cb => {
+                categoryLabels[cb.value] = cb.closest('.checkbox-item').querySelector('label').textContent;
+            });
+
+            reviewContent.innerHTML = `
+                <div class="review-item">
+                    <div class="review-label">Full Name</div>
+                    <div class="review-value">${formData.fullName}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Email Address</div>
+                    <div class="review-value">${formData.email}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Medical License Number</div>
+                    <div class="review-value">${formData.licenseNumber}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Board Certification</div>
+                    <div class="review-value">${formData.certification}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Practice Name</div>
+                    <div class="review-value">${formData.practiceName}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Practice Website</div>
+                    <div class="review-value"><a href="${formData.practiceWebsite}" target="_blank">${formData.practiceWebsite}</a></div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">State/Province</div>
+                    <div class="review-value">${formData.stateProvince}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Specialty Areas</div>
+                    <div class="review-value">${formData.specialties.join(', ')}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Review Categories</div>
+                    <div class="review-value">${formData.categories.map(c => categoryLabels[c] || c).join(', ')}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Bio</div>
+                    <div class="review-value">${formData.bio}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Headshot</div>
+                    <img src="${formData.headshot}" alt="Headshot" class="review-headshot">
+                </div>
+                ${formData.linkedin ? `<div class="review-item">
+                    <div class="review-label">LinkedIn Profile</div>
+                    <div class="review-value"><a href="${formData.linkedin}" target="_blank">${formData.linkedin}</a></div>
+                </div>` : ''}
+                <div class="review-item">
+                    <div class="review-label">Referral Source</div>
+                    <div class="review-value">${formData.referralSource}</div>
+                </div>
+            `;
+        }
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!document.getElementById('termsAgree').checked) {
+                alert('Please agree to the terms and conditions');
+                return;
+            }
+
+            // Generate verification code
+            const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            formData.verificationCode = verificationCode;
+
+            // Show success screen
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('successScreen').classList.remove('hidden');
+
+            // Display code and email
+            document.getElementById('verificationCode').textContent = verificationCode;
+            document.getElementById('successEmail').textContent = formData.email;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function verifyCode() {
+            const codeInput = document.getElementById('codeInput');
+            const code = codeInput.value.trim();
+
+            if (code !== formData.verificationCode) {
+                codeInput.closest('.form-group').classList.add('error');
+                return;
+            }
+
+            codeInput.closest('.form-group').classList.remove('error');
+
+            // Save editor data to localStorage
+            const editorId = 'ed_' + Date.now();
+            const editorData = {
+                id: editorId,
+                name: formData.fullName,
+                email: formData.email,
+                license: formData.licenseNumber,
+                certification: formData.certification,
+                practice: formData.practiceName,
+                website: formData.practiceWebsite,
+                state: formData.stateProvince,
+                specialties: formData.specialties,
+                categories: formData.categories,
+                bio: formData.bio,
+                headshot: formData.headshot,
+                linkedin: formData.linkedin || '',
+                status: 'verified',
+                tier: 'reviewer',
+                articlesReviewed: [],
+                joinDate: new Date().toISOString(),
+                verificationCode: formData.verificationCode,
+                badges: ['verified-reviewer'],
+                flaggedIssues: [],
+                badgeClicks: 0
+            };
+
+            let editors = JSON.parse(localStorage.getItem('dermobrain_editors') || '[]');
+            editors.push(editorData);
+            localStorage.setItem('dermobrain_editors', JSON.stringify(editors));
+            localStorage.setItem('dermobrain_current_editor', JSON.stringify(editorData));
+
+            // Show verified screen
+            document.getElementById('successScreen').querySelector('.success-screen').classList.add('hidden');
+            document.getElementById('verifiedScreen').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resendCode() {
+            alert('Verification code resent to ' + formData.email);
+        }
+
+        function goToDashboard() {
+            window.location.href = 'editor-dashboard.html';
+        }
+
+        // Initialize
+        updateProgress(1);
+    </script>
+</body>
+</html>
