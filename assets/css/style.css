@@ -570,7 +570,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 
 /* ─── Breadcrumbs ────────────────────────────────── */
 .breadcrumb {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
 }
@@ -592,7 +592,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     gap: 3rem;
     margin-bottom: 3rem;
 }
-.footer-about p { margin-top: 1rem; font-size: 0.9rem; line-height: 1.6; color: var(--gray-400); }
+.footer-about p { margin-top: 1rem; font-size: 0.92rem; line-height: 1.6; color: var(--gray-300); }
 .footer-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem; color: var(--gray-100); }
 .footer-logo strong { color: var(--primary-light); }
 
@@ -605,7 +605,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 }
 .footer-links ul { list-style: none; }
 .footer-links li { margin-bottom: 0.5rem; }
-.footer-links a { color: var(--gray-400); font-size: 0.88rem; }
+.footer-links a { color: var(--gray-300); font-size: 0.9rem; }
 .footer-links a:hover { color: var(--primary-light); }
 
 .footer-bottom {
@@ -616,8 +616,8 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 }
 .footer-disclaimer {
     margin-top: 0.5rem;
-    font-size: 0.8rem;
-    color: var(--gray-500);
+    font-size: 0.85rem;
+    color: var(--gray-400);
 }
 
 /* ─── Pillar Pages ───────────────────────────────── */
@@ -1042,6 +1042,9 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     text-align: center;
 }
 
+.article-category {
+    font-size: 0.8rem;
+}
 .article-header .article-category {
     display: inline-block;
     font-size: 0.75rem;
@@ -1099,20 +1102,22 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 }
 
 .article-body {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.05rem;
+    line-height: 1.85;
     margin-bottom: 3rem;
+    max-width: 68ch;
 }
 
 .article-body h2 {
-    font-size: 1.4rem;
-    margin-top: 2rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    margin-top: 2.25rem;
     margin-bottom: 1rem;
+    letter-spacing: -0.01em;
 }
 
 .article-body h3 {
-    font-size: 1.15rem;
-    margin-top: 1.5rem;
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    margin-top: 1.75rem;
     margin-bottom: 0.75rem;
 }
 
