@@ -1381,8 +1381,8 @@
 
             <form id="loginForm">
                 <div class="form-group">
-                    <label class="form-label">Practice ID</label>
-                    <input type="text" class="form-input" id="practiceId" value="drs-skincare" required>
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-input" id="practiceId" value="dr.shukla@drsskincare.ca" required>
                 </div>
 
                 <div class="form-group">
@@ -1397,7 +1397,7 @@
 
             <div class="demo-hint">
                 <strong>Demo Credentials:</strong><br>
-                Practice ID: drs-skincare<br>
+                Email: dr.shukla@drsskincare.ca<br>
                 Password: drs2024
             </div>
         </div>
@@ -1572,9 +1572,7 @@
                     <div style="margin-top: 40px;">
                         <h3 style="font-size: 18px; margin-bottom: 20px;">Top Viewed Articles</h3>
                         <div class="card">
-                            <div class="bar-chart">
-                                <div id="topViewsChart"></div>
-                            </div>
+                                <div id="topViewsChart" class="bar-chart" style="overflow: hidden;"></div>
                         </div>
                     </div>
 
@@ -1781,9 +1779,7 @@
                     <div class="analytics-grid">
                         <div class="card">
                             <div class="chart-title">Patient Engagement</div>
-                            <div style="height: 200px; display: flex; align-items: flex-end; gap: 8px; justify-content: space-around;">
-                                <div id="engagementChart"></div>
-                            </div>
+                            <div id="engagementChart" style="height: 200px; display: flex; align-items: flex-end; gap: 8px; justify-content: space-around; overflow: hidden;"></div>
                         </div>
 
                         <div class="card">
@@ -1794,9 +1790,7 @@
 
                     <div class="card" style="margin-bottom: 24px;">
                         <div class="chart-title">Training Score Distribution</div>
-                        <div style="height: 150px; display: flex; align-items: flex-end; gap: 12px;">
-                            <div id="scoreDistribution"></div>
-                        </div>
+                        <div id="scoreDistribution" style="height: 150px; display: flex; align-items: flex-end; gap: 12px; overflow: hidden;"></div>
                     </div>
 
                     <div class="card">
@@ -2402,16 +2396,16 @@
                 return;
             }
 
-            const sorted = CURRENT_ARTICLES.sort((a, b) => b.views - a.views).slice(0, 10);
+            const sorted = [...CURRENT_ARTICLES].sort((a, b) => b.views - a.views).slice(0, 10);
             const maxViews = Math.max(...sorted.map(a => a.views));
 
             container.innerHTML = sorted.map(article => {
-                const height = (article.views / maxViews) * 100;
+                const height = Math.round((article.views / maxViews) * 150);
                 return `
-                    <div class="bar-item">
-                        <div class="bar" style="height: ${height}%;"></div>
+                    <div class="bar-item" style="flex: 1; max-width: 80px;">
+                        <div style="font-size: 11px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px;">${article.views}</div>
+                        <div class="bar" style="height: ${height}px; min-height: 8px;"></div>
                         <div class="bar-label">${article.title.substring(0, 10)}</div>
-                        <div class="bar-value">${article.views}</div>
                     </div>
                 `;
             }).join('');
@@ -2596,12 +2590,12 @@
             const maxCount = 45;
 
             container.innerHTML = ranges.map(r => {
-                const height = (r.count / maxCount) * 100;
+                const height = Math.round((r.count / maxCount) * 100);
                 return `
-                    <div class="bar-item">
-                        <div class="bar" style="height: ${height}%;"></div>
+                    <div class="bar-item" style="flex: 1; max-width: 60px;">
+                        <div style="font-size: 11px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px;">${r.count}</div>
+                        <div class="bar" style="height: ${height}px; min-height: 8px;"></div>
                         <div class="bar-label">${r.range}</div>
-                        <div class="bar-value">${r.count}</div>
                     </div>
                 `;
             }).join('');
