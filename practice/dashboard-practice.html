@@ -1862,7 +1862,7 @@
 
         document.getElementById('logoutBtn').addEventListener('click', () => {
             localStorage.removeItem('dermobrain_session');
-            showLoginScreen();
+            window.location.href = 'portal.html';
         });
 
         // ============= UI FUNCTIONS =============
