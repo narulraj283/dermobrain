@@ -181,8 +181,8 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    padding: 0.5rem 0.85rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-secondary);
     border-radius: var(--radius-sm);
@@ -330,7 +330,8 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 }
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.2rem);
-    color: var(--text-secondary);
+    color: var(--text);
+    opacity: 0.75;
     max-width: 600px;
     margin: 0 auto 2rem;
 }
@@ -2497,11 +2498,12 @@ input:focus-visible,
     text-align: center;
 }
 .directory-hero h1 { color: #fff; font-size: 2.5rem; margin-bottom: 0.5rem; }
-.hero-subtitle {
+.directory-hero .hero-subtitle {
     font-size: 1.1rem;
     color: rgba(255,255,255,0.85);
     max-width: 560px;
     margin: 0 auto 2rem;
+    opacity: 1;
 }
 .directory-search-box {
     max-width: 560px;
