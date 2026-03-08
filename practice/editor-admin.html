@@ -34,6 +34,9 @@
             top: 0;
             left: 0;
             z-index: 100;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 80px;
         }
 
         .main-content {
@@ -106,11 +109,6 @@
             font-size: 14px;
             width: 100%;
             transition: background 0.2s ease;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            width: calc(100% - 40px);
         }
 
         .logout-btn:hover {
@@ -773,11 +771,26 @@
                 width: 100%;
                 height: auto;
                 position: relative;
-                padding-bottom: 80px;
+                padding-bottom: 0;
+                padding: 16px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+                align-items: center;
+                justify-content: space-between;
             }
 
-            .main-content {
-                margin-left: 0;
+            .logo-section {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            .nav-list {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 0;
+                flex-wrap: wrap;
             }
 
             .logout-btn {
@@ -785,8 +798,13 @@
                 bottom: auto;
                 left: auto;
                 right: auto;
-                width: 100%;
-                margin-top: 20px;
+                width: auto;
+                margin-top: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
             }
 
             .kpi-grid {
@@ -795,25 +813,281 @@
         }
 
         @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                padding: 12px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .logo-section {
+                width: 100%;
+            }
+
+            .nav-list {
+                width: 100%;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .logout-btn {
+                width: 100%;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 12px;
+            }
+
             .kpi-grid {
                 grid-template-columns: 1fr;
             }
 
             .tabs {
                 flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                padding: 10px 14px;
+                font-size: 13px;
             }
 
             .header {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 12px;
+            }
+
+            .header-title {
+                font-size: 24px;
             }
 
             table {
                 font-size: 12px;
+                width: 100%;
             }
 
             th, td {
                 padding: 8px;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            .bar-chart {
+                height: 150px;
+                padding: 16px;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sidebar {
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo-label {
+                font-size: 10px;
+            }
+
+            .nav-list {
+                gap: 4px;
+            }
+
+            .nav-link {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .header-title {
+                font-size: 20px;
+            }
+
+            .kpi-card {
+                padding: 12px;
+            }
+
+            .kpi-value {
+                font-size: 24px;
+            }
+
+            .tabs {
+                gap: 6px;
+            }
+
+            .tab-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            table {
+                font-size: 11px;
+                min-width: 600px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+
+            .bar-chart {
+                height: 120px;
+                padding: 12px;
+                gap: 6px;
+            }
+
+            .bar {
+                min-height: 15px;
+            }
+
+            .bar-label {
+                font-size: 10px;
+                bottom: -20px;
+            }
+
+            .bar-value {
+                font-size: 10px;
+                top: -20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                padding: 8px;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .logo {
+                font-size: 18px;
+                margin-bottom: 4px;
+            }
+
+            .logo-label {
+                font-size: 9px;
+            }
+
+            .nav-item {
+                margin: 4px 0;
+            }
+
+            .nav-link {
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+
+            .logout-btn {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .main-content {
+                padding: 8px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .header-title {
+                font-size: 18px;
+            }
+
+            .session-info {
+                font-size: 11px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .kpi-card {
+                padding: 10px;
+            }
+
+            .kpi-value {
+                font-size: 20px;
+            }
+
+            .kpi-label {
+                font-size: 11px;
+            }
+
+            .tabs {
+                gap: 4px;
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+
+            .table-container {
+                overflow-x: auto;
+                margin-bottom: 10px;
+            }
+
+            table {
+                font-size: 10px;
+                min-width: 500px;
+            }
+
+            th, td {
+                padding: 4px;
+            }
+
+            .bar-chart {
+                height: 100px;
+                padding: 10px;
+                gap: 4px;
+            }
+
+            .bar {
+                min-height: 12px;
+            }
+
+            .bar-label {
+                font-size: 9px;
+                bottom: -18px;
+            }
+
+            .bar-value {
+                font-size: 9px;
+                top: -18px;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .action-btn {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            .danger-zone {
+                padding: 12px;
+                margin-top: 16px;
+            }
+
+            .danger-title {
+                font-size: 0.95rem;
             }
         }
     </style>

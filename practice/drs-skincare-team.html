@@ -904,6 +904,7 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             border: 2px solid #fbbf24;
             animation: slideUp 0.3s ease;
+            position: relative;
         }
         .certificate-header {
             font-family: 'Merriweather', serif;
@@ -945,6 +946,7 @@
             top: 20px;
             right: 20px;
             transition: all 0.2s ease;
+            z-index: 10;
         }
         .certificate-close:hover {
             background: #cbd5e1;
@@ -1013,6 +1015,7 @@
             color: white;
             padding: 3px 8px;
             border-radius: 4px;
+            z-index: 5;
             font-size: 11px;
             font-weight: 600;
         }
@@ -1053,16 +1056,102 @@
             .certificate-content { position: absolute; left: 0; top: 0; width: 100%; padding: 20px; box-shadow: none; }
         }
         @media (max-width: 768px) {
+            .hero { padding: 40px 16px; }
             .hero .container { flex-direction: column; gap: 25px; }
             .hero-content h1 { font-size: 28px; }
-            .tracks-grid { grid-template-columns: 1fr; }
-            .stats-cards { grid-template-columns: 1fr; }
-            .progress-grid { grid-template-columns: 1fr; }
-            .tab-nav { padding: 0; overflow-x: auto; }
-            .quiz-content { padding: 25px; }
-            .quiz-actions { padding: 15px 25px; }
-            .achievement-tile { flex-direction: column; text-align: center; }
-            .video-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 16px; }
+            .tracks-grid { grid-template-columns: 1fr; gap: 16px; }
+            .stats-cards { grid-template-columns: 1fr; gap: 16px; }
+            .progress-grid { grid-template-columns: 1fr; gap: 16px; }
+            .tab-nav { padding: 0; overflow-x: auto; gap: 8px; }
+            .quiz-content { padding: 20px; }
+            .quiz-actions { padding: 12px 20px; gap: 10px; }
+            .achievement-tile { flex-direction: column; text-align: center; padding: 16px; }
+            .video-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+            .video-thumbnail { height: 150px; }
+            .certificate-content { padding: 40px 24px; }
+            .certificate-header { font-size: 28px; }
+            .certificate-name { font-size: 22px; }
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 30px 12px; margin-bottom: 30px; }
+            .hero-content h1 { font-size: 24px; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+            .stat-card { padding: 12px; }
+            .stat-number { font-size: 24px; }
+            .welcome-section { padding: 16px; flex: none; width: 100%; }
+            .container { padding: 0 12px; }
+            .section { padding: 24px 0; }
+            .section-title { font-size: 1.3rem; margin-bottom: 16px; }
+            .tracks-grid { grid-template-columns: 1fr; gap: 12px; }
+            .track-card { padding: 16px; }
+            .stats-cards { grid-template-columns: 1fr; gap: 12px; }
+            .progress-grid { grid-template-columns: 1fr; gap: 12px; }
+            .tab-nav { padding: 8px 0; gap: 4px; }
+            .tab-button { padding: 8px 12px; font-size: 13px; }
+            .quiz-content { padding: 16px; gap: 16px; }
+            .quiz-actions { padding: 10px 16px; gap: 8px; flex-direction: column; }
+            .achievement-tile { padding: 12px; gap: 12px; }
+            .video-grid { grid-template-columns: 1fr; gap: 16px; }
+            .video-card { border-radius: 10px; }
+            .video-thumbnail { height: 120px; }
+            .play-icon { width: 50px; height: 50px; font-size: 20px; }
+            .add-icon { width: 50px; height: 50px; }
+            .video-info { padding: 12px; }
+            .certificate-modal { padding: 12px; }
+            .certificate-content { padding: 30px 20px; border-radius: 12px; }
+            .certificate-header { font-size: 24px; margin-bottom: 20px; }
+            .certificate-text { font-size: 0.9rem; }
+            .certificate-name { font-size: 20px; margin: 20px 0; }
+            .certificate-close { width: 32px; height: 32px; font-size: 18px; }
+            .footer { padding: 20px 12px; font-size: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 24px 10px; margin-bottom: 24px; }
+            .hero .container { gap: 16px; }
+            .hero-content h1 { font-size: 20px; margin-bottom: 16px; }
+            .hero-stats { grid-template-columns: 1fr; gap: 10px; }
+            .stat-card { padding: 10px; }
+            .stat-number { font-size: 20px; }
+            .stat-label { font-size: 11px; }
+            .welcome-section { padding: 12px; }
+            .container { padding: 0 10px; }
+            .top-bar { padding: 10px 12px; font-size: 12px; }
+            .section { padding: 20px 0; }
+            .section-title { font-size: 1.15rem; margin-bottom: 12px; }
+            .tracks-grid { gap: 10px; }
+            .track-card { padding: 12px; gap: 12px; }
+            .stats-cards { gap: 10px; }
+            .progress-grid { gap: 10px; }
+            .tab-nav { padding: 6px 0; gap: 2px; }
+            .tab-button { padding: 6px 10px; font-size: 12px; border-radius: 6px; }
+            .quiz-content { padding: 12px; }
+            .quiz-header h3 { font-size: 1rem; }
+            .quiz-question { font-size: 0.95rem; }
+            .quiz-options { gap: 8px; }
+            .quiz-option { padding: 10px; font-size: 13px; }
+            .quiz-actions { padding: 8px 12px; }
+            .btn { padding: 8px 16px; font-size: 12px; }
+            .achievement-tile { gap: 10px; padding: 10px; }
+            .achievement-icon { width: 40px; height: 40px; font-size: 20px; }
+            .video-grid { gap: 12px; }
+            .video-card { border-radius: 8px; }
+            .video-thumbnail { height: 100px; }
+            .play-icon { width: 40px; height: 40px; font-size: 18px; }
+            .add-icon { width: 40px; height: 40px; font-size: 24px; }
+            .video-info { padding: 10px; }
+            .video-title { font-size: 0.9rem; }
+            .video-meta { font-size: 0.8rem; }
+            .certificate-modal { padding: 10px; }
+            .certificate-content { padding: 24px 16px; }
+            .certificate-header { font-size: 20px; }
+            .certificate-text { font-size: 0.85rem; }
+            .certificate-name { font-size: 18px; }
+            .certificate-date { font-size: 11px; }
+            .certificate-close { width: 28px; height: 28px; font-size: 16px; top: 12px; right: 12px; }
+            .footer { padding: 16px 10px; font-size: 11px; }
         }
     </style>
 </head>
