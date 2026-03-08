@@ -2062,7 +2062,7 @@
             const practiceId = document.getElementById('practiceId').value;
             const password = document.getElementById('password').value;
 
-            if (password === 'drs2024') {
+            if (practiceId === 'dr.shukla@drsskincare.ca' && password === 'drs2024') {
                 const session = {
                     role: 'practice_owner',
                     practiceId: practiceId,
@@ -2075,7 +2075,7 @@
                 initializeUI();
             } else {
                 const errorEl = document.getElementById('loginError');
-                errorEl.textContent = 'Invalid credentials. Use password: drs2024';
+                errorEl.textContent = 'Invalid credentials. Use email: dr.shukla@drsskincare.ca and password: drs2024';
                 errorEl.classList.add('show');
             }
         });
@@ -2230,9 +2230,14 @@
         }
 
         function renderTopViewsChart() {
+            const container = document.querySelector('#topViewsChart');
+            // Guard: only render if container exists and articles exist
+            if (!container || CURRENT_ARTICLES.length === 0) {
+                return;
+            }
+
             const sorted = CURRENT_ARTICLES.sort((a, b) => b.views - a.views).slice(0, 10);
             const maxViews = Math.max(...sorted.map(a => a.views));
-            const container = document.querySelector('#topViewsChart');
 
             container.innerHTML = sorted.map(article => {
                 const height = (article.views / maxViews) * 100;
@@ -2359,10 +2364,19 @@
 
         // ============= ANALYTICS =============
         function renderAnalytics() {
-            renderEngagementChart();
-            renderArticleDistribution();
-            renderScoreDistribution();
-            renderKeyMetrics();
+            // Add guards to check if elements exist before rendering
+            if (document.getElementById('engagementChart')) {
+                renderEngagementChart();
+            }
+            if (document.getElementById('articleDistribution')) {
+                renderArticleDistribution();
+            }
+            if (document.getElementById('scoreDistribution')) {
+                renderScoreDistribution();
+            }
+            if (document.getElementById('keyMetrics')) {
+                renderKeyMetrics();
+            }
         }
 
         function renderEngagementChart() {

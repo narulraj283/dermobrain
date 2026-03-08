@@ -371,7 +371,7 @@
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
                     <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
-                        <strong>Demo:</strong><br>Practice ID: drs-skincare<br>Password: drs2024
+                        <strong>Demo:</strong><br>Practice ID: dr.shukla@drsskincare.ca<br>Password: drs2024
                     </div>
                 </div>
             </div>
@@ -402,7 +402,7 @@
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
                     <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
-                        <strong>Demo:</strong><br>Email: sarah.m@drsskincare.ca<br>Code: staff2024
+                        <strong>Demo:</strong><br>Email: sarah.mitchell@drsskincare.ca<br>Code: staff2024
                     </div>
                 </div>
             </div>
@@ -525,6 +525,7 @@
             const session = {
                 role: 'admin',
                 name: 'Admin',
+                email: 'admin@dermobrain.com',
                 loginTime: Date.now()
             };
 
@@ -587,14 +588,14 @@
                 return;
             }
 
-            if (practiceId !== 'drs-skincare' || password !== 'drs2024') {
+            if (practiceId !== 'dr.shukla@drsskincare.ca' || password !== 'drs2024') {
                 showError(card, 'practiceId', 'Invalid practice ID or password');
                 return;
             }
 
             const session = {
                 role: 'practice_owner',
-                practiceId: 'drs-skincare',
+                practiceId: 'dr.shukla@drsskincare.ca',
                 name: 'Dr. Shukla',
                 email: 'dr.shukla@drsskincare.ca',
                 loginTime: Date.now()
@@ -622,7 +623,7 @@
                 return;
             }
 
-            if (email !== 'sarah.m@drsskincare.ca' || code !== 'staff2024') {
+            if (email !== 'sarah.mitchell@drsskincare.ca' || code !== 'staff2024') {
                 showError(card, 'traineeEmail', 'Invalid email or access code');
                 return;
             }
@@ -631,7 +632,7 @@
                 role: 'trainee',
                 practiceId: 'drs-skincare',
                 name: 'Sarah Mitchell',
-                email: 'sarah.m@drsskincare.ca',
+                email: 'sarah.mitchell@drsskincare.ca',
                 staffRole: 'Lead Esthetician',
                 loginTime: Date.now()
             };

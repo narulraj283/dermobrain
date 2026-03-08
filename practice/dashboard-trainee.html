@@ -1290,7 +1290,7 @@
                 <input
                     type="email"
                     id="staffEmail"
-                    value="sarah.m@drsskincare.ca"
+                    value="sarah.mitchell@drsskincare.ca"
                     placeholder="Enter your email"
                 >
             </div>
@@ -1310,7 +1310,7 @@
 
             <div class="demo-hint">
                 <strong>Demo Credentials:</strong><br>
-                Email: sarah.m@drsskincare.ca<br>
+                Email: sarah.mitchell@drsskincare.ca<br>
                 Code: staff2024
             </div>
         </div>
@@ -2098,16 +2098,17 @@
                 return;
             }
 
-            if (code !== 'staff2024') {
-                errorDiv.textContent = 'Invalid access code. Please try again.';
+            // Validate email is Sarah Mitchell's email and code is correct
+            if (email !== 'sarah.mitchell@drsskincare.ca' || code !== 'staff2024') {
+                errorDiv.textContent = 'Invalid email or access code. Please try again.';
                 return;
             }
 
             const sessionData = {
                 role: 'trainee',
                 practiceId: 'drs-skincare',
-                name: email.split('@')[0].split('.').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-                email: email,
+                name: 'Sarah Mitchell',
+                email: 'sarah.mitchell@drsskincare.ca',
                 staffRole: 'Lead Esthetician',
                 loginTime: Date.now()
             };

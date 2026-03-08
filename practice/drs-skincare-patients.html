@@ -11,12 +11,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --db-green: #1A6B54;
-    --db-green-light: #238C6E;
-    --db-green-50: #E8F5F0;
-    --db-accent: #E8734A;
-    --teal: #028090;
-    --teal-light: #E0F4F5;
+    --db-green: #013364;
+    --db-green-light: #000B35;
+    --db-green-50: #F4ECDA;
+    --db-accent: #BE9F62;
+    --db-accent-dark: #916C22;
+    --teal: #013364;
+    --teal-light: #DFEAF1;
     --gray-50: #F9FAFB;
     --gray-100: #F3F4F6;
     --gray-200: #E5E7EB;
@@ -36,7 +37,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     color: var(--gray-800);
     background: #fff;
     line-height: 1.6;
@@ -52,12 +53,12 @@
     font-size: 0.8rem;
     letter-spacing: 0.02em;
   }
-  .topbar a { color: #A7F3D0; text-decoration: none; }
+  .topbar a { color: var(--db-accent); text-decoration: none; }
   .topbar a:hover { text-decoration: underline; }
 
   /* ── Hero ── */
   .hero {
-    background: linear-gradient(135deg, #0C4A3E 0%, var(--db-green) 40%, var(--teal) 100%);
+    background: linear-gradient(135deg, #013364 0%, #000B35 100%);
     color: white;
     padding: 60px 24px 50px;
     text-align: center;
@@ -90,7 +91,7 @@
   }
   .hero-badge svg { flex-shrink: 0; }
   .hero h1 {
-    font-family: 'Merriweather', Georgia, serif;
+    font-family: 'HV Muse', Georgia, serif;
     font-size: clamp(1.7rem, 4vw, 2.6rem);
     font-weight: 700;
     line-height: 1.25;
@@ -148,7 +149,7 @@
     border: 2px solid transparent;
     transition: border-color 0.2s;
   }
-  .search-box:focus-within { border-color: var(--teal); }
+  .search-box:focus-within { border-color: var(--db-accent); }
   .search-box svg { margin-left: 16px; color: var(--gray-500); flex-shrink: 0; }
   .search-box input {
     flex: 1;
@@ -185,7 +186,7 @@
     border-bottom: 1px solid var(--gray-100);
     transition: background 0.15s;
   }
-  .search-result-item:hover { background: var(--db-green-50); }
+  .search-result-item:hover { background: #F4ECDA; }
   .search-result-item:last-child { border-bottom: none; }
   .search-result-title { font-weight: 500; font-size: 0.92rem; }
   .search-result-cat { font-size: 0.78rem; color: var(--gray-500); margin-top: 2px; }
@@ -211,7 +212,7 @@
     transition: all 0.2s;
     border: 1px solid var(--gray-200);
   }
-  .pill:hover { background: var(--teal-light); color: var(--teal); border-color: var(--teal); }
+  .pill:hover { background: #DFEAF1; color: var(--db-green); border-color: var(--db-green); }
 
   /* ── Resource Grid ── */
   .resource-grid {
@@ -233,8 +234,8 @@
     background: white;
   }
   .resource-card:hover {
-    border-color: var(--teal);
-    box-shadow: var(--shadow-md);
+    border-color: var(--db-accent);
+    box-shadow: 0 4px 6px rgba(190, 159, 98, 0.15);
     transform: translateY(-1px);
   }
   .card-icon {
@@ -271,10 +272,10 @@
     flex-shrink: 0;
   }
   .section-header h2 {
-    font-family: 'Merriweather', Georgia, serif;
+    font-family: 'HV Muse', Georgia, serif;
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--gray-900);
+    color: var(--db-green);
   }
   .section-header p { font-size: 0.88rem; color: var(--gray-500); margin-top: 2px; }
 
@@ -297,8 +298,8 @@
     background: white;
   }
   .article-card:hover {
-    border-color: var(--teal);
-    box-shadow: var(--shadow-md);
+    border-color: var(--db-accent);
+    box-shadow: 0 4px 6px rgba(190, 159, 98, 0.15);
     transform: translateY(-1px);
   }
   .article-card-icon {
@@ -323,49 +324,50 @@
   .sec-cancer .article-card-icon { background: #FEE2E2; }
   .sec-hair .section-icon { background: #E0E7FF; color: #4F46E5; }
   .sec-hair .article-card-icon { background: #E0E7FF; }
-  .sec-skincare .section-icon { background: var(--teal-light); color: var(--teal); }
-  .sec-skincare .article-card-icon { background: var(--teal-light); }
+  .sec-skincare .section-icon { background: #DFEAF1; color: #013364; }
+  .sec-skincare .article-card-icon { background: #DFEAF1; }
   .sec-procedures .section-icon { background: #F3E8FF; color: #7C3AED; }
   .sec-procedures .article-card-icon { background: #F3E8FF; }
 
   /* ── CTA banner ── */
   .cta-banner {
-    background: linear-gradient(135deg, var(--db-green-50), var(--teal-light));
-    border: 1px solid #B2DFDB;
+    background: linear-gradient(135deg, #F4ECDA, #DFEAF1);
+    border: 1px solid var(--db-accent);
     border-radius: var(--radius);
     padding: 32px;
     text-align: center;
     margin: 16px 0 48px;
   }
-  .cta-banner h3 { font-size: 1.15rem; color: var(--gray-900); margin-bottom: 8px; }
+  .cta-banner h3 { font-size: 1.15rem; color: var(--db-green); margin-bottom: 8px; }
   .cta-banner p { font-size: 0.92rem; color: var(--gray-600); margin-bottom: 16px; max-width: 500px; margin-left: auto; margin-right: auto; }
   .cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 12px 28px;
-    background: var(--teal);
-    color: white;
+    background: var(--db-green);
+    color: var(--db-accent);
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.92rem;
     text-decoration: none;
     transition: all 0.2s;
+    border: 1px solid var(--db-accent);
   }
-  .cta-btn:hover { background: #026E7A; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .cta-btn:hover { background: var(--db-green-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
   /* ── Footer ── */
   .portal-footer {
-    background: var(--gray-900);
-    color: var(--gray-400);
+    background: var(--db-green);
+    color: rgba(255, 255, 255, 0.7);
     padding: 32px 24px;
     text-align: center;
     font-size: 0.82rem;
     line-height: 1.7;
   }
-  .portal-footer a { color: var(--gray-300); text-decoration: none; }
+  .portal-footer a { color: var(--db-accent); text-decoration: none; }
   .portal-footer a:hover { color: white; }
-  .portal-footer-brand { font-size: 0.92rem; color: var(--gray-300); margin-bottom: 8px; font-weight: 500; }
+  .portal-footer-brand { font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 8px; font-weight: 500; }
 
   /* ── PDF Export Button ── */
   .pdf-btn {
@@ -373,8 +375,8 @@
     bottom: 30px;
     right: 30px;
     background: var(--db-green);
-    color: white;
-    border: none;
+    color: var(--db-accent);
+    border: 2px solid var(--db-accent);
     padding: 12px 20px;
     border-radius: 30px;
     font-weight: 600;
@@ -383,13 +385,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 15px rgba(26, 107, 84, 0.3);
+    box-shadow: 0 4px 15px rgba(1, 51, 100, 0.3);
     transition: all 0.3s ease;
     z-index: 100;
   }
   .pdf-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 107, 84, 0.4);
+    box-shadow: 0 6px 20px rgba(1, 51, 100, 0.4);
+    background: #000B35;
   }
 
   /* ── Print Styles ── */
@@ -449,7 +452,7 @@
 
 <!-- Top bar -->
 <div class="topbar">
-  Powered by <a href="https://dermobrain.com">DermoBrain</a> — Evidence-based dermatology education
+  DRS Skincare × <a href="https://dermobrain.com">DermoBrain</a> — Evidence-based dermatology education
 </div>
 
 <!-- Hero -->
@@ -1022,7 +1025,8 @@
 <footer class="portal-footer">
   <div class="portal-footer-brand">DRS Skincare × DermoBrain</div>
   <p>
-    Patient resources curated by <a href="https://www.drsskincare.ca/" target="_blank">Dr. Rahul Shukla</a> — 1662 Upper James St, Hamilton ON<br>
+    Patient resources curated by <a href="https://www.drsskincare.ca/" target="_blank">Dr. Rahul Shukla</a><br>
+    1662 Upper James St, Hamilton ON L9B 1K5 | <a href="tel:(905)524-1712">(905) 524-1712</a><br>
     Content powered by <a href="https://dermobrain.com">DermoBrain.com</a> — Evidence-based dermatology education<br><br>
     These materials are for educational purposes only and do not replace professional medical advice.<br>
     If you are experiencing a medical emergency, call 911.
@@ -1043,13 +1047,14 @@ const practiceConfig = {
     doctorName: "Dr. Rahul Shukla, MD FRCPC",
     doctorTitle: "Board-Certified Dermatologist",
     practiceLocation: "Hamilton ON",
-    practiceAddress: "1662 Upper James St, Hamilton ON",
+    practiceAddress: "1662 Upper James St, Hamilton ON L9B 1K5",
     bookingUrl: "https://drsskincare.ca",
-    practicePhone: "(905) 389-8888",
+    practicePhone: "(905) 524-1712",
+    logo: "https://www.drsskincare.ca/wp-content/uploads/2025/02/site-logo.png",
 
     // Branding Colors (practice can override these)
-    primaryColor: "#1A6B54",
-    accentColor: "#028090",
+    primaryColor: "#013364",
+    accentColor: "#BE9F62",
 
     // Section Visibility (toggle sections on/off)
     showCostInfo: false,  // Dr. Shukla: "Cost may be something to remove"
