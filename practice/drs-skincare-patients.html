@@ -213,6 +213,43 @@
   }
   .pill:hover { background: var(--teal-light); color: var(--teal); border-color: var(--teal); }
 
+  /* ── Resource Grid ── */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .resource-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    text-decoration: none;
+    color: var(--gray-800);
+    transition: all 0.2s;
+    background: white;
+  }
+  .resource-card:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+  .resource-card strong { font-size: 0.92rem; font-weight: 600; line-height: 1.35; display: block; margin-bottom: 4px; }
+  .card-cat { font-size: 0.78rem; color: var(--gray-500); }
+
   /* ── Content sections ── */
   .main { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
 
@@ -330,6 +367,74 @@
   .portal-footer a:hover { color: white; }
   .portal-footer-brand { font-size: 0.92rem; color: var(--gray-300); margin-bottom: 8px; font-weight: 500; }
 
+  /* ── PDF Export Button ── */
+  .pdf-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--db-green);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(26, 107, 84, 0.3);
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+  .pdf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 107, 84, 0.4);
+  }
+
+  /* ── Print Styles ── */
+  @media print {
+    .topbar, .pdf-btn, .cta-banner, .hero-search-wrap { display: none !important; }
+    .hero { padding: 30px 20px !important; }
+    body { font-size: 12px; }
+    .section { page-break-inside: avoid; }
+    .article-grid { grid-template-columns: 1fr 1fr !important; }
+    .article-card { box-shadow: none !important; border: 1px solid #ddd !important; }
+
+    /* Add clinic logo area for print */
+    .hero::before {
+      content: "DRS Skincare — Patient Resources";
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      position: static;
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      background: none;
+    }
+    .hero::after {
+      content: "Dr. Rahul Shukla, MD FRCPC — 1662 Upper James St, Hamilton ON";
+      display: block;
+      font-size: 14px;
+      margin-top: 5px;
+      position: static;
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      background: none;
+    }
+  }
+
+  /* ── Practice Highlights Section ── */
+  .practice-highlights .section-header {
+    margin-bottom: 20px;
+  }
+  .practice-highlights .resource-grid {
+    margin-bottom: 0;
+  }
+
   /* ── Responsive ── */
   @media (max-width: 600px) {
     .hero { padding: 40px 20px 36px; }
@@ -388,6 +493,40 @@
 
 <!-- Main Content -->
 <div class="main">
+
+  <!-- Practice Highlights -->
+  <section class="section practice-highlights" id="practiceHighlights">
+    <div class="section-header">
+      <span class="section-icon">⭐</span>
+      <div>
+        <h2>Our Specialized Services</h2>
+        <p class="section-desc">Services and technologies available at DRS Skincare</p>
+      </div>
+    </div>
+    <div class="resource-grid" id="customServicesGrid">
+      <a class="resource-card" href="#fotofinder">
+        <span class="card-icon sec-medical">📸</span>
+        <div>
+          <strong>FotoFinder Mole Mapping</strong>
+          <span class="card-cat">Advanced digital mole tracking with AI-assisted analysis</span>
+        </div>
+      </a>
+      <a class="resource-card" href="#skincare-consult">
+        <span class="card-icon sec-cosmetic">💬</span>
+        <div>
+          <strong>Personalized Skincare Consultation</strong>
+          <span class="card-cat">Custom skincare regimen designed by Dr. Shukla</span>
+        </div>
+      </a>
+      <a class="resource-card" href="#patch-testing">
+        <span class="card-icon sec-medical">🧪</span>
+        <div>
+          <strong>Patch Testing for Allergies</strong>
+          <span class="card-cat">Comprehensive contact dermatitis evaluation</span>
+        </div>
+      </a>
+    </div>
+  </section>
 
   <!-- Medical Dermatology -->
   <div class="sec-medical" id="medical">
@@ -668,6 +807,9 @@
         <p>Early detection, diagnosis, and treatment options</p>
       </div>
     </div>
+    <div class="canada-note" style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 20px; font-size: 0.85rem; color: #92400E;">
+      <strong>Note for Canadian patients:</strong> Skin cancer follow-up protocols in Canada may differ from US guidelines. Your dermatologist will determine the appropriate screening schedule for your individual risk factors.
+    </div>
     <div class="article-grid">
       <a href="/medical-dermatology/skin-cancer/melanoma-overview-patient-guide.html" class="article-card">
         <div class="article-card-icon">🔍</div>
@@ -887,7 +1029,48 @@
   </p>
 </footer>
 
+<!-- PDF Download Button -->
+<button class="pdf-btn" onclick="generatePDF()" title="Download as PDF">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/><path d="M12 11v6"/><path d="M9 14l3 3 3-3"/></svg>
+    Download PDF
+</button>
+
 <script>
+// Practice configuration object for branding and content visibility customization
+const practiceConfig = {
+    // Practice Branding
+    practiceName: "DRS Skincare",
+    doctorName: "Dr. Rahul Shukla, MD FRCPC",
+    doctorTitle: "Board-Certified Dermatologist",
+    practiceLocation: "Hamilton ON",
+    practiceAddress: "1662 Upper James St, Hamilton ON",
+    bookingUrl: "https://drsskincare.ca",
+    practicePhone: "(905) 389-8888",
+
+    // Branding Colors (practice can override these)
+    primaryColor: "#1A6B54",
+    accentColor: "#028090",
+
+    // Section Visibility (toggle sections on/off)
+    showCostInfo: false,  // Dr. Shukla: "Cost may be something to remove"
+    showSkinConditions: true,
+    showCosmeticTreatments: true,
+    showSkinCancer: true,
+    showHairScalp: true,
+    showSkincare: true,
+    showProcedures: true,
+
+    // Practice-Specific Services (can add custom items)
+    customServices: [
+        { name: "FotoFinder Mole Mapping", description: "Advanced digital mole tracking with AI-assisted analysis", icon: "📸", url: "#fotofinder" }
+    ],
+
+    // Content Notes
+    contentNotes: {
+        skinCancer: "In Canada, follow-up protocols may differ from US guidelines. Consult your dermatologist for personalized screening schedules."
+    }
+};
+
 // Simple search functionality
 const articles = [
   {t:"Acne: Causes, Treatment & Daily Care", c:"Skin Conditions", u:"/medical-dermatology/skin-conditions/acne-vulgaris-patient-guide.html"},
@@ -966,6 +1149,11 @@ input.addEventListener('input', function() {
 document.addEventListener('click', function(e) {
   if (!e.target.closest('.search-section')) results.classList.remove('active');
 });
+
+// PDF export functionality
+function generatePDF() {
+    window.print();
+}
 </script>
 </body>
 </html>

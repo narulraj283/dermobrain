@@ -848,6 +848,9 @@
                 <li class="nav-item">
                     <a class="nav-link" onclick="switchTab('settings')">Settings</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="switchTab('videos')">🎬 Video Library</a>
+                </li>
             </nav>
 
             <button class="logout-btn" onclick="logout()">Sign Out</button>
@@ -867,6 +870,7 @@
                 <button class="tab-btn" onclick="switchTab('issues')">Issues</button>
                 <button class="tab-btn" onclick="switchTab('badges')">Badges</button>
                 <button class="tab-btn" onclick="switchTab('settings')">Settings</button>
+                <button class="tab-btn" onclick="switchTab('videos')">Video Library</button>
             </div>
 
             <!-- OVERVIEW TAB -->
@@ -896,6 +900,11 @@
                         <div class="kpi-label">Active Issues</div>
                         <div class="kpi-value">3</div>
                         <div class="kpi-change negative">↑ 1 this week</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Training Videos</div>
+                        <div class="kpi-value">2</div>
+                        <div class="kpi-change">Shared library</div>
                     </div>
                 </div>
 
@@ -1782,6 +1791,84 @@
                     <button class="danger-btn" onclick="confirmAction('Are you sure you want to reset all demo data? This cannot be undone.', 'resetData')">Reset Demo Data</button>
                     <button class="danger-btn" onclick="confirmAction('Are you sure you want to export all platform data as JSON? This is a large file.', 'exportData')">Export All Data</button>
                 </div>
+            <!-- VIDEO LIBRARY TAB -->
+            <div id="videos" class="tab-content">
+                <div class="section">
+                    <div class="section-title">Video Library Management</div>
+                    <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Manage training videos available to all practice team portals</p>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Add New Video</div>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label class="form-label">Video Title</label>
+                            <input type="text" id="newVideoTitle" class="form-input" placeholder="e.g., Dermatology Morphology Lecture">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Video URL</label>
+                            <input type="text" id="newVideoUrl" class="form-input" placeholder="https://youtube.com/watch?v=...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Source / Provider</label>
+                            <input type="text" id="newVideoSource" class="form-input" placeholder="e.g., YouTube, AAD, Custom">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Duration</label>
+                            <input type="text" id="newVideoDuration" class="form-input" placeholder="e.g., 45 min">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select id="newVideoCategory" class="form-input">
+                                <option value="essential">Essential Viewing</option>
+                                <option value="recommended">Recommended</option>
+                                <option value="supplemental">Supplemental</option>
+                            </select>
+                        </div>
+                        <button onclick="addVideoToLibrary()" style="background: linear-gradient(135deg, #1A6B54 0%, #238C6E 100%); color: white; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 10px;">Add Video</button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Current Video Library</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Source</th>
+                                    <th>Duration</th>
+                                    <th>Category</th>
+                                    <th>Added</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="videoLibraryBody">
+                                <tr>
+                                    <td><strong>Dermatology Morphology — Describing Skin Lesions</strong></td>
+                                    <td>YouTube</td>
+                                    <td>45 min</td>
+                                    <td><span style="background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">ESSENTIAL</span></td>
+                                    <td>Mar 2026</td>
+                                    <td><a class="action-link" onclick="window.open('https://www.youtube.com/watch?v=qI4E9JDs2Tw')">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AAD Basic Dermatology Curriculum</strong></td>
+                                    <td>AAD</td>
+                                    <td>Course</td>
+                                    <td><span style="background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">RECOMMENDED</span></td>
+                                    <td>Mar 2026</td>
+                                    <td><a class="action-link" onclick="window.open('https://www.aad.org/member/education/residents/bdc')">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section" style="background: #f0fffe; border: 1px solid #b2dfdb; padding: 20px; border-radius: 8px;">
+                    <div class="section-title" style="color: #028090; margin-bottom: 10px;">How Video Library Works</div>
+                    <p style="color: #4a5568; font-size: 14px; line-height: 1.6;">Videos added here become available on all practice team training portals. Each practice owner can also add their own custom videos through their Practice Owner Dashboard. As we onboard more dermatologists, the shared library will grow with community-contributed resources.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1913,6 +2000,37 @@
         document.addEventListener('mousemove', resetSessionTimeout);
         document.addEventListener('keypress', resetSessionTimeout);
         resetSessionTimeout();
+
+        function addVideoToLibrary() {
+            const title = document.getElementById('newVideoTitle').value;
+            const url = document.getElementById('newVideoUrl').value;
+            const source = document.getElementById('newVideoSource').value;
+            const duration = document.getElementById('newVideoDuration').value;
+            const category = document.getElementById('newVideoCategory').value;
+
+            if (!title || !url) {
+                alert('Please enter at least a title and URL.');
+                return;
+            }
+
+            const categoryLabels = {
+                essential: '<span style="background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">ESSENTIAL</span>',
+                recommended: '<span style="background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">RECOMMENDED</span>',
+                supplemental: '<span style="background: #e2e8f0; color: #475569; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">SUPPLEMENTAL</span>'
+            };
+
+            const row = document.createElement('tr');
+            row.innerHTML = '<td><strong>' + title + '</strong></td><td>' + (source || 'Custom') + '</td><td>' + (duration || '-') + '</td><td>' + categoryLabels[category] + '</td><td>Mar 2026</td><td><a class="action-link" onclick="window.open(\'' + url + '\')">View</a></td>';
+            document.getElementById('videoLibraryBody').appendChild(row);
+
+            // Clear form
+            document.getElementById('newVideoTitle').value = '';
+            document.getElementById('newVideoUrl').value = '';
+            document.getElementById('newVideoSource').value = '';
+            document.getElementById('newVideoDuration').value = '';
+
+            alert('Video "' + title + '" added to library successfully!');
+        }
     </script>
 </body>
 </html>

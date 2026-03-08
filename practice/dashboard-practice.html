@@ -1105,6 +1105,105 @@
             color: var(--primary);
             font-size: 16px;
         }
+
+        /* Configuration Panels */
+        .config-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .config-group {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .config-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .toggle-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .toggle-label:hover {
+            background: #f8fafc;
+        }
+        .toggle-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #028090;
+        }
+        .toggle-note {
+            display: block;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-weight: 400;
+            margin-left: 28px;
+            margin-top: 2px;
+        }
+        .custom-services-list {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .service-icon {
+            font-size: 24px;
+        }
+        .remove-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .remove-btn:hover {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+        .add-service-btn {
+            background: #f0fffe;
+            color: #028090;
+            border: 2px dashed #028090;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        .add-service-btn:hover {
+            background: #028090;
+            color: white;
+            border-style: solid;
+        }
     </style>
 </head>
 <body>
@@ -1314,6 +1413,85 @@
                     </div>
 
                     <button class="action-button" onclick="openPatientPage()" style="margin-top: 20px;">👁️ Preview Patient Page</button>
+
+                    <div class="config-panel">
+                        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--dark);">Customize Patient Portal</h3>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 25px;">Control what patients see on your branded resource page. Changes are saved automatically.</p>
+
+                        <div class="config-group">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Section Visibility</h4>
+                            <div class="toggle-row">
+                                <label class="toggle-label">
+                                    <input type="checkbox" checked> Skin Conditions
+                                </label>
+                                <label class="toggle-label">
+                                    <input type="checkbox" checked> Cosmetic Treatments
+                                </label>
+                                <label class="toggle-label">
+                                    <input type="checkbox" checked> Skin Cancer
+                                </label>
+                                <label class="toggle-label">
+                                    <input type="checkbox" checked> Hair & Scalp
+                                </label>
+                                <label class="toggle-label">
+                                    <input type="checkbox" checked> Skincare & Prevention
+                                </label>
+                                <label class="toggle-label">
+                                    <input type="checkbox" checked> Surgical Procedures
+                                </label>
+                                <label class="toggle-label">
+                                    <input type="checkbox"> Cost Information
+                                    <span class="toggle-note">Recommended: OFF — avoids price comparisons</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-group">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Practice-Specific Services</h4>
+                            <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">Add services unique to your practice (e.g., FotoFinder Mole Mapping, custom devices)</p>
+                            <div class="custom-services-list" id="customServicesList">
+                                <div class="service-item">
+                                    <span class="service-icon">📸</span>
+                                    <div>
+                                        <strong>FotoFinder Mole Mapping</strong>
+                                        <div style="font-size: 0.8rem; color: #64748b;">Advanced digital mole tracking</div>
+                                    </div>
+                                    <button class="remove-btn" title="Remove">×</button>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-icon">💬</span>
+                                    <div>
+                                        <strong>Personalized Skincare Consultation</strong>
+                                        <div style="font-size: 0.8rem; color: #64748b;">Custom skincare regimen</div>
+                                    </div>
+                                    <button class="remove-btn" title="Remove">×</button>
+                                </div>
+                            </div>
+                            <button class="add-service-btn" onclick="addCustomService()">+ Add Service</button>
+                        </div>
+
+                        <div class="config-group">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Regional Settings</h4>
+                            <label class="toggle-label">
+                                <input type="checkbox" checked> Show Canadian practice notes
+                                <span class="toggle-note">Displays Canada-specific follow-up guidelines</span>
+                            </label>
+                        </div>
+
+                        <div class="config-group">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">PDF Export Branding</h4>
+                            <div style="display: grid; gap: 12px;">
+                                <div>
+                                    <label style="font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 5px;">Clinic Logo URL</label>
+                                    <input type="text" placeholder="https://your-clinic.com/logo.png" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 5px;">Footer Text for PDF</label>
+                                    <input type="text" value="DRS Skincare — 1662 Upper James St, Hamilton ON" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Tab 3: Team Training -->
@@ -1362,6 +1540,48 @@
                                 </thead>
                                 <tbody id="trainingTableBody"></tbody>
                             </table>
+                        </div>
+                    </div>
+
+                    <div class="config-panel">
+                        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--dark);">Training Content Management</h3>
+
+                        <div class="config-group">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Learning Tracks</h4>
+                            <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">7 tracks active. Toggle tracks relevant to your practice.</p>
+                            <div class="toggle-row">
+                                <label class="toggle-label"><input type="checkbox" checked> Dermatology Morphology & Terminology</label>
+                                <label class="toggle-label"><input type="checkbox" checked> New Staff Onboarding Essentials</label>
+                                <label class="toggle-label"><input type="checkbox" checked> Cosmetic Procedures & Injectables</label>
+                                <label class="toggle-label"><input type="checkbox" checked> Skin Cancer: Detection & Triage</label>
+                                <label class="toggle-label"><input type="checkbox" checked> Laser & Light Therapies</label>
+                                <label class="toggle-label"><input type="checkbox" checked> Hair Loss & Scalp Conditions</label>
+                                <label class="toggle-label"><input type="checkbox" checked> Surgical Procedures & Wound Care</label>
+                            </div>
+                        </div>
+
+                        <div class="config-group">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Custom Training Materials</h4>
+                            <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">Add your own lectures, SOPs, or resources for staff training</p>
+                            <div class="custom-services-list">
+                                <div class="service-item">
+                                    <span class="service-icon">📹</span>
+                                    <div>
+                                        <strong>Dermatology Morphology Video</strong>
+                                        <div style="font-size: 0.8rem; color: #64748b;">YouTube — Essential Viewing</div>
+                                    </div>
+                                    <button class="remove-btn" title="Remove">×</button>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-icon">🎓</span>
+                                    <div>
+                                        <strong>AAD Basic Dermatology Curriculum</strong>
+                                        <div style="font-size: 0.8rem; color: #64748b;">aad.org — Recommended</div>
+                                    </div>
+                                    <button class="remove-btn" title="Remove">×</button>
+                                </div>
+                            </div>
+                            <button class="add-service-btn" onclick="addTrainingResource()">+ Add Training Resource</button>
                         </div>
                     </div>
                 </div>
@@ -2316,6 +2536,25 @@
                 }
             });
         });
+
+        // ============= CUSTOMIZATION FUNCTIONS =============
+        function addCustomService() {
+            const name = prompt('Service name:');
+            if (!name) return;
+            const desc = prompt('Brief description:');
+            const list = document.getElementById('customServicesList');
+            const item = document.createElement('div');
+            item.className = 'service-item';
+            item.innerHTML = '<span class="service-icon">✨</span><div><strong>' + name + '</strong><div style="font-size: 0.8rem; color: #64748b;">' + (desc || '') + '</div></div><button class="remove-btn" onclick="this.parentElement.remove()" title="Remove">×</button>';
+            list.appendChild(item);
+        }
+
+        function addTrainingResource() {
+            const name = prompt('Resource name:');
+            if (!name) return;
+            const url = prompt('Resource URL:');
+            alert('Resource "' + name + '" added. In the full version, this will sync to your team training portal.');
+        }
     </script>
 </body>
 </html>
