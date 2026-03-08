@@ -1823,7 +1823,7 @@
             try {
                 const data = JSON.parse(session);
                 if (data.role !== 'editor') {
-                    window.location.href = 'portal.html';
+                    window.location.href = 'portal.html?switch=1';
                     return null;
                 }
                 return data;

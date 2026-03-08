@@ -308,6 +308,9 @@
                         <button class="btn-submit" onclick="loginAdmin(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
+                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
+                        <strong>Demo:</strong> Code: dermoadmin2024
+                    </div>
                 </div>
             </div>
 
@@ -335,6 +338,9 @@
                     <div class="form-buttons">
                         <button class="btn-submit" onclick="loginEditor(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
+                    </div>
+                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
+                        <strong>Demo:</strong><br>Email: dr.smith@derm.com<br>Password: editor2024
                     </div>
                 </div>
             </div>
@@ -364,6 +370,9 @@
                         <button class="btn-submit" onclick="loginPractice(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
+                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
+                        <strong>Demo:</strong><br>Practice ID: drs-skincare<br>Password: drs2024
+                    </div>
                 </div>
             </div>
 
@@ -392,6 +401,9 @@
                         <button class="btn-submit" onclick="loginTrainee(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
+                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
+                        <strong>Demo:</strong><br>Email: sarah.m@drsskincare.ca<br>Code: staff2024
+                    </div>
                 </div>
             </div>
         </div>
@@ -409,8 +421,15 @@
     </div>
 
     <script>
-        // Check for existing session on load
+        // Check for existing session on load (skip if ?switch=1 in URL)
         window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('switch')) {
+                // User wants to switch roles - clear session
+                localStorage.removeItem('dermobrain_session');
+                return;
+            }
+
             const session = localStorage.getItem('dermobrain_session');
             if (session) {
                 try {

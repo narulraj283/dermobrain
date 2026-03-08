@@ -1809,7 +1809,7 @@
             try {
                 const data = JSON.parse(session);
                 if (data.role !== 'admin') {
-                    window.location.href = 'portal.html';
+                    window.location.href = 'portal.html?switch=1';
                 }
             } catch (e) {
                 localStorage.removeItem('dermobrain_session');
