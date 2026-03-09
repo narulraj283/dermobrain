@@ -57,10 +57,29 @@
             margin-bottom: 60px;
         }
 
-        /* Hide content briefly while session check runs (prevents flicker) */
-        body.checking-session .container,
-        body.checking-session .bottom-section {
-            visibility: hidden;
+        /* Session banner for logged-in users */
+        .session-banner {
+            display: none;
+            background: linear-gradient(135deg, #028090, #015f6b);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .session-banner a {
+            color: #ffd166;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 12px;
+        }
+        .session-banner a:hover {
+            text-decoration: underline;
+        }
+        .session-banner.show {
+            display: block;
         }
 
         .card {
@@ -412,6 +431,7 @@
             <div class="logo-subtitle">Unified Portal</div>
         </div>
 
+        <div class="session-banner" id="sessionBanner"></div>
         <div class="cards-grid" id="cardsGrid">
             <!-- Admin Card -->
             <div class="card" data-role="admin">
@@ -551,43 +571,39 @@
             return data;
         }
 
-        // Check for existing session on load
-        // If user arrived via logout (?logout=1) or switch (?switch), clear session and show portal
-        // If valid token exists, auto-redirect to their dashboard (hidden while checking)
-        // Safety: always show portal after 2 seconds even if API hangs
+        // On load: if logged in, show a "continue" banner instead of auto-redirecting.
+        // This prevents redirect loops when cached dashboard pages have stale logout code.
+        // If coming from logout, clear session silently.
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
 
-            function showPortal() {
+            // If coming from logout, clear everything
+            if (urlParams.has('switch') || urlParams.has('logout')) {
                 localStorage.removeItem('dermobrain_token');
                 localStorage.removeItem('dermobrain_session');
-                document.body.classList.remove('checking-session');
-            }
-
-            // If coming from logout, clear everything and show portal immediately
-            if (urlParams.has('switch') || urlParams.has('logout')) {
-                showPortal();
                 return;
             }
 
             const token = localStorage.getItem('dermobrain_token');
             if (token) {
-                document.body.classList.add('checking-session');
-                // Safety timeout — if API is slow or loops, show portal after 2s
-                const safetyTimer = setTimeout(showPortal, 2000);
                 fetch(API_BASE + '/api/auth/me', {
                     headers: { 'Authorization': 'Bearer ' + token }
                 }).then(r => r.json()).then(data => {
                     if (data.user && data.user.role) {
-                        clearTimeout(safetyTimer);
-                        routeUser(data.user.role);
+                        const routes = { admin: 'editor-admin.html', editor: 'editor-dashboard.html',
+                            practice_owner: 'dashboard-practice.html', trainee: 'dashboard-trainee.html' };
+                        const banner = document.getElementById('sessionBanner');
+                        const dashUrl = routes[data.user.role] || '#';
+                        banner.innerHTML = 'Logged in as <strong>' + data.user.name + '</strong>'
+                            + '<a href="' + dashUrl + '">Go to Dashboard →</a>';
+                        banner.classList.add('show');
                     } else {
-                        clearTimeout(safetyTimer);
-                        showPortal();
+                        localStorage.removeItem('dermobrain_token');
+                        localStorage.removeItem('dermobrain_session');
                     }
                 }).catch(() => {
-                    clearTimeout(safetyTimer);
-                    showPortal();
+                    localStorage.removeItem('dermobrain_token');
+                    localStorage.removeItem('dermobrain_session');
                 });
             }
         })();
