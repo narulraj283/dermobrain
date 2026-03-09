@@ -57,30 +57,6 @@
             margin-bottom: 60px;
         }
 
-        /* Session banner for logged-in users */
-        .session-banner {
-            display: none;
-            background: linear-gradient(135deg, #028090, #015f6b);
-            color: white;
-            padding: 14px 24px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            text-align: center;
-            font-size: 15px;
-        }
-        .session-banner a {
-            color: #ffd166;
-            font-weight: 600;
-            text-decoration: none;
-            margin-left: 12px;
-        }
-        .session-banner a:hover {
-            text-decoration: underline;
-        }
-        .session-banner.show {
-            display: block;
-        }
 
         .card {
             background: white;
@@ -431,7 +407,6 @@
             <div class="logo-subtitle">Unified Portal</div>
         </div>
 
-        <div class="session-banner" id="sessionBanner"></div>
         <div class="cards-grid" id="cardsGrid">
             <!-- Admin Card -->
             <div class="card" data-role="admin">
@@ -571,42 +546,11 @@
             return data;
         }
 
-        // On load: if logged in, show a "continue" banner instead of auto-redirecting.
-        // This prevents redirect loops when cached dashboard pages have stale logout code.
-        // If coming from logout, clear session silently.
-        (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-
-            // If coming from logout, clear everything
-            if (urlParams.has('switch') || urlParams.has('logout')) {
-                localStorage.removeItem('dermobrain_token');
-                localStorage.removeItem('dermobrain_session');
-                return;
-            }
-
-            const token = localStorage.getItem('dermobrain_token');
-            if (token) {
-                fetch(API_BASE + '/api/auth/me', {
-                    headers: { 'Authorization': 'Bearer ' + token }
-                }).then(r => r.json()).then(data => {
-                    if (data.user && data.user.role) {
-                        const routes = { admin: 'editor-admin.html', editor: 'editor-dashboard.html',
-                            practice_owner: 'dashboard-practice.html', trainee: 'dashboard-trainee.html' };
-                        const banner = document.getElementById('sessionBanner');
-                        const dashUrl = routes[data.user.role] || '#';
-                        banner.innerHTML = 'Logged in as <strong>' + data.user.name + '</strong>'
-                            + '<a href="' + dashUrl + '">Go to Dashboard →</a>';
-                        banner.classList.add('show');
-                    } else {
-                        localStorage.removeItem('dermobrain_token');
-                        localStorage.removeItem('dermobrain_session');
-                    }
-                }).catch(() => {
-                    localStorage.removeItem('dermobrain_token');
-                    localStorage.removeItem('dermobrain_session');
-                });
-            }
-        })();
+        // Always clear stale session data when visiting the portal.
+        // The portal is the login page — if you're here, you want to log in.
+        // Dashboards protect themselves with their own auth checks.
+        localStorage.removeItem('dermobrain_token');
+        localStorage.removeItem('dermobrain_session');
 
         function routeUser(role) {
             const routes = {
