@@ -57,15 +57,10 @@
             margin-bottom: 60px;
         }
 
-        /* Hide content until session check completes (prevents flicker) */
+        /* Hide content briefly while session check runs (prevents flicker) */
         body.checking-session .container,
         body.checking-session .bottom-section {
-            opacity: 0;
-        }
-        body.session-ready .container,
-        body.session-ready .bottom-section {
-            opacity: 1;
-            transition: opacity 0.15s ease;
+            visibility: hidden;
         }
 
         .card {
@@ -556,40 +551,44 @@
             return data;
         }
 
-        // Check for existing session on load (skip if ?switch=1 in URL)
-        // Body starts hidden to prevent flicker
+        // Check for existing session on load
+        // If user arrived via logout (?logout=1) or switch (?switch), clear session and show portal
+        // If valid token exists, auto-redirect to their dashboard (hidden while checking)
+        // Safety: always show portal after 2 seconds even if API hangs
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const token = localStorage.getItem('dermobrain_token');
 
-            if (urlParams.has('switch') || urlParams.has('logout')) {
-                localStorage.removeItem('dermobrain_session');
+            function showPortal() {
                 localStorage.removeItem('dermobrain_token');
-                document.body.classList.add('session-ready');
+                localStorage.removeItem('dermobrain_session');
+                document.body.classList.remove('checking-session');
+            }
+
+            // If coming from logout, clear everything and show portal immediately
+            if (urlParams.has('switch') || urlParams.has('logout')) {
+                showPortal();
                 return;
             }
 
+            const token = localStorage.getItem('dermobrain_token');
             if (token) {
                 document.body.classList.add('checking-session');
+                // Safety timeout — if API is slow or loops, show portal after 2s
+                const safetyTimer = setTimeout(showPortal, 2000);
                 fetch(API_BASE + '/api/auth/me', {
                     headers: { 'Authorization': 'Bearer ' + token }
                 }).then(r => r.json()).then(data => {
                     if (data.user && data.user.role) {
+                        clearTimeout(safetyTimer);
                         routeUser(data.user.role);
                     } else {
-                        localStorage.removeItem('dermobrain_token');
-                        localStorage.removeItem('dermobrain_session');
-                        document.body.classList.remove('checking-session');
-                        document.body.classList.add('session-ready');
+                        clearTimeout(safetyTimer);
+                        showPortal();
                     }
                 }).catch(() => {
-                    localStorage.removeItem('dermobrain_token');
-                    localStorage.removeItem('dermobrain_session');
-                    document.body.classList.remove('checking-session');
-                    document.body.classList.add('session-ready');
+                    clearTimeout(safetyTimer);
+                    showPortal();
                 });
-            } else {
-                document.body.classList.add('session-ready');
             }
         })();
 
