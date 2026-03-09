@@ -540,26 +540,42 @@
     </div>
 
     <script>
+        const API_BASE = window.__DERMOBRAIN_API__ || 'https://dermobrain-api.naren-6e3.workers.dev';
+
+        async function apiLogin(email, password) {
+            const resp = await fetch(API_BASE + '/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await resp.json();
+            if (!resp.ok) throw new Error(data.error || 'Login failed');
+            return data;
+        }
+
         // Check for existing session on load (skip if ?switch=1 in URL)
-        window.addEventListener('load', () => {
+        window.addEventListener('load', async () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('switch')) {
-                // User wants to switch roles - clear session
                 localStorage.removeItem('dermobrain_session');
+                localStorage.removeItem('dermobrain_token');
                 return;
             }
 
-            const session = localStorage.getItem('dermobrain_session');
-            if (session) {
+            const token = localStorage.getItem('dermobrain_token');
+            if (token) {
                 try {
-                    const data = JSON.parse(session);
-                    if (data.role) {
-                        routeUser(data.role);
+                    const resp = await fetch(API_BASE + '/api/auth/me', {
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    });
+                    const data = await resp.json();
+                    if (resp.ok && data.user && data.user.role) {
+                        routeUser(data.user.role);
                         return;
                     }
-                } catch (e) {
-                    localStorage.removeItem('dermobrain_session');
-                }
+                } catch (e) {}
+                localStorage.removeItem('dermobrain_token');
+                localStorage.removeItem('dermobrain_session');
             }
         });
 
@@ -624,140 +640,91 @@
             }
         }
 
-        function loginAdmin(event) {
+        async function loginAdmin(event) {
             event.preventDefault();
             const card = event.target.closest('.card');
             clearErrors(card);
-
             const code = card.querySelector('input[data-field="adminCode"]').value;
+            if (!code) { showError(card, 'adminCode', 'Admin code is required'); return; }
 
-            if (!code) {
-                showError(card, 'adminCode', 'Admin code is required');
-                return;
+            try {
+                const data = await apiLogin('admin@dermobrain.com', code);
+                localStorage.setItem('dermobrain_token', data.token);
+                localStorage.setItem('dermobrain_session', JSON.stringify({
+                    role: data.user.role, name: data.user.name, email: data.user.email,
+                    userId: data.user.id, practiceId: data.user.practice_id, loginTime: Date.now()
+                }));
+                routeUser(data.user.role);
+            } catch (e) {
+                showError(card, 'adminCode', e.message || 'Invalid admin code');
             }
-
-            if (code !== 'dermoadmin2024') {
-                showError(card, 'adminCode', 'Invalid admin code');
-                return;
-            }
-
-            const session = {
-                role: 'admin',
-                name: 'Admin',
-                email: 'admin@dermobrain.com',
-                loginTime: Date.now()
-            };
-
-            localStorage.setItem('dermobrain_session', JSON.stringify(session));
-            routeUser('admin');
         }
 
-        function loginEditor(event) {
+        async function loginEditor(event) {
             event.preventDefault();
             const card = event.target.closest('.card');
             clearErrors(card);
-
             const email = card.querySelector('input[data-field="editorEmail"]').value;
             const password = card.querySelector('input[data-field="editorPassword"]').value;
+            if (!email) { showError(card, 'editorEmail', 'Email is required'); return; }
+            if (!password) { showError(card, 'editorPassword', 'Password is required'); return; }
 
-            if (!email) {
-                showError(card, 'editorEmail', 'Email is required');
-                return;
+            try {
+                const data = await apiLogin(email, password);
+                localStorage.setItem('dermobrain_token', data.token);
+                localStorage.setItem('dermobrain_session', JSON.stringify({
+                    role: data.user.role, name: data.user.name, email: data.user.email,
+                    userId: data.user.id, practiceId: data.user.practice_id,
+                    tier: 'Medical Editor', loginTime: Date.now()
+                }));
+                routeUser(data.user.role);
+            } catch (e) {
+                showError(card, 'editorEmail', e.message || 'Invalid email or password');
             }
-
-            if (!password) {
-                showError(card, 'editorPassword', 'Password is required');
-                return;
-            }
-
-            if (email !== 'dr.smith@derm.com' || password !== 'editor2024') {
-                showError(card, 'editorEmail', 'Invalid email or password');
-                return;
-            }
-
-            const session = {
-                role: 'editor',
-                name: 'Dr. Sarah Smith',
-                email: 'dr.smith@derm.com',
-                specialty: 'Medical Dermatology',
-                tier: 'Senior Reviewer',
-                articlesReviewed: 8,
-                loginTime: Date.now()
-            };
-
-            localStorage.setItem('dermobrain_session', JSON.stringify(session));
-            routeUser('editor');
         }
 
-        function loginPractice(event) {
+        async function loginPractice(event) {
             event.preventDefault();
             const card = event.target.closest('.card');
             clearErrors(card);
-
             const practiceId = card.querySelector('input[data-field="practiceId"]').value;
             const password = card.querySelector('input[data-field="practicePassword"]').value;
+            if (!practiceId) { showError(card, 'practiceId', 'Email is required'); return; }
+            if (!password) { showError(card, 'practicePassword', 'Password is required'); return; }
 
-            if (!practiceId) {
-                showError(card, 'practiceId', 'Practice ID is required');
-                return;
+            try {
+                const data = await apiLogin(practiceId, password);
+                localStorage.setItem('dermobrain_token', data.token);
+                localStorage.setItem('dermobrain_session', JSON.stringify({
+                    role: data.user.role, name: data.user.name, email: data.user.email,
+                    userId: data.user.id, practiceId: data.user.practice_id, loginTime: Date.now()
+                }));
+                routeUser(data.user.role);
+            } catch (e) {
+                showError(card, 'practiceId', e.message || 'Invalid credentials');
             }
-
-            if (!password) {
-                showError(card, 'practicePassword', 'Password is required');
-                return;
-            }
-
-            if (practiceId !== 'dr.shukla@drsskincare.ca' || password !== 'drs2024') {
-                showError(card, 'practiceId', 'Invalid practice ID or password');
-                return;
-            }
-
-            const session = {
-                role: 'practice_owner',
-                practiceId: 'dr.shukla@drsskincare.ca',
-                name: 'Dr. Shukla',
-                email: 'dr.shukla@drsskincare.ca',
-                loginTime: Date.now()
-            };
-
-            localStorage.setItem('dermobrain_session', JSON.stringify(session));
-            routeUser('practice_owner');
         }
 
-        function loginTrainee(event) {
+        async function loginTrainee(event) {
             event.preventDefault();
             const card = event.target.closest('.card');
             clearErrors(card);
-
             const email = card.querySelector('input[data-field="traineeEmail"]').value;
             const code = card.querySelector('input[data-field="traineeCode"]').value;
+            if (!email) { showError(card, 'traineeEmail', 'Email is required'); return; }
+            if (!code) { showError(card, 'traineeCode', 'Access code is required'); return; }
 
-            if (!email) {
-                showError(card, 'traineeEmail', 'Email is required');
-                return;
+            try {
+                const data = await apiLogin(email, code);
+                localStorage.setItem('dermobrain_token', data.token);
+                localStorage.setItem('dermobrain_session', JSON.stringify({
+                    role: data.user.role, name: data.user.name, email: data.user.email,
+                    userId: data.user.id, practiceId: data.user.practice_id, loginTime: Date.now()
+                }));
+                routeUser(data.user.role);
+            } catch (e) {
+                showError(card, 'traineeEmail', e.message || 'Invalid email or access code');
             }
-
-            if (!code) {
-                showError(card, 'traineeCode', 'Access code is required');
-                return;
-            }
-
-            if (email !== 'sarah.mitchell@drsskincare.ca' || code !== 'staff2024') {
-                showError(card, 'traineeEmail', 'Invalid email or access code');
-                return;
-            }
-
-            const session = {
-                role: 'trainee',
-                practiceId: 'drs-skincare',
-                name: 'Sarah Mitchell',
-                email: 'sarah.mitchell@drsskincare.ca',
-                staffRole: 'Lead Esthetician',
-                loginTime: Date.now()
-            };
-
-            localStorage.setItem('dermobrain_session', JSON.stringify(session));
-            routeUser('trainee');
         }
 
         // Add click handlers to cards

@@ -1813,96 +1813,91 @@
     </div>
 
     <script>
+        // ============ API CONFIGURATION ============
+        const API_BASE = window.__DERMOBRAIN_API__ || 'https://dermobrain-api.naren-6e3.workers.dev';
+
+        async function api(path, options = {}) {
+            const token = localStorage.getItem('dermobrain_token');
+            const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
+            if (token) headers['Authorization'] = 'Bearer ' + token;
+            try {
+                const resp = await fetch(API_BASE + path, { ...options, headers });
+                const data = await resp.json();
+                if (!resp.ok) throw new Error(data.error || 'Request failed');
+                return data;
+            } catch (e) {
+                console.error('API Error:', path, e);
+                throw e;
+            }
+        }
+
         // ============ AUTHENTICATION ============
-        function checkAuth() {
-            const session = localStorage.getItem('dermobrain_session');
-            if (!session) {
+        async function checkAuth() {
+            const token = localStorage.getItem('dermobrain_token');
+            if (!token) {
                 window.location.href = 'portal.html';
                 return null;
             }
             try {
-                const data = JSON.parse(session);
-                if (data.role !== 'editor') {
-                    window.location.href = 'portal.html?switch=1';
-                    return null;
+                const data = await api('/api/auth/me');
+                if (data.user && data.user.role === 'editor') {
+                    return { ...data.user, tier: 'Medical Editor', practice: data.practice };
                 }
-                return data;
+                window.location.href = 'portal.html?switch=1';
+                return null;
             } catch (e) {
+                localStorage.removeItem('dermobrain_token');
                 window.location.href = 'portal.html';
                 return null;
             }
         }
 
-        const userSession = checkAuth();
-
-        // ============ DEMO DATA ============
-        const articlesData = [
-            { id: 1, title: "Acne Vulgaris: Pathophysiology and Treatment", category: "medical", wordcount: 2800, slug: "acne-vulgaris" },
-            { id: 2, title: "Psoriasis: Treatment Protocols and New Therapies", category: "medical", wordcount: 3100, slug: "psoriasis-treatment" },
-            { id: 3, title: "Botox: Professional Insights and Best Practices", category: "cosmetic", wordcount: 2400, slug: "botox-insights" },
-            { id: 4, title: "Rosacea Management: Evidence-Based Approaches", category: "medical", wordcount: 2650, slug: "rosacea-management" },
-            { id: 5, title: "Chemical Peels: Overview and Application", category: "cosmetic", wordcount: 2300, slug: "chemical-peels" },
-            { id: 6, title: "Dermal Fillers: Clinical Guide", category: "cosmetic", wordcount: 2550, slug: "dermal-fillers" },
-            { id: 7, title: "Melanoma: Clinical Features and Management", category: "medical", wordcount: 3200, slug: "melanoma-clinical" },
-            { id: 8, title: "Contact Dermatitis: Diagnosis and Prevention", category: "medical", wordcount: 2700, slug: "contact-dermatitis" },
-            { id: 9, title: "Eczema in Children: Management and Care", category: "pediatric", wordcount: 2500, slug: "eczema-children" },
-            { id: 10, title: "Laser Skin Resurfacing: Modern Applications", category: "surgical", wordcount: 2900, slug: "laser-resurfacing" },
-            { id: 11, title: "Microdermabrasion: Techniques and Results", category: "cosmetic", wordcount: 2200, slug: "microdermabrasion" },
-            { id: 12, title: "Mohs Surgery: Procedure and Outcomes", category: "surgical", wordcount: 3100, slug: "mohs-surgery" },
-            { id: 13, title: "Vitiligo: Treatment Options", category: "medical", wordcount: 2800, slug: "vitiligo-treatment" },
-            { id: 14, title: "Alopecia: Hair Loss Understanding", category: "medical", wordcount: 2600, slug: "alopecia-hair-loss" },
-            { id: 15, title: "Melasma: Advanced Therapies", category: "cosmetic", wordcount: 2400, slug: "melasma-therapy" },
-            { id: 16, title: "Wart Treatment: Complete Guide", category: "medical", wordcount: 2300, slug: "wart-treatment" },
-            { id: 17, title: "Scars: Management and Prevention", category: "surgical", wordcount: 2700, slug: "scar-management" },
-            { id: 18, title: "Seborrheic Keratosis Removal", category: "surgical", wordcount: 2100, slug: "seborrheic-keratosis" },
-            { id: 19, title: "Rosacea Subtypes: Identification", category: "medical", wordcount: 2500, slug: "rosacea-subtypes" },
-            { id: 20, title: "Anti-Aging Skincare Regimens", category: "cosmetic", wordcount: 2600, slug: "anti-aging-skincare" }
-        ];
-
-        const reviewsData = [
-            { article: "Acne Vulgaris: Pathophysiology and Treatment", category: "Medical", verdict: "Approved", score: 9.2, date: "Mar 5, 2026", status: "approved" },
-            { article: "Botox: Professional Insights and Best Practices", category: "Cosmetic", verdict: "Approved with Notes", score: 8.8, date: "Mar 2, 2026", status: "approved" },
-            { article: "Chemical Peels: Overview and Application", category: "Cosmetic", verdict: "Approved", score: 8.9, date: "Feb 28, 2026", status: "approved" },
-            { article: "Dermal Fillers: Clinical Guide", category: "Cosmetic", verdict: "Approved", score: 9.1, date: "Feb 25, 2026", status: "approved" },
-            { article: "Melanoma: Clinical Features and Management", category: "Medical", verdict: "Request Revision", score: 7.5, date: "Feb 20, 2026", status: "revision" },
-            { article: "Laser Skin Resurfacing: Modern Applications", category: "Surgical", verdict: "Approved with Notes", score: 8.6, date: "Feb 18, 2026", status: "approved" },
-            { article: "Psoriasis: Treatment Protocols", category: "Medical", verdict: "Approved", score: 9.0, date: "Feb 15, 2026", status: "approved" },
-            { article: "Vitiligo: Treatment Options", category: "Medical", verdict: "Approved with Notes", score: 8.3, date: "Feb 10, 2026", status: "approved" }
-        ];
-
-        const flaggedIssuesData = [
-            {
-                title: "Methotrexate dosing information may be outdated",
-                article: "Psoriasis: Treatment Protocols",
-                severity: "critical",
-                description: "The recommended methotrexate dosing appears to be from 2023 guidelines. Please verify against 2025-2026 clinical standards.",
-                status: "Under Review",
-                flagged: "Mar 3, 2026",
-                adminResponse: "We're reviewing current literature and will update by March 15."
-            },
-            {
-                title: "Missing drug interaction for biologics",
-                article: "Eczema: Treatment Approaches",
-                severity: "high",
-                description: "Article mentions biologic therapies but doesn't discuss potential interactions with JAK inhibitors.",
-                status: "Open",
-                flagged: "Feb 27, 2026",
-                adminResponse: null
-            }
-        ];
+        let userSession = null;
+        let articlesData = [];
+        let reviewsData = [];
+        let flaggedIssuesData = [];
 
         // ============ POPULATE UI ============
-        function initializeUI() {
+        async function initializeUI() {
             if (!userSession) return;
 
             const initials = (userSession.name.split(' ').map(n => n[0]).join(''));
-            document.getElementById('userAvatar').textContent = initials;
-            document.getElementById('userName').textContent = userSession.name;
-            document.getElementById('userTier').textContent = userSession.tier;
-            document.getElementById('welcomeTitle').textContent = `Welcome, ${userSession.name}`;
-            document.getElementById('welcomeTier').textContent = userSession.tier;
-            document.getElementById('pageTitle').textContent = `${userSession.name}'s Editor Dashboard`;
-            document.getElementById('profileEmail').textContent = userSession.email;
+            const avatarEl = document.getElementById('userAvatar');
+            if (avatarEl) avatarEl.textContent = initials;
+            const nameEl = document.getElementById('userName');
+            if (nameEl) nameEl.textContent = userSession.name;
+            const tierEl = document.getElementById('userTier');
+            if (tierEl) tierEl.textContent = userSession.tier || 'Editor';
+            const welcomeEl = document.getElementById('welcomeTitle');
+            if (welcomeEl) welcomeEl.textContent = `Welcome, ${userSession.name}`;
+            const welcomeTierEl = document.getElementById('welcomeTier');
+            if (welcomeTierEl) welcomeTierEl.textContent = userSession.tier || 'Editor';
+            const pageTitleEl = document.getElementById('pageTitle');
+            if (pageTitleEl) pageTitleEl.textContent = `${userSession.name}'s Editor Dashboard`;
+            const profileEmailEl = document.getElementById('profileEmail');
+            if (profileEmailEl) profileEmailEl.textContent = userSession.email;
+
+            // Load real data from API
+            try {
+                const editorData = await api('/api/dashboard/editor/' + userSession.id);
+                articlesData = (editorData.articles || []).map(a => ({
+                    id: a.id,
+                    title: a.title,
+                    category: (a.category || 'medical').toLowerCase(),
+                    wordcount: a.word_count || 0,
+                    slug: a.slug
+                }));
+                reviewsData = (editorData.edits || []).map(e => ({
+                    article: e.article_title || 'Unknown',
+                    category: 'Medical',
+                    verdict: e.status === 'approved' ? 'Approved' : e.status === 'rejected' ? 'Request Revision' : 'Pending',
+                    score: 0,
+                    date: e.created_at ? new Date(e.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '',
+                    status: e.status
+                }));
+            } catch (e) {
+                console.error('Failed to load editor data:', e);
+            }
 
             populateArticles();
             populateReviewsTable();
@@ -2045,7 +2040,9 @@
         }
 
         // ============ LOGOUT ============
-        document.getElementById('logoutBtn').addEventListener('click', () => {
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try { await api('/api/auth/logout', { method: 'POST' }); } catch (e) {}
+            localStorage.removeItem('dermobrain_token');
             localStorage.removeItem('dermobrain_session');
             window.location.href = 'portal.html';
         });
@@ -2077,7 +2074,10 @@
         });
 
         // ============ INITIALIZE ============
-        initializeUI();
+        (async () => {
+            userSession = await checkAuth();
+            if (userSession) await initializeUI();
+        })();
     </script>
 </body>
 </html>

@@ -1485,7 +1485,7 @@
                 <!-- Tab 1: Overview Dashboard -->
                 <div id="overviewTab" class="tab-content active">
                     <div class="welcome-banner">
-                        <div class="welcome-title">Welcome back, Dr. Shukla</div>
+                        <div class="welcome-title" id="welcomeTitle">Welcome back</div>
                         <div class="welcome-subtitle" id="currentDate"></div>
                     </div>
 
@@ -1493,33 +1493,33 @@
                     <div class="kpi-grid">
                         <div class="kpi-card">
                             <div class="kpi-label">Patient Page Views</div>
-                            <div class="kpi-value">2,847</div>
-                            <div class="kpi-change positive">↑ 12% vs last month</div>
+                            <div class="kpi-value" id="kpiViews">—</div>
+                            <div class="kpi-change positive" id="kpiViewsChange">Loading...</div>
                             <svg class="sparkline" viewBox="0 0 100 40" preserveAspectRatio="none">
                                 <polyline points="0,30 10,25 20,20 30,15 40,18 50,10 60,12 70,8 80,5 90,15 100,20"
                                     fill="none" stroke="#04b5ce" stroke-width="2"/>
                             </svg>
                         </div>
                         <div class="kpi-card">
-                            <div class="kpi-label">Active Staff</div>
-                            <div class="kpi-value">8/12</div>
-                            <div class="kpi-change positive">Currently logged in</div>
+                            <div class="kpi-label">Editors</div>
+                            <div class="kpi-value" id="kpiEditors">—</div>
+                            <div class="kpi-change positive" id="kpiEditorsChange">Loading...</div>
                             <div style="margin-top: 12px; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
                                 <div style="height: 100%; width: 67%; background: linear-gradient(90deg, #028090, #04b5ce);"></div>
                             </div>
                         </div>
                         <div class="kpi-card">
-                            <div class="kpi-label">Training Completion</div>
-                            <div class="kpi-value">73%</div>
-                            <div class="kpi-change positive">Average across all staff</div>
+                            <div class="kpi-label">Avg Content Score</div>
+                            <div class="kpi-value" id="kpiAvgScore">—</div>
+                            <div class="kpi-change positive" id="kpiScoreChange">Loading...</div>
                             <div style="margin-top: 12px; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
                                 <div style="height: 100%; width: 73%; background: linear-gradient(90deg, #10b981, #34d399);"></div>
                             </div>
                         </div>
                         <div class="kpi-card">
                             <div class="kpi-label">Articles Available</div>
-                            <div class="kpi-value">57</div>
-                            <div class="kpi-change">Curated for your practice</div>
+                            <div class="kpi-value" id="kpiArticles">—</div>
+                            <div class="kpi-change" id="kpiArticlesChange">Loading...</div>
                             <svg class="sparkline" viewBox="0 0 100 40" preserveAspectRatio="none">
                                 <polyline points="0,25 10,22 20,18 30,20 40,15 50,12 60,10 70,8 80,5 90,3 100,5"
                                     fill="none" stroke="#f59e0b" stroke-width="2"/>
@@ -2087,118 +2087,55 @@
     </div>
 
     <script>
+        // ============= API CONFIGURATION =============
+        const API_BASE = window.__DERMOBRAIN_API__ || 'https://dermobrain-api.naren-6e3.workers.dev';
+
+        async function api(path, options = {}) {
+            const token = localStorage.getItem('dermobrain_token');
+            const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
+            if (token) headers['Authorization'] = 'Bearer ' + token;
+            try {
+                const resp = await fetch(API_BASE + path, { ...options, headers });
+                const data = await resp.json();
+                if (!resp.ok) throw new Error(data.error || 'Request failed');
+                return data;
+            } catch (e) {
+                console.error('API Error:', path, e);
+                throw e;
+            }
+        }
+
         // ============= APP STATE =============
         const APP_STATE = {
-            user: {
-                name: 'Dr. Shukla',
-                email: 'dr.shukla@drsskincare.ca',
-                role: 'practice_owner',
-                practiceId: 'drs-skincare'
-            },
+            user: null,
+            practice: null,
+            dashboard: null,
+            articles: [],
             currentFilter: 'all',
             currentDateRange: '7'
         };
 
-        // ============= DEMO DATA =============
-        const ARTICLES = [
-            { id: 1, title: 'Understanding Acne Vulgaris', category: 'Acne', views: 487 },
-            { id: 2, title: 'Acne Treatment Options', category: 'Acne', views: 342 },
-            { id: 3, title: 'Hormonal Acne: Causes & Solutions', category: 'Acne', views: 298 },
-            { id: 4, title: 'Anti-Aging Skincare Routine', category: 'Aging', views: 521 },
-            { id: 5, title: 'Retinol for Mature Skin', category: 'Aging', views: 456 },
-            { id: 6, title: 'Botox & Fillers Explained', category: 'Aging', views: 389 },
-            { id: 7, title: 'Melanoma Awareness & Prevention', category: 'Melanoma', views: 234 },
-            { id: 8, title: 'Skin Cancer Screening', category: 'Melanoma', views: 178 },
-            { id: 9, title: 'Eczema Management Guide', category: 'Eczema', views: 412 },
-            { id: 10, title: 'Eczema Triggers & Avoidance', category: 'Eczema', views: 367 },
-            { id: 11, title: 'Understanding Psoriasis', category: 'Psoriasis', views: 289 },
-            { id: 12, title: 'Psoriasis Treatment Plan', category: 'Psoriasis', views: 245 },
-            { id: 13, title: 'Chemical Peels Explained', category: 'Aging', views: 401 },
-            { id: 14, title: 'Laser Hair Removal Guide', category: 'Cosmetic', views: 356 },
-            { id: 15, title: 'Microdermabrasion Benefits', category: 'Aging', views: 298 },
-            { id: 16, title: 'Sun Protection Essentials', category: 'Prevention', views: 534 },
-            { id: 17, title: 'Moisturizer Selection Guide', category: 'General', views: 467 },
-            { id: 18, title: 'Rosacea Management', category: 'General', views: 312 },
-            { id: 19, title: 'Hair Loss Solutions', category: 'General', views: 289 },
-            { id: 20, title: 'Vitiligo Treatment Options', category: 'General', views: 156 },
-            { id: 21, title: 'Wart Removal Techniques', category: 'General', views: 201 },
-            { id: 22, title: 'Mole Monitoring Guidelines', category: 'Melanoma', views: 267 },
-            { id: 23, title: 'Makeup Tips for Sensitive Skin', category: 'General', views: 445 },
-            { id: 24, title: 'Post-Procedure Skincare', category: 'General', views: 378 },
-            { id: 25, title: 'Natural Skin Brightening', category: 'Aging', views: 423 },
-            { id: 26, title: 'Vitamin C Serums Guide', category: 'General', views: 391 },
-            { id: 27, title: 'Hyaluronic Acid Benefits', category: 'General', views: 456 },
-            { id: 28, title: 'Night Skincare Routine', category: 'General', views: 412 },
-            { id: 29, title: 'Winter Skin Protection', category: 'Prevention', views: 334 },
-            { id: 30, title: 'Summer Sun Care', category: 'Prevention', views: 389 },
-            { id: 31, title: 'Dermatitis Types & Treatment', category: 'General', views: 267 },
-            { id: 32, title: 'Fungal Infection Prevention', category: 'Prevention', views: 198 },
-            { id: 33, title: 'Acne Scars: Treatment Options', category: 'Acne', views: 445 },
-            { id: 34, title: 'Blackhead Removal', category: 'Acne', views: 378 },
-            { id: 35, title: 'Pore Size Reduction', category: 'General', views: 412 },
-            { id: 36, title: 'Face Wash Selection', category: 'General', views: 489 },
-            { id: 37, title: 'Exfoliation Guide', category: 'General', views: 401 },
-            { id: 38, title: 'Sunscreen SPF Explained', category: 'Prevention', views: 523 },
-            { id: 39, title: 'Lip Care Guide', category: 'General', views: 267 },
-            { id: 40, title: 'Eye Cream Benefits', category: 'Aging', views: 334 },
-            { id: 41, title: 'Neck & Décolletage Care', category: 'Aging', views: 289 },
-            { id: 42, title: 'Stretch Mark Treatment', category: 'General', views: 212 },
-            { id: 43, title: 'Cellulite Reduction', category: 'General', views: 178 },
-            { id: 44, title: 'Body Acne Solutions', category: 'Acne', views: 245 },
-            { id: 45, title: 'Keratosis Pilaris Guide', category: 'General', views: 198 },
-            { id: 46, title: 'Age Spots & Pigmentation', category: 'Aging', views: 367 },
-            { id: 47, title: 'Sensitive Skin Management', category: 'General', views: 456 },
-            { id: 48, title: 'Skin Type Assessment', category: 'General', views: 512 },
-            { id: 49, title: 'Combination Skin Care', category: 'General', views: 378 },
-            { id: 50, title: 'Oily Skin Solutions', category: 'General', views: 445 },
-            { id: 51, title: 'Dry Skin Management', category: 'General', views: 423 },
-            { id: 52, title: 'T-Zone Care Routine', category: 'General', views: 334 },
-            { id: 53, title: 'Hormonal Changes & Skin', category: 'General', views: 289 },
-            { id: 54, title: 'Stress & Skin Health', category: 'General', views: 267 },
-            { id: 55, title: 'Sleep & Skin Recovery', category: 'General', views: 201 },
-            { id: 56, title: 'Nutrition for Healthy Skin', category: 'Prevention', views: 478 },
-            { id: 57, title: 'Hydration Guide', category: 'Prevention', views: 412 }
-        ];
-
-        const CURRENT_ARTICLES = ARTICLES.slice(0, 30);
-
-        const AVAILABLE_ARTICLES = ARTICLES.slice(30);
-
-        const STAFF = [
-            { id: 1, name: 'Sarah Mitchell', role: 'Lead Esthetician', email: 'sarah.m@drsskincare.ca', phone: '+1 (416) 555-0101', status: 'Active', tracks: 4, quizAvg: 91 },
-            { id: 2, name: 'Jason Kim', role: 'Clinical Assistant', email: 'jason.k@drsskincare.ca', phone: '+1 (416) 555-0102', status: 'Active', tracks: 2, quizAvg: 78 },
-            { id: 3, name: 'Maria Torres', role: 'Front Desk', email: 'maria.t@drsskincare.ca', phone: '+1 (416) 555-0103', status: 'Active', tracks: 5, quizAvg: 88 },
-            { id: 4, name: 'David Chen', role: 'Nurse', email: 'david.c@drsskincare.ca', phone: '+1 (416) 555-0104', status: 'Active', tracks: 3, quizAvg: 82 },
-            { id: 5, name: 'Priya Patel', role: 'Esthetician', email: 'priya.p@drsskincare.ca', phone: '+1 (416) 555-0105', status: 'Inactive', tracks: 1, quizAvg: 74 },
-            { id: 6, name: 'Amanda Foster', role: 'Clinical Assistant', email: 'amanda.f@drsskincare.ca', phone: '+1 (416) 555-0106', status: 'Active', tracks: 6, quizAvg: 95 },
-            { id: 7, name: 'Ryan Park', role: 'Front Desk', email: 'ryan.p@drsskincare.ca', phone: '+1 (416) 555-0107', status: 'Active', tracks: 2, quizAvg: 69 },
-            { id: 8, name: 'Lisa Wong', role: 'Nurse Practitioner', email: 'lisa.w@drsskincare.ca', phone: '+1 (416) 555-0108', status: 'Active', tracks: 4, quizAvg: 87 }
-        ];
-
-        const ACTIVITY_EVENTS = [
-            { text: 'Sarah M. completed Quiz: Skin Cancer Awareness (Score: 92%)', time: '2h ago', badge: 'Completed' },
-            { text: 'New patient viewed Acne Vulgaris guide', time: '3h ago', badge: 'Viewed' },
-            { text: 'Jason K. started Learning Track: Cosmetic Procedures', time: 'Yesterday', badge: 'Started' },
-            { text: 'Maria T. earned Certificate: New Staff Onboarding', time: '2 days ago', badge: 'Certificate' },
-            { text: 'Amanda F. completed Quiz: Patient Safety Protocols (Score: 98%)', time: '2 days ago', badge: 'Completed' },
-            { text: 'New patient views: 15 visits to Aging & Anti-Aging articles', time: '3 days ago', badge: 'Engagement' },
-            { text: 'Ryan P. started Learning Track: Customer Service Excellence', time: '4 days ago', badge: 'Started' },
-            { text: 'Lisa W. completed Training Track: Advanced Procedures', time: '5 days ago', badge: 'Completed' },
-            { text: '3 new staff members invited and awaiting registration', time: '1 week ago', badge: 'Invitations' },
-            { text: 'Practice portal received 847 patient visits this month', time: '1 week ago', badge: 'Milestone' }
-        ];
+        // ============= DATA (loaded from API) =============
+        let CURRENT_ARTICLES = [];
+        let AVAILABLE_ARTICLES = [];
+        let STAFF = [];
+        let ACTIVITY_EVENTS = [];
 
         // ============= AUTHENTICATION =============
-        function checkAuth() {
-            const session = localStorage.getItem('dermobrain_session');
-            if (session) {
+        async function checkAuth() {
+            const token = localStorage.getItem('dermobrain_token');
+            if (token) {
                 try {
-                    const data = JSON.parse(session);
-                    if (data.role === 'practice_owner') {
-                        showDashboard(data);
+                    const data = await api('/api/auth/me');
+                    if (data.user && (data.user.role === 'practice_owner' || data.user.role === 'admin')) {
+                        APP_STATE.user = data.user;
+                        APP_STATE.practice = data.practice;
+                        showDashboard(data.user);
                         return;
                     }
-                } catch (e) {}
+                } catch (e) {
+                    localStorage.removeItem('dermobrain_token');
+                }
             }
             showLoginScreen();
         }
@@ -2213,34 +2150,46 @@
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('dashboard').style.display = 'flex';
             document.getElementById('userNameDisplay').textContent = userData.name;
+            document.getElementById('welcomeTitle').textContent = 'Welcome back, ' + userData.name.split(' ').pop();
             setCurrentDate();
         }
 
         // ============= INITIALIZATION =============
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const practiceId = document.getElementById('practiceId').value;
+            const email = document.getElementById('practiceId').value;
             const password = document.getElementById('password').value;
+            const errorEl = document.getElementById('loginError');
 
-            if (practiceId === 'dr.shukla@drsskincare.ca' && password === 'drs2024') {
-                const session = {
-                    role: 'practice_owner',
-                    practiceId: practiceId,
-                    name: 'Dr. Shukla',
-                    email: 'dr.shukla@drsskincare.ca',
+            try {
+                errorEl.textContent = '';
+                errorEl.classList.remove('show');
+                const data = await api('/api/auth/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password })
+                });
+                localStorage.setItem('dermobrain_token', data.token);
+                localStorage.setItem('dermobrain_session', JSON.stringify({
+                    role: data.user.role,
+                    practiceId: data.user.practice_id,
+                    name: data.user.name,
+                    email: data.user.email,
+                    userId: data.user.id,
                     loginTime: Date.now()
-                };
-                localStorage.setItem('dermobrain_session', JSON.stringify(session));
-                showDashboard(session);
+                }));
+                APP_STATE.user = data.user;
+                APP_STATE.practice = data.practice;
+                showDashboard(data.user);
                 initializeUI();
-            } else {
-                const errorEl = document.getElementById('loginError');
-                errorEl.textContent = 'Invalid credentials. Use email: dr.shukla@drsskincare.ca and password: drs2024';
+            } catch (err) {
+                errorEl.textContent = err.message || 'Invalid credentials. Please try again.';
                 errorEl.classList.add('show');
             }
         });
 
-        document.getElementById('logoutBtn').addEventListener('click', () => {
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try { await api('/api/auth/logout', { method: 'POST' }); } catch (e) {}
+            localStorage.removeItem('dermobrain_token');
             localStorage.removeItem('dermobrain_session');
             window.location.href = 'portal.html';
         });
@@ -2252,16 +2201,74 @@
             document.getElementById('currentDate').textContent = date.toLocaleDateString('en-US', options);
         }
 
-        function initializeUI() {
+        async function initializeUI() {
+            setupNavigation();
+            setupFormHandlers();
+
+            // Load real data from API
+            const practiceId = APP_STATE.user.practice_id || 1;
+            try {
+                // Load dashboard data
+                const dashboard = await api('/api/dashboard/practice/' + practiceId);
+                APP_STATE.dashboard = dashboard;
+
+                // Update KPI cards
+                document.getElementById('kpiViews').textContent = (dashboard.stats.totalViews || 0).toLocaleString();
+                document.getElementById('kpiViewsChange').textContent = 'Total article views';
+                document.getElementById('kpiEditors').textContent = (dashboard.editors || []).length;
+                document.getElementById('kpiEditorsChange').textContent = 'Active editors';
+                document.getElementById('kpiAvgScore').textContent = (dashboard.stats.avgScore || 0) + '/100';
+                document.getElementById('kpiScoreChange').textContent = 'Average content quality';
+                document.getElementById('kpiArticles').textContent = dashboard.stats.totalArticles || 0;
+                document.getElementById('kpiArticlesChange').textContent = 'Curated for your practice';
+
+                // Load articles
+                const artData = await api('/api/articles?practice_id=' + practiceId + '&limit=200');
+                CURRENT_ARTICLES = (artData.articles || []).map(a => ({
+                    id: a.id, title: a.title, category: a.category || a.subcategory || 'General',
+                    views: a.views || 0, score: a.score || 0, status: a.status, slug: a.slug
+                }));
+
+                // Build activity feed from recent edits
+                ACTIVITY_EVENTS = (dashboard.recentEdits || []).map(e => ({
+                    text: (e.editor_name || 'Editor') + ': ' + (e.changes_summary || 'Updated article') + ' — ' + (e.article_title || ''),
+                    time: timeAgo(e.created_at),
+                    badge: e.status === 'approved' ? 'Approved' : e.status === 'pending' ? 'Pending' : 'Rejected'
+                }));
+
+                // Build staff/editors from dashboard
+                STAFF = (dashboard.editors || []).map(ed => ({
+                    id: ed.id, name: ed.name, role: 'Editor', email: ed.email,
+                    phone: '', status: 'Active',
+                    totalEdits: ed.total_edits || 0,
+                    approvedEdits: ed.approved_edits || 0,
+                    pendingEdits: ed.pending_edits || 0
+                }));
+
+            } catch (e) {
+                console.error('Failed to load dashboard data:', e);
+                showToast('Error loading data. Check API connection.');
+            }
+
             renderActivityFeed();
             renderArticles();
             renderAvailableArticles();
             renderTrainingTable();
             renderStaffCards();
             renderPendingInvitations();
-            setupNavigation();
-            setupFormHandlers();
             renderAnalytics();
+        }
+
+        function timeAgo(dateStr) {
+            if (!dateStr) return 'Unknown';
+            const diff = Date.now() - new Date(dateStr).getTime();
+            const mins = Math.floor(diff / 60000);
+            if (mins < 60) return mins + 'm ago';
+            const hours = Math.floor(mins / 60);
+            if (hours < 24) return hours + 'h ago';
+            const days = Math.floor(hours / 24);
+            if (days === 1) return 'Yesterday';
+            return days + ' days ago';
         }
 
         function setCurrentDate() {
@@ -2418,13 +2425,17 @@
         // ============= TEAM TRAINING =============
         function renderTrainingTable() {
             const tbody = document.getElementById('trainingTableBody');
+            if (STAFF.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 24px; color: #999;">No editors assigned yet</td></tr>';
+                return;
+            }
             tbody.innerHTML = STAFF.map(member => `
                 <tr class="expandable-row" onclick="toggleTrainingExpand(this)">
                     <td><span class="expand-icon">▶</span></td>
                     <td>${member.name}</td>
                     <td>${member.role}</td>
-                    <td>${member.tracks}/6</td>
-                    <td>${member.quizAvg}%</td>
+                    <td>${member.totalEdits || 0} edits</td>
+                    <td>${member.approvedEdits || 0} approved</td>
                     <td>${member.email}</td>
                     <td><span class="status-badge ${member.status.toLowerCase()}">${member.status}</span></td>
                 </tr>
@@ -2432,15 +2443,11 @@
                     <td colspan="7">
                         <div class="expanded-cell">
                             <div style="font-size: 13px; margin-bottom: 12px;">
-                                <strong>Completed Tracks:</strong>
+                                <strong>Edit Statistics:</strong>
                                 <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
-                                    ${['New Staff Onboarding', 'Skin Cancer Awareness', 'Customer Service'].slice(0, member.tracks).map(t => `<span style="padding: 4px 8px; background: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 4px; font-size: 12px;">${t}</span>`).join('')}
-                                </div>
-                            </div>
-                            <div style="font-size: 13px;">
-                                <strong>Recent Quizzes:</strong>
-                                <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <span style="padding: 4px 8px; background: #f8fbfc; border-radius: 4px; font-size: 12px;">Acne Management - ${Math.min(100, member.quizAvg + Math.floor(Math.random() * 10))}%</span>
+                                    <span style="padding: 4px 8px; background: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 4px; font-size: 12px;">Approved: ${member.approvedEdits || 0}</span>
+                                    <span style="padding: 4px 8px; background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-radius: 4px; font-size: 12px;">Pending: ${member.pendingEdits || 0}</span>
+                                    <span style="padding: 4px 8px; background: rgba(2, 128, 144, 0.1); color: #028090; border-radius: 4px; font-size: 12px;">Total: ${member.totalEdits || 0}</span>
                                 </div>
                             </div>
                         </div>
@@ -2464,6 +2471,10 @@
         // ============= STAFF MANAGEMENT =============
         function renderStaffCards() {
             const container = document.getElementById('staffGrid');
+            if (STAFF.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No editors assigned to this practice yet.</div>';
+                return;
+            }
             container.innerHTML = STAFF.map(staff => {
                 const initials = staff.name.split(' ').map(n => n[0]).join('');
                 return `
@@ -2477,10 +2488,10 @@
                         </div>
                         <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">
                             <div>📧 ${staff.email}</div>
-                            <div>📱 ${staff.phone}</div>
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                             <span class="status-badge ${staff.status.toLowerCase()}">${staff.status}</span>
+                            <span style="font-size: 12px; color: var(--text-light);">${staff.totalEdits || 0} edits</span>
                         </div>
                         <div class="resource-actions">
                             <button class="small-button" onclick="editStaff(${staff.id})">Edit</button>
@@ -2541,15 +2552,20 @@
 
         function renderEngagementChart() {
             const container = document.getElementById('engagementChart');
-            const data = [450, 520, 480, 640, 720, 580, 695];
-            const maxVal = Math.max(...data);
+            // Use real article views data from top articles
+            const topArticles = (APP_STATE.dashboard && APP_STATE.dashboard.topArticles) || [];
+            const data = topArticles.slice(0, 7).map(a => a.views || 0);
+            if (data.length === 0) { container.innerHTML = '<div style="color: #999; padding: 20px;">No data yet</div>'; return; }
+            const maxVal = Math.max(...data) || 1;
 
             container.innerHTML = data.map((val, i) => {
                 const height = (val / maxVal) * 120;
+                const label = topArticles[i] ? topArticles[i].title.substring(0, 8) : 'Art ' + (i+1);
                 return `
                     <div class="bar-item" style="flex: 1;">
+                        <div style="font-size: 10px; color: var(--text-light); margin-bottom: 2px;">${val}</div>
                         <div class="bar" style="height: ${height}px;"></div>
-                        <div class="bar-label" style="font-size: 11px;">Day ${i + 1}</div>
+                        <div class="bar-label" style="font-size: 11px;">${label}</div>
                     </div>
                 `;
             }).join('');
@@ -2557,19 +2573,22 @@
 
         function renderArticleDistribution() {
             const container = document.getElementById('articleDistribution');
-            const data = [
-                { label: 'Acne', value: 1250, percent: 28 },
-                { label: 'Aging', value: 980, percent: 22 },
-                { label: 'Prevention', value: 875, percent: 20 },
-                { label: 'Cosmetic', value: 650, percent: 15 },
-                { label: 'Other', value: 545, percent: 15 }
-            ];
+            // Use real category distribution from API
+            const cats = (APP_STATE.dashboard && APP_STATE.dashboard.stats.articlesByCategory) || [];
+            const total = cats.reduce((s, c) => s + c.count, 0) || 1;
+
+            const data = cats.map(c => ({
+                label: c.category || 'Uncategorized',
+                value: c.count,
+                percent: Math.round((c.count / total) * 100)
+            }));
+            if (data.length === 0) { container.innerHTML = '<div style="color: #999; padding: 20px;">No data yet</div>'; return; }
 
             container.innerHTML = data.map(item => `
                 <div style="margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
                         <span>${item.label}</span>
-                        <span style="font-weight: 600;">${item.value} views</span>
+                        <span style="font-weight: 600;">${item.value} articles</span>
                     </div>
                     <div style="height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
                         <div style="height: 100%; width: ${item.percent}%; background: linear-gradient(90deg, #028090, #04b5ce);"></div>
@@ -2580,14 +2599,10 @@
 
         function renderScoreDistribution() {
             const container = document.getElementById('scoreDistribution');
-            const ranges = [
-                { range: '90-100', count: 24 },
-                { range: '80-89', count: 45 },
-                { range: '70-79', count: 32 },
-                { range: '60-69', count: 18 },
-                { range: '<60', count: 8 }
-            ];
-            const maxCount = 45;
+            // Use real score distribution from API
+            const ranges = (APP_STATE.dashboard && APP_STATE.dashboard.stats.scoreDistribution) || [];
+            if (ranges.length === 0) { container.innerHTML = '<div style="color: #999; padding: 20px;">No data yet</div>'; return; }
+            const maxCount = Math.max(...ranges.map(r => r.count)) || 1;
 
             container.innerHTML = ranges.map(r => {
                 const height = Math.round((r.count / maxCount) * 100);
@@ -2603,13 +2618,18 @@
 
         function renderKeyMetrics() {
             const container = document.getElementById('keyMetrics');
+            const d = APP_STATE.dashboard;
+            const stats = d ? d.stats : {};
+            const statusCounts = {};
+            (stats.articlesByStatus || []).forEach(s => statusCounts[s.status] = s.count);
+
             const metrics = [
-                { label: 'Total Patient Visits', value: '2,847' },
-                { label: 'Avg. Time on Page', value: '4m 32s' },
-                { label: 'Bounce Rate', value: '12%' },
-                { label: 'Referral: Direct', value: '45%' },
-                { label: 'Referral: Google', value: '30%' },
-                { label: 'Referral: Social', value: '15%' }
+                { label: 'Total Views', value: (stats.totalViews || 0).toLocaleString() },
+                { label: 'Avg Content Score', value: (stats.avgScore || 0) + '/100' },
+                { label: 'Published Articles', value: statusCounts['published'] || 0 },
+                { label: 'In Review', value: statusCounts['review'] || 0 },
+                { label: 'Draft Articles', value: statusCounts['draft'] || 0 },
+                { label: 'Total Editors', value: (d && d.editors ? d.editors.length : 0) }
             ];
 
             container.innerHTML = metrics.map(m => `
@@ -2680,10 +2700,10 @@
         }
 
         // ============= PAGE LOAD =============
-        document.addEventListener('DOMContentLoaded', () => {
-            checkAuth();
-            if (localStorage.getItem('dermobrain_session')) {
-                initializeUI();
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkAuth();
+            if (localStorage.getItem('dermobrain_token')) {
+                await initializeUI();
             }
         });
 
