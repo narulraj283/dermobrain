@@ -2215,9 +2215,15 @@
             }
         }
 
-        function logout() {
+        async function logout() {
+            const API_BASE = 'https://dermobrain-api.naren-6e3.workers.dev';
+            const token = localStorage.getItem('dermobrain_token');
+            if (token) {
+                try { await fetch(API_BASE + '/api/auth/logout', { method: 'POST', headers: { 'Authorization': 'Bearer ' + token } }); } catch (e) {}
+            }
+            localStorage.removeItem('dermobrain_token');
             localStorage.removeItem('dermobrain_session');
-            window.location.href = 'portal.html';
+            window.location.href = 'portal.html?logout=1';
         }
 
         function confirmAction(message, action) {

@@ -2191,7 +2191,7 @@
             try { await api('/api/auth/logout', { method: 'POST' }); } catch (e) {}
             localStorage.removeItem('dermobrain_token');
             localStorage.removeItem('dermobrain_session');
-            window.location.href = 'portal.html';
+            window.location.href = 'portal.html?logout=1';
         });
 
         // ============= UI FUNCTIONS =============

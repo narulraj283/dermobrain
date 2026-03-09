@@ -57,6 +57,17 @@
             margin-bottom: 60px;
         }
 
+        /* Hide content until session check completes (prevents flicker) */
+        body.checking-session .container,
+        body.checking-session .bottom-section {
+            opacity: 0;
+        }
+        body.session-ready .container,
+        body.session-ready .bottom-section {
+            opacity: 1;
+            transition: opacity 0.15s ease;
+        }
+
         .card {
             background: white;
             border-radius: 12px;
@@ -427,9 +438,7 @@
                         <button class="btn-submit" onclick="loginAdmin(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
-                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
-                        <strong>Demo:</strong> Code: admin2024
-                    </div>
+                    <!-- Demo credentials removed for security -->
                 </div>
             </div>
 
@@ -458,9 +467,7 @@
                         <button class="btn-submit" onclick="loginEditor(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
-                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
-                        <strong>Demo:</strong><br>Email: sarah.chen@drsskincare.ca<br>Password: editor2024
-                    </div>
+                    <!-- Demo credentials removed for security -->
                 </div>
             </div>
 
@@ -476,8 +483,8 @@
                 <div class="login-form">
                     <a href="#" class="back-link" onclick="resetCard(event)">← Back to roles</a>
                     <div class="form-group">
-                        <label class="form-label">Practice ID</label>
-                        <input type="text" class="form-input" placeholder="your-practice-id" data-field="practiceId">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your.email@example.com" data-field="practiceId">
                         <div class="form-error"></div>
                     </div>
                     <div class="form-group">
@@ -489,9 +496,7 @@
                         <button class="btn-submit" onclick="loginPractice(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
-                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
-                        <strong>Demo:</strong><br>Practice ID: dr.shukla@drsskincare.ca<br>Password: drs2024
-                    </div>
+                    <!-- Demo credentials removed for security -->
                 </div>
             </div>
 
@@ -520,9 +525,7 @@
                         <button class="btn-submit" onclick="loginTrainee(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
-                    <div style="margin-top: 16px; padding: 12px; background: #f0f7ff; border-left: 3px solid #0077b6; border-radius: 4px; font-size: 13px; color: #555;">
-                        <strong>Demo:</strong><br>Email: sarah.mitchell@drsskincare.ca<br>Code: staff2024
-                    </div>
+                    <!-- Demo credentials removed for security -->
                 </div>
             </div>
         </div>
@@ -554,30 +557,41 @@
         }
 
         // Check for existing session on load (skip if ?switch=1 in URL)
-        window.addEventListener('load', async () => {
+        // Body starts hidden to prevent flicker
+        (function() {
             const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('switch')) {
+            const token = localStorage.getItem('dermobrain_token');
+
+            if (urlParams.has('switch') || urlParams.has('logout')) {
                 localStorage.removeItem('dermobrain_session');
                 localStorage.removeItem('dermobrain_token');
+                document.body.classList.add('session-ready');
                 return;
             }
 
-            const token = localStorage.getItem('dermobrain_token');
             if (token) {
-                try {
-                    const resp = await fetch(API_BASE + '/api/auth/me', {
-                        headers: { 'Authorization': 'Bearer ' + token }
-                    });
-                    const data = await resp.json();
-                    if (resp.ok && data.user && data.user.role) {
+                document.body.classList.add('checking-session');
+                fetch(API_BASE + '/api/auth/me', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                }).then(r => r.json()).then(data => {
+                    if (data.user && data.user.role) {
                         routeUser(data.user.role);
-                        return;
+                    } else {
+                        localStorage.removeItem('dermobrain_token');
+                        localStorage.removeItem('dermobrain_session');
+                        document.body.classList.remove('checking-session');
+                        document.body.classList.add('session-ready');
                     }
-                } catch (e) {}
-                localStorage.removeItem('dermobrain_token');
-                localStorage.removeItem('dermobrain_session');
+                }).catch(() => {
+                    localStorage.removeItem('dermobrain_token');
+                    localStorage.removeItem('dermobrain_session');
+                    document.body.classList.remove('checking-session');
+                    document.body.classList.add('session-ready');
+                });
+            } else {
+                document.body.classList.add('session-ready');
             }
-        });
+        })();
 
         function routeUser(role) {
             const routes = {
