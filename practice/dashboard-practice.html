@@ -1804,6 +1804,27 @@
                     <h2 style="font-size: 24px; margin-bottom: 24px;">Settings</h2>
 
                     <div class="card" style="margin-bottom: 24px;">
+                        <h3 style="font-size: 18px; margin-bottom: 20px;">Change Password</h3>
+                        <form id="changePasswordForm" style="max-width: 400px;">
+                            <div class="form-group">
+                                <label class="form-label">Current Password</label>
+                                <input type="password" class="form-input" id="settingsCurrentPwd" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input type="password" class="form-input" id="settingsNewPwd" required minlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-input" id="settingsConfirmPwd" required minlength="8">
+                            </div>
+                            <div id="pwdChangeError" style="color: var(--danger); font-size: 13px; margin-bottom: 8px; display: none;"></div>
+                            <div id="pwdChangeSuccess" style="color: var(--success); font-size: 13px; margin-bottom: 8px; display: none;"></div>
+                            <button type="submit" class="action-button">Update Password</button>
+                        </form>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 24px;">
                         <h3 style="font-size: 18px; margin-bottom: 20px;">Practice Profile</h3>
                         <form id="practiceForm">
                             <div class="form-row">
@@ -2250,6 +2271,9 @@
                 showToast('Error loading data. Check API connection.');
             }
 
+            // Load staff from real API
+            await loadStaffFromAPI();
+
             renderActivityFeed();
             renderArticles();
             renderAvailableArticles();
@@ -2468,69 +2492,91 @@
             showToast('Training report downloaded successfully!');
         }
 
-        // ============= STAFF MANAGEMENT =============
+        // ============= STAFF MANAGEMENT (API-POWERED) =============
+        let STAFF_API_DATA = [];
+        let PENDING_INVITATIONS = [];
+
+        async function loadStaffFromAPI() {
+            try {
+                const data = await api('/api/staff');
+                STAFF_API_DATA = data.staff || [];
+                PENDING_INVITATIONS = data.invitations || [];
+                // Also update the STAFF array used for training etc.
+                STAFF = STAFF_API_DATA.map(s => ({
+                    id: s.id, name: s.name, role: s.role || 'Editor', email: s.email,
+                    phone: '', status: s.status === 'active' ? 'Active' : s.status,
+                    totalEdits: s.total_edits || 0,
+                    approvedEdits: s.approved_edits || 0,
+                    pendingEdits: s.pending_edits || 0
+                }));
+            } catch (e) {
+                console.error('Failed to load staff:', e);
+            }
+        }
+
         function renderStaffCards() {
             const container = document.getElementById('staffGrid');
-            if (STAFF.length === 0) {
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No editors assigned to this practice yet.</div>';
+            const allStaff = STAFF_API_DATA.length > 0 ? STAFF_API_DATA : STAFF;
+            if (allStaff.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No staff members yet. Invite your first team member above.</div>';
                 return;
             }
-            container.innerHTML = STAFF.map(staff => {
-                const initials = staff.name.split(' ').map(n => n[0]).join('');
+            container.innerHTML = allStaff.map(staff => {
+                const initials = (staff.name || 'U').split(' ').map(n => n[0]).join('');
+                const role = staff.role || 'Editor';
+                const status = staff.status === 'active' ? 'Active' : (staff.status || 'Active');
                 return `
                     <div class="resource-card">
                         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
                             <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #028090, #04b5ce); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 16px;">${initials}</div>
                             <div>
                                 <div class="resource-title">${staff.name}</div>
-                                <div style="font-size: 12px; color: var(--text-light);">${staff.role}</div>
+                                <div style="font-size: 12px; color: var(--text-light);">${role}</div>
                             </div>
                         </div>
                         <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">
                             <div>📧 ${staff.email}</div>
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                            <span class="status-badge ${staff.status.toLowerCase()}">${staff.status}</span>
-                            <span style="font-size: 12px; color: var(--text-light);">${staff.totalEdits || 0} edits</span>
+                            <span class="status-badge ${status.toLowerCase()}">${status}</span>
+                            <span style="font-size: 12px; color: var(--text-light);">${staff.total_edits || staff.totalEdits || 0} edits</span>
                         </div>
                         <div class="resource-actions">
-                            <button class="small-button" onclick="editStaff(${staff.id})">Edit</button>
-                            <button class="small-button" onclick="removeStaff(${staff.id})">Remove</button>
+                            <button class="small-button" onclick="removeStaffMember(${staff.id})">Remove</button>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        function editStaff(id) {
-            showToast('Edit staff coming soon!');
-        }
-
-        function removeStaff(id) {
-            showToast('Staff member removal action triggered');
+        async function removeStaffMember(id) {
+            if (!confirm('Are you sure you want to remove this staff member?')) return;
+            try {
+                await api('/api/staff/' + id, { method: 'DELETE' });
+                showToast('Staff member removed.');
+                await loadStaffFromAPI();
+                renderStaffCards();
+                renderPendingInvitations();
+            } catch (e) {
+                showToast('Error: ' + (e.message || 'Failed to remove staff'));
+            }
         }
 
         function renderPendingInvitations() {
             const container = document.getElementById('pendingInvitations');
-            const invitations = [
-                { email: 'new.esthetician@drsskincare.ca', role: 'Esthetician', sentDate: 'Mar 5, 2026' },
-                { email: 'new.assistant@drsskincare.ca', role: 'Clinical Assistant', sentDate: 'Mar 3, 2026' },
-                { email: 'new.frontdesk@drsskincare.ca', role: 'Front Desk', sentDate: 'Feb 28, 2026' }
-            ];
-
-            container.innerHTML = invitations.map(inv => `
+            if (PENDING_INVITATIONS.length === 0) {
+                container.innerHTML = '<div style="padding: 16px; text-align: center; color: #999;">No pending invitations.</div>';
+                return;
+            }
+            container.innerHTML = PENDING_INVITATIONS.map(inv => `
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
                     <div>
                         <div style="font-weight: 500; font-size: 14px; color: var(--text-dark);">${inv.email}</div>
-                        <div style="font-size: 12px; color: var(--text-light);">${inv.role} • Sent ${inv.sentDate}</div>
+                        <div style="font-size: 12px; color: var(--text-light);">${inv.role || 'Editor'} • Sent ${inv.created_at ? new Date(inv.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently'}</div>
                     </div>
-                    <button class="small-button" onclick="resendInvitation('${inv.email}')">Resend</button>
+                    <span style="font-size: 12px; color: var(--warning); font-weight: 500;">Pending</span>
                 </div>
             `).join('');
-        }
-
-        function resendInvitation(email) {
-            showToast(`Invitation resent to ${email}`);
         }
 
         // ============= ANALYTICS =============
@@ -2653,11 +2699,33 @@
         function setupFormHandlers() {
             const addStaffForm = document.getElementById('addStaffForm');
             if (addStaffForm) {
-                addStaffForm.addEventListener('submit', (e) => {
+                addStaffForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    showToast('Staff member invitation sent!');
-                    closeModal('addStaffModal');
-                    addStaffForm.reset();
+                    const formData = new FormData(addStaffForm);
+                    const name = addStaffForm.querySelector('input[type="text"]').value;
+                    const email = addStaffForm.querySelector('input[type="email"]').value;
+                    const role = addStaffForm.querySelector('select').value;
+
+                    if (!name || !email || !role) {
+                        showToast('Please fill in all required fields.');
+                        return;
+                    }
+
+                    try {
+                        await api('/api/staff/invite', {
+                            method: 'POST',
+                            body: JSON.stringify({ name, email, role })
+                        });
+                        showToast('Invitation sent to ' + email + '!');
+                        closeModal('addStaffModal');
+                        addStaffForm.reset();
+                        // Reload staff data
+                        await loadStaffFromAPI();
+                        renderStaffCards();
+                        renderPendingInvitations();
+                    } catch (err) {
+                        showToast('Error: ' + (err.message || 'Failed to send invitation'));
+                    }
                 });
             }
 
@@ -2668,6 +2736,46 @@
                     showToast('Training assigned successfully!');
                     closeModal('assignTrainingModal');
                     assignForm.reset();
+                });
+            }
+
+            // Change password handler
+            const changePwdForm = document.getElementById('changePasswordForm');
+            if (changePwdForm) {
+                changePwdForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const errEl = document.getElementById('pwdChangeError');
+                    const successEl = document.getElementById('pwdChangeSuccess');
+                    errEl.style.display = 'none';
+                    successEl.style.display = 'none';
+
+                    const currentPwd = document.getElementById('settingsCurrentPwd').value;
+                    const newPwd = document.getElementById('settingsNewPwd').value;
+                    const confirmPwd = document.getElementById('settingsConfirmPwd').value;
+
+                    if (newPwd !== confirmPwd) {
+                        errEl.textContent = 'New passwords do not match.';
+                        errEl.style.display = 'block';
+                        return;
+                    }
+                    if (newPwd.length < 8) {
+                        errEl.textContent = 'New password must be at least 8 characters.';
+                        errEl.style.display = 'block';
+                        return;
+                    }
+
+                    try {
+                        await api('/api/auth/change-password', {
+                            method: 'POST',
+                            body: JSON.stringify({ current_password: currentPwd, new_password: newPwd })
+                        });
+                        successEl.textContent = 'Password updated successfully!';
+                        successEl.style.display = 'block';
+                        changePwdForm.reset();
+                    } catch (err) {
+                        errEl.textContent = err.message || 'Failed to update password.';
+                        errEl.style.display = 'block';
+                    }
                 });
             }
         }

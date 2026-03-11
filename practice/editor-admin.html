@@ -1961,6 +1961,29 @@
             <!-- SETTINGS TAB -->
             <div id="settings" class="tab-content">
                 <div class="section">
+                    <div class="section-title">Change Password</div>
+                    <div class="settings-form" style="max-width: 400px;">
+                        <form id="adminChangePasswordForm">
+                            <div class="form-group">
+                                <label class="form-label">Current Password</label>
+                                <input type="password" class="form-input" id="adminCurrentPwd" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input type="password" class="form-input" id="adminNewPwd" required minlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-input" id="adminConfirmPwd" required minlength="8">
+                            </div>
+                            <div id="adminPwdError" style="color: #ef4444; font-size: 13px; margin-bottom: 8px; display: none;"></div>
+                            <div id="adminPwdSuccess" style="color: #10b981; font-size: 13px; margin-bottom: 8px; display: none;"></div>
+                            <button type="submit" class="action-btn">Update Password</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="section">
                     <div class="section-title">Platform Settings</div>
                     <div class="settings-form">
                         <div class="form-group">
@@ -2259,6 +2282,48 @@
                 closeModal();
             }
         }
+
+        // ============ CHANGE PASSWORD ============
+        const API_BASE_ADMIN = 'https://dermobrain-api.naren-6e3.workers.dev';
+        document.getElementById('adminChangePasswordForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errEl = document.getElementById('adminPwdError');
+            const successEl = document.getElementById('adminPwdSuccess');
+            errEl.style.display = 'none';
+            successEl.style.display = 'none';
+
+            const currentPwd = document.getElementById('adminCurrentPwd').value;
+            const newPwd = document.getElementById('adminNewPwd').value;
+            const confirmPwd = document.getElementById('adminConfirmPwd').value;
+
+            if (newPwd !== confirmPwd) {
+                errEl.textContent = 'New passwords do not match.';
+                errEl.style.display = 'block';
+                return;
+            }
+            if (newPwd.length < 8) {
+                errEl.textContent = 'New password must be at least 8 characters.';
+                errEl.style.display = 'block';
+                return;
+            }
+
+            const token = localStorage.getItem('dermobrain_token');
+            try {
+                const resp = await fetch(API_BASE_ADMIN + '/api/auth/change-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+                    body: JSON.stringify({ current_password: currentPwd, new_password: newPwd })
+                });
+                const data = await resp.json();
+                if (!resp.ok) throw new Error(data.error || 'Failed to change password');
+                successEl.textContent = 'Password updated successfully!';
+                successEl.style.display = 'block';
+                document.getElementById('adminChangePasswordForm').reset();
+            } catch (err) {
+                errEl.textContent = err.message || 'Failed to update password.';
+                errEl.style.display = 'block';
+            }
+        });
 
         // Toggle functionality for switches
         document.querySelectorAll('.toggle-switch').forEach(toggle => {

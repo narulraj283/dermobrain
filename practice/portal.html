@@ -420,15 +420,20 @@
                 <div class="login-form">
                     <a href="#" class="back-link" onclick="resetCard(event)">← Back to roles</a>
                     <div class="form-group">
-                        <label class="form-label">Admin Code</label>
-                        <input type="password" class="form-input" placeholder="Enter admin code" data-field="adminCode">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="admin@dermobrain.com" data-field="adminEmail">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter password" data-field="adminPassword">
                         <div class="form-error"></div>
                     </div>
                     <div class="form-buttons">
                         <button class="btn-submit" onclick="loginAdmin(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
-                    <!-- Demo credentials removed for security -->
+                    <div style="text-align:center;margin-top:12px"><a href="#" class="back-link" onclick="showForgotPassword(event)" style="margin:0">Forgot password?</a></div>
                 </div>
             </div>
 
@@ -457,7 +462,7 @@
                         <button class="btn-submit" onclick="loginEditor(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
-                    <!-- Demo credentials removed for security -->
+                    <div style="text-align:center;margin-top:12px"><a href="#" class="back-link" onclick="showForgotPassword(event)" style="margin:0">Forgot password?</a></div>
                 </div>
             </div>
 
@@ -486,7 +491,7 @@
                         <button class="btn-submit" onclick="loginPractice(event)">Sign In</button>
                         <button class="btn-back" onclick="resetCard(event)">Cancel</button>
                     </div>
-                    <!-- Demo credentials removed for security -->
+                    <div style="text-align:center;margin-top:12px"><a href="#" class="back-link" onclick="showForgotPassword(event)" style="margin:0">Forgot password?</a></div>
                 </div>
             </div>
 
@@ -617,11 +622,13 @@
             event.preventDefault();
             const card = event.target.closest('.card');
             clearErrors(card);
-            const code = card.querySelector('input[data-field="adminCode"]').value;
-            if (!code) { showError(card, 'adminCode', 'Admin code is required'); return; }
+            const email = card.querySelector('input[data-field="adminEmail"]').value;
+            const password = card.querySelector('input[data-field="adminPassword"]').value;
+            if (!email) { showError(card, 'adminEmail', 'Email is required'); return; }
+            if (!password) { showError(card, 'adminPassword', 'Password is required'); return; }
 
             try {
-                const data = await apiLogin('admin@dermobrain.com', code);
+                const data = await apiLogin(email, password);
                 localStorage.setItem('dermobrain_token', data.token);
                 localStorage.setItem('dermobrain_session', JSON.stringify({
                     role: data.user.role, name: data.user.name, email: data.user.email,
@@ -629,8 +636,27 @@
                 }));
                 routeUser(data.user.role);
             } catch (e) {
-                showError(card, 'adminCode', e.message || 'Invalid admin code');
+                showError(card, 'adminEmail', e.message || 'Invalid credentials');
             }
+        }
+
+        function showForgotPassword(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const email = prompt('Enter your email address to receive a password reset link:');
+            if (!email) return;
+            fetch(API_BASE + '/api/auth/forgot-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+            .then(r => r.json())
+            .then(data => {
+                alert('If that email exists in our system, a password reset link has been sent. Check your inbox.');
+            })
+            .catch(() => {
+                alert('Something went wrong. Please try again.');
+            });
         }
 
         async function loginEditor(event) {

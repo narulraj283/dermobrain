@@ -1399,6 +1399,9 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link" data-tab="flagged-issues">Flagged Issues</a>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-tab="settings">Settings</a>
+                </li>
             </ul>
 
             <div class="logout-btn">
@@ -1420,6 +1423,7 @@
                 <button class="tab-btn" data-tab="profile">My Profile</button>
                 <button class="tab-btn" data-tab="badge-widget">Badge & Widget</button>
                 <button class="tab-btn" data-tab="flagged-issues">Flagged Issues</button>
+                <button class="tab-btn" data-tab="settings">Settings</button>
             </div>
 
             <!-- TAB 1: OVERVIEW -->
@@ -1550,39 +1554,9 @@
                 </div>
 
                 <div class="reviews-section">
-                    <div class="section-title">Available for Review (3 in your specialty)</div>
-                    <div class="review-item">
-                        <div class="review-info">
-                            <div class="review-title">Psoriasis: Treatment Protocols and New Therapies</div>
-                            <div class="review-meta">
-                                <span>Medical Dermatology</span>
-                            </div>
-                        </div>
-                        <div class="review-actions">
-                            <button class="btn-start-review" onclick="startReview('psoriasis-treatment')">Start Review →</button>
-                        </div>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-info">
-                            <div class="review-title">Rosacea Management: Evidence-Based Approaches</div>
-                            <div class="review-meta">
-                                <span>Medical Dermatology</span>
-                            </div>
-                        </div>
-                        <div class="review-actions">
-                            <button class="btn-start-review" onclick="startReview('rosacea-management')">Start Review →</button>
-                        </div>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-info">
-                            <div class="review-title">Contact Dermatitis: Diagnosis and Prevention</div>
-                            <div class="review-meta">
-                                <span>Medical Dermatology</span>
-                            </div>
-                        </div>
-                        <div class="review-actions">
-                            <button class="btn-start-review" onclick="startReview('contact-dermatitis')">Start Review →</button>
-                        </div>
+                    <div class="section-title" id="availableForReviewTitle">Available for Review</div>
+                    <div id="availableForReviewList">
+                        <div style="color: var(--text-light); padding: 20px; text-align: center;">Loading articles...</div>
                     </div>
                 </div>
             </div>
@@ -1809,6 +1783,32 @@
                     <!-- Flagged issues will be populated here -->
                 </div>
             </div>
+
+            <!-- TAB 7: SETTINGS -->
+            <div class="tab-content" id="tab-settings">
+                <div style="max-width: 600px;">
+                    <div style="background: var(--white); border-radius: 12px; padding: 30px; border: 1px solid var(--gray-200); margin-bottom: 24px;">
+                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: var(--text-dark);">Change Password</h3>
+                        <form id="changePasswordForm">
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--gray-600);">Current Password</label>
+                                <input type="password" id="currentPassword" required style="width: 100%; padding: 10px 14px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px;">
+                            </div>
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--gray-600);">New Password</label>
+                                <input type="password" id="newPassword" required minlength="8" style="width: 100%; padding: 10px 14px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px;">
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--gray-600);">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" required minlength="8" style="width: 100%; padding: 10px 14px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px;">
+                            </div>
+                            <div id="passwordError" style="color: var(--error); font-size: 13px; margin-bottom: 12px; display: none;"></div>
+                            <div id="passwordSuccess" style="color: var(--success); font-size: 13px; margin-bottom: 12px; display: none;"></div>
+                            <button type="submit" style="padding: 10px 24px; background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Update Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -1854,6 +1854,7 @@
 
         let userSession = null;
         let articlesData = [];
+        let reviewableArticles = [];
         let reviewsData = [];
         let flaggedIssuesData = [];
 
@@ -1895,23 +1896,71 @@
                     date: e.created_at ? new Date(e.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '',
                     status: e.status
                 }));
+
+                // Update KPIs from real data
+                const kpiCards = document.querySelectorAll('.kpi-card');
+                if (kpiCards[0]) kpiCards[0].querySelector('.kpi-value').textContent = editorData.stats?.totalReviews || reviewsData.length;
+                if (kpiCards[3]) kpiCards[3].querySelector('.kpi-value').textContent = editorData.stats?.articlesVerified || 0;
             } catch (e) {
                 console.error('Failed to load editor data:', e);
+            }
+
+            // Load reviewable articles (for both overview + Review Articles tab)
+            try {
+                const reviewData = await api('/api/articles?for_review=1&limit=100');
+                reviewableArticles = (reviewData.articles || []).map(a => ({
+                    id: a.id,
+                    title: a.title,
+                    category: (a.category || 'General'),
+                    wordcount: a.word_count || 0,
+                    slug: a.slug
+                }));
+            } catch (e) {
+                console.error('Failed to load reviewable articles:', e);
             }
 
             populateArticles();
             populateReviewsTable();
             populateFlaggedIssues();
+            populateAvailableForReview();
         }
 
         function populateArticles() {
             const grid = document.getElementById('articlesGrid');
-            grid.innerHTML = articlesData.map(article => `
+            // Use reviewable articles for the Review Articles tab
+            const articles = reviewableArticles.length > 0 ? reviewableArticles : articlesData;
+            if (articles.length === 0) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-light);">No articles available for review at this time.</div>';
+                return;
+            }
+            grid.innerHTML = articles.map(article => `
                 <div class="article-card">
-                    <div class="article-category">${article.category.charAt(0).toUpperCase() + article.category.slice(1)}</div>
+                    <div class="article-category">${(article.category || 'General').charAt(0).toUpperCase() + (article.category || 'General').slice(1)}</div>
                     <div class="article-title">${article.title}</div>
-                    <div class="article-wordcount">${article.wordcount.toLocaleString()} words</div>
-                    <button class="btn-review" onclick="startReview('${article.slug}')">Review →</button>
+                    <div class="article-wordcount">${(article.wordcount || 0).toLocaleString()} words</div>
+                    <button class="btn-review" onclick="startReview(${article.id})">Review →</button>
+                </div>
+            `).join('');
+        }
+
+        function populateAvailableForReview() {
+            const container = document.getElementById('availableForReviewList');
+            const titleEl = document.getElementById('availableForReviewTitle');
+            const articles = reviewableArticles.slice(0, 5);
+            if (titleEl) titleEl.textContent = `Available for Review (${reviewableArticles.length} articles)`;
+            if (articles.length === 0) {
+                container.innerHTML = '<div style="color: var(--text-light); padding: 20px; text-align: center;">No articles awaiting review right now.</div>';
+                return;
+            }
+            container.innerHTML = articles.map(a => `
+                <div class="review-item">
+                    <div class="review-info">
+                        <div class="review-title">${a.title}</div>
+                        <div class="review-meta"><span>${a.category || 'General'}</span></div>
+                    </div>
+                    <div class="review-actions">
+                        <button class="btn-start-review" onclick="startReview(${a.id})">Start Review →</button>
+                    </div>
                 </div>
             `).join('');
         }
@@ -2006,8 +2055,8 @@
         }
 
         // ============ INTERACTIONS ============
-        function startReview(slug) {
-            window.location.href = `/practice/editor-review.html?article=${slug}`;
+        function startReview(articleId) {
+            window.location.href = `/practice/editor-review.html?id=${articleId}`;
         }
 
         function redirectToReview() {
@@ -2071,6 +2120,43 @@
                 const cardCategory = card.querySelector('.article-category').textContent.toLowerCase();
                 card.style.display = !category || cardCategory.includes(category) ? 'block' : 'none';
             });
+        });
+
+        // ============ CHANGE PASSWORD ============
+        document.getElementById('changePasswordForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errEl = document.getElementById('passwordError');
+            const successEl = document.getElementById('passwordSuccess');
+            errEl.style.display = 'none';
+            successEl.style.display = 'none';
+
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                errEl.textContent = 'New passwords do not match.';
+                errEl.style.display = 'block';
+                return;
+            }
+            if (newPassword.length < 8) {
+                errEl.textContent = 'New password must be at least 8 characters.';
+                errEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                await api('/api/auth/change-password', {
+                    method: 'POST',
+                    body: JSON.stringify({ current_password: currentPassword, new_password: newPassword })
+                });
+                successEl.textContent = 'Password updated successfully!';
+                successEl.style.display = 'block';
+                document.getElementById('changePasswordForm').reset();
+            } catch (err) {
+                errEl.textContent = err.message || 'Failed to update password.';
+                errEl.style.display = 'block';
+            }
         });
 
         // ============ INITIALIZE ============

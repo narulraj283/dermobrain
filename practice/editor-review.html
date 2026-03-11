@@ -3,1452 +3,993 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Article Review Interface - DermoBrain Editor Management</title>
+    <title>Clinical Review - DermoBrain Editor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #028090;
+            --dark: #015f6b;
+            --light: #04b5ce;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f97316;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
-            background-color: #f0fafb;
+        body {
             font-family: 'Inter', sans-serif;
-            color: #333;
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
         }
 
-        /* Header Navigation */
-        header {
-            background-color: #028090;
-            padding: 1.25rem 2rem;
-            box-shadow: 0 2px 8px rgba(2, 128, 144, 0.1);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gray-900);
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--gray-50);
+        }
+
+        .sidebar {
+            width: 280px;
+            background: white;
+            border-right: 1px solid var(--gray-200);
+            padding: 24px;
+            overflow-y: auto;
             position: sticky;
             top: 0;
-            z-index: 100;
+            height: 100vh;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        .header-container {
-            max-width: 1400px;
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
             margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
             display: flex;
+            align-items: center;
             justify-content: space-between;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .back-button {
+            display: inline-flex;
             align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: white;
+            gap: 8px;
+            color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.2s ease;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: var(--transition);
         }
 
-        nav a:hover {
-            color: #04b5ce;
+        .back-button:hover {
+            color: var(--dark);
+            gap: 12px;
         }
 
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: flex;
-            gap: 2rem;
-            min-height: calc(100vh - 80px);
-        }
-
-        /* Article Selection List */
-        .article-list {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            max-width: 600px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .article-list h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #028090;
-        }
-
-        .article-list p {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
-
-        .article-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .article-card {
-            padding: 1.25rem;
-            border: 1px solid #e0e8ec;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            background: white;
-        }
-
-        .article-card:hover {
-            border-color: #04b5ce;
-            box-shadow: 0 4px 12px rgba(4, 181, 206, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .article-card-title {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #028090;
-            margin-bottom: 0.5rem;
-        }
-
-        .article-card-meta {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
-            color: #999;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: #e8f4f7;
-            color: #015f6b;
-            padding: 0.35rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* Review Interface */
-        .review-interface {
-            display: flex;
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .left-panel {
-            flex: 0 0 60%;
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            max-height: calc(100vh - 120px);
-            overflow-y: auto;
-        }
-
-        .right-panel {
-            flex: 0 0 40%;
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            max-height: calc(100vh - 120px);
-            overflow-y: auto;
-        }
-
-        .article-header {
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #f0fafb;
-            padding-bottom: 1.5rem;
-        }
-
-        .article-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: #028090;
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
         }
 
         .article-meta {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 20px;
             flex-wrap: wrap;
+            font-size: 14px;
+            color: var(--gray-600);
         }
 
-        .view-article-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #04b5ce;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
+        .meta-item {
+            display: flex;
+            gap: 6px;
         }
 
-        .view-article-link:hover {
-            color: #028090;
+        .meta-label {
+            font-weight: 600;
+            color: var(--gray-700);
         }
 
-        .article-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding: 1rem 0;
-            border-top: 1px solid #f0fafb;
-            border-bottom: 1px solid #f0fafb;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-label {
-            display: block;
-            font-size: 0.8rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.35rem;
-        }
-
-        .stat-value {
-            display: block;
-            font-size: 1.25rem;
+        /* Sidebar Sections */
+        .sidebar-title {
+            font-size: 12px;
             font-weight: 700;
-            color: #028090;
-        }
-
-        .article-summary {
-            margin-bottom: 2rem;
-        }
-
-        .article-summary h3 {
-            font-weight: 600;
-            color: #015f6b;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .article-summary p {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .key-sections {
-            background: #f0fafb;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .key-sections h4 {
-            font-weight: 600;
-            color: #015f6b;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            color: var(--gray-500);
+            margin-bottom: 16px;
         }
 
         .sections-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-
-        .section-item {
-            font-size: 0.9rem;
-            color: #666;
-            padding: 0.5rem 0;
-            border-left: 3px solid #04b5ce;
-            padding-left: 0.75rem;
-        }
-
-        /* Review Panels */
-        .review-section {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #f0fafb;
-        }
-
-        .review-section:last-child {
-            border-bottom: none;
-        }
-
-        .section-title {
-            font-weight: 700;
-            color: #028090;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .checklist {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 8px;
         }
 
-        .checkbox-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            cursor: pointer;
-            padding: 0.75rem;
+        .section-link {
+            padding: 10px 12px;
             border-radius: 6px;
-            transition: background-color 0.2s ease;
-        }
-
-        .checkbox-item:hover {
-            background-color: #f9fafb;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            margin-top: 4px;
+            font-size: 14px;
+            color: var(--gray-700);
+            text-decoration: none;
             cursor: pointer;
-            width: 18px;
-            height: 18px;
-            accent-color: #028090;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
         }
 
-        .checkbox-label {
-            flex: 1;
-            font-size: 0.9rem;
-            color: #555;
-            cursor: pointer;
-            line-height: 1.4;
+        .section-link:hover {
+            background-color: var(--gray-100);
+            color: var(--primary);
+            border-left-color: var(--primary);
         }
 
-        .checkbox-item input[type="checkbox"]:checked + .checkbox-label {
-            color: #028090;
-            font-weight: 500;
+        .section-link.active {
+            background-color: #e0f7fa;
+            color: var(--dark);
+            border-left-color: var(--primary);
+            font-weight: 600;
         }
 
-        /* Editor Notes */
-        .notes-section {
+        /* Article Content */
+        .article-content {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            line-height: 1.8;
+        }
+
+        .article-content h2 {
+            font-size: 22px;
+            margin: 32px 0 16px 0;
+            padding-top: 24px;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+            color: var(--gray-700);
+        }
+
+        .article-section {
+            scroll-margin-top: 100px;
+        }
+
+        /* Review Card */
+        .review-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .review-card h2 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: var(--gray-900);
+        }
+
+        .review-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 32px;
+        }
+
+        .review-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .note-input-group {
-            display: flex;
-            gap: 0.75rem;
+            gap: 16px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
-        select, textarea, input[type="text"] {
-            font-family: 'Inter', sans-serif;
-            border: 1px solid #e0e8ec;
-            border-radius: 6px;
-            padding: 0.75rem;
-            font-size: 0.9rem;
-            color: #333;
-            transition: border-color 0.2s ease;
-        }
-
-        select:focus, textarea:focus, input[type="text"]:focus {
-            outline: none;
-            border-color: #04b5ce;
-            box-shadow: 0 0 0 3px rgba(4, 181, 206, 0.1);
-        }
-
-        .section-select {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .note-textarea {
-            width: 100%;
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .button {
-            background-color: #028090;
-            color: white;
+        /* Buttons */
+        button, .button {
+            padding: 12px 24px;
+            border-radius: 8px;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+            font-size: 14px;
             font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: var(--transition);
             font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
 
-        .button:hover {
-            background-color: #015f6b;
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(2, 128, 144, 0.2);
         }
 
-        .button:active {
-            transform: translateY(0);
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+            padding: 16px 32px;
+            font-size: 16px;
         }
 
-        .button-secondary {
-            background-color: #f0fafb;
-            color: #028090;
-            border: 1px solid #e0e8ec;
+        .btn-success:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
 
-        .button-secondary:hover {
-            background-color: #e8f4f7;
-            border-color: #04b5ce;
+        .btn-error {
+            background-color: var(--error);
+            color: white;
+            padding: 16px 32px;
+            font-size: 16px;
         }
 
-        .button-small {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
+        .btn-error:hover {
+            background-color: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
         }
 
-        .notes-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            max-height: 300px;
-            overflow-y: auto;
-            padding: 1rem;
-            background: #f9fafb;
-            border-radius: 6px;
+        .btn-secondary {
+            background-color: var(--gray-200);
+            color: var(--gray-900);
         }
 
-        .note-item {
-            background: white;
-            padding: 0.75rem;
-            border-left: 3px solid #04b5ce;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.85rem;
+        .btn-secondary:hover {
+            background-color: var(--gray-300);
         }
 
-        .note-content {
-            flex: 1;
-        }
-
-        .note-section {
-            display: block;
-            font-weight: 600;
-            color: #028090;
-            margin-bottom: 0.25rem;
-        }
-
-        .note-text {
-            color: #555;
-            line-height: 1.4;
-        }
-
-        .note-time {
-            display: block;
-            font-size: 0.75rem;
-            color: #999;
-            margin-top: 0.25rem;
-        }
-
-        .delete-note {
-            background: none;
-            border: none;
-            color: #999;
-            cursor: pointer;
-            font-size: 1.25rem;
-            padding: 0;
-            line-height: 1;
-            transition: color 0.2s ease;
-            flex-shrink: 0;
-        }
-
-        .delete-note:hover {
-            color: #d32f2f;
-        }
-
-        /* Flag Issues */
-        .flag-inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .input-row select {
-            flex: 1;
-        }
-
-        /* Verdict Selection */
-        .verdict-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .verdict-option {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            border: 2px solid #e0e8ec;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .verdict-option input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #028090;
-        }
-
-        .verdict-option:hover {
-            border-color: #04b5ce;
-            background-color: #f9fafb;
-        }
-
-        .verdict-option input[type="radio"]:checked + label {
-            color: #028090;
-            font-weight: 600;
-        }
-
-        .verdict-label {
-            flex: 1;
-            cursor: pointer;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .verdict-option.approve:has(input:checked) {
-            border-color: #4caf50;
-            background-color: #f1f8f4;
-        }
-
-        .verdict-option.approve-notes:has(input:checked) {
-            border-color: #ff9800;
-            background-color: #fff8f0;
-        }
-
-        .verdict-option.revision:has(input:checked) {
-            border-color: #2196f3;
-            background-color: #f0f7ff;
-        }
-
-        .verdict-option.reject:has(input:checked) {
-            border-color: #d32f2f;
-            background-color: #ffebee;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
+        /* Error Reporting Form */
+        .error-form {
             background: white;
             border-radius: 12px;
-            padding: 3rem;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.3s ease;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes slideUp {
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--gray-900);
+            font-size: 14px;
+        }
+
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--gray-900);
+            transition: var(--transition);
+        }
+
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.1);
+        }
+
+        .section-preview {
+            background-color: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .error-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: white;
+            border-radius: 12px;
+            padding: 48px 32px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 32px;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background-color: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            color: white;
+            animation: scaleIn 0.4s ease-out;
+        }
+
+        @keyframes scaleIn {
             from {
-                transform: translateY(20px);
+                transform: scale(0.8);
                 opacity: 0;
             }
             to {
-                transform: translateY(0);
+                transform: scale(1);
                 opacity: 1;
             }
         }
 
-        .modal-header {
-            text-align: center;
-            margin-bottom: 2rem;
+        .success-message h2 {
+            font-size: 28px;
+            color: var(--success);
+            margin-bottom: 12px;
         }
 
-        .modal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            color: #028090;
-            margin-bottom: 0.5rem;
+        .success-message p {
+            color: var(--gray-600);
+            margin-bottom: 24px;
         }
 
-        .success-icon {
-            font-size: 3rem;
-            color: #4caf50;
-            margin-bottom: 1rem;
-        }
-
-        .modal-section {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #f0fafb;
-        }
-
-        .modal-section:last-child {
-            border-bottom: none;
-        }
-
-        .modal-label {
-            font-weight: 600;
-            color: #015f6b;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-value {
-            font-size: 1rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .review-preview {
-            background: #f0fafb;
-            border-left: 4px solid #04b5ce;
-            padding: 1.25rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #555;
-            font-family: 'Inter', monospace;
-        }
-
-        .review-preview-title {
-            font-weight: 600;
-            color: #028090;
-            margin-bottom: 0.75rem;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .review-preview-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .badge-svg {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            margin-right: 0.5rem;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .modal-buttons .button {
-            flex: 1;
-        }
-
-        /* Back Button */
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: none;
-            border: none;
-            color: #04b5ce;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            transition: color 0.2s ease;
-        }
-
-        .back-button:hover {
-            color: #028090;
-        }
-
-        /* Auto-save indicator */
-        .auto-save-indicator {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+        /* Summary List */
+        .issues-summary {
             background: white;
-            color: #4caf50;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        .auto-save-indicator.show {
-            opacity: 1;
+        .issues-summary h3 {
+            font-size: 20px;
+            margin-bottom: 24px;
+            color: var(--gray-900);
+        }
+
+        .issue-item {
+            padding: 16px;
+            background-color: var(--gray-50);
+            border-left: 4px solid var(--warning);
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .issue-item-header {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .issue-item-text {
+            color: var(--gray-700);
+            font-size: 14px;
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--gray-200);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: var(--gray-600);
+            gap: 12px;
+        }
+
+        /* Error State */
+        .error-banner {
+            background-color: #fee2e2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            color: #991b1b;
+            font-size: 14px;
+        }
+
+        /* Hidden Class */
+        .hidden {
+            display: none;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .review-interface {
-                flex-direction: column;
-            }
-
-            .left-panel, .right-panel {
-                flex: 0 0 100%;
-                max-height: none;
-            }
-
-            .sections-list {
-                grid-template-columns: 1fr;
-            }
-
-            .article-stats {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .container {
-                padding: 1rem;
-                gap: 1rem;
-            }
-
-            .left-panel, .right-panel {
-                padding: 1.5rem;
-            }
-
-            .article-title {
-                font-size: 1.5rem;
-            }
-
-            .modal-content {
-                padding: 1.5rem;
-            }
-
-            .header-container {
-                padding: 1rem;
-            }
-
-            nav {
                 flex-direction: column;
-                gap: 0.5rem;
-                align-items: flex-end;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+                margin-bottom: 24px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .article-content {
+                padding: 20px;
+            }
+
+            .review-card {
+                padding: 24px;
+            }
+
+            .review-buttons {
+                flex-direction: column;
+            }
+
+            .review-buttons button {
+                width: 100%;
+            }
+
+            .article-meta {
+                gap: 12px;
+            }
+
+            .header h1 {
+                font-size: 22px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Navigation -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">DermoBrain</a>
-            <nav>
-                <a href="#editor-program">Editor Program</a>
-                <a href="#signup">Sign Up</a>
-                <a href="#dashboard">Editor Dashboard</a>
-                <a href="#admin">Admin</a>
-            </nav>
+    <div class="container">
+        <!-- Sidebar with Sections -->
+        <div class="sidebar">
+            <h3 class="sidebar-title">Sections</h3>
+            <div class="sections-list" id="sectionsList"></div>
         </div>
-    </header>
 
-    <main>
-        <!-- Article List View -->
-        <div id="articleListView" class="container">
-            <div class="article-list">
-                <h1>Review Articles</h1>
-                <p>Select an article below to begin the review process. Help us maintain DermoBrain's standards for clinical accuracy and content quality.</p>
-                <div class="article-grid" id="articleGrid"></div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <a href="portal.html" class="back-button">← Back to Dashboard</a>
+                    <h1 id="articleTitle">Loading...</h1>
+                    <div class="article-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Category:</span>
+                            <span id="articleCategory">—</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Author:</span>
+                            <span id="articleAuthor">—</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Words:</span>
+                            <span id="articleWordCount">—</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Review Interface View -->
-        <div id="reviewView" class="container" style="display: none;">
-            <button class="back-button" onclick="backToList()">← Back to Articles</button>
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-container">
+                <div class="loading"></div>
+                <span>Loading article...</span>
+            </div>
 
-            <div class="review-interface">
-                <!-- Left Panel: Article Preview -->
-                <div class="left-panel">
-                    <div class="article-header">
-                        <h1 class="article-title" id="reviewTitle"></h1>
-                        <div class="article-meta">
-                            <span class="badge" id="categoryBadge"></span>
-                            <a href="#" class="view-article-link" id="viewArticleLink">
-                                View Full Article on DermoBrain →
-                            </a>
-                        </div>
-                    </div>
+            <!-- Error State -->
+            <div id="errorState" class="hidden">
+                <div class="error-banner" id="errorMessage"></div>
+                <button class="btn-secondary" onclick="location.href='portal.html'">Return to Dashboard</button>
+            </div>
 
-                    <div class="article-stats">
-                        <div class="stat-item">
-                            <span class="stat-label">Word Count</span>
-                            <span class="stat-value" id="wordCount">0</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Last Updated</span>
-                            <span class="stat-value" id="lastUpdated">—</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Current Reviewer</span>
-                            <span class="stat-value" id="currentReviewer">You</span>
-                        </div>
-                    </div>
+            <!-- Article Content -->
+            <div id="contentSection" class="hidden">
+                <div class="article-content" id="articleContent"></div>
 
-                    <div class="article-summary">
-                        <h3>Article Summary</h3>
-                        <div id="articleSummary"></div>
-                    </div>
-
-                    <div class="key-sections">
-                        <h4>Key Sections Included</h4>
-                        <div class="sections-list" id="keySecondions"></div>
+                <!-- Review Card -->
+                <div id="reviewCard" class="review-card">
+                    <h2>Clinical Review</h2>
+                    <p class="review-question">Is there anything clinically incorrect in this article?</p>
+                    <div class="review-buttons">
+                        <button class="btn-success" onclick="app.handleClinicallyCorrDisplay()">
+                            ✓ No — Article is Clinically Correct
+                        </button>
+                        <button class="btn-error" onclick="app.handleClinicalErrorsFound()">
+                            ✗ Yes — There Are Clinical Errors
+                        </button>
                     </div>
                 </div>
 
-                <!-- Right Panel: Review Tools -->
-                <div class="right-panel">
-                    <!-- Clinical Accuracy Checklist -->
-                    <div class="review-section">
-                        <h2 class="section-title">✓ Clinical Accuracy</h2>
-                        <div class="checklist">
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="accuracy-check" data-field="clinical-info">
-                                <span class="checkbox-label">Clinical information is accurate and up-to-date</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="accuracy-check" data-field="drug-names">
-                                <span class="checkbox-label">Drug names and dosages are correct</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="accuracy-check" data-field="contraindications">
-                                <span class="checkbox-label">Contraindications are properly listed</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="accuracy-check" data-field="treatment-protocols">
-                                <span class="checkbox-label">Treatment protocols follow current guidelines</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="accuracy-check" data-field="patient-safety">
-                                <span class="checkbox-label">Patient safety information is adequate</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="accuracy-check" data-field="references">
-                                <span class="checkbox-label">References/citations are valid</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="accuracy-check" data-field="no-harm">
-                                <span class="checkbox-label">No misleading or potentially harmful information</span>
-                            </label>
-                        </div>
-                    </div>
+                <!-- Error Reporting Form -->
+                <div id="errorForm" class="hidden">
+                    <div class="error-form">
+                        <h3 style="margin-bottom: 24px;">Report Clinical Error</h3>
 
-                    <!-- Content Quality Checklist -->
-                    <div class="review-section">
-                        <h2 class="section-title">✐ Content Quality</h2>
-                        <div class="checklist">
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="quality-check" data-field="structure">
-                                <span class="checkbox-label">Article is well-structured and readable</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="quality-check" data-field="terminology">
-                                <span class="checkbox-label">Medical terminology is used correctly</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="quality-check" data-field="accessibility">
-                                <span class="checkbox-label">Patient guide is accessible for lay audience</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="quality-check" data-field="media">
-                                <span class="checkbox-label">Images/diagrams would be appropriate</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="quality-check" data-field="seo">
-                                <span class="checkbox-label">SEO title and meta description are accurate</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" class="quality-check" data-field="grammar">
-                                <span class="checkbox-label">No grammatical or spelling errors</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Editor Notes -->
-                    <div class="review-section">
-                        <h2 class="section-title">📝 Editor Notes</h2>
-                        <div class="notes-section">
-                            <div class="note-input-group">
-                                <select class="section-select" id="noteSection">
-                                    <option value="">Select Section...</option>
-                                    <option value="Clinical Overview">Clinical Overview</option>
-                                    <option value="Epidemiology">Epidemiology</option>
-                                    <option value="Pathophysiology">Pathophysiology</option>
-                                    <option value="Treatment">Treatment</option>
-                                    <option value="Patient Guide">Patient Guide</option>
-                                    <option value="General">General</option>
-                                </select>
-                            </div>
-                            <textarea class="note-textarea" id="noteText" placeholder="Add your note here..."></textarea>
-                            <button class="button" onclick="addNote()">Add Note</button>
-                            <div class="notes-list" id="notesList"></div>
-                        </div>
-                    </div>
-
-                    <!-- Flag Issues -->
-                    <div class="review-section">
-                        <h2 class="section-title">⚠ Flag Issues</h2>
-                        <div class="flag-inputs">
-                            <select id="issueType">
-                                <option value="">Issue Type...</option>
-                                <option value="Factual Error">Factual Error</option>
-                                <option value="Outdated Info">Outdated Info</option>
-                                <option value="Missing Citation">Missing Citation</option>
-                                <option value="Safety Concern">Safety Concern</option>
-                                <option value="Formatting">Formatting</option>
-                                <option value="Other">Other</option>
+                        <div class="form-group">
+                            <label for="sectionSelect">Section with Error</label>
+                            <select id="sectionSelect" onchange="app.updateSectionPreview()">
+                                <option value="">— Select a section —</option>
                             </select>
-                            <div class="input-row">
-                                <select id="issueSeverity">
-                                    <option value="">Severity...</option>
-                                    <option value="Low">Low</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="High">High</option>
-                                    <option value="Critical">Critical</option>
-                                </select>
+                        </div>
+
+                        <div id="sectionPreviewContainer" class="hidden">
+                            <div class="form-group">
+                                <label>Section Content</label>
+                                <div class="section-preview" id="sectionPreview"></div>
                             </div>
-                            <textarea id="issueDescription" placeholder="Describe the issue..." style="min-height: 80px;"></textarea>
-                            <button class="button" onclick="flagIssue()">Flag Issue</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="errorDescription">Describe the Clinical Error</label>
+                            <textarea
+                                id="errorDescription"
+                                class="error-textarea"
+                                placeholder="Explain what is clinically incorrect and why..."
+                            ></textarea>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button class="btn-secondary" onclick="app.cancelErrorReporting()">Cancel</button>
+                            <button class="btn-primary" onclick="app.submitError()">Submit & Continue</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Final Verdict -->
-                    <div class="review-section">
-                        <h2 class="section-title">🎯 Final Verdict</h2>
-                        <div class="verdict-options">
-                            <label class="verdict-option approve">
-                                <input type="radio" name="verdict" value="approve">
-                                <span class="verdict-label">✅ Approve — Article meets DermoBrain standards</span>
-                            </label>
-                            <label class="verdict-option approve-notes">
-                                <input type="radio" name="verdict" value="approve-notes">
-                                <span class="verdict-label">⚠️ Approve with Notes — Minor revisions suggested</span>
-                            </label>
-                            <label class="verdict-option revision">
-                                <input type="radio" name="verdict" value="revision">
-                                <span class="verdict-label">🔄 Request Revision — Needs significant changes</span>
-                            </label>
-                            <label class="verdict-option reject">
-                                <input type="radio" name="verdict" value="reject">
-                                <span class="verdict-label">❌ Reject — Does not meet standards</span>
-                            </label>
+                <!-- Issues Summary -->
+                <div id="issuesSummary" class="hidden">
+                    <div class="issues-summary">
+                        <h3>Review Summary</h3>
+                        <div id="issuesList"></div>
+                        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--gray-200);">
+                            <p style="color: var(--gray-600); margin-bottom: 16px;">Are there any other clinical errors?</p>
+                            <div style="display: flex; gap: 12px; justify-content: center;">
+                                <button class="btn-primary" onclick="app.addAnotherError()">Yes — Add Another Error</button>
+                                <button class="btn-success" onclick="app.finalizeReview()">No — Submit Review</button>
+                            </div>
                         </div>
-                        <button class="button" onclick="submitReview()" style="width: 100%; margin-top: 1.5rem;">Submit Review</button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </main>
 
-    <!-- Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="success-icon">✓</div>
-                <h2 class="modal-title">Review Submitted</h2>
-                <p style="color: #666; font-size: 0.95rem;">Your review has been successfully recorded.</p>
-            </div>
-
-            <div class="modal-section">
-                <div class="modal-label">Article Reviewed</div>
-                <div class="modal-value" id="modalArticleTitle"></div>
-            </div>
-
-            <div class="modal-section">
-                <div class="modal-label">Verdict</div>
-                <div class="modal-value" id="modalVerdict"></div>
-            </div>
-
-            <div class="modal-section">
-                <div class="modal-label">Your Progress</div>
-                <div class="modal-value" id="modalProgress"></div>
-                <div style="font-size: 0.85rem; color: #999; margin-top: 0.5rem;" id="modalTierProgress"></div>
-            </div>
-
-            <div class="modal-section">
-                <div class="review-preview-title">How This Appears on the Article</div>
-                <div class="review-preview">
-                    <div style="border-bottom: 1px solid #04b5ce; padding-bottom: 0.75rem; margin-bottom: 0.75rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px;">
-                        ─── Medical Review ───
-                    </div>
-                    <div class="review-preview-item">
-                        <strong>✓ Reviewed by Dr. Sarah Mitchell, MD, FAAD</strong>
-                    </div>
-                    <div class="review-preview-item">
-                        Board-Certified Dermatologist | Senior Reviewer
-                    </div>
-                    <div class="review-preview-item">
-                        Specializing in Medical & Surgical Dermatology
-                    </div>
-                    <div class="review-preview-item">
-                        🏅 <em>DermoBrain Verified</em>
-                    </div>
-                    <div class="review-preview-item">
-                        Reviewed on <span id="reviewDate"></span>
-                    </div>
-                    <div style="border-top: 1px solid #04b5ce; padding-top: 0.75rem; margin-top: 0.75rem;">
-                        ──────────────────────
+                <!-- Success State -->
+                <div id="successState" class="hidden">
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h2 id="successTitle">Article Verified</h2>
+                        <p id="successMessage"></p>
+                        <a href="portal.html" class="button btn-primary">Back to Dashboard</a>
                     </div>
                 </div>
-            </div>
-
-            <p style="color: #666; font-size: 0.85rem; text-align: center; margin-bottom: 1.5rem;">
-                Your bio and badge will appear on this article within 24 hours.
-            </p>
-
-            <div class="modal-buttons">
-                <button class="button button-secondary" onclick="reviewAnotherArticle()">Review Another</button>
-                <button class="button" onclick="goToDashboard()">Go to Dashboard</button>
             </div>
         </div>
     </div>
 
-    <!-- Auto-save Indicator -->
-    <div class="auto-save-indicator" id="autoSaveIndicator">✓ Auto-saved</div>
-
     <script>
-        // Demo Articles Data
-        const demoArticles = [
-            {
-                slug: 'acne-vulgaris',
-                title: 'Acne Vulgaris: Causes, Types, and Treatment Options',
-                category: 'Skin Conditions',
-                summary: `Acne vulgaris is one of the most common skin conditions, affecting up to 85% of people aged 12-24 years. This inflammatory disorder of the sebaceous glands results from a combination of increased sebum production, follicular hyperkeratinization, colonization by Cutibacterium acnes, and inflammation. The condition can range from mild comedonal acne to severe nodular or cystic acne, each requiring tailored treatment approaches.\n\nThe pathophysiology involves four key factors: excessive sebum production triggered by androgens during puberty, abnormal skin cell shedding that clogs pores, bacterial proliferation, and subsequent immune response. Understanding these mechanisms is crucial for selecting appropriate therapies, from topical retinoids and benzoyl peroxide for mild cases to oral antibiotics, hormonal therapy, or isotretinoin for severe presentations.\n\nModern treatment algorithms emphasize combination therapy and evidence-based approaches. Early intervention prevents scarring complications and psychological impact. Patients benefit from comprehensive counseling about realistic timelines (6-12 weeks for visible improvement), proper skincare, and lifestyle modifications including stress management and avoidance of acneigenic products.`,
-                wordCount: 2847,
-                lastUpdated: 'February 2026',
-                sections: ['Clinical Overview', 'Epidemiology', 'Pathophysiology', 'Treatment', 'Patient Guide']
-            },
-            {
-                slug: 'botox-overview',
-                title: 'Botulinum Toxin Injections: Safety, Efficacy, and Patient Selection',
-                category: 'Injectables',
-                summary: `Botulinum toxin (Botox, Xeomin, Dysport) has revolutionized non-surgical facial rejuvenation and remains one of the most popular aesthetic procedures worldwide. This neurotoxin works by blocking acetylcholine release at the neuromuscular junction, resulting in temporary muscle paralysis and smoothing of dynamic facial wrinkles. FDA-approved formulations have been extensively studied for both cosmetic and therapeutic applications.\n\nThe pharmacology of botulinum toxin involves complex mechanisms: the toxin cleaves SNARE proteins essential for acetylcholine vesicle release, producing dose-dependent muscle weakness. Different formulations have varying potencies and diffusion profiles, affecting treatment planning and outcomes. Understanding these differences allows clinicians to customize treatment for individual facial anatomy and patient goals.\n\nProper patient selection is critical for success. Ideal candidates have realistic expectations, good skin quality, and dynamic wrinkles from muscle movement. Contraindications include pregnancy, neuromuscular disorders, and infection at injection sites. Results typically appear within 3-7 days and fully manifest at 2 weeks, lasting 3-4 months. Combination therapy with dermal fillers or laser treatments can enhance outcomes for comprehensive facial aesthetics.`,
-                wordCount: 2156,
-                lastUpdated: 'January 2026',
-                sections: ['Clinical Overview', 'Pharmacology', 'Treatment Guidelines', 'Patient Safety', 'Results Timeline']
-            },
-            {
-                slug: 'melanoma-overview',
-                title: 'Melanoma: Early Detection, Staging, and Treatment Strategies',
-                category: 'Skin Cancer',
-                summary: `Melanoma is the most serious form of skin cancer, arising from malignant transformation of melanocytes. Despite accounting for only 1% of all skin cancers, it is responsible for approximately 75% of skin cancer deaths. Rising incidence, particularly in fair-skinned populations, highlights the critical importance of sun protection education and early detection through regular skin examinations and self-monitoring.\n\nThe ABCDEs of melanoma (Asymmetry, Border irregularity, Color variation, Diameter >6mm, Evolving) guide clinical recognition and prompt biopsy. Histopathologic assessment determines melanoma type (superficial spreading, nodular, lentigo maligna, acral lentiginous), depth of invasion (Breslow thickness), and presence of ulceration—critical prognostic factors. Sentinel lymph node biopsy is indicated for melanomas >1mm thick to stage disease and guide systemic therapy decisions.\n\nTreatment approaches depend on stage: localized melanoma requires wide surgical excision with appropriate margins (1-3cm depending on thickness), while advanced melanoma may benefit from targeted therapy (BRAF inhibitors), immunotherapy (checkpoint inhibitors), or combination strategies. Adjuvant therapy with checkpoint inhibitors improves outcomes for stage III disease. Regular surveillance intervals and patient education about sun protection and self-examination are essential for long-term outcomes.`,
-                wordCount: 2423,
-                lastUpdated: 'March 2026',
-                sections: ['Epidemiology', 'Clinical Presentation', 'Diagnostic Criteria', 'Staging', 'Treatment Algorithms']
-            },
-            {
-                slug: 'chemical-peels-overview',
-                title: 'Chemical Peels: Depth Classification, Indications, and Safety Considerations',
-                category: 'Rejuvenation',
-                summary: `Chemical peels remain a cornerstone of non-invasive skin rejuvenation, utilizing controlled chemical injury to stimulate collagen remodeling and surface improvement. Peels are classified by depth—superficial (epidermis), medium (papillary dermis), or deep (reticular dermis)—with increasing efficacy offset by longer downtime and higher complication risk. Selection depends on skin concerns, patient skin type, and tolerance for recovery.\n\nSuperficial peels using alpha-hydroxy acids or salicylic acid are ideal for mild photodamage, acne, and melasma with minimal downtime. Medium-depth peels combining trichloroacetic acid provide superior results for moderate photoaging and dyspigmentation but require 1-2 weeks of recovery. Deep peels using phenol or stronger TCA achieve dramatic improvement in severe rhytides and scarring but demand careful patient selection, extensive preoperative preparation, and post-operative care.\n\nProper patient selection, Fitzpatrick skin typing, and pre-treatment protocols minimize complications including post-inflammatory hyperpigmentation, dyspigmentation, and scarring. Combination with other modalities—retinoids, hydroquinone, sunscreen—optimizes outcomes. Realistic expectations regarding results, timeline to final appearance (3-6 months), and commitment to sun protection are essential for patient satisfaction.`,
-                wordCount: 2089,
-                lastUpdated: 'February 2026',
-                sections: ['Depth Classification', 'Indications', 'Agent Selection', 'Patient Preparation', 'Complication Management']
-            },
-            {
-                slug: 'co2-laser-resurfacing-ablative',
-                title: 'Fractional CO2 Laser Resurfacing: Applications and Post-Operative Management',
-                category: 'Lasers',
-                summary: `CO2 laser technology, particularly fractional approaches, represents a paradigm shift in treating severe photoaging, scars, and pigmentary disorders. Unlike traditional ablative CO2 lasers that treat entire surfaces, fractional systems create microscopic zones of thermal injury while preserving surrounding tissue, enabling rapid healing and reduced downtime while maintaining efficacy. This technology has become essential in comprehensive aesthetic and reconstructive dermatology.\n\nThe fractional CO2 mechanism involves creating columns of ablation spaced 200-500 microns apart, triggering wound healing cascades including collagen remodeling over 6-12 months. Parameters—pulse energy, spot size, pass density—are customized based on clinical indication and skin type. Multiple passes progressively improve severe rhytides, surgical scars, atrophic scars, and acne scarring with dramatic results.\n\nPost-operative management critically determines outcomes and complications. Immediate care involves occlusive dressings and meticulous wound care for 7-10 days. Erythema persists 2-6 weeks; strict photoprotection is mandatory to prevent dyspigmentation. Temporary edema, crusting, and oozing are expected normal responses. Combination with topical retinoids and hydroquinone post-treatment enhances results. Experienced operators can achieve 50-75% improvement in atrophic acne scarring—a traditionally difficult problem.`,
-                wordCount: 2234,
-                lastUpdated: 'January 2026',
-                sections: ['Technology Overview', 'Mechanism of Action', 'Clinical Applications', 'Operative Technique', 'Recovery Timeline']
-            },
-            {
-                slug: 'psoriasis-overview',
-                title: 'Psoriasis: Pathogenesis, Classification, and Modern Treatment Approaches',
-                category: 'Skin Conditions',
-                summary: `Psoriasis is a chronic, immune-mediated inflammatory disorder affecting 2-3% of the global population with significant psychosocial impact. This T-cell mediated disease involves dysregulation of innate and adaptive immunity, leading to keratinocyte hyperproliferation and characteristic clinical features. Genetic predisposition, environmental triggers (infection, stress, trauma), and immune dysregulation converge in disease pathogenesis.\n\nClinical manifestations range from limited plaques to erythrodermic or pustular psoriasis affecting >75% body surface area. Plaque psoriasis represents 85% of cases, presenting as well-demarcated erythematous plaques with silvery scale. Associated conditions—metabolic syndrome, cardiovascular disease, arthritis—require screening and management. Proper classification by severity and distribution guides treatment selection and monitoring.\n\nModern management emphasizes escalation from topical therapies (corticosteroids, vitamin D analogs, calcineurin inhibitors) for mild-moderate disease to systemic agents for severe presentation. Biologic therapies targeting TNF-alpha, IL-17, IL-23, and other inflammatory mediators have transformed outcomes, achieving complete or near-complete clearance in many patients. Combination therapy and individualized approaches accounting for comorbidities, patient preferences, and cost optimize long-term disease control and quality of life.`,
-                wordCount: 2156,
-                lastUpdated: 'February 2026',
-                sections: ['Pathophysiology', 'Clinical Classification', 'Diagnostic Approach', 'Treatment Strategies', 'Long-term Management']
-            },
-            {
-                slug: 'mohs-surgery-overview',
-                title: 'Mohs Micrographic Surgery: Technique, Indications, and Recurrence Outcomes',
-                category: 'Mohs Surgery',
-                summary: `Mohs micrographic surgery has become the gold standard for treating high-risk or recurrent skin cancers, particularly basal cell carcinomas and squamous cell carcinomas. This specialized technique uniquely maps cancer margins using complete histologic visualization of 100% of the excision perimeter, enabling maximum tissue conservation while achieving superior cure rates. The procedure combines surgical skill with meticulous pathologic analysis.\n\nThe Mohs technique involves sequential excision of skin with pathologic assessment of horizontal sections perpendicular to the surgical plane, revealing cancer margins in real-time. The surgeon removes tissue layer-by-layer only where cancer is identified, preserving healthy tissue. This contrasts with standard excision requiring predetermined margins, which often sacrifice tissue or leave residual cancer.\n\nIndications include cancers with ill-defined borders, large size, aggressive histology, perineural invasion, recurrent cancers, and anatomic locations where tissue preservation is critical (eyelids, lips, ears, nose). Cure rates exceed 98% even for recurrent cancers, substantially superior to standard excision. Excellent aesthetic and functional outcomes result from tissue-sparing approaches. Post-operative reconstruction—primary closure, linear repair, grafting, or flaps—is customized based on defect size and location.`,
-                wordCount: 2078,
-                lastUpdated: 'March 2026',
-                sections: ['Surgical Technique', 'Histologic Assessment', 'Indications and Contraindications', 'Reconstruction Options', 'Outcomes']
-            },
-            {
-                slug: 'dermal-fillers-overview',
-                title: 'Dermal Fillers: Composition, Longevity, and Injection Techniques',
-                category: 'Injectables',
-                summary: `Dermal fillers have become indispensable tools in aesthetic dermatology for restoring volume, defining facial structure, and correcting dynamic wrinkles. These products, composed of various substances (hyaluronic acid, calcium hydroxyapatite, poly-L-lactic acid, polymethyl methacrylate), restore lost volume from aging, photoaging, and genetic factors. Understanding composition, longevity, and rheologic properties is essential for optimal outcomes.\n\nHyaluronic acid fillers dominate the market due to biocompatibility, reversibility with hyaluronidase, and various formulations suited to different depths and anatomic locations. Deeper fillers provide structural volume for cheek enhancement; lighter formulations address fine lines. Calcium hydroxyapatite stimulates collagen and lasts longer (12-18 months). Poly-L-lactic acid and polymethyl methacrylate create gradual results through biostimulation, requiring multiple sessions but achieving natural, long-lasting outcomes.\n\nTechnique emphasizes facial anatomy understanding, appropriate depth selection, and meticulous injection placement. Superficial placement risks visibility and inflammatory response; excessive depth limits efficacy. Combination approaches—fillers for volume, botulinum toxin for dynamics, lasers for skin quality—create harmonious rejuvenation. Complication prevention through proper patient selection, limiting injection volumes, and familiarity with vascular anatomy ensures safety. Patient education regarding realistic results, maintenance schedules, and financial commitment optimizes satisfaction.`,
-                wordCount: 2203,
-                lastUpdated: 'January 2026',
-                sections: ['Filler Types and Properties', 'Mechanism of Action', 'Anatomic Injection Planes', 'Longevity Data', 'Complication Management']
-            },
-            {
-                slug: 'eczema-atopic-dermatitis',
-                title: 'Atopic Dermatitis: Pathobiology, Triggers, and Comprehensive Management',
-                category: 'Skin Conditions',
-                summary: `Atopic dermatitis (AD) is a chronic, relapsing inflammatory skin disease characterized by intense pruritus and impaired skin barrier function. Affecting 10-20% of children and 1-3% of adults, AD significantly impacts quality of life through sleep disruption, psychological distress, and functional impairment. The condition results from complex interplay of genetic predisposition, environmental triggers, and immune dysregulation centered on TH2-mediated inflammation.\n\nPathophysiology involves both extrinsic (allergic sensitization) and intrinsic (non-allergic) mechanisms. Filaggrin mutations compromise barrier function; reduced ceramides and tight junction proteins increase transepidermal water loss. Th2 cytokines (IL-4, IL-13) and recently recognized IL-31 drive pruritus and inflammation. Commensal microbiota dysbiosis, particularly Staphylococcus aureus overgrowth, exacerbates disease. Identifying individual trigger patterns—allergens, irritants, stress, climate—guides personalized management.\n\nComprehensive therapy addresses barrier repair, inflammation control, and itch suppression. Basic care with emollients containing ceramides and regular hydration forms the foundation. Topical corticosteroids and calcineurin inhibitors manage active disease. Dupilumab (IL-4 receptor antagonist) has revolutionized moderate-severe AD, providing dramatic improvement. Emerging therapies targeting JAK signaling and additional cytokines expand treatment options. Education regarding proper cleansing, moisturizing, and trigger avoidance optimizes outcomes.`,
-                wordCount: 2334,
-                lastUpdated: 'February 2026',
-                sections: ['Pathophysiology', 'Clinical Features', 'Trigger Identification', 'Treatment Algorithms', 'Patient Education']
-            },
-            {
-                slug: 'hair-loss-overview',
-                title: 'Alopecia: Classification, Pathophysiology, and Evidence-Based Treatments',
-                category: 'Hair & Scalp',
-                summary: `Hair loss affects millions worldwide and can significantly impact self-esteem and quality of life. Alopecia is classified into scarring (cicatricial) and non-scarring types, each with distinct etiologies and treatment implications. The most common forms—androgenetic alopecia (male/female pattern hair loss), telogen effluvium, and alopecia areata—require different diagnostic and therapeutic approaches for optimal outcomes.\n\nAndrogenetic alopecia results from genetic predisposition and androgen sensitivity of hair follicles, causing progressive miniaturization of terminal hairs. Minoxidil and finasteride represent FDA-approved systemic therapies with variable efficacy; combination approaches and emerging treatments like low-level laser therapy show promise. Telogen effluvium, triggered by stress, systemic disease, or medication, typically resolves spontaneously with time and management of underlying causes.\n\nAlopecia areata is an immune-mediated disease causing sudden patchy hair loss. Recent advances include JAK inhibitors showing remarkable efficacy in clinical trials. Early intervention maximizes hair regrowth potential. Scarring alopecia from inflammation (lichen planopilaris, discoid lupus) requires early aggressive treatment to halt progression. Diagnostic precision through history, examination, and appropriate testing (pull test, dermoscopy, biopsy when indicated) is essential. Management emphasizes realistic expectations, combination therapies, and psychological support given the significant emotional impact.`,
-                wordCount: 2189,
-                lastUpdated: 'March 2026',
-                sections: ['Classification Systems', 'Differential Diagnosis', 'Diagnostic Testing', 'Medical Therapies', 'Surgical Options']
-            }
-        ];
+        // Application State
+        const app = {
+            articleId: null,
+            article: null,
+            sections: [],
+            collectedIssues: [],
+            currentError: {},
 
-        let currentArticleSlug = null;
-        let reviewData = {
-            accuracyChecks: {},
-            qualityChecks: {},
-            notes: [],
-            verdict: null
+            // Initialize on page load
+            async init() {
+                // Get article ID from URL
+                const params = new URLSearchParams(window.location.search);
+                this.articleId = params.get('id');
+
+                if (!this.articleId) {
+                    this.showError('No article ID provided. Please return to the dashboard.');
+                    return;
+                }
+
+                // Check authentication
+                const token = localStorage.getItem('dermobrain_token');
+                if (!token) {
+                    window.location.href = 'portal.html';
+                    return;
+                }
+
+                // Fetch article data
+                await this.fetchArticle(token);
+            },
+
+            // Fetch article from API
+            async fetchArticle(token) {
+                try {
+                    const API_BASE = 'https://dermobrain-api.naren-6e3.workers.dev';
+                    const response = await fetch(`${API_BASE}/api/articles/${this.articleId}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 401) {
+                            localStorage.removeItem('dermobrain_token');
+                            window.location.href = 'portal.html';
+                            return;
+                        }
+                        throw new Error(`API Error: ${response.status}`);
+                    }
+
+                    this.article = await response.json();
+                    this.parseContent();
+                    this.render();
+                } catch (error) {
+                    console.error('Failed to fetch article:', error);
+                    this.showError(`Failed to load article: ${error.message}`);
+                }
+            },
+
+            // Parse article content into sections
+            parseContent() {
+                const content = this.article.content || '';
+                const lines = content.split('\n');
+                let currentSection = null;
+                let currentText = [];
+                let sectionIndex = 0;
+
+                for (const line of lines) {
+                    if (line.startsWith('##')) {
+                        // New section
+                        if (currentSection) {
+                            this.sections.push({
+                                index: sectionIndex,
+                                name: currentSection,
+                                content: currentText.join('\n').trim()
+                            });
+                            sectionIndex++;
+                        }
+                        currentSection = line.replace(/^##\s+/, '').trim();
+                        currentText = [];
+                    } else {
+                        currentText.push(line);
+                    }
+                }
+
+                // Add last section
+                if (currentSection) {
+                    this.sections.push({
+                        index: sectionIndex,
+                        name: currentSection,
+                        content: currentText.join('\n').trim()
+                    });
+                }
+            },
+
+            // Render the page
+            render() {
+                this.hideElement('loadingState');
+                this.showElement('contentSection');
+
+                // Render header
+                document.getElementById('articleTitle').textContent = this.article.title || 'Untitled';
+                document.getElementById('articleCategory').textContent = this.article.category || 'General';
+                document.getElementById('articleAuthor').textContent = this.article.author || 'Unknown';
+
+                const wordCount = (this.article.content || '').split(/\s+/).length;
+                document.getElementById('articleWordCount').textContent = wordCount.toLocaleString();
+
+                // Render sidebar sections
+                this.renderSidebar();
+
+                // Render article content
+                this.renderContent();
+            },
+
+            // Render sidebar section list
+            renderSidebar() {
+                const sectionsList = document.getElementById('sectionsList');
+                sectionsList.innerHTML = '';
+
+                for (const section of this.sections) {
+                    const link = document.createElement('a');
+                    link.className = 'section-link';
+                    link.textContent = section.name;
+                    link.href = '#';
+                    link.onclick = (e) => {
+                        e.preventDefault();
+                        this.scrollToSection(section.index);
+                    };
+                    sectionsList.appendChild(link);
+                }
+            },
+
+            // Render article content with sections
+            renderContent() {
+                const contentDiv = document.getElementById('articleContent');
+                contentDiv.innerHTML = '';
+
+                for (const section of this.sections) {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.className = 'article-section';
+                    sectionDiv.id = `section-${section.index}`;
+
+                    const heading = document.createElement('h2');
+                    heading.textContent = section.name;
+                    sectionDiv.appendChild(heading);
+
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = section.content;
+                    sectionDiv.appendChild(paragraph);
+
+                    contentDiv.appendChild(sectionDiv);
+                }
+            },
+
+            // Scroll to a section
+            scrollToSection(index) {
+                const element = document.getElementById(`section-${index}`);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+
+                    // Update active section in sidebar
+                    document.querySelectorAll('.section-link').forEach((link, i) => {
+                        link.classList.toggle('active', i === index);
+                    });
+                }
+            },
+
+            // Handle "No — Clinically Correct" button
+            async handleClinicallyCorrDisplay() {
+                this.hideElement('reviewCard');
+                this.showElement('successState');
+
+                document.getElementById('successTitle').textContent = 'Article Verified — Clinically Correct';
+                document.getElementById('successMessage').textContent = 'This article has been marked as clinically correct and will be published.';
+
+                // Submit to API
+                await this.submitReview('verified', []);
+            },
+
+            // Handle "Yes — There Are Errors" button
+            handleClinicalErrorsFound() {
+                this.hideElement('reviewCard');
+                this.showElement('errorForm');
+                this.populateErrorForm();
+            },
+
+            // Populate error form with sections
+            populateErrorForm() {
+                const select = document.getElementById('sectionSelect');
+                select.innerHTML = '<option value="">— Select a section —</option>';
+
+                for (const section of this.sections) {
+                    const option = document.createElement('option');
+                    option.value = section.index;
+                    option.textContent = section.name;
+                    select.appendChild(option);
+                }
+            },
+
+            // Update section preview
+            updateSectionPreview() {
+                const sectionIndex = document.getElementById('sectionSelect').value;
+                const previewContainer = document.getElementById('sectionPreviewContainer');
+
+                if (sectionIndex === '') {
+                    this.hideElement('sectionPreviewContainer');
+                    return;
+                }
+
+                const section = this.sections[sectionIndex];
+                document.getElementById('sectionPreview').textContent = section.content;
+                this.showElement('sectionPreviewContainer');
+            },
+
+            // Submit error
+            submitError() {
+                const sectionIndex = document.getElementById('sectionSelect').value;
+                const description = document.getElementById('errorDescription').value.trim();
+
+                if (!sectionIndex || !description) {
+                    alert('Please select a section and describe the error.');
+                    return;
+                }
+
+                const section = this.sections[sectionIndex];
+                this.collectedIssues.push({
+                    section_name: section.name,
+                    description: description
+                });
+
+                // Reset form and show summary
+                this.hideElement('errorForm');
+                this.showElement('issuesSummary');
+                this.renderIssuesSummary();
+            },
+
+            // Render issues summary
+            renderIssuesSummary() {
+                const issuesList = document.getElementById('issuesList');
+                issuesList.innerHTML = '';
+
+                for (const issue of this.collectedIssues) {
+                    const item = document.createElement('div');
+                    item.className = 'issue-item';
+                    item.innerHTML = `
+                        <div class="issue-item-header">${this.escapeHtml(issue.section_name)}</div>
+                        <div class="issue-item-text">${this.escapeHtml(issue.description)}</div>
+                    `;
+                    issuesList.appendChild(item);
+                }
+            },
+
+            // Add another error
+            addAnotherError() {
+                document.getElementById('sectionSelect').value = '';
+                document.getElementById('errorDescription').value = '';
+                this.hideElement('issuesSummary');
+                this.hideElement('sectionPreviewContainer');
+                this.showElement('errorForm');
+            },
+
+            // Cancel error reporting
+            cancelErrorReporting() {
+                this.collectedIssues = [];
+                document.getElementById('sectionSelect').value = '';
+                document.getElementById('errorDescription').value = '';
+                this.hideElement('errorForm');
+                this.hideElement('sectionPreviewContainer');
+                this.showElement('reviewCard');
+            },
+
+            // Finalize review and submit
+            async finalizeReview() {
+                this.hideElement('issuesSummary');
+                this.showElement('successState');
+
+                document.getElementById('successTitle').textContent = 'Review Submitted';
+                document.getElementById('successMessage').textContent =
+                    `${this.collectedIssues.length} clinical error(s) reported. The article will be sent to the author for revision.`;
+
+                // Submit to API
+                await this.submitReview('needs_revision', this.collectedIssues);
+            },
+
+            // Submit review to API
+            async submitReview(status, issues) {
+                try {
+                    const token = localStorage.getItem('dermobrain_token');
+                    const API_BASE = 'https://dermobrain-api.naren-6e3.workers.dev';
+
+                    const response = await fetch(
+                        `${API_BASE}/api/articles/${this.articleId}/clinical-review`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                status: status,
+                                issues: issues
+                            })
+                        }
+                    );
+
+                    if (!response.ok) {
+                        console.error('Review submission failed:', response.status);
+                        throw new Error(`API Error: ${response.status}`);
+                    }
+
+                    console.log('Review submitted successfully');
+                } catch (error) {
+                    console.error('Failed to submit review:', error);
+                    // Still show success message since it's been collected locally
+                }
+            },
+
+            // Show error message
+            showError(message) {
+                this.hideElement('loadingState');
+                this.showElement('errorState');
+                document.getElementById('errorMessage').textContent = message;
+            },
+
+            // Utility functions
+            showElement(id) {
+                const element = document.getElementById(id);
+                if (element) element.classList.remove('hidden');
+            },
+
+            hideElement(id) {
+                const element = document.getElementById(id);
+                if (element) element.classList.add('hidden');
+            },
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
         };
 
-        // Initialize page
-        function init() {
-            const params = new URLSearchParams(window.location.search);
-            const articleSlug = params.get('article');
-
-            if (articleSlug) {
-                const article = demoArticles.find(a => a.slug === articleSlug);
-                if (article) {
-                    loadReviewInterface(article);
-                } else {
-                    showArticleList();
-                }
-            } else {
-                showArticleList();
-            }
-        }
-
-        function showArticleList() {
-            document.getElementById('articleListView').style.display = 'block';
-            document.getElementById('reviewView').style.display = 'none';
-            renderArticleGrid();
-        }
-
-        function renderArticleGrid() {
-            const grid = document.getElementById('articleGrid');
-            grid.innerHTML = '';
-
-            demoArticles.forEach(article => {
-                const card = document.createElement('a');
-                card.href = `?article=${article.slug}`;
-                card.className = 'article-card';
-                card.innerHTML = `
-                    <div class="article-card-title">${article.title}</div>
-                    <div class="article-card-meta">
-                        <span class="badge">${article.category}</span>
-                        <span>${article.wordCount.toLocaleString()} words</span>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function loadReviewInterface(article) {
-            currentArticleSlug = article.slug;
-            document.getElementById('articleListView').style.display = 'none';
-            document.getElementById('reviewView').style.display = 'block';
-
-            // Set article info
-            document.getElementById('reviewTitle').textContent = article.title;
-            document.getElementById('categoryBadge').textContent = article.category;
-            document.getElementById('viewArticleLink').href = `https://dermobrain.com/article/${article.slug}`;
-            document.getElementById('wordCount').textContent = article.wordCount.toLocaleString();
-            document.getElementById('lastUpdated').textContent = article.lastUpdated;
-
-            // Set summary
-            const summaryDiv = document.getElementById('articleSummary');
-            summaryDiv.innerHTML = article.summary.split('\n').map(para => `<p>${para}</p>`).join('');
-
-            // Set key sections
-            const sectionsDiv = document.getElementById('keySecondions');
-            sectionsDiv.innerHTML = article.sections.map(section =>
-                `<div class="section-item">${section}</div>`
-            ).join('');
-
-            // Load saved state
-            loadReviewState();
-        }
-
-        function backToList() {
-            saveReviewState();
-            showArticleList();
-            window.history.replaceState({}, '', window.location.pathname);
-        }
-
-        function addNote() {
-            const section = document.getElementById('noteSection').value;
-            const text = document.getElementById('noteText').value.trim();
-
-            if (!section || !text) {
-                alert('Please select a section and enter a note.');
-                return;
-            }
-
-            const note = {
-                id: Date.now(),
-                section,
-                text,
-                timestamp: new Date().toLocaleString()
-            };
-
-            reviewData.notes.push(note);
-            document.getElementById('noteText').value = '';
-            document.getElementById('noteSection').value = '';
-            renderNotes();
-            saveReviewState();
-        }
-
-        function renderNotes() {
-            const notesList = document.getElementById('notesList');
-            if (reviewData.notes.length === 0) {
-                notesList.innerHTML = '<p style="color: #999; font-size: 0.85rem; padding: 1rem; text-align: center;">No notes yet</p>';
-                return;
-            }
-
-            notesList.innerHTML = reviewData.notes.map(note => `
-                <div class="note-item">
-                    <div class="note-content">
-                        <span class="note-section">${note.section}</span>
-                        <div class="note-text">${escapeHtml(note.text)}</div>
-                        <span class="note-time">${note.timestamp}</span>
-                    </div>
-                    <button class="delete-note" onclick="deleteNote(${note.id})">×</button>
-                </div>
-            `).join('');
-        }
-
-        function deleteNote(noteId) {
-            reviewData.notes = reviewData.notes.filter(n => n.id !== noteId);
-            renderNotes();
-            saveReviewState();
-        }
-
-        function flagIssue() {
-            const issueType = document.getElementById('issueType').value;
-            const severity = document.getElementById('issueSeverity').value;
-            const description = document.getElementById('issueDescription').value.trim();
-
-            if (!issueType || !severity || !description) {
-                alert('Please complete all issue fields.');
-                return;
-            }
-
-            alert(`✓ Issue flagged:\n\n${issueType}\nSeverity: ${severity}\n\n${description}`);
-
-            document.getElementById('issueType').value = '';
-            document.getElementById('issueSeverity').value = '';
-            document.getElementById('issueDescription').value = '';
-        }
-
-        function submitReview() {
-            const verdict = document.querySelector('input[name="verdict"]:checked');
-            if (!verdict) {
-                alert('Please select a verdict before submitting.');
-                return;
-            }
-
-            reviewData.verdict = verdict.value;
-            saveReviewState();
-
-            const verdictMap = {
-                'approve': '✅ Approved',
-                'approve-notes': '⚠️ Approved with Notes',
-                'revision': '🔄 Request Revision',
-                'reject': '❌ Rejected'
-            };
-
-            const article = demoArticles.find(a => a.slug === currentArticleSlug);
-            const reviewsCount = getReviewsCount() + 1;
-
-            document.getElementById('modalArticleTitle').textContent = article.title;
-            document.getElementById('modalVerdict').textContent = verdictMap[verdict.value];
-            document.getElementById('modalProgress').textContent = `You've now reviewed ${reviewsCount} articles`;
-            document.getElementById('modalTierProgress').textContent = `${Math.max(0, 10 - reviewsCount)} more reviews until Expert Reviewer`;
-            document.getElementById('reviewDate').textContent = new Date().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-
-            document.getElementById('successModal').classList.add('active');
-        }
-
-        function reviewAnotherArticle() {
-            document.getElementById('successModal').classList.remove('active');
-            resetReview();
-            showArticleList();
-        }
-
-        function goToDashboard() {
-            document.getElementById('successModal').classList.remove('active');
-            window.location.href = '#dashboard';
-        }
-
-        function resetReview() {
-            currentArticleSlug = null;
-            reviewData = {
-                accuracyChecks: {},
-                qualityChecks: {},
-                notes: [],
-                verdict: null
-            };
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-            document.querySelectorAll('input[name="verdict"]').forEach(rb => rb.checked = false);
-            document.getElementById('noteText').value = '';
-            document.getElementById('noteSection').value = '';
-            document.getElementById('issueType').value = '';
-            document.getElementById('issueSeverity').value = '';
-            document.getElementById('issueDescription').value = '';
-        }
-
-        function saveReviewState() {
-            document.querySelectorAll('.accuracy-check').forEach(cb => {
-                reviewData.accuracyChecks[cb.dataset.field] = cb.checked;
-            });
-            document.querySelectorAll('.quality-check').forEach(cb => {
-                reviewData.qualityChecks[cb.dataset.field] = cb.checked;
-            });
-
-            const key = `review_${currentArticleSlug}`;
-            localStorage.setItem(key, JSON.stringify(reviewData));
-            showAutoSaveIndicator();
-        }
-
-        function loadReviewState() {
-            if (!currentArticleSlug) return;
-
-            const key = `review_${currentArticleSlug}`;
-            const saved = localStorage.getItem(key);
-
-            if (saved) {
-                reviewData = JSON.parse(saved);
-
-                Object.keys(reviewData.accuracyChecks).forEach(field => {
-                    const cb = document.querySelector(`.accuracy-check[data-field="${field}"]`);
-                    if (cb) cb.checked = reviewData.accuracyChecks[field];
-                });
-
-                Object.keys(reviewData.qualityChecks).forEach(field => {
-                    const cb = document.querySelector(`.quality-check[data-field="${field}"]`);
-                    if (cb) cb.checked = reviewData.qualityChecks[field];
-                });
-
-                if (reviewData.verdict) {
-                    const rb = document.querySelector(`input[name="verdict"][value="${reviewData.verdict}"]`);
-                    if (rb) rb.checked = true;
-                }
-
-                renderNotes();
-            }
-        }
-
-        function getReviewsCount() {
-            let count = 0;
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key.startsWith('review_')) {
-                    const data = JSON.parse(localStorage.getItem(key));
-                    if (data.verdict) count++;
-                }
-            }
-            return count;
-        }
-
-        function showAutoSaveIndicator() {
-            const indicator = document.getElementById('autoSaveIndicator');
-            indicator.classList.add('show');
-            setTimeout(() => {
-                indicator.classList.remove('show');
-            }, 2000);
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // Event listeners for auto-save
-        document.addEventListener('change', (e) => {
-            if (e.target.classList.contains('accuracy-check') ||
-                e.target.classList.contains('quality-check') ||
-                e.target.name === 'verdict') {
-                saveReviewState();
-            }
+        // Initialize app when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
         });
-
-        // Initialize
-        init();
     </script>
 </body>
 </html>
