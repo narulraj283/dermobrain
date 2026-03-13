@@ -693,7 +693,8 @@
                         throw new Error(`API Error: ${response.status}`);
                     }
 
-                    this.article = await response.json();
+                    const data = await response.json();
+                    this.article = data.article || data;
                     this.parseContent();
                     this.render();
                 } catch (error) {
