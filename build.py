@@ -1791,33 +1791,42 @@ def build_directory_main_page():
     except:
         return 0
 
-    # Get unique states
+    # Valid US states and territories (exclude non-US entries like ONTARIO, military APOs)
+    VALID_US_STATES = {
+        'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA',
+        'KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM',
+        'NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA',
+        'WV','WI','WY','PR','GU','VI','AS','MP'
+    }
+
+    # Get unique states (filter to valid US only)
     states_set = set()
     state_counts = {}
     for derm in dermatologists:
         state = derm.get('state', '')
-        if state:
+        if state and state in VALID_US_STATES:
             states_set.add(state)
             state_counts[state] = state_counts.get(state, 0) + 1
 
-    states_list = sorted(list(states_set))
+    # Sort by state name (not abbreviation) for better UX
+    states_list = sorted(list(states_set), key=lambda s: STATE_NAMES.get(s, s))
 
     # State dropdown HTML
     state_options = "\n".join([f'                            <option value="{state}">{STATE_NAMES.get(state, state)}</option>' for state in states_list])
 
-    # Compute city counts to find popular cities
+    # Compute city counts to find popular cities (US only)
     city_counts = {}
     for derm in dermatologists:
         city = derm.get('city', '')
         state = derm.get('state', '')
-        if city and state:
+        if city and state and state in VALID_US_STATES:
             city_key = f"{city}, {state}"
             city_counts[city_key] = city_counts.get(city_key, 0) + 1
 
     # Get top 10 popular cities
     popular_cities = sorted(city_counts.items(), key=lambda x: x[1], reverse=True)[:10]
     popular_cities_html = "\n".join([
-        f'''                    <a href="/find-a-dermatologist/{slugify(city.split(',')[1])}/{slugify(city.split(',')[0])}.html" class="popular-city-card">
+        f'''                    <a href="/find-a-dermatologist/{slugify(city.split(',')[1].strip())}/{slugify(city.split(',')[0].strip())}.html" class="popular-city-card">
                         <h3>{city}</h3>
                         <p>{count} dermatologists</p>
                     </a>'''
@@ -1848,7 +1857,7 @@ def build_directory_main_page():
         <div class="directory-hero">
             <div class="container">
                 <h1>Find a Dermatologist</h1>
-                <p class="hero-subtitle">Connect with board-certified dermatologists near you. Browse 9,966+ verified profiles across all 50 states.</p>
+                <p class="hero-subtitle">Connect with board-certified dermatologists near you. Browse {len(dermatologists):,}+ verified profiles across all 50 states.</p>
 
                 <div class="directory-search-box">
                     <div class="search-tabs">
@@ -1910,12 +1919,14 @@ def build_directory_main_page():
             }});
         }});
 
-        // Geolocation
+        // Geolocation (US only)
         if (navigator.geolocation) {{
             navigator.geolocation.getCurrentPosition(function(pos) {{
                 fetch('https://nominatim.openstreetmap.org/reverse?lat='+pos.coords.latitude+'&lon='+pos.coords.longitude+'&format=json')
                 .then(r => r.json())
                 .then(data => {{
+                    var cc = data.address && data.address.country_code;
+                    if (cc !== 'us') return; // Only show for US locations
                     var state = data.address && data.address.state;
                     if (state) {{
                         var el = document.getElementById('geo-suggestion');
@@ -1983,7 +1994,7 @@ def build_directory_main_page():
     html = page_template(
         title="Find a Dermatologist",
         body_content=body_content,
-        meta_description="Find board-certified dermatologists near you. Search by state, city, or ZIP code. View profiles, specialties, contact information, and patient reviews for 9,000+ dermatologists.",
+        meta_description=f"Find board-certified dermatologists near you. Search by state, city, or ZIP code. View profiles, specialties, and contact information for {len(dermatologists):,}+ dermatologists.",
         schema_json=breadcrumb_schema,
         canonical="/find-a-dermatologist/"
     )
@@ -2000,12 +2011,20 @@ def build_state_pages():
     except:
         return 0
 
-    # Group dermatologists by state and city
+    # Valid US states and territories
+    VALID_US_STATES = {
+        'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA',
+        'KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM',
+        'NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA',
+        'WV','WI','WY','PR','GU','VI','AS','MP'
+    }
+
+    # Group dermatologists by state and city (US only)
     state_data = {}
     for derm in dermatologists:
         state = derm.get('state', '')
         city = derm.get('city', '')
-        if state and city:
+        if state and city and state in VALID_US_STATES:
             if state not in state_data:
                 state_data[state] = {}
             if city not in state_data[state]:
@@ -2080,12 +2099,20 @@ def build_city_pages():
     except:
         return 0
 
-    # Group dermatologists by state and city
+    # Valid US states and territories
+    VALID_US_STATES = {
+        'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA',
+        'KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM',
+        'NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA',
+        'WV','WI','WY','PR','GU','VI','AS','MP'
+    }
+
+    # Group dermatologists by state and city (US only)
     state_data = {}
     for derm in dermatologists:
         state = derm.get('state', '')
         city = derm.get('city', '')
-        if state and city:
+        if state and city and state in VALID_US_STATES:
             if state not in state_data:
                 state_data[state] = {}
             if city not in state_data[state]:
@@ -2226,7 +2253,14 @@ def build_practice_pages():
         npi = derm.get('npi', '')
         is_premium = derm.get('is_premium', False)
 
-        if not (practice_name and city and state):
+        # Valid US states and territories
+        VALID_US_STATES = {
+            'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA',
+            'KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM',
+            'NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA',
+            'WV','WI','WY','PR','GU','VI','AS','MP'
+        }
+        if not (practice_name and city and state) or state not in VALID_US_STATES:
             continue
 
         state_lower = state.lower()
