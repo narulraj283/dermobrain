@@ -838,26 +838,46 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     color: var(--text-secondary);
 }
 
+/* ─── State Page: Cities Grid ─── */
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
 .city-item {
-    padding: 1rem;
+    display: block;
+    padding: 1.25rem 1.5rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     transition: all var(--transition);
+    text-decoration: none;
+    color: inherit;
 }
 
 .city-item:hover {
     border-color: var(--primary);
     background: var(--primary-50);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
 }
 
-.city-item a {
+.city-item h3 {
+    font-size: 1.1rem;
     color: var(--text);
-    text-decoration: none;
-    display: block;
+    margin: 0 0 0.25rem;
 }
 
-.city-item:hover a {
+.city-item p {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin: 0;
+}
+
+.city-item:hover h3 {
     color: var(--primary);
 }
 
@@ -2577,6 +2597,93 @@ input:focus-visible,
 }
 .geo-suggestion a { color: #fff; font-weight: 600; text-decoration: underline; }
 
+/* ─── City Page: Dermatologist Cards ─── */
+.dermatologists-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.dermatologist-card {
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.dermatologist-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border-color: #1A6B54;
+}
+
+.dermatologist-card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.dermatologist-card .card-header h3 {
+    font-size: 1.1rem;
+    color: var(--text, #1A1A2E);
+    margin: 0;
+}
+
+.dermatologist-card .card-body {
+    font-size: 0.95rem;
+}
+
+.dermatologist-card .card-body .practice-name {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--text, #1A1A2E);
+}
+
+.dermatologist-card .card-body .address {
+    color: var(--text-secondary, #666);
+    font-size: 0.9rem;
+    margin: 0 0 0.25rem;
+    line-height: 1.5;
+}
+
+.dermatologist-card .card-body .phone {
+    margin: 0 0 0.5rem;
+}
+
+.dermatologist-card .card-body .phone a {
+    color: #1A6B54;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dermatologist-card .specialties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.badge-specialty {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.75rem;
+    background: #1A6B54;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.badge-specialty::before {
+    content: "✓";
+    font-size: 0.7rem;
+}
+
 .popular-cities { margin-bottom: 2rem; }
 .popular-cities h2 { margin-bottom: 1rem; }
 .popular-cities-grid {
@@ -2658,6 +2765,9 @@ input:focus-visible,
     .popular-cities-grid {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
+    .cities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
 
     .episode-header-section { padding: 2rem 0; }
     .episode-header-section h1 { font-size: 1.5rem; }
@@ -2667,6 +2777,7 @@ input:focus-visible,
     .cta-inner { padding: 1.25rem; }
     .podcast-subscribe { flex-direction: column; align-items: center; }
     .subscribe-btn { width: 100%; text-align: center; }
+    .cities-grid { grid-template-columns: 1fr 1fr; }
     .search-tab { padding: 10px 6px; font-size: 0.8rem; }
     .popular-cities-grid { grid-template-columns: 1fr 1fr; }
     .reviews-header { flex-direction: column; align-items: flex-start; }
