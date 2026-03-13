@@ -203,7 +203,7 @@ def page_template(title, body_content, meta_description="", schema_json="", cano
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="/assets/css/style.css?v=7">
+    <link rel="stylesheet" href="/assets/css/style.css?v=8">
     {extra_head}
 
     <!-- GA4 -->
@@ -2519,7 +2519,7 @@ def build_practice_pages():
 
                     <!-- Serving Community Section -->
                     <section class="practice-community">
-                        <h2>Dermatology Services in {city_display}, {state_full}</h2>
+                        <h2>Serving {city_display}, {state_full}</h2>
                         <p>{practice_name} serves patients in {city_display} and nearby communities in {state_full}. The practice offers appointments during regular business hours, Monday through Friday. Contact the office to check availability and insurance acceptance.</p>
                     </section>
 
